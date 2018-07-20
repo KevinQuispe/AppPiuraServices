@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradiente_login"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_horizontal_margin"
+    tools:context=".views.activities.LoginActivity">
+    <!-- Login progress -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ProgressBar
+            android:id="@+id/login_progress"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/login_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <!-- Here you can put your logo or brand name -->
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="16dp"
+                android:padding="16dp"
+                android:src="@drawable/ic_account_circle_black_24dp" />
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="-10dp"
+                android:layout_marginTop="-40dp"
+                android:text="@string/text_login"
+                android:textAlignment="center"
+                android:textColor="#ffff"
+                android:textSize="18sp"
+                android:textStyle="bold|italic" />
+            <android.support.design.widget.TextInputLayout
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/color_text_boton_login">
+
+                <AutoCompleteTextView
+                    android:id="@+id/et_email"
+                    android:drawableLeft="@drawable/ic_person_black_24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:background="@android:color/transparent"
+                    android:drawablePadding="12dp"
+                    android:ems="10"
+                    android:hint="@string/text_input_email"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:textColor="@color/color_text_input_login"
+                    android:textColorHint="#fff" />
+            </android.support.design.widget.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f9d7db" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/color_text_boton_login">
+                <AutoCompleteTextView
+                    android:drawableLeft="@drawable/ic_lock_black_24dp"
+                    android:id="@+id/et_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="@android:color/transparent"
+                    android:drawablePadding="12dp"
+                    android:ems="10"
+                    android:hint="@string/text_input_password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:textColor="@color/color_text_boton_login"
+                    android:textColorHint="#fff">
+                </AutoCompleteTextView>
+            </android.support.design.widget.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f9d7db" />
+
+            <Button
+                android:id="@+id/btn_login"
+                style="@style/Base.TextAppearance.AppCompat.Body1"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/background_boton_login"
+                android:layout_marginTop="16dp"
+                android:padding="16dp"
+                android:text="@string/text_login"
+                android:textAllCaps="false"
+                android:textColor="@color/color_text_boton_login"
+                android:textSize="18sp"
+                android:theme="@style/RaisedButtonDark" />
+
+            <Button
+                android:id="@+id/btn_register"
+                style="@style/Base.TextAppearance.AppCompat.Body1"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/background_boton_register"
+                android:layout_marginTop="10dp"
+                android:padding="16dp"
+                android:text="@string/text_register_login"
+                android:textAllCaps="false"
+                android:textColor="@color/color_text_boton_register"
+                android:textSize="18sp"
+                android:theme="@style/RaisedButtonDarkRegister" />
+            <TextView
+                android:onClick="onClick"
+                android:clickable="true"
+                android:id="@+id/idforgot"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:padding="16dp"
+                android:text="@string/text_input_olvidaste_password"
+                android:textColor="#fff" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

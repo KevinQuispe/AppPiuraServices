@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="@string/title_home" />
+        <item
+            android:id="@+id/nav_entidades"
+            android:icon="@drawable/ic_entidades_black_24dp"
+            android:title="@string/title_entidades" />
+        <item
+            android:id="@+id/nav_tramites"
+            android:icon="@drawable/ic_tramites_black_24dp"
+            android:title="@string/title_tramites" />
+        <item
+            android:id="@+id/nav_reclamos"
+            android:icon="@drawable/ic_tramites_black_24dp"
+            android:title="@string/title_reclamos" />
+        <item
+            android:id="@+id/nav_contactos"
+            android:icon="@drawable/ic_contact_phone_black_24dp"
+            android:title="@string/title_contactos" />
+        <item
+            android:id="@+id/nav_ubicanos"
+            android:icon="@drawable/ic_place_black_24dp"
+            android:title="@string/title_ubicanos" />
+        <item
+            android:id="@+id/nav_config"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="@string/title_config" />
+
+    </group>
+
+    <item android:title="@string/title_comunicate">
+        <menu>
+            <item
+                android:id="@+id/nav_compartir"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/title_compartir" />
+            <item
+                android:id="@+id/nav_salir"
+                android:icon="@drawable/ic_exit_to_app_black_24dp"
+                android:title="@string/title_salir" />
+        </menu>
+    </item>
+
+</menu>

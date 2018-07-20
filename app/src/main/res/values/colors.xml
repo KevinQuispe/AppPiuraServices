@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#F44336</color>
+    <color name="colorPrimaryDark">#EF5350</color>
+    <color name="colorAccent">#FFF</color>
+    <color name="colorSplasch">#FFF</color>
+
+    <color name="color_fragmentos">#fafafa</color>
+    <color name="color_boton_ubicame">#ff6f00</color>
+    <color name="color_text_boton_login">#eeee</color>
+    <color name="color_text_boton_register">#d50000</color>
+    <color name="color_text_input_login">#eeee</color>
+    <color name="color_text_boton">#eeee</color>
+    <color name="color_text_input_dni">#000000</color>
+    <color name="color_text_input_hint">#757575</color>
+    <color name="color_text_input_register">#000000</color>
+    <color name="buttonNormalColor">#d50000</color>
+    <color name="buttonHoverColor">#ff6f00</color>
+    <color name="buttonPressedColor">#f44336</color>
+    <color name="buttonSuccessColor">#d50000</color>
+    <color name="buttonColorRegister">#eeee</color>
+</resources>

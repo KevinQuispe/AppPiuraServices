@@ -1,0 +1,68 @@
+<resources>
+    <string name="app_name">PiuraServices</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Configuración</string>
+    <string name="title_activity_ubicanos">Map</string>
+    <!-- Splash screen -->
+    <string name="titulo_splash_servicios">Servicios Básicos</string>
+    <string name="text_splash_encuantra">Encuentra tu servicio mas cercano</string>
+    <string name="text_splash_luz">Luz</string>
+    <string name="text_splash_telefonia">Telefonia</string>
+    <string name="text_splash_agua">Agua</string>
+    <string name="text_splash_deveploment">Desarrollado by KevinQR</string>
+    <!-- Home primcipal -->
+    <string name="title_home">Home</string>
+    <string name="title_bienvenido">Bienvenido a la App Para consultar información de los servicios básicos de luz agua y telefonía en la ciudad de Piura
+    </string>
+    <!--drawer view-->
+    <string name="title_entidades">Entidades</string>
+    <string name="title_ubicanos">Ubica tu Servicio</string>
+    <string name="title_contactos">Contactos</string>
+    <string name="title_tramites">Tramites</string>
+    <string name="title_reclamos">Reclamos</string>
+    <string name="title_config">Configuración</string>
+    <string name="title_comunicate">Comunicate</string>
+    <string name="title_compartir">Compartir</string>
+    <string name="title_salir">Salir</string>
+
+    <!-- Home principal -->
+    <string name="title_servicios_basicos">Entidades de servicios Básicos</string>
+    <string name="title_activity_maps">Map</string>
+    <!--activity login -->
+    <string name="text_login">Iniciar sesion</string>
+    <string name="text_input_email">Ingrese email</string>
+    <string name="text_input_password">Ingrese password</string>
+    <string name="text_register_login">Registrarse</string>
+    <string name="text_input_olvidaste_password">Olvidaste tu password?</string>
+    <string name="title_activity_login">Iniciar Sesion</string>
+    <string name="title_activity_register">Registrar Usuario</string>
+    <!--activity register -->
+    <string name="text_title_register">Registrarse</string>
+    <string name="text_input_register_nombre">Ingrese nombre</string>
+    <string name="text_input_register_apellidos">Ingrese apellidos</string>
+    <string name="text_input_register_direccion">Ingrese dirección</string>
+    <string name="text_input_register_telefono">Ingrese n° de celular</string>
+    <string name="text_input_register_email">Ingrese correo</string>
+    <string name="text_input_register_codigo">Ingrese código postal</string>
+    <string name="text_input_register_edad">Ingrese edad</string>
+    <string name="text_input_register_password">Ingrese Password</string>
+    <string name="title_activity_reset_password">ResetPasswordActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- INFORMACION DE CONTACTO EPSGRAUD -->
+    <string name="text_view_informacion">Información Referencial</string>
+    <string name="text_view_direccion">Dirección:</string>
+    <string name="text_view_telefono">Teléfono:</string>
+    <string name="text_view_horario">Horario:</string>
+    <string name="text_view_correo">Email:</string>
+    <string name="text_view_pagina">Página Web:</string>
+    <!-- INFORMACION DE CONTACTO ENOSA -->
+    <string name="text_view_tramites">Información de Tramites </string>
+    <string name="text_view_reclamos">Información de Reclamos</string>
+    <string name="text_view_pasos_reclamos">Pasos para hacer reclamos</string>
+    <string name="text_view_pasos_treamistes">Pasos para hacer reclamos</string>
+</resources>

@@ -1,0 +1,275 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradiente_login"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_horizontal_margin"
+    tools:context=".views.activities.RegisterUserActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/color_text_boton_login">
+
+                <AutoCompleteTextView
+                    android:id="@+id/et_nombres"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/ic_person_black_24dp"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
+                    android:hint="@string/text_input_register_nombre"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:textColor="@color/color_text_input_register"
+                    android:textColorHint="#fff" />
+            </android.support.design.widget.TextInputLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_text_input_login" />
+            <android.support.design.widget.TextInputLayout
+                android:layout_marginTop="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/color_text_boton_login">
+
+                <AutoCompleteTextView
+                    android:id="@+id/et_apellidos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/ic_person_black_24dp"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
+                    android:hint="@string/text_input_register_apellidos"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:textColor="@color/color_text_input_register"
+                    android:textColorHint="#fff" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_text_input_login" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="43dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:textColorHint="@color/color_text_boton_login">
+
+                    <TextView
+                        android:id="@+id/et_direccion"
+                        android:layout_width="45dp"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:drawableLeft="@drawable/ic_location_city_black_24dp"
+                        android:drawablePadding="10dp"
+                        android:ems="10"
+                        android:maxLines="1"
+                        android:padding="10dp"
+                        android:textColor="@color/color_text_input_register"
+                        android:textColorHint="#fff" />
+                </android.support.design.widget.TextInputLayout>
+
+                <Spinner
+                    android:id="@+id/spinnerdireccion"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:entries="@array/comboDireccion"
+                    android:textColor="@color/color_text_input_register" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_text_input_login" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-4dp"
+                    android:textColorHint="@color/color_text_boton_login">
+
+                    <TextView
+                        android:id="@+id/et_direccio"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:drawableLeft="@drawable/ic_account_box_black_24dp"
+                        android:drawablePadding="10dp"
+                        android:ems="10"
+                        android:maxLines="1"
+                        android:padding="10dp"
+                        android:textColor="@color/color_text_input_register"
+                        android:textColorHint="#fff" />
+                </android.support.design.widget.TextInputLayout>
+                <RadioGroup
+                    android:id="@+id/radiogroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/rb_masculino"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Hombre"
+                        android:textColor="@color/color_text_input_register" />
+
+                    <RadioButton
+                        android:id="@+id/rb_femenino"
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="100dp"
+                        android:layout_marginTop="-30dp"
+                        android:text="Mujer"
+                        android:textColor="@color/color_text_input_login" />
+                </RadioGroup>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_text_input_login" />
+            <android.support.design.widget.TextInputLayout
+                android:layout_marginTop="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/color_text_boton_login">
+                <AutoCompleteTextView
+                    android:id="@+id/et_edad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/ic_person_black_24dp"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
+                    android:maxLength="2"
+                    android:inputType="number"
+                    android:hint="@string/text_input_register_edad"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:textColor="@color/color_text_input_register"
+                    android:textColorHint="#fff" />
+            </android.support.design.widget.TextInputLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_text_input_login" />
+            <android.support.design.widget.TextInputLayout
+                android:layout_marginTop="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/color_text_boton_login">
+
+                <AutoCompleteTextView
+                    android:id="@+id/et_telefono"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/ic_phone_android_black_24dp"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
+                    android:maxLength="9"
+                    android:inputType="number"
+                    android:hint="@string/text_input_register_telefono"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:textColor="@color/color_text_input_register"
+                    android:textColorHint="#fff" />
+            </android.support.design.widget.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_text_input_login" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_marginTop="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/color_text_boton_login">
+
+                <AutoCompleteTextView
+                    android:id="@+id/et_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/ic_email_black_24dp"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
+                    android:hint="@string/text_input_register_email"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/color_text_input_register"
+                    android:textColorHint="#fff" />
+            </android.support.design.widget.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_text_input_login" />
+            <android.support.design.widget.TextInputLayout
+                android:layout_marginTop="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/color_text_boton_login">
+                <AutoCompleteTextView
+                    android:id="@+id/et_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/ic_lock_black_24dp"
+                    android:drawablePadding="12dp"
+                    android:ems="10"
+                    android:hint="@string/text_input_register_password"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:inputType="textPassword"
+                    android:textColor="@color/color_text_input_register"
+                    android:textColorHint="#fff" />
+            </android.support.design.widget.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_text_input_login" />
+            <Button
+                android:id="@+id/btn_register_user"
+                style="@style/Base.TextAppearance.AppCompat.Body1"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_boton_login"
+                android:padding="16dp"
+                android:text="@string/text_register_login"
+                android:textAllCaps="false"
+                android:textColor="@color/color_text_boton_login"
+                android:textSize="18sp"
+                android:theme="@style/RaisedButtonDark" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
