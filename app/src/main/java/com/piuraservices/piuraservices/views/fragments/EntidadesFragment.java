@@ -21,7 +21,7 @@ public class EntidadesFragment extends Fragment{
 
     CardView cardView;
     ImageView imgtelefonia;
-    ImageView imgenosoa;
+    ImageView imgenosa;
     ImageView imgepsgrau;
     public EntidadesFragment() {
         // Required empty public constructor
@@ -36,9 +36,10 @@ public class EntidadesFragment extends Fragment{
         cardView=(CardView) v.findViewById(R.id.card_telefonia);
         imgtelefonia=(ImageView) v.findViewById(R.id.img_telefonia);
         imgepsgrau=(ImageView) v.findViewById(R.id.img_epsgrau);
-        imgenosoa=(ImageView) v.findViewById(R.id.img_enosa);
+        imgenosa=(ImageView) v.findViewById(R.id.img_enosa);
 
         onClicked(v);
+        onClickedEps(v);
         return  v;
     }
 
@@ -47,6 +48,15 @@ public class EntidadesFragment extends Fragment{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent("views.activities.TelefoniaActivity");
+                startActivity(intent);
+            }
+        });
+    }
+    public void onClickedEps( View v){
+        imgepsgrau.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent("views.activities.EPS_grauActivity");
                 startActivity(intent);
             }
         });

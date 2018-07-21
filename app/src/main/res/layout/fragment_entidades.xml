@@ -25,7 +25,7 @@
                 app:cardUseCompatPadding="true" >
                 <ImageView
                     android:clickable="true"
-                    android:onClick="onClicked"
+                    android:onClick="onClickedEps"
                     android:id="@+id/img_epsgrau"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -36,7 +36,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:text="EPS GRAU,Servicio de agua"
+                    android:text="@string/title_img_empresaepsgrau"
                     android:layout_gravity="bottom"
                     android:background="#9e000000"
                     android:textColor="#ffe3e3e3"
@@ -53,8 +53,6 @@
                 app:cardUseCompatPadding="true" >
 
                 <ImageView
-                    android:clickable="true"
-                    android:onClick="onClicked"
                     android:id="@+id/img_enosa"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -65,7 +63,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:text="ENOSA, Servicio de luz"
+                    android:text="@string/title_img_empresaenosa"
                     android:layout_gravity="bottom"
                     android:background="#9e000000"
                     android:textColor="#ffe3e3e3"

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#ffe3e3e3"
     tools:context=".views.activities.EPS_grauActivity">
     <ScrollView
         android:layout_width="match_parent"
@@ -20,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="5dp"
+                app:cardElevation="1dp"
                 app:cardUseCompatPadding="true" >
             <GridLayout
                 android:columnCount="2"
@@ -68,7 +69,6 @@
                     android:layout_height="wrap_content"
                     android:text="www.epsgrau.pe" />
             </GridLayout>
-
                 <TextView
                     android:id="@+id/txt2"
                     android:layout_width="match_parent"
@@ -78,7 +78,7 @@
                     android:layout_gravity="bottom"
                     android:background="#9e000000"
                     android:textColor="#ffe3e3e3"
-                    android:textSize="20sp"
+                    android:textSize="12sp"
                     android:textStyle="bold"/>
             </android.support.v7.widget.CardView>
 
@@ -86,31 +86,69 @@
                 android:id="@+id/card2"
                 android:background="#949494"
                 android:layout_width="match_parent"
-                android:layout_height="160dp"
+                android:layout_height="150dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="5dp"
-                app:cardUseCompatPadding="true" >
+                app:cardElevation="1dp"
+                app:cardUseCompatPadding="true">
 
                 <ImageView
-                    android:clickable="true"
-                    android:onClick="onClicked"
-                    android:id="@+id/img_enosa"
+                    android:id="@+id/img_tramites"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                     />
+                    android:clickable="true"
+                    android:onClick="onClicked"
+                    android:scaleType="centerCrop" />
+                <GridLayout
+                    android:columnCount="1"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:gravity="center"
+                        android:textSize="12dp"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_view_info_tramites" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorPrimary" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_view_nombre_tramite" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorPrimary" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_view_pasos_tramites" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorPrimary" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_view_pasos_mas_info" />
+                </GridLayout>
+
                 <TextView
                     android:id="@+id/txt4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:text="Informacion "
+                    android:text="@string/text_view_tramites"
                     android:layout_gravity="bottom"
                     android:background="#9e000000"
                     android:textColor="#ffe3e3e3"
-                    android:textSize="20sp"
+                    android:textSize="12sp"
                     android:textStyle="bold"/>
             </android.support.v7.widget.CardView>
+
             <android.support.v7.widget.CardView
                 android:id="@+id/card_telefonia"
                 android:background="#949494"
@@ -119,23 +157,54 @@
                 app:cardCornerRadius="10dp"
                 app:cardElevation="5dp"
                 app:cardUseCompatPadding="true" >
-                <ImageView
-                    android:clickable="true"
-                    android:onClick="onClicked"
-                    android:id="@+id/img_telefonia"
+                <GridLayout
+                    android:columnCount="1"
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"/>
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:gravity="center"
+                        android:textSize="12dp"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_view_info_tramites" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorPrimary" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_view_nombre_reclamo" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorPrimary" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_view_pasos_reclamos" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorPrimary" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_view_pasos_mas_info" />
+                </GridLayout>
+
                 <TextView
                     android:id="@+id/txt24"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:text="Telefonia"
+                    android:text="@string/text_view_reclamos"
                     android:layout_gravity="bottom"
                     android:background="#8c000000"
                     android:textColor="#ffe3e3e3"
-                    android:textSize="20sp"
+                    android:textSize="12sp"
                     android:textStyle="bold"/>
             </android.support.v7.widget.CardView>
         </LinearLayout>

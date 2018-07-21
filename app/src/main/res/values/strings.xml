@@ -49,7 +49,10 @@
     <string name="text_input_register_edad">Ingrese edad</string>
     <string name="text_input_register_password">Ingrese Password</string>
     <string name="title_activity_reset_password">ResetPasswordActivity</string>
-
+    <!--activity register -->
+    <string name="title_activity_inforeferencial">Informacion Referencial</string>
+    <string name="title_activity_infotramites">Informacion Tramites</string>
+    <string name="title_activity_inforeclamos">Informacion Reclamos</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -60,9 +63,20 @@
     <string name="text_view_horario">Horario:</string>
     <string name="text_view_correo">Email:</string>
     <string name="text_view_pagina">Página Web:</string>
-    <!-- INFORMACION DE CONTACTO ENOSA -->
+    <!-- INFORMACION DE CONTACTO ESPGRAU -->
     <string name="text_view_tramites">Información de Tramites </string>
+    <string name="text_view_info_tramites">En esta sección Ud podrá consultar la siguiente información:</string>
+    <string name="text_view_nombre_tramite">Lista de Tramites</string>>
+    <string name="text_view_pasos_tramites">Pasos para hacer tramites</string>
+    <!-- INFORMACION DE RECLAMOS -->
+    <string name="text_view_info_reclamos">En esta sección Ud podrá consultar la siguiente información:</string>
     <string name="text_view_reclamos">Información de Reclamos</string>
     <string name="text_view_pasos_reclamos">Pasos para hacer reclamos</string>
-    <string name="text_view_pasos_treamistes">Pasos para hacer reclamos</string>
+    <string name="text_view_nombre_reclamo">Lista de Reclamos</string>
+    <string name="text_view_pasos_mas_info">Click para mas información...</string>
+    <!-- TITULOS DE LAS IMAGNES -->
+    <string name="title_img_empresaepsgrau">EPS GRAU SA,Servicio de agua</string>
+    <string name="title_img_empresatelefonia">Telefonía,Movistar, claro, entel</string>
+    <string name="title_img_empresaenosa">Enosa, servicio de luz</string>
+
 </resources>
