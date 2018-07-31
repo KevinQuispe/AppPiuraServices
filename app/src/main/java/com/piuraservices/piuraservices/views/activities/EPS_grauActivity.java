@@ -10,18 +10,21 @@ import com.piuraservices.piuraservices.R;
 
 public class EPS_grauActivity extends AppCompatActivity {
 
-    ImageView imgTramites;
+    ImageView imgtramites;
+    ImageView imgreclamos;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eps_grau);
-        imgTramites=(ImageView) findViewById(R.id.img_tramites);
-
+        imgtramites = (ImageView) findViewById(R.id.img_tramiteseps);
+        imgreclamos = (ImageView) findViewById(R.id.img_reclamoseps);
 
 
     }
-    public void onClicked( View v){
-        imgTramites.setOnClickListener(new View.OnClickListener() {
+
+    public void onClicked(View v) {
+        imgtramites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent("views.activities.InformacionTramitesActivity");
@@ -29,4 +32,23 @@ public class EPS_grauActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void onClickedreclamos(View v) {
+        imgreclamos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(".views.activities.InformacionReclamosActivity");
+                startActivity(intent);
+            }
+        });
+    } public void onClickOpenWeb(View v) {
+        imgreclamos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(".views.activities.InformacionReclamosActivity");
+                startActivity(intent);
+            }
+        });
+    }
+
 }

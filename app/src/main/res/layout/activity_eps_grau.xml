@@ -24,6 +24,7 @@
                 app:cardElevation="1dp"
                 app:cardUseCompatPadding="true" >
             <GridLayout
+                android:padding="6dp"
                 android:columnCount="2"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -65,6 +66,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/text_view_pagina" />
                 <TextView
+                    android:clickable="true"
+                    android:onClick="onClickOpenWeb"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="www.epsgrau.pe" />
@@ -92,13 +95,14 @@
                 app:cardUseCompatPadding="true">
 
                 <ImageView
-                    android:id="@+id/img_tramites"
+                    android:id="@+id/img_tramiteseps"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:clickable="true"
                     android:onClick="onClicked"
                     android:scaleType="centerCrop" />
                 <GridLayout
+                    android:padding="6dp"
                     android:columnCount="1"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
@@ -157,11 +161,20 @@
                 app:cardCornerRadius="10dp"
                 app:cardElevation="5dp"
                 app:cardUseCompatPadding="true" >
+                <ImageView
+                    android:id="@+id/img_reclamoseps"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:onClick="onClicked"
+                    android:scaleType="centerCrop" />
                 <GridLayout
+                    android:padding="6dp"
                     android:columnCount="1"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <TextView
                         android:gravity="center"
                         android:textSize="12dp"

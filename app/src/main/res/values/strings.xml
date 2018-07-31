@@ -4,6 +4,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Configuración</string>
+    <string name="action_admininfor">Administrar Información</string>
     <string name="title_activity_ubicanos">Map</string>
     <!-- Splash screen -->
     <string name="titulo_splash_servicios">Servicios Básicos</string>

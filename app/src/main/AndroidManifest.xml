@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.piuraservices.piuraservices">
+
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -26,21 +27,24 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".views.activities.TelefoniaActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="views.activities.TelefoniaActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
         <activity
             android:name=".UbicanosActivity"
             android:label="@string/title_activity_ubicanos"
@@ -54,19 +58,21 @@
             android:name=".views.activities.ResetPasswordActivity"
             android:label="@string/title_activity_reset_password"
             android:parentActivityName=".views.activities.LoginActivity" />
-
         <activity
             android:name=".views.activities.InformacionTramitesActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="views.activities.InformacionTramitesActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-        </activity><activity
+        </activity>
+        <activity
             android:name=".views.activities.EPS_grauActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="views.activities.EPS_grauActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -74,8 +80,14 @@
             android:name=".views.activities.InformacionReferencialActivity"
             android:label="@string/title_activity_inforeferencial" />
         <activity
-            android:name=".views.activities.InfromacionReclamosActivity"
+            android:name=".views.activities.InformacionReclamosActivity"
             android:label="@string/title_activity_inforeclamos" />
+
+        <activity android:name=".views.activities.AdministrarInformacionActivity" />
+        <activity android:name=".views.activities.ItemInformacionTramitesActivity" />
+        <activity android:name=".views.activities.ItemInformcionReclamosActivity" />
+        <activity android:name=".views.activities.ItemInformacionReferencialActivity" />
+
     </application>
 
 </manifest>

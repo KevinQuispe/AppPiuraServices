@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.piuraservices.piuraservices.views.activities.LoginActivity;
 import com.piuraservices.piuraservices.views.fragments.EntidadesFragment;
 import com.piuraservices.piuraservices.views.fragments.HomeFragment;
 
@@ -105,6 +106,14 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            return true;
+        }
+        if (id == R.id.action_admininfo) {
+            Intent intent=new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        if (id == R.id.action_salir) {
             return true;
         }
 

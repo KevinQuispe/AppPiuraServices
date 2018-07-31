@@ -5,11 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.piuraservices.piuraservices.R;
 
-public class InfromacionReclamosActivity extends AppCompatActivity {
+public class ItemInformacionTramitesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_infromacion_reclamos);
+        setContentView(R.layout.activity_item_informacion_tramites);
     }
 }
