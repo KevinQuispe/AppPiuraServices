@@ -65,9 +65,9 @@
     <string name="text_view_correo">Email:</string>
     <string name="text_view_pagina">Página Web:</string>
     <!-- INFORMACION DE CONTACTO ESPGRAU -->
-    <string name="text_view_tramites">Información de Tramites </string>
+    <string name="text_view_tramites">Información de Trámites </string>
     <string name="text_view_info_tramites">En esta sección Ud podrá consultar la siguiente información:</string>
-    <string name="text_view_nombre_tramite">Lista de Tramites</string>>
+    <string name="text_view_nombre_tramite">Lista de Trámites</string>>
     <string name="text_view_pasos_tramites">Pasos para hacer tramites</string>
     <!-- INFORMACION DE RECLAMOS -->
     <string name="text_view_info_reclamos">En esta sección Ud podrá consultar la siguiente información:</string>

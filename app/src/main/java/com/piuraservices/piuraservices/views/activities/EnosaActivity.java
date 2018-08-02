@@ -17,6 +17,8 @@ public class EnosaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enosa);
+        getSupportActionBar().setTitle("Entidad Enosa");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         imgtramites = (ImageView) findViewById(R.id.img_tramitesenosa);
         imgreclamos = (ImageView) findViewById(R.id.img_reclamosenosa);
 }

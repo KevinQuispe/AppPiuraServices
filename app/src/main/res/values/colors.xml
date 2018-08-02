@@ -19,4 +19,6 @@
     <color name="buttonPressedColor">#f44336</color>
     <color name="buttonSuccessColor">#d50000</color>
     <color name="buttonColorRegister">#eeee</color>
+    <color name="color_card">#ff7961</color>
+
 </resources>

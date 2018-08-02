@@ -40,6 +40,7 @@ public class EntidadesFragment extends Fragment{
 
         onClicked(v);
         onClickedEps(v);
+        onClickedenosa(v);
         return  v;
     }
 
@@ -57,6 +58,15 @@ public class EntidadesFragment extends Fragment{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent("views.activities.EPS_grauActivity");
+                startActivity(intent);
+            }
+        });
+    }
+    public void onClickedenosa( View v){
+        imgenosa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent("views.activities.EnosaActivity");
                 startActivity(intent);
             }
         });

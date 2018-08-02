@@ -21,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="5dp"
+                app:cardElevation="4dp"
                 app:cardUseCompatPadding="true" >
                 <ImageView
                     android:layout_width="match_parent"
@@ -71,7 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="5dp"
+                app:cardElevation="4dp"
                 app:cardUseCompatPadding="true" >
                 <ImageView
                     android:layout_width="match_parent"
