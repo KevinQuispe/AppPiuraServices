@@ -48,7 +48,7 @@
                             android:layout_height="wrap_content"
                             android:clickable="true"
                             android:onClick="onClickOpenGoogleMaps"
-                            android:src="@drawable/ic_place_16dp" />
+                            android:src="@drawable/ic_place_black_24dp" />
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -71,7 +71,7 @@
                             android:layout_height="wrap_content"
                             android:clickable="true"
                             android:onClick="onClickOpenCall"
-                            android:src="@drawable/ic_phone_16dp" />
+                            android:src="@drawable/ic_local_phone_black_24dp" />
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -93,7 +93,7 @@
                             android:layout_height="wrap_content"
                             android:clickable="true"
                             android:onClick="onClickOpenEmail"
-                            android:src="@drawable/ic_email_26dp" />
+                            android:src="@drawable/ic_email_black_24dp" />
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -116,7 +116,7 @@
                             android:layout_height="wrap_content"
                             android:clickable="true"
                             android:onClick="onClickOpenWeb"
-                            android:src="@drawable/ic_clock_16dp" />
+                            android:src="@drawable/ic_clock_black_24dp" />
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -138,7 +138,7 @@
                             android:layout_height="wrap_content"
                             android:clickable="true"
                             android:onClick="onClickOpenWeb"
-                            android:src="@drawable/ic_web_16dp" />
+                            android:src="@drawable/ic_web_24dp" />
                     </LinearLayout>
 
                 </GridLayout>

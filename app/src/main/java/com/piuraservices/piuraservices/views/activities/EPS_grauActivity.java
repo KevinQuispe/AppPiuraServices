@@ -46,7 +46,7 @@ public class EPS_grauActivity extends AppCompatActivity {
         imgreclamos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(".views.activities.InformacionReclamosActivity");
+                Intent intent = new Intent("views.activities.InformacionReclamosActivity");
                 startActivity(intent);
             }
         });

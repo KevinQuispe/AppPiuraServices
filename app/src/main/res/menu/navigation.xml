@@ -15,5 +15,4 @@
         android:id="@+id/navigation_ubicanos"
         android:icon="@drawable/ic_place_black_24dp"
         android:title="@string/title_ubicanos" />
-
 </menu>
