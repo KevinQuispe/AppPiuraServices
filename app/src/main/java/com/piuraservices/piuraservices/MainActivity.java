@@ -14,7 +14,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.piuraservices.piuraservices.views.activities.ConfigurarCuentaActivity;
 import com.piuraservices.piuraservices.views.activities.LoginActivity;
+import com.piuraservices.piuraservices.views.activitiesadmin.AdministrarInformacionActivity;
 import com.piuraservices.piuraservices.views.fragments.EntidadesFragment;
 import com.piuraservices.piuraservices.views.fragments.HomeFragment;
 
@@ -106,10 +108,12 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent=new Intent(MainActivity.this, ConfigurarCuentaActivity.class);
+            startActivity(intent);
             return true;
         }
         if (id == R.id.action_admininfo) {
-            Intent intent=new Intent(MainActivity.this, LoginActivity.class);
+            Intent intent=new Intent(MainActivity.this, AdministrarInformacionActivity.class);
             startActivity(intent);
             return true;
         }
@@ -144,6 +148,9 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_ubicanos) {
 
         } else if (id == R.id.nav_config) {
+            Intent intent=new Intent(MainActivity.this, ConfigurarCuentaActivity.class);
+            startActivity(intent);
+            return true;
 
         } else if (id == R.id.nav_compartir) {
             Intent intent= new Intent(Intent.ACTION_SEND);

@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".views.activities.AdministrarInformacionActivity">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".views.activitiesadmin.AdministrarInformacionActivity">
 
     <ListView
+        android:id="@+id/list_admininformacion"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="0dp" />
+        android:layout_height="wrap_content">
+    </ListView>
 </LinearLayout>

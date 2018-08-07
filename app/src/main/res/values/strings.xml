@@ -3,7 +3,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Configuración</string>
+    <string name="action_settings">Configurar cuenta</string>
     <string name="action_admininfor">Administrar Información</string>
     <string name="title_activity_ubicanos">Map</string>
     <!-- Splash screen -->
@@ -23,7 +23,7 @@
     <string name="title_contactos">Contactos</string>
     <string name="title_tramites">Tramites</string>
     <string name="title_reclamos">Reclamos</string>
-    <string name="title_config">Configuración</string>
+    <string name="title_config">Configurar cuenta</string>
     <string name="title_comunicate">Comunicate</string>
     <string name="title_compartir">Compartir</string>
     <string name="title_salir">Salir</string>

@@ -24,7 +24,7 @@ public class EnosaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_enosa);
         getSupportActionBar().setTitle("Entidad Enosa");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        imgtramites = (ImageView) findViewById(R.id.img_tramiteseps);
+        imgtramites = (ImageView) findViewById(R.id.img_tramitesenosa);
         imgreclamos = (ImageView) findViewById(R.id.img_reclamosenosa);
 }
 
@@ -32,7 +32,7 @@ public class EnosaActivity extends AppCompatActivity {
         imgreclamos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent("views.activities.InformacionTramitesActivity");
+                Intent intent = new Intent("views.activities.InfoReclamosEnosaActivity");
                 startActivity(intent);
             }
         });
@@ -41,7 +41,7 @@ public class EnosaActivity extends AppCompatActivity {
         imgtramites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent("views.activities.InformacionTramitesActivity");
+                Intent intent = new Intent("views.activities.InfoTramitesEnosaActivity");
                 startActivity(intent);
             }
         });

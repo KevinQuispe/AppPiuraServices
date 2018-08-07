@@ -20,5 +20,6 @@
     <color name="buttonSuccessColor">#d50000</color>
     <color name="buttonColorRegister">#eeee</color>
     <color name="color_card">#ff7961</color>
+    <color name="color_search_background">#ede7f6</color>
 
 </resources>

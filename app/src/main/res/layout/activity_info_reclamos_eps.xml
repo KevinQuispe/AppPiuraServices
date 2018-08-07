@@ -6,13 +6,6 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".views.activities.InfoReclamosEpsActivity">
-
-    <SearchView
-        android:queryHint="Buscar.."
-        android:id="@+id/search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </SearchView>
     <ListView
         android:id="@+id/list_reclamoseps"
         android:layout_width="match_parent"
