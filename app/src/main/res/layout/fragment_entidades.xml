@@ -83,7 +83,7 @@
                 app:cardUseCompatPadding="true" >
                 <ImageView
                     android:clickable="true"
-                    android:onClick="onClicked"
+                    android:onClick="onClickedTelefonia"
                     android:id="@+id/img_telefonia"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

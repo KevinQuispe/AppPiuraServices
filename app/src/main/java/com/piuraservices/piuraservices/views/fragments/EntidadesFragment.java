@@ -38,13 +38,13 @@ public class EntidadesFragment extends Fragment{
         imgepsgrau=(ImageView) v.findViewById(R.id.img_epsgrau);
         imgenosa=(ImageView) v.findViewById(R.id.img_enosa);
 
-        onClicked(v);
+        onClickedTelefonia(v);
         onClickedEps(v);
         onClickedenosa(v);
         return  v;
     }
 
-    public void onClicked( View v){
+    public void onClickedTelefonia( View v){
         imgtelefonia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".InfoReclamosEnosaActivity">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".views.activities.InfoReclamosEnosaActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <SearchView
+        android:queryHint="Buscar.."
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </SearchView>
+    <ListView
+        android:id="@+id/list_reclamosenosa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </ListView>
+</LinearLayout>

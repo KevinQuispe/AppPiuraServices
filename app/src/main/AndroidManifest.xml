@@ -54,7 +54,6 @@
         <activity
             android:name=".views.activities.LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".TelefoniaActivity" />
         <activity
             android:name=".views.activities.ResetPasswordActivity"
             android:label="@string/title_activity_reset_password"
@@ -107,14 +106,48 @@
         <activity
             android:name=".views.activities.InformacionReferencialActivity"
             android:label="@string/title_activity_inforeferencial" />
-        <activity android:name=".views.activities.AdministrarInformacionActivity" />
-        <activity android:name=".views.activities.ItemInformacionTramitesActivity" />
-        <activity android:name=".views.activities.ItemInformcionReclamosActivity" />
-        <activity android:name=".views.activities.ItemInformacionReferencialActivity" />
-        <activity android:name=".InfoTramitesEnosaActivity" />
-        <activity android:name=".InfoTramitesEpsActivity" />
-        <activity android:name=".InfoReclamosEnosaActivity" />
-        <activity android:name=".InfoReclamosEpsActivity" />
+        <activity
+            android:name=".views.activities.InfoTramitesEnosaActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="views.activities.InformacionTramitesActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".views.activities.InfoTramitesEpsActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="views.activities.InformacionTramitesActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".views.activities.InfoReclamosEpsActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="views.activities.InfoReclamosEpsActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".views.activities.InfoReclamosEnosaActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="views.activities.InfoReclamosEnosaActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".views.activitiesadmin.InformacionReclamosActivity" />
+        <activity android:name=".views.activitiesadmin.ItemInformacionTramitesActivity" />
+        <activity android:name=".views.activitiesadmin.ItemInformcionReclamosActivity" />
+        <activity android:name=".views.activitiesadmin.ItemInformacionReferencialActivity" />
+
     </application>
 
 </manifest>
