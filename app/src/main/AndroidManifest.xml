@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.piuraservices.piuraservices">
+
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -9,6 +10,7 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,13 +22,14 @@
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
-        <!--Informacion activities publicos-->
+        <!-- Informacion activities publicos -->
         <activity
             android:name=".SplashScreenActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -39,9 +42,11 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
         <activity
             android:name=".UbicanosActivity"
             android:label="@string/title_activity_ubicanos"
@@ -63,12 +68,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <!--activiteoes for to epsgrau-->
+        <!-- activiteoes for to epsgrau -->
         <activity
             android:name=".views.activitiesepsgrau.EPS_grauActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="views.activitiesepsgrau.EPS_grauActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -78,6 +84,7 @@
             android:parentActivityName=".views.activitiesepsgrau.EPS_grauActivity">
             <intent-filter>
                 <action android:name="views.activitiesepsgrau.InfoTramitesEpsActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -91,7 +98,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <!--Informacion activity enosa-->
+        <!-- Informacion activity enosa -->
         <activity
             android:name=".views.activitiesenosa.EnosaActivity"
             android:label="@string/app_name">
@@ -101,7 +108,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <!--Informacion tramites enosa-->
+        <!-- Informacion tramites enosa -->
         <activity
             android:name=".views.activitiesenosa.InfoTramitesEnosaActivity"
             android:label="@string/app_name">
@@ -121,7 +128,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <!-- administrar Informacion tramites enosa-->
+        <!-- administrar Informacion tramites enosa -->
         <activity
             android:name=".views.activitiesadmin.InformacionTramitesActivity"
             android:label="@string/app_name">
@@ -165,7 +172,12 @@
         <activity android:name=".views.activitiesepsgrau.ListInfoReclamosEpsActivity" />
         <activity android:name=".views.activitiestelefonia.InfoMovistarActivity" />
         <activity android:name=".views.activitiestelefonia.InfoEntelActivity" />
-        <activity android:name=".views.activitiestelefonia.InfoClaroActivity"></activity>
+        <activity android:name=".views.activitiestelefonia.InfoClaroActivity" />
+        <activity android:name=".views.activitiesadmin.AdminInfoEpsgrauActivity" />
+        <activity android:name=".views.activitiesadmin.AdminInfoEnosaActivity" />
+        <activity android:name=".views.activitiesadmin.AdminInfoTelefoniaActivity" />
+        <activity android:name=".views.activitiesadmin.AdminInfoEntelActivity" />
+        <activity android:name=".views.activitiesadmin.AdminInfoClaroActivity"></activity>
     </application>
 
 </manifest>

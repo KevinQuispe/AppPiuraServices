@@ -217,7 +217,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
-                    android:drawableLeft="@drawable/ic_email_black_24dp"
+                    android:drawableLeft="@drawable/ic_email_white_24dp"
                     android:drawablePadding="10dp"
                     android:ems="10"
                     android:hint="@string/text_input_register_email"
