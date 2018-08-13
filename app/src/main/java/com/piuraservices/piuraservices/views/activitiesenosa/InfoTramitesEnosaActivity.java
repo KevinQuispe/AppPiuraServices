@@ -1,4 +1,4 @@
-package com.piuraservices.piuraservices.views.activities;
+package com.piuraservices.piuraservices.views.activitiesenosa;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

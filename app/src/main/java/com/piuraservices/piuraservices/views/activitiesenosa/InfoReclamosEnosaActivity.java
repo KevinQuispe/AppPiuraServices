@@ -1,16 +1,18 @@
-package com.piuraservices.piuraservices.views.activities;
+package com.piuraservices.piuraservices.views.activitiesenosa;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.piuraservices.piuraservices.R;
-import com.piuraservices.piuraservices.views.activitiesadmin.AdministrarInformacionActivity;
 
 import java.util.zip.Inflater;
 
@@ -29,6 +31,12 @@ public class InfoReclamosEnosaActivity extends AppCompatActivity {
         listaelementos=(ListView) findViewById(R.id.list_reclamosenosa);
         adapter = new ArrayAdapter<String>(InfoReclamosEnosaActivity.this, android.R.layout.simple_list_item_1, informacion);
         listaelementos.setAdapter(adapter);
+        listaelementos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(InfoReclamosEnosaActivity.this, "Hola", Toast.LENGTH_SHORT).show();
+            }
+        });
 }
 
     @Override

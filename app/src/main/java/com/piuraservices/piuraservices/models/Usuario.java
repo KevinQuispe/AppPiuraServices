@@ -1,9 +1,5 @@
 package com.piuraservices.piuraservices.models;
-
-import com.google.gson.TypeAdapterFactory;
-
 import java.io.Serializable;
-
 public class Usuario implements Serializable{
     private long id;
     private String nombres;

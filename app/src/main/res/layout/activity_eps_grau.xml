@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#ffe3e3e3"
-    tools:context=".views.activities.EPS_grauActivity">
+    tools:context=".views.activitiesepsgrau.EPS_grauActivity">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

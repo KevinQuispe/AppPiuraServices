@@ -1,4 +1,4 @@
-package com.piuraservices.piuraservices.views.activities;
+package com.piuraservices.piuraservices.views.activitiesepsgrau;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,20 +13,21 @@ import com.piuraservices.piuraservices.R;
 
 import java.util.zip.Inflater;
 
-public class InfoReclamosEpsActivity extends AppCompatActivity {
+public class InfoTramitesEpsActivity extends AppCompatActivity {
 
     ListView listaelementos;
     ArrayAdapter<String> adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_info_reclamos_eps);
-        getSupportActionBar().setTitle("Información de Reclamos");
+        setContentView(R.layout.activity_info_tramites_eps);
+        getSupportActionBar().setTitle("Información de Tramites");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         String[] informacion = {"Información Referencial", "Información de Reclamos", "Información de Trámites"};
         Inflater inflater;
-        listaelementos=(ListView) findViewById(R.id.list_reclamoseps);
-        adapter = new ArrayAdapter<String>(InfoReclamosEpsActivity.this, android.R.layout.simple_list_item_1, informacion);
+        listaelementos=(ListView) findViewById(R.id.list_tramiteseps);
+        adapter = new ArrayAdapter<String>(InfoTramitesEpsActivity.this, android.R.layout.simple_list_item_1, informacion);
         listaelementos.setAdapter(adapter);
     }
 
@@ -55,3 +56,4 @@ public class InfoReclamosEpsActivity extends AppCompatActivity {
     }
 
 }
+

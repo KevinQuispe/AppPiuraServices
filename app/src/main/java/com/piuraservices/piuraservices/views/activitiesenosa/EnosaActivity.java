@@ -1,4 +1,4 @@
-package com.piuraservices.piuraservices.views.activities;
+package com.piuraservices.piuraservices.views.activitiesenosa;
 
 import android.Manifest;
 import android.content.Intent;
@@ -8,14 +8,12 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.piuraservices.piuraservices.R;
 
-public class EPS_grauActivity extends AppCompatActivity {
+public class EnosaActivity extends AppCompatActivity {
 
     ImageView imgtramites;
     ImageView imgreclamos;
@@ -23,32 +21,27 @@ public class EPS_grauActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_eps_grau);
-        getSupportActionBar().setTitle("Entidad EPS Grau S.A");
+        setContentView(R.layout.activity_enosa);
+        getSupportActionBar().setTitle("Entidad Enosa");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        imgtramites = (ImageView) findViewById(R.id.img_tramiteseps);
-        imgreclamos = (ImageView) findViewById(R.id.img_reclamoseps);
-
-
-    }
-
-    public void onClickedtramites(View v) {
-        imgtramites.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               // Intent intent = new Intent("views.activities.InfoTramitesEpsActivity");
-                Intent intent = new Intent(getApplicationContext(),InfoTramitesEpsActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
+        imgtramites = (ImageView) findViewById(R.id.img_tramitesenosa);
+        imgreclamos = (ImageView) findViewById(R.id.img_reclamosenosa);
+}
 
     public void onClickedreclamos(View v) {
         imgreclamos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent("views.activities.InfoReclamosEpsActivity");
-                Intent intent = new Intent(getApplicationContext(),InfoReclamosEpsActivity.class);
+                Intent intent = new Intent("views.activitiesenosa.InfoReclamosEnosaActivity");
+                startActivity(intent);
+            }
+        });
+    }
+    public void onClickedtramites(View v) {
+        imgtramites.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent("views.activitiesenosa.InfoTramitesEnosaActivity");
                 startActivity(intent);
             }
         });
@@ -88,22 +81,22 @@ public class EPS_grauActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void onClickOpenCall(View v) {
-            Intent i = new Intent(Intent.ACTION_DIAL);
-            String spsgrau= "073307741";
-            if (spsgrau.trim().isEmpty()) {
-                i.setData(Uri.parse("tel:073307741"));
-            } else {
-                i.setData(Uri.parse("tel:" + spsgrau));
-            }
-            if (ActivityCompat.checkSelfPermission(getApplication(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(getApplication(), "Please conceda permisos para llamar", Toast.LENGTH_LONG).show();
-                requestPermission();
-            } else {
-                startActivity(i);
-            }
-    }
-        //permisos para llamadas
-        private void requestPermission() {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 1);
+        Intent i = new Intent(Intent.ACTION_DIAL);
+        String spsgrau= "073307741";
+        if (spsgrau.trim().isEmpty()) {
+            i.setData(Uri.parse("tel:073307741"));
+        } else {
+            i.setData(Uri.parse("tel:" + spsgrau));
         }
+        if (ActivityCompat.checkSelfPermission(getApplication(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(getApplication(), "Please conceda permisos para llamar", Toast.LENGTH_LONG).show();
+            requestPermission();
+        } else {
+            startActivity(i);
+        }
+    }
+    //permisos para llamadas
+    private void requestPermission() {
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 1);
+    }
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffe3e3e3"
-    tools:context=".views.activities.TelefoniaActivity">
+    tools:context=".views.activitiestelefonia.TelefoniaActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -24,6 +24,9 @@
                 app:cardElevation="4dp"
                 app:cardUseCompatPadding="true" >
                 <ImageView
+                    android:id="@+id/img_movistar"
+                    android:clickable="true"
+                    android:onClick="onClickedMovistar"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/movistar"
@@ -50,6 +53,9 @@
                 app:cardUseCompatPadding="true" >
 
                 <ImageView
+                    android:id="@+id/img_claro"
+                    android:clickable="true"
+                    android:onClick="onClickedClaro"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
@@ -74,6 +80,9 @@
                 app:cardElevation="4dp"
                 app:cardUseCompatPadding="true" >
                 <ImageView
+                    android:id="@+id/img_entel"
+                    android:clickable="true"
+                    android:onClick="onClickedEntel"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/entel"

@@ -11,8 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.piuraservices.piuraservices.R;
-import com.piuraservices.piuraservices.views.activities.LoginActivity;
-import com.piuraservices.piuraservices.views.activities.TelefoniaActivity;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -48,7 +47,7 @@ public class EntidadesFragment extends Fragment{
         imgtelefonia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent("views.activities.TelefoniaActivity");
+                Intent intent = new Intent("views.activitiestelefonia.TelefoniaActivity");
                 startActivity(intent);
             }
         });
@@ -57,7 +56,7 @@ public class EntidadesFragment extends Fragment{
         imgepsgrau.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent("views.activities.EPS_grauActivity");
+                Intent intent = new Intent("views.activitiesepsgrau.EPS_grauActivity");
                 startActivity(intent);
             }
         });
@@ -66,7 +65,7 @@ public class EntidadesFragment extends Fragment{
         imgenosa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent("views.activities.EnosaActivity");
+                Intent intent = new Intent("views.activitiesenosa.EnosaActivity");
                 startActivity(intent);
             }
         });

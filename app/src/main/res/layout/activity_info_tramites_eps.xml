@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".views.activities.InfoTramitesEpsActivity">
-
+    tools:context=".views.activitiesepsgrau.InfoTramitesEpsActivity">
     <ListView
         android:id="@+id/list_tramiteseps"
         android:layout_width="match_parent"
