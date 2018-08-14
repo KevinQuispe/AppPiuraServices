@@ -15,7 +15,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.piuraservices.piuraservices.views.activities.ConfigurarCuentaActivity;
-import com.piuraservices.piuraservices.views.activities.LoginActivity;
+import com.piuraservices.piuraservices.views.activities.ContactosActivity;
 import com.piuraservices.piuraservices.views.activitiesadmin.AdministrarInformacionActivity;
 import com.piuraservices.piuraservices.views.fragments.EntidadesFragment;
 import com.piuraservices.piuraservices.views.fragments.HomeFragment;
@@ -144,6 +144,8 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_reclamos) {
 
         } else if (id == R.id.nav_contactos) {
+            Intent intent=new Intent(MainActivity.this, ContactosActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_ubicanos) {
 
@@ -156,7 +158,7 @@ public class MainActivity extends AppCompatActivity
             Intent intent= new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");
             String subject="Compartir";
-            String body="Descarga esta apliacicion";
+            String body="Descarga esta aplicacación";
             intent.putExtra(Intent.EXTRA_SUBJECT,subject);
             intent.putExtra(Intent.EXTRA_TEXT,body);
             startActivity(Intent.createChooser(intent,"Compartir en"));

@@ -17,8 +17,8 @@ public class OpenWebActivity extends AppCompatActivity {
         setContentView(R.layout.activity_open_web);
         getSupportActionBar().setTitle("Open Web");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        webview = (WebView) findViewById(R.id.webview);
 
+        webview = (WebView) findViewById(R.id.webview);
         String url = "http://www.epsgrau.pe/webpage/desktop/views/";
         webview.getSettings().setJavaScriptEnabled(true);
         webview.getSettings().setBuiltInZoomControls(true);

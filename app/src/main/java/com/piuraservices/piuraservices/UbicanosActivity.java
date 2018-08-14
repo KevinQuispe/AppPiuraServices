@@ -29,7 +29,6 @@ public class UbicanosActivity extends FragmentActivity implements OnMapReadyCall
           //      .findFragmentById(R.id.map);
         //mapFragment.getMapAsync(this);
 
-
         //vefificar si los servicios de gogle maps estan activos
         int status= GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
         if(status== ConnectionResult.SUCCESS){
