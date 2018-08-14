@@ -11,7 +11,6 @@ public class AdminInfoClaroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_info_claro);
-
         getSupportActionBar().setTitle("Admin Información Claro");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
