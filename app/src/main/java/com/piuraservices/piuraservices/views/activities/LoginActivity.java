@@ -27,7 +27,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnregister.setOnClickListener(this);
         forgot=(TextView) findViewById(R.id.idforgot);
         forgot.setOnClickListener(this);
-
     }
 
     @Override

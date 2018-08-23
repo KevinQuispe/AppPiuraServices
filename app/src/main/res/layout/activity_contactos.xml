@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 <RadioGroup
+    android:background="#999"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -26,15 +27,17 @@
         android:layout_width="123dp"
         android:layout_height="wrap_content"
         android:text="TELEFONIA" />
-
     <RadioButton
         android:id="@+id/button5"
         android:layout_width="161dp"
         android:layout_height="wrap_content"
         android:text="ENOSA" />
 </RadioGroup>
-
 </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorPrimaryDark"/>
     <SearchView
         android:background="#999"
         android:id="@+id/id_search_view"

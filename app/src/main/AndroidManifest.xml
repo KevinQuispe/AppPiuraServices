@@ -204,9 +204,16 @@
         <activity
             android:name=".views.activitiesadmin.AdminInfoClaroActivity"
             android:parentActivityName=".views.activitiesadmin.AdministrarInformacionActivity" />
+        <activity
+            android:name=".views.activities.ContactosActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".views.activitiestelefonia.InfoTramitesMovistarActivity" />
+        <activity android:name=".views.activitiestelefonia.InfoReclamosMovistarActivity" />
+        <activity android:name=".InfoTramitesClaroActivity" />
+        <activity android:name=".views.activitiestelefonia.InfoTramitesEntelActivity" />
+        <activity android:name=".views.activitiestelefonia.InfoReclamosEntelActivity" />
+        <activity android:name=".views.activitiestelefonia.InfoReclamosClaroActivity" />
 
-        <activity android:name=".views.activities.ContactosActivity"
-            android:parentActivityName=".MainActivity"/>
     </application>
 
 </manifest>

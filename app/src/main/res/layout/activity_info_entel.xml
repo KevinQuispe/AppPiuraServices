@@ -1,9 +1,310 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     tools:context=".views.activitiestelefonia.InfoEntelActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-</android.support.constraint.ConstraintLayout>
+            <android.support.v7.widget.CardView
+                android:id="@+id/card1"
+                android:background="#949494"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="1dp"
+                app:cardUseCompatPadding="true" >
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="1"
+                    android:padding="6dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/text_view_direccion" />
+                        <TextView
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:text="Jiron Arena y Jr. Zelaya S/N" />
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:onClick="onClickOpenGoogleMaps"
+                            android:src="@drawable/ic_place_black_24dp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/text_view_telefono" />
+                        <TextView
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:onClick="onClickOpenCall"
+                            android:text="(073) 307741" />
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:onClick="onClickOpenCall"
+                            android:src="@drawable/ic_local_phone_black_24dp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:padding="4dp"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/text_view_correo" />
+                        <TextView
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:onClick="onClickOpenWeb"
+                            android:text="movistar.com" />
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:onClick="onClickOpenEmail"
+                            android:src="@drawable/ic_email_black_24dp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:padding="4dp"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/text_view_horario" />
+                        <TextView
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:onClick="onClickOpenWeb"
+                            android:text="8:00am-4:00pm" />
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:onClick="onClickOpenWeb"
+                            android:src="@drawable/ic_clock_black_24dp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:padding="4dp"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/text_view_pagina" />
+                        <TextView
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:onClick="onClickOpenWeb"
+                            android:text="www.movistar.com.pe" />
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:onClick="onClickOpenWeb"
+                            android:src="@drawable/ic_web_24dp" />
+                    </LinearLayout>
+
+                </GridLayout>
+                <TextView
+                    android:id="@+id/txt2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/text_view_informacion"
+                    android:layout_gravity="bottom"
+                    android:background="@color/colorPrimaryDark"
+                    android:textColor="#ffe3e3e3"
+                    android:textSize="12sp"
+                    android:textStyle="bold"/>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card2"
+                android:background="#949494"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="1dp"
+                app:cardUseCompatPadding="true">
+
+                <ImageView
+                    android:id="@+id/img_tramitesentel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:onClick="onClickedtramites"
+                    android:scaleType="centerCrop" />
+                <GridLayout
+                    android:padding="6dp"
+                    android:columnCount="1"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:padding="2dp"
+                        android:gravity="center"
+                        android:textSize="12dp"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_view_info_tramites" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorPrimary" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                    </LinearLayout>
+
+                    <TextView
+                        android:padding="2dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_view_nombre_tramite" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorPrimary" />
+                    <TextView
+                        android:padding="2dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_view_pasos_tramites" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorPrimary" />
+                    <TextView
+                        android:padding="2dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_view_pasos_mas_info" />
+                </GridLayout>
+
+                <TextView
+                    android:id="@+id/txt4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/text_view_tramites"
+                    android:layout_gravity="bottom"
+                    android:background="@color/colorPrimaryDark"
+                    android:textColor="#ffe3e3e3"
+                    android:textSize="12sp"
+                    android:textStyle="bold"/>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_telefonia"
+                android:background="#949494"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="1dp"
+                app:cardUseCompatPadding="true" >
+                <ImageView
+                    android:id="@+id/img_reclamosentel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:onClick="onClickedreclamos"
+                    android:scaleType="centerCrop" />
+                <GridLayout
+                    android:padding="6dp"
+                    android:columnCount="1"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:gravity="center"
+                        android:textSize="12dp"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_view_info_tramites" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorPrimary" />
+                    <TextView
+                        android:padding="2dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_view_nombre_reclamo" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorPrimary" />
+                    <TextView
+                        android:padding="2dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_view_pasos_reclamos" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorPrimary" />
+                    <TextView
+                        android:padding="2dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_view_pasos_mas_info" />
+                </GridLayout>
+
+                <TextView
+                    android:id="@+id/txt24"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/text_view_reclamos"
+                    android:layout_gravity="bottom"
+                    android:background="@color/colorPrimaryDark"
+                    android:textColor="#ffe3e3e3"
+                    android:textSize="12sp"
+                    android:textStyle="bold"/>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

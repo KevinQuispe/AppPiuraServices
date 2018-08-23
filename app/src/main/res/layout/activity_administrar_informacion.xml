@@ -7,9 +7,9 @@
     android:orientation="vertical"
     tools:context=".views.activitiesadmin.AdministrarInformacionActivity">
 
-    <ListView
-        android:id="@+id/list_admininformacion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </ListView>
+        <ListView
+            android:id="@+id/list_admininformacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ListView>
 </LinearLayout>

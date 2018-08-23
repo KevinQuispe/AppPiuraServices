@@ -28,6 +28,7 @@ public class AdministrarInformacionActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_administrar_informacion);
         getSupportActionBar().setTitle("Administrar Información");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         String[] informacion = {"Información de consulta EPS GRAU SA", "Información de consulta ENOSA", "Información de consulta Movistar", "Información de consulta Claro", "Información de consulta Entel"};
         Inflater inflater;
         listaelementos = (ListView) findViewById(R.id.list_admininformacion);
