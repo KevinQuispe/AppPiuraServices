@@ -207,24 +207,25 @@
         <activity
             android:name=".views.activities.ContactosActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".views.activitiestelefonia.InfoTramitesMovistarActivity"
+        <activity
+            android:name=".views.activitiestelefonia.InfoTramitesMovistarActivity"
             android:parentActivityName=".views.activitiestelefonia.InfoMovistarActivity" />
-
-        <activity android:name=".views.activitiestelefonia.InfoReclamosMovistarActivity"
-            android:parentActivityName=".views.activitiestelefonia.InfoMovistarActivity"/>
-
-        <activity android:name=".views.activitiestelefonia.InfoTramitesEntelActivity"
+        <activity
+            android:name=".views.activitiestelefonia.InfoReclamosMovistarActivity"
+            android:parentActivityName=".views.activitiestelefonia.InfoMovistarActivity" />
+        <activity
+            android:name=".views.activitiestelefonia.InfoTramitesEntelActivity"
             android:parentActivityName=".views.activitiestelefonia.InfoEntelActivity" />
-
-        <activity android:name=".views.activitiestelefonia.InfoReclamosEntelActivity"
-            android:parentActivityName=".views.activitiestelefonia.InfoEntelActivity"
-            />
-        <activity android:name=".views.activitiestelefonia.InfoReclamosClaroActivity"
-            android:parentActivityName=".views.activitiestelefonia.InfoClaroActivity"
-            />
-        <activity android:name=".views.activitiestelefonia.InfoTramitesClaroActivity"
-            android:parentActivityName=".views.activitiestelefonia.InfoClaroActivity"
-            />
+        <activity
+            android:name=".views.activitiestelefonia.InfoReclamosEntelActivity"
+            android:parentActivityName=".views.activitiestelefonia.InfoEntelActivity" />
+        <activity
+            android:name=".views.activitiestelefonia.InfoReclamosClaroActivity"
+            android:parentActivityName=".views.activitiestelefonia.InfoClaroActivity" />
+        <activity
+            android:name=".views.activitiestelefonia.InfoTramitesClaroActivity"
+            android:parentActivityName=".views.activitiestelefonia.InfoClaroActivity" />
+        <activity android:name=".views.activities.ListaDireccionesActivity"/>
     </application>
 
 </manifest>

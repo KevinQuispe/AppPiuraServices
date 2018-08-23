@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.piuraservices.piuraservices.InfoTramitesClaroActivity;
+import com.piuraservices.piuraservices.views.activitiestelefonia.InfoTramitesClaroActivity;
 import com.piuraservices.piuraservices.R;
 
 public class InfoClaroActivity extends AppCompatActivity {
