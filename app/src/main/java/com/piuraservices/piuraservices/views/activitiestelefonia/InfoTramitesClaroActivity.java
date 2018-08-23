@@ -1,7 +1,9 @@
-package com.piuraservices.piuraservices;
+package com.piuraservices.piuraservices.views.activitiestelefonia;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import com.piuraservices.piuraservices.R;
 
 public class InfoTramitesClaroActivity extends AppCompatActivity {
 
