@@ -225,7 +225,11 @@
         <activity
             android:name=".views.activitiestelefonia.InfoTramitesClaroActivity"
             android:parentActivityName=".views.activitiestelefonia.InfoClaroActivity" />
-        <activity android:name=".views.activities.ListaDireccionesActivity"/>
+        <activity
+            android:name=".views.activities.ListaDireccionesActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".views.activities.ContactoDetalleActivity"
+            android:parentActivityName=".views.activities.ContactosActivity" />
     </application>
 
 </manifest>

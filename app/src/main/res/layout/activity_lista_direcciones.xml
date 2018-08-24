@@ -7,7 +7,33 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".views.activities.ListaDireccionesActivity">
-
+    <GridLayout
+        android:background="@color/colorPrimary"
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RadioGroup
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:text="EPS Grau S.A"
+                android:id="@+id/rb_eps_grau"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content" />
+            <RadioButton
+                android:text="Enosa"
+                android:id="@+id/rb_enosa"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+            <RadioButton
+                android:text="Telefonia"
+                android:id="@+id/rb_telefonia"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+        </RadioGroup>
+    </GridLayout>
     <ListView
         android:id="@+id/lista_direciones"
         android:layout_width="match_parent"

@@ -1,49 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".views.activities.ContactosActivity">
-
-    <LinearLayout
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
         android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-<RadioGroup
-    android:background="#999"
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <RadioButton
-        android:id="@+id/button4"
-        android:layout_width="128dp"
-        android:layout_height="wrap_content"
-        android:text="EPS GRAU" />
+        android:padding="10dp">
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/button4"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="EPS Grau SA" />
 
-    <RadioButton
-        android:id="@+id/button3"
-        android:layout_width="123dp"
-        android:layout_height="wrap_content"
-        android:text="TELEFONIA" />
-    <RadioButton
-        android:id="@+id/button5"
-        android:layout_width="161dp"
-        android:layout_height="wrap_content"
-        android:text="ENOSA" />
-</RadioGroup>
-</LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/colorPrimaryDark"/>
-    <SearchView
-        android:background="#999"
-        android:id="@+id/id_search_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </SearchView>
+            <RadioButton
+                android:id="@+id/button5"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Enosa" />
+
+            <RadioButton
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Telefonia" />
+        </RadioGroup>
+    </GridLayout>
     <ListView
         android:id="@+id/id_listContact"
         android:layout_width="match_parent"

@@ -16,9 +16,11 @@ import android.widget.TextView;
 
 import com.piuraservices.piuraservices.views.activities.ConfigurarCuentaActivity;
 import com.piuraservices.piuraservices.views.activities.ContactosActivity;
+import com.piuraservices.piuraservices.views.activities.ListaDireccionesActivity;
 import com.piuraservices.piuraservices.views.activitiesadmin.AdministrarInformacionActivity;
 import com.piuraservices.piuraservices.views.fragments.EntidadesFragment;
 import com.piuraservices.piuraservices.views.fragments.HomeFragment;
+import com.piuraservices.piuraservices.views.fragments.UbicanosFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -32,7 +34,6 @@ public class MainActivity extends AppCompatActivity
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-
                     HomeFragment form1 = new HomeFragment();
                     android.support.v4.app.FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
                     transaction1.replace(R.id.contenedorFragement, form1);
@@ -47,13 +48,13 @@ public class MainActivity extends AppCompatActivity
                     setTitle("Entidades");
                     return true;
                 case R.id.navigation_ubicanos:
-                    //UbicanosFragment ubicanos = new UbicanosFragment();
-                    //android.support.v4.app.FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
-                    //transaction2.replace(R.id.contenedorFragement, ubicanos);
-                    //transaction2.addToBackStack(null).commit();
-                    //setTitle("Ubicanos");
-                    Intent intent= new Intent(MainActivity.this, UbicanosActivity.class);
-                    startActivity(intent);
+                    UbicanosFragment ubicanos = new UbicanosFragment();
+                    android.support.v4.app.FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
+                    transaction2.replace(R.id.contenedorFragement, ubicanos);
+                    transaction2.addToBackStack(null).commit();
+                    setTitle("Ubicanos");
+                    //Intent intent= new Intent(MainActivity.this, ListaDireccionesActivity.class);
+                    //startActivity(intent);
                     return true;
             }
             return false;
@@ -118,6 +119,7 @@ public class MainActivity extends AppCompatActivity
             return true;
         }
         if (id == R.id.action_salir) {
+            finish();
             return true;
         }
 
@@ -132,6 +134,12 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             // Handle the camera action
+            HomeFragment form = new HomeFragment();
+            android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.contenedorFragement, form);
+            transaction.addToBackStack(null).commit();
+            setTitle("Piura Services");
+
         } else if (id == R.id.nav_entidades) {
             EntidadesFragment form = new EntidadesFragment();
             android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -148,6 +156,11 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_ubicanos) {
+            UbicanosFragment ubicanos = new UbicanosFragment();
+            android.support.v4.app.FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
+            transaction2.replace(R.id.contenedorFragement, ubicanos);
+            transaction2.addToBackStack(null).commit();
+            setTitle("Ubicanos");
 
         } else if (id == R.id.nav_config) {
             Intent intent=new Intent(MainActivity.this, ConfigurarCuentaActivity.class);
