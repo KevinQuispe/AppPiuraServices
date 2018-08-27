@@ -59,17 +59,12 @@ public class RegisterUserActivity extends AppCompatActivity {
         dire = "lima";
         telf = telefono.getText().toString();
         age = edad.getText().toString();
-        int intedad = Integer.parseInt(age);
+        //int intedad = Integer.parseInt(age);
         email = correo.getText().toString();
         pass = password.getText().toString();
         sex = "M";
-
-        if (TextUtils.isEmpty(nom)) {
-            nombres.setError("Campo requerido");
-
-        } else {
             String url = "usuario/createUsuario";
-            Usuario user = new Usuario(1,nom, app, dire, telf, intedad, sex, email, pass);
+            Usuario user = new Usuario(1,nom, app, dire, telf, age, sex, email, pass);
             http.post(getApplication(), url, user, new TextHttpResponseHandler() {
                 @Override
                 public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
@@ -86,4 +81,4 @@ public class RegisterUserActivity extends AppCompatActivity {
             });
         }
     }
-}
+

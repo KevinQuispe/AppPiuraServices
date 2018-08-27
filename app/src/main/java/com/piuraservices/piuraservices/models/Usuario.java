@@ -6,11 +6,11 @@ public class Usuario implements Serializable{
     private String apellidos;
     private String direccion;
     private String telefono;
-    private int edad;
+    private String edad;
     private String sexo;
     private String correo;
     private String passeword;
-
+    
     public Usuario(){
 
     }
@@ -25,7 +25,8 @@ public class Usuario implements Serializable{
      * @param correo
      *  @param passeword
      */
-    public Usuario(long id, String nombres, String apellidos, String direccion, String telefono, int edad, String sexo, String correo, String passeword) {
+
+    public Usuario(long id, String nombres, String apellidos, String direccion, String telefono, String edad, String sexo, String correo, String passeword) {
         this.id = id;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -35,6 +36,14 @@ public class Usuario implements Serializable{
         this.sexo = sexo;
         this.correo = correo;
         this.passeword = passeword;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getNombres() {
@@ -69,11 +78,11 @@ public class Usuario implements Serializable{
         this.telefono = telefono;
     }
 
-    public int getEdad() {
+    public String getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
+    public void setEdad(String edad) {
         this.edad = edad;
     }
 

@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.piuraservices.piuraservices.R;
-import com.piuraservices.piuraservices.views.activitiesadmin.InformacionReclamosActivity;
 
 public class InfoEntelActivity extends AppCompatActivity {
     ImageView imgtramites;

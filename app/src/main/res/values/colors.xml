@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#F44336</color>
     <color name="colorPrimaryDark">#EF5350</color>
-    <color name="colorAccent">#FFF</color>
+    <color name="colorAccent">#F44336</color>
     <color name="colorSplasch">#FFF</color>
 
     <color name="color_fragmentos">#fafafa</color>

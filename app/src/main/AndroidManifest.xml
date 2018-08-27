@@ -134,7 +134,7 @@
         </activity>
         <!-- administrar Informacion tramites enosa -->
         <activity
-            android:name=".views.activitiesadmin.InformacionTramitesActivity"
+            android:name=".views.activitiesadmin.adminenosa.EnosaInfoTramitesActivity"
             android:label="@string/app_name"
             android:parentActivityName=".views.activitiesenosa.EnosaActivity">
             <intent-filter>
@@ -144,7 +144,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".views.activitiesadmin.InformacionReclamosActivity"
+            android:name=".views.activitiesadmin.adminenosa.EnosaInfoReclamosActivity"
             android:label="@string/app_name"
             android:parentActivityName=".views.activitiesenosa.EnosaActivity">
             <intent-filter>
@@ -154,7 +154,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".views.activitiesadmin.InformacionReferencialActivity"
+            android:name=".views.activitiesadmin.adminenosa.EnosaInfoReferencialActivity"
             android:label="@string/app_name"
             android:parentActivityName=".MainActivity">
             <intent-filter>
@@ -173,10 +173,14 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".views.activitiesepsgrau.ListInfoReclamosEpsActivity" />
-        <activity android:name=".views.activitiesadmin.ItemInformacionTramitesActivity" />
-        <activity android:name=".views.activitiesadmin.ItemInformcionReclamosActivity" />
-        <activity android:name=".views.activitiesadmin.ItemInformacionReferencialActivity" />
+        <activity android:name=".views.activitiesepsgrau.ListInfoReclamosEpsActivity"
+            android:parentActivityName=".views.activitiesepsgrau.EPS_grauActivity"/>
+        <activity android:name=".views.activitiesadmin.adminepsgrau.EpsInfoTramitesTramitesActivity"
+            android:parentActivityName=".views.activitiesadmin.adminepsgrau.EpsInfoReclamosActivity"/>
+        <activity android:name=".views.activitiesadmin.adminepsgrau.EpsInfoReclamosActivity"
+            android:parentActivityName=".views.activitiesadmin.adminepsgrau.EpsInfoReclamosActivity"/>
+        <activity android:name=".views.activitiesadmin.adminepsgrau.EpsInfoReferencialActivity"
+            android:parentActivityName=".views.activitiesadmin.adminepsgrau.EpsInfoReclamosActivity"/>
         <activity
             android:name=".views.activities.ConfigurarCuentaActivity"
             android:parentActivityName=".MainActivity" />
@@ -190,13 +194,13 @@
             android:name=".views.activitiestelefonia.InfoClaroActivity"
             android:parentActivityName=".views.activitiestelefonia.TelefoniaActivity" />
         <activity
-            android:name=".views.activitiesadmin.AdminInfoEpsgrauActivity"
+            android:name=".views.activitiesadmin.adminepsgrau.AdminInfoEpsgrauActivity"
             android:parentActivityName=".views.activitiesadmin.AdministrarInformacionActivity" />
         <activity
-            android:name=".views.activitiesadmin.AdminInfoEnosaActivity"
+            android:name=".views.activitiesadmin.adminenosa.AdminInfoEnosaActivity"
             android:parentActivityName=".views.activitiesadmin.AdministrarInformacionActivity" />
         <activity
-            android:name=".views.activitiesadmin.AdminInfoTelefoniaActivity"
+            android:name=".views.activitiesadmin.admintelefonia.AdminInfoTelefoniaActivity"
             android:parentActivityName=".views.activitiesadmin.AdministrarInformacionActivity" />
         <activity
             android:name=".views.activitiesadmin.AdminInfoEntelActivity"
@@ -228,8 +232,12 @@
         <activity
             android:name=".views.activities.ListaDireccionesActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".views.activities.ContactoDetalleActivity"
+        <activity
+            android:name=".views.activities.ContactoDetalleActivity"
             android:parentActivityName=".views.activities.ContactosActivity" />
+        <activity android:name=".views.activitiesadmin.admintelefonia.TelefoniaInfoReferencialActivity" />
+        <activity android:name=".views.activitiesadmin.admintelefonia.TelefoniaInfoReclamosActivity" />
+        <activity android:name=".views.activitiesadmin.admintelefonia.TelefoniaInfoTramitesActivity"></activity>
     </application>
 
 </manifest>
