@@ -9,7 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.piuraservices.piuraservices.R;
+import com.piuraservices.piuraservices.views.activitiesadmin.adminclaro.AdminInfoClaroActivity;
 import com.piuraservices.piuraservices.views.activitiesadmin.adminenosa.AdminInfoEnosaActivity;
+import com.piuraservices.piuraservices.views.activitiesadmin.adminentel.AdminInfoEntelActivity;
 import com.piuraservices.piuraservices.views.activitiesadmin.adminepsgrau.AdminInfoEpsgrauActivity;
 import com.piuraservices.piuraservices.views.activitiesadmin.admintelefonia.AdminInfoTelefoniaActivity;
 

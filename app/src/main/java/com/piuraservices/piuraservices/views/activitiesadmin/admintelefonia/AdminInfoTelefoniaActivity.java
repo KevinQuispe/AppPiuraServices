@@ -20,7 +20,7 @@ public class AdminInfoTelefoniaActivity extends AppCompatActivity implements Ada
         setContentView(R.layout.activity_admin_info_telefonia);
         getSupportActionBar().setTitle("Admin Información Telefonia");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        String[] informacion = {"Información Referencial", "Información de Trámmites", "Información de Reclamos"};
+        String[] informacion = {"Información Referencial", "Información de Trámites", "Información de Reclamos"};
         Inflater inflater;
         listaelementos = (ListView) findViewById(R.id.id_listadmininfotelefonia);
         adapter = new ArrayAdapter<String>(AdminInfoTelefoniaActivity.this, android.R.layout.simple_list_item_1, informacion);

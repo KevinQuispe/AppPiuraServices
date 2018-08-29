@@ -24,7 +24,7 @@ public class AdminInfoEpsgrauActivity extends AppCompatActivity implements Adapt
         getSupportActionBar().setTitle("Admin Información EPS Grau");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        String[] informacion = {"Información Referencial", "Información de Trámmites", "Información de Reclamos"};
+        String[] informacion = {"Información Referencial", "Información de Trámites", "Información de Reclamos"};
         Inflater inflater;
         listaelementos = (ListView) findViewById(R.id.id_listadmininfoepsgrau);
         adapter = new ArrayAdapter<String>(AdminInfoEpsgrauActivity.this, android.R.layout.simple_list_item_1, informacion);
@@ -41,7 +41,7 @@ public class AdminInfoEpsgrauActivity extends AppCompatActivity implements Adapt
             //Toast.makeText(this, "item" + i, Toast.LENGTH_SHORT).show();
         }
         if (i == 1) {
-            Intent enosa = new Intent(this, EpsInfoTramitesTramitesActivity.class);
+            Intent enosa = new Intent(this, EpsInfoTramitesActivity.class);
             startActivity(enosa);
         }
         if (i == 2) {

@@ -9,10 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.piuraservices.piuraservices.R;
-import com.piuraservices.piuraservices.views.activitiesadmin.adminepsgrau.AdminInfoEpsgrauActivity;
-import com.piuraservices.piuraservices.views.activitiesadmin.adminepsgrau.EpsInfoReclamosActivity;
-import com.piuraservices.piuraservices.views.activitiesadmin.adminepsgrau.EpsInfoReferencialActivity;
-import com.piuraservices.piuraservices.views.activitiesadmin.adminepsgrau.EpsInfoTramitesTramitesActivity;
 
 import java.util.zip.Inflater;
 
@@ -25,7 +21,7 @@ public class AdminInfoEnosaActivity extends AppCompatActivity  implements Adapte
         setContentView(R.layout.activity_admin_info_enosa);
         getSupportActionBar().setTitle("Admin Información Enosa");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        String[] informacion = {"Información Referencial", "Información de Trámmites", "Información de Reclamos"};
+        String[] informacion = {"Información Referencial", "Información de Trámites", "Información de Reclamos"};
         Inflater inflater;
         listaelementos = (ListView) findViewById(R.id.id_listadmininfoenosa);
         adapter = new ArrayAdapter<String>(AdminInfoEnosaActivity.this, android.R.layout.simple_list_item_1, informacion);

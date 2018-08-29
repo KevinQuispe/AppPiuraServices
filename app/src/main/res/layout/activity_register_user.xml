@@ -19,8 +19,8 @@
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/color_text_boton_login">
 
-                <AutoCompleteTextView
-                    android:id="@+id/et_nombres"
+                <EditText
+                    android:id="@+id/et_nombresuser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="0dp"
@@ -44,8 +44,8 @@
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/color_text_boton_login">
 
-                <AutoCompleteTextView
-                    android:id="@+id/et_apellidos"
+                <EditText
+                    android:id="@+id/et_apellidosuser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
@@ -111,7 +111,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-4dp"
                     android:textColorHint="@color/color_text_boton_login">
-
                     <TextView
                         android:id="@+id/et_direccio"
                         android:layout_width="40dp"
@@ -126,7 +125,7 @@
                         android:textColorHint="#fff" />
                 </android.support.design.widget.TextInputLayout>
                 <RadioGroup
-                    android:id="@+id/radiogroup"
+                    android:id="@+id/radiogroupsexo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -143,7 +142,7 @@
                         android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="100dp"
-                        android:layout_marginTop="-30dp"
+                        android:layout_marginTop="-32dp"
                         android:text="Mujer"
                         android:textColor="@color/color_text_input_login" />
                 </RadioGroup>
@@ -158,8 +157,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/color_text_boton_login">
-                <AutoCompleteTextView
-                    android:id="@+id/et_edad"
+                <EditText
+                    android:id="@+id/et_edaduser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
@@ -184,8 +183,8 @@
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/color_text_boton_login">
 
-                <AutoCompleteTextView
-                    android:id="@+id/et_telefono"
+                <EditText
+                    android:id="@+id/et_telefonouser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
@@ -212,8 +211,8 @@
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/color_text_boton_login">
 
-                <AutoCompleteTextView
-                    android:id="@+id/et_email"
+                <EditText
+                    android:id="@+id/et_emailuser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
@@ -221,9 +220,9 @@
                     android:drawablePadding="10dp"
                     android:ems="10"
                     android:hint="@string/text_input_register_email"
+                    android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:padding="10dp"
-                    android:inputType="textEmailAddress"
                     android:textColor="@color/color_text_input_register"
                     android:textColorHint="#fff" />
             </android.support.design.widget.TextInputLayout>
@@ -237,8 +236,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/color_text_boton_login">
+
                 <AutoCompleteTextView
-                    android:id="@+id/et_password"
+                    android:id="@+id/et_passworduser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"

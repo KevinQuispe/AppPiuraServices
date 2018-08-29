@@ -1,0 +1,92 @@
+package com.piuraservices.piuraservices.models.epsgrau;
+
+public class InfoReferencialEpsgrau {
+    private long id;
+    private String nombre;
+    private String direccion;
+    private String telefono;
+    private String correo;
+    private String horario;
+    private String webentidad;
+
+    public InfoReferencialEpsgrau() {
+
+    }
+    /**
+     * @param id
+     * @param nombre
+     * @param direccion
+     * @param telefono
+     * @param correo
+     * @param correo
+     * @param horario
+     * @param webentidad
+     */
+
+    public InfoReferencialEpsgrau(long id, String nombre, String direccion, String telefono, String correo, String horario, String webentidad) {
+        this.id = id;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.horario = horario;
+        this.webentidad = webentidad;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getHorario() {
+        return horario;
+    }
+
+    public void setHorario(String horario) {
+        this.horario = horario;
+    }
+
+    public String getWebentidad() {
+        return webentidad;
+    }
+
+    public void setWebentidad(String webentidad) {
+        this.webentidad = webentidad;
+    }
+}
+

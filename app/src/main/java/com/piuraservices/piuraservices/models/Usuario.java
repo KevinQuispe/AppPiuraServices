@@ -1,6 +1,5 @@
 package com.piuraservices.piuraservices.models;
-import java.io.Serializable;
-public class Usuario implements Serializable{
+public class Usuario {
     private long id;
     private String nombres;
     private String apellidos;
@@ -10,8 +9,8 @@ public class Usuario implements Serializable{
     private String sexo;
     private String correo;
     private String passeword;
-    
-    public Usuario(){
+
+    public Usuario() {
 
     }
     /**
@@ -23,9 +22,8 @@ public class Usuario implements Serializable{
      * @param edad
      * @param sexo
      * @param correo
-     *  @param passeword
+     * @param passeword
      */
-
     public Usuario(long id, String nombres, String apellidos, String direccion, String telefono, String edad, String sexo, String correo, String passeword) {
         this.id = id;
         this.nombres = nombres;

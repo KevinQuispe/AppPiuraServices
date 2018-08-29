@@ -52,7 +52,8 @@
             android:name=".UbicanosActivity"
             android:label="@string/title_activity_ubicanos"
             android:parentActivityName=".views.activities.LoginActivity" />
-        <activity android:name=".views.activities.RegisterUserActivity" />
+        <activity android:name=".views.activities.RegisterUserActivity"
+            android:parentActivityName=".views.activities.LoginActivity"/>
         <activity
             android:name=".views.activities.LoginActivity"
             android:label="@string/title_activity_login" />
@@ -173,14 +174,18 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".views.activitiesepsgrau.ListInfoReclamosEpsActivity"
-            android:parentActivityName=".views.activitiesepsgrau.EPS_grauActivity"/>
-        <activity android:name=".views.activitiesadmin.adminepsgrau.EpsInfoTramitesTramitesActivity"
-            android:parentActivityName=".views.activitiesadmin.adminepsgrau.EpsInfoReclamosActivity"/>
-        <activity android:name=".views.activitiesadmin.adminepsgrau.EpsInfoReclamosActivity"
-            android:parentActivityName=".views.activitiesadmin.adminepsgrau.EpsInfoReclamosActivity"/>
-        <activity android:name=".views.activitiesadmin.adminepsgrau.EpsInfoReferencialActivity"
-            android:parentActivityName=".views.activitiesadmin.adminepsgrau.EpsInfoReclamosActivity"/>
+        <activity
+            android:name=".views.activitiesepsgrau.ListInfoReclamosEpsActivity"
+            android:parentActivityName=".views.activitiesepsgrau.EPS_grauActivity" />
+        <activity
+            android:name=".views.activitiesadmin.adminepsgrau.EpsInfoTramitesActivity"
+            android:parentActivityName=".views.activitiesadmin.adminepsgrau.EpsInfoReclamosActivity" />
+        <activity
+            android:name=".views.activitiesadmin.adminepsgrau.EpsInfoReclamosActivity"
+            android:parentActivityName=".views.activitiesadmin.adminepsgrau.EpsInfoReclamosActivity" />
+        <activity
+            android:name=".views.activitiesadmin.adminepsgrau.EpsInfoReferencialActivity"
+            android:parentActivityName=".views.activitiesadmin.adminepsgrau.EpsInfoReclamosActivity" />
         <activity
             android:name=".views.activities.ConfigurarCuentaActivity"
             android:parentActivityName=".MainActivity" />
@@ -203,10 +208,10 @@
             android:name=".views.activitiesadmin.admintelefonia.AdminInfoTelefoniaActivity"
             android:parentActivityName=".views.activitiesadmin.AdministrarInformacionActivity" />
         <activity
-            android:name=".views.activitiesadmin.AdminInfoEntelActivity"
+            android:name=".views.activitiesadmin.adminentel.AdminInfoEntelActivity"
             android:parentActivityName=".views.activitiesadmin.AdministrarInformacionActivity" />
         <activity
-            android:name=".views.activitiesadmin.AdminInfoClaroActivity"
+            android:name=".views.activitiesadmin.adminclaro.AdminInfoClaroActivity"
             android:parentActivityName=".views.activitiesadmin.AdministrarInformacionActivity" />
         <activity
             android:name=".views.activities.ContactosActivity"
@@ -235,9 +240,16 @@
         <activity
             android:name=".views.activities.ContactoDetalleActivity"
             android:parentActivityName=".views.activities.ContactosActivity" />
+
         <activity android:name=".views.activitiesadmin.admintelefonia.TelefoniaInfoReferencialActivity" />
         <activity android:name=".views.activitiesadmin.admintelefonia.TelefoniaInfoReclamosActivity" />
-        <activity android:name=".views.activitiesadmin.admintelefonia.TelefoniaInfoTramitesActivity"></activity>
+        <activity android:name=".views.activitiesadmin.admintelefonia.TelefoniaInfoTramitesActivity" />
+        <activity android:name=".views.activitiesadmin.adminclaro.ClaroInfoReclamosActivity" />
+        <activity android:name=".views.activitiesadmin.adminclaro.ClaroInfoTramitesActivity" />
+        <activity android:name=".views.activitiesadmin.adminclaro.ClaroInfoReferencialActivity" />
+        <activity android:name=".views.activitiesadmin.adminentel.EntelnfoReclamosActivity" />
+        <activity android:name=".views.activitiesadmin.adminentel.EntelnfoTramitesActivity" />
+        <activity android:name=".views.activitiesadmin.adminentel.EntelInfoReferencialActivity"/>
     </application>
 
 </manifest>

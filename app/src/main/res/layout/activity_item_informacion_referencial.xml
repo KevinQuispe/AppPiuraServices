@@ -7,81 +7,107 @@
     android:layout_margin="@dimen/activity_horizontal_margin"
     android:orientation="vertical"
     tools:context=".views.activitiesadmin.adminepsgrau.EpsInfoReferencialActivity">
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nombre de entidad" />
-
-    <EditText
-        android:id="@+id/et_nombreentidad"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Ingrese nombre de entidad"/>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Teléfono" />
-
-    <EditText
-        android:id="@+id/et_telefonoentidad"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Ingrese teléfono"/>
-    <TextView
-    android:id="@+id/textView4"
+<ScrollView
+    android:id="@+id/id_scrol"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-   android:text="Dirección"/>
+    android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/et_direccionentidad"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre de entidad" />
+
+        <EditText
+            android:id="@+id/et_nombreentidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Ingrese nombre de entidad"/>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Teléfono" />
+
+        <EditText
+            android:id="@+id/et_telefonoentidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Ingrese teléfono"/>
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dirección"/>
+
+        <EditText
+            android:id="@+id/et_direccionentidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Ingrese Dirección"
+            />
+        <TextView
+        android:text="Horaio"
+        android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Ingrese Dirección"
-        />
-    <TextView
-        android:text="Correo"
-    android:id="@+id/textView5"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-        />
-
-    <EditText
-        android:id="@+id/et_correoentidad"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Ingrese @correo" />
-    <TextView
-        android:text="Pagíana Web"
-    android:id="@+id/textView6"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
         />
 
-    <EditText
-        android:id="@+id/et_webentidad"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Ingrese págína web" />
-    <Button
-        android:layout_marginTop="16dp"
-        android:background="@color/colorPrimary"
-        android:text="Guardar"
-        android:id="@+id/ee"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/et_horarioentidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Ingrese horario" />
+        <TextView
+            android:text="Correo"
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <EditText
+            android:id="@+id/et_correoentidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Ingrese @correo" />
+        <TextView
+            android:text="Pagína Web"
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <EditText
+            android:id="@+id/et_webentidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Ingrese págína web" />
+        <Button
+            android:layout_marginTop="16dp"
+            android:background="@color/colorPrimary"
+            android:text="Guardar"
+            android:id="@+id/btn_guardarentidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</ScrollView>
+
 </LinearLayout>
