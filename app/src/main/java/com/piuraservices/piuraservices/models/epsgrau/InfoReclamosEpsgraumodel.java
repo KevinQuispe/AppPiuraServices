@@ -1,15 +1,14 @@
 package com.piuraservices.piuraservices.models.epsgrau;
 
-public class InfoTramitesEpsgrau {
-    private long id;
+public class InfoReclamosEpsgraumodel {
+    private  long id;
     private String nombre;
     private String descripcion;
 
-    public InfoTramitesEpsgrau(){
+    public InfoReclamosEpsgraumodel(){
 
     }
-
-    public InfoTramitesEpsgrau(long id, String nombre, String descripcion) {
+    public InfoReclamosEpsgraumodel(long id, String nombre, String descripcion) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;

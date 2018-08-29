@@ -17,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
+            android:textStyle="bold"
             android:id="@+id/textView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,6 +32,7 @@
             android:hint="Ingrese nombre de entidad"/>
 
         <TextView
+            android:textStyle="bold"
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,6 +46,7 @@
             android:inputType="textPersonName"
             android:hint="Ingrese teléfono"/>
         <TextView
+            android:textStyle="bold"
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,14 +58,14 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="Ingrese Dirección"
-            />
+            android:hint="Ingrese Dirección" />
+
         <TextView
-        android:text="Horaio"
+            android:textStyle="bold"
+        android:text="Horario"
         android:id="@+id/textView5"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/et_horarioentidad"
@@ -72,6 +75,7 @@
             android:inputType="textPersonName"
             android:hint="Ingrese horario" />
         <TextView
+            android:textStyle="bold"
             android:text="Correo"
             android:id="@+id/textView7"
             android:layout_width="match_parent"
@@ -86,7 +90,8 @@
             android:inputType="textPersonName"
             android:hint="Ingrese @correo" />
         <TextView
-            android:text="Pagína Web"
+            android:textStyle="bold"
+            android:text="Página Web"
             android:id="@+id/textView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

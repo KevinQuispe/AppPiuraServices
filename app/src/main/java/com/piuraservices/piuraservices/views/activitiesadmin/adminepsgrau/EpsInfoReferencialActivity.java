@@ -2,6 +2,7 @@
 
 package com.piuraservices.piuraservices.views.activitiesadmin.adminepsgrau;
 
+import android.app.ProgressDialog;
 import android.app.Service;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +23,7 @@ public class EpsInfoReferencialActivity extends AppCompatActivity {
     //declaracion de varibales
     EditText nombre,direccion,telefono,correo,horario,web;
     Button btnguardar;
+    ProgressDialog progreso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,20 +56,34 @@ public class EpsInfoReferencialActivity extends AppCompatActivity {
         tel=telefono.getText().toString();
         hor=horario.getText().toString();
         webentidad=web.getText().toString();
-        String url="/informacion/createInfoEntidad";
+        dialog();
         InfoReferencialEpsgrau info=new InfoReferencialEpsgrau(1,nom,dir,tel,email,hor,webentidad);
         http.post(getApplicationContext(), "informacion/createInfoEntidad", info, new TextHttpResponseHandler() {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                progreso.dismiss();
                 System.out.println(responseString);
                 Toast.makeText(getApplicationContext(), "error en conexion", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                progreso.dismiss();
                 System.out.println(responseString);
-                Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Se registró con éxito", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    public void dialog() {
+        //progreso = new ProgressDialog(EpsInfoReclamosActivity.this, ProgressDialog.THEME_HOLO_LIGHT);
+        progreso = new ProgressDialog(EpsInfoReferencialActivity.this, ProgressDialog.BUTTON_POSITIVE);
+        // set indeterminate style
+        progreso.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        // set title and message
+        progreso.setTitle("Procesando");
+        progreso.setMessage("Loading...");
+        // and show it
+        progreso.show();
+        progreso.setCancelable(false);
     }
 }

@@ -9,7 +9,6 @@ public class Usuario {
     private String sexo;
     private String correo;
     private String passeword;
-
     public Usuario() {
 
     }

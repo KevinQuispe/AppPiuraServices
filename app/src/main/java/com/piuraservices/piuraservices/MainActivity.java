@@ -171,7 +171,7 @@ public class MainActivity extends AppCompatActivity
             Intent intent= new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");
             String subject="Compartir";
-            String body="Descarga esta aplicacación";
+            String body="Descarga esta aplicación comunicate con: https://twitter.com/kquisperojas";
             intent.putExtra(Intent.EXTRA_SUBJECT,subject);
             intent.putExtra(Intent.EXTRA_TEXT,body);
             startActivity(Intent.createChooser(intent,"Compartir en"));
