@@ -1,6 +1,6 @@
 package com.piuraservices.piuraservices.models.epsgrau;
 
-public class InfoReferencialEpsgrau {
+public class InfoReferencialEpsgraumodel {
     private long id;
     private String nombre;
     private String direccion;
@@ -9,7 +9,7 @@ public class InfoReferencialEpsgrau {
     private String horario;
     private String webentidad;
 
-    public InfoReferencialEpsgrau() {
+    public InfoReferencialEpsgraumodel() {
 
     }
     /**
@@ -23,7 +23,7 @@ public class InfoReferencialEpsgrau {
      * @param webentidad
      */
 
-    public InfoReferencialEpsgrau(long id, String nombre, String direccion, String telefono, String correo, String horario, String webentidad) {
+    public InfoReferencialEpsgraumodel(long id, String nombre, String direccion, String telefono, String correo, String horario, String webentidad) {
         this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;

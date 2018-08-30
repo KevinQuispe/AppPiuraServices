@@ -14,16 +14,12 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 import com.piuraservices.piuraservices.R;
-import com.piuraservices.piuraservices.adapters.ListaInfoReclamosepsAdapter;
+import com.piuraservices.piuraservices.adapters.epsgrau.ListaInfoReclamosepsAdapter;
 import com.piuraservices.piuraservices.models.epsgrau.InfoReclamosEpsgraumodel;
 import com.piuraservices.piuraservices.services.epsgrau.ListaReclamosEpsclient;
 import com.piuraservices.piuraservices.utils.Config;
 import com.piuraservices.piuraservices.views.activities.ContactoDetalleActivity;
-import com.piuraservices.piuraservices.views.activitiesadmin.adminepsgrau.EpsInfoReferencialActivity;
-
-import java.util.ArrayList;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -33,11 +29,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class InfoReclamosEpsActivity extends AppCompatActivity {
 
     ArrayAdapter<String> adapter;
-
     //variables retrofit
     ListView listView;
-    //dialog
-    ProgressDialog progreso, progressDialog; //variable para loading
+    //variable para loading
+    ProgressDialog progreso, progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +62,7 @@ public class InfoReclamosEpsActivity extends AppCompatActivity {
         Retrofit.Builder builder = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create());
         Retrofit retrofit = builder.build();
         ListaReclamosEpsclient client = retrofit.create(ListaReclamosEpsclient.class); //here get la interface
-        Call<List<InfoReclamosEpsgraumodel>> call = client.getInfoReclamoseps();
+        Call<List<InfoReclamosEpsgraumodel>> call = client.getInfoReclamoseps();//here el model
         //loading
         dialog();
         call.enqueue(new Callback<List<InfoReclamosEpsgraumodel>>() {

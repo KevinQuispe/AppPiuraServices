@@ -7,6 +7,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface ListaReclamosEpsclient {
-    @GET("informacion/getInfoReclamo")
+    @GET("informacion/getInfoReclamos")
     Call<List<InfoReclamosEpsgraumodel>> getInfoReclamoseps();
 }

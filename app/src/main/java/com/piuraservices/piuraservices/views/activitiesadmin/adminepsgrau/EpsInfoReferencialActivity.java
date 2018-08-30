@@ -3,7 +3,6 @@
 package com.piuraservices.piuraservices.views.activitiesadmin.adminepsgrau;
 
 import android.app.ProgressDialog;
-import android.app.Service;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,10 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.common.api.Api;
 import com.loopj.android.http.TextHttpResponseHandler;
 import com.piuraservices.piuraservices.R;
-import com.piuraservices.piuraservices.models.epsgrau.InfoReferencialEpsgrau;
+import com.piuraservices.piuraservices.models.epsgrau.InfoReferencialEpsgraumodel;
 import com.piuraservices.piuraservices.services.http;
 
 import org.apache.http.Header;
@@ -57,7 +55,7 @@ public class EpsInfoReferencialActivity extends AppCompatActivity {
         hor=horario.getText().toString();
         webentidad=web.getText().toString();
         dialog();
-        InfoReferencialEpsgrau info=new InfoReferencialEpsgrau(1,nom,dir,tel,email,hor,webentidad);
+        InfoReferencialEpsgraumodel info=new InfoReferencialEpsgraumodel(1,nom,dir,tel,email,hor,webentidad);
         http.post(getApplicationContext(), "informacion/createInfoEntidad", info, new TextHttpResponseHandler() {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {

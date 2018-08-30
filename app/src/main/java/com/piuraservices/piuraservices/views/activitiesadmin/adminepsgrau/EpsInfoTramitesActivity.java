@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import com.loopj.android.http.TextHttpResponseHandler;
 import com.piuraservices.piuraservices.R;
-import com.piuraservices.piuraservices.models.epsgrau.InfoTramitesEpsgrau;
+import com.piuraservices.piuraservices.models.epsgrau.InfoTramitesEpsgraumodel;
 import com.piuraservices.piuraservices.services.http;
 
 import org.apache.http.Header;
@@ -40,7 +40,7 @@ public class EpsInfoTramitesActivity extends AppCompatActivity  {
         nomt=nomtramite.getText().toString();
         desct=desctramite.getText().toString();
         dialog();
-        InfoTramitesEpsgrau info=new InfoTramitesEpsgrau(1,nomt,desct);
+        InfoTramitesEpsgraumodel info=new InfoTramitesEpsgraumodel(1,nomt,desct);
         http.post(getApplicationContext(), "informacion/createInfoTramite", info, new TextHttpResponseHandler() {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
