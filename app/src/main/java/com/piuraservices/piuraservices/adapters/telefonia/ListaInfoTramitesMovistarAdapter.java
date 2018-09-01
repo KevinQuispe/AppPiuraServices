@@ -1,4 +1,4 @@
 package com.piuraservices.piuraservices.adapters.telefonia;
 
-public class ListaReclamosMovistarAdapter {
+public class ListaInfoTramitesMovistarAdapter {
 }

@@ -33,7 +33,6 @@ public class InfoReclamosEpsActivity extends AppCompatActivity {
     ListView listView;
     //variable para loading
     ProgressDialog progreso, progressDialog;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,8 +69,6 @@ public class InfoReclamosEpsActivity extends AppCompatActivity {
             public void onResponse(Call<List<InfoReclamosEpsgraumodel>> call, Response<List<InfoReclamosEpsgraumodel>> response) {
                 List<InfoReclamosEpsgraumodel> model=response.body();
                 listView.setAdapter(new ListaInfoReclamosepsAdapter(InfoReclamosEpsActivity.this, model));
-                //adapter1=new ArrayAdapter<InfoReclamosEpsgraumodel),(InfoReclamosEpsActivity.this,android.R.layout.simple_list_item_1, model);
-                //listView.setAdapter(adapter);
                 progreso.dismiss();
             }
 
@@ -88,22 +85,17 @@ public class InfoReclamosEpsActivity extends AppCompatActivity {
         inflater.inflate(R.menu.menu_search, menu);
         MenuItem item = menu.findItem(R.id.menuSearch);
         SearchView searchView = (SearchView)item.getActionView();
-
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 return false;
             }
-
             @Override
             public boolean onQueryTextChange(String newText) {
                //adapter1.getFilter().filter(newText);
-
-
                 return false;
             }
         });
-
         return super.onCreateOptionsMenu(menu);
     }
     public void dialog() {
@@ -118,5 +110,4 @@ public class InfoReclamosEpsActivity extends AppCompatActivity {
         progreso.show();
         progreso.setCancelable(false);
     }
-
 }

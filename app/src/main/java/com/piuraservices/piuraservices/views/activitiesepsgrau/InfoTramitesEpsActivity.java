@@ -1,11 +1,14 @@
 package com.piuraservices.piuraservices.views.activitiesepsgrau;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -19,6 +22,7 @@ import com.piuraservices.piuraservices.models.epsgrau.InfoTramitesEpsgraumodel;
 import com.piuraservices.piuraservices.services.epsgrau.ListaReclamosEpsclient;
 import com.piuraservices.piuraservices.services.epsgrau.ListaTramitesEpsclient;
 import com.piuraservices.piuraservices.utils.Config;
+import com.piuraservices.piuraservices.views.activities.ContactoDetalleActivity;
 
 import java.util.List;
 
@@ -42,12 +46,20 @@ public class InfoTramitesEpsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info_tramites_eps);
         getSupportActionBar().setTitle("Información de Tramites");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         //String[] informacion = {"Información Referencial", "Información de Reclamos", "Información de Trámites"};
         //Inflater inflater;
         //listaelementos=(ListView) findViewById(R.id.list_tramiteseps);
         //adapter = new ArrayAdapter<String>(InfoTramitesEpsActivity.this, android.R.layout.simple_list_item_1, informacion);
         //listaelementos.setAdapter(adapter);
+        listatramites = (ListView) findViewById(R.id.list_tramiteseps);
+        listatramites.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent=new Intent(InfoTramitesEpsActivity.this, ContactoDetalleActivity.class);
+                startActivity(intent);
+            }
+        });
+        listatramitesEPS();
     }
 
     @Override

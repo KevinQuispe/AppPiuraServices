@@ -18,7 +18,6 @@ public class InfoReferencialEpsgraumodel {
      * @param direccion
      * @param telefono
      * @param correo
-     * @param correo
      * @param horario
      * @param webentidad
      */

@@ -39,8 +39,9 @@ public class EpsInfoTramitesActivity extends AppCompatActivity  {
         String nomt,desct;
         nomt=nomtramite.getText().toString();
         desct=desctramite.getText().toString();
+        int empresa_id=1;
         dialog();
-        InfoTramitesEpsgraumodel info=new InfoTramitesEpsgraumodel(1,nomt,desct);
+        InfoTramitesEpsgraumodel info=new InfoTramitesEpsgraumodel(1,empresa_id,nomt,desct);
         http.post(getApplicationContext(), "informacion/createInfoTramite", info, new TextHttpResponseHandler() {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {

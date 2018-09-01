@@ -36,12 +36,12 @@ public class EpsInfoReferencialActivity extends AppCompatActivity {
         horario=(EditText) findViewById(R.id.et_horarioentidad);
         web=(EditText) findViewById(R.id.et_webentidad);
         btnguardar=(Button) findViewById(R.id.btn_guardarentidad);
+
         btnguardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (view.getId()==R.id.btn_guardarentidad){
                     registrarInfoReferencial();
-                    //Toast.makeText(getApplicationContext(), "Succes", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -63,7 +63,6 @@ public class EpsInfoReferencialActivity extends AppCompatActivity {
                 System.out.println(responseString);
                 Toast.makeText(getApplicationContext(), "error en conexion", Toast.LENGTH_SHORT).show();
             }
-
             @Override
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
                 progreso.dismiss();

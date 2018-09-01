@@ -1,14 +1,15 @@
-package com.piuraservices.piuraservices.models.epsgrau;
+package com.piuraservices.piuraservices.models.enosa;
 
-public class InfoTramitesEpsgraumodel {
+public class InfoReclamosEnosamodel {
     private long id;
     private long entidadempresa_id;
     private String nombre;
     private String descripcion;
+    public InfoReclamosEnosamodel(){
 
-    public InfoTramitesEpsgraumodel() {
     }
-    public InfoTramitesEpsgraumodel(long id, long entidadempresa_id, String nombre, String descripcion) {
+
+    public InfoReclamosEnosamodel(long id, long entidadempresa_id, String nombre, String descripcion) {
         this.id = id;
         this.entidadempresa_id = entidadempresa_id;
         this.nombre = nombre;

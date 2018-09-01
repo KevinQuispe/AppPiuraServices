@@ -2,6 +2,7 @@ package com.piuraservices.piuraservices.views.activitiesadmin;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -41,9 +42,13 @@ public class AdministrarInformacionActivity extends AppCompatActivity implements
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         //Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
         if (i == 0) {
-            Intent epsgrau = new Intent(this, AdminInfoEpsgrauActivity.class);
-            startActivity(epsgrau);
+            //Intent epsgrau = new Intent(this, AdminInfoEpsgrauActivity.class);
+            //startActivity(epsgrau);
             //Toast.makeText(this, "item" + i, Toast.LENGTH_SHORT).show();
+            Intent addAccountIntent = new Intent(Settings.ACTION_ADD_ACCOUNT);
+            addAccountIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+            addAccountIntent.putExtra(Settings.EXTRA_AUTHORITIES, new String[]{"views.activitiesadmin.AdminInfoEpsgrauActivity"});
+            startActivity(addAccountIntent);
         }
         if (i == 1) {
             Intent enosa = new Intent(this, AdminInfoEnosaActivity.class);

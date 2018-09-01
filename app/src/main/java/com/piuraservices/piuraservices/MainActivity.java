@@ -109,12 +109,12 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Intent intent=new Intent(MainActivity.this, ConfigurarCuentaActivity.class);
+            Intent intent=new Intent(getApplicationContext(), ConfigurarCuentaActivity.class);
             startActivity(intent);
             return true;
         }
         if (id == R.id.action_admininfo) {
-            Intent intent=new Intent(MainActivity.this, AdministrarInformacionActivity.class);
+            Intent intent=new Intent(getApplicationContext(), AdministrarInformacionActivity.class);
             startActivity(intent);
             return true;
         }
@@ -182,4 +182,4 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-}
+    }

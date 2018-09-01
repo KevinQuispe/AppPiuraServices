@@ -47,7 +47,8 @@ public class EpsInfoReclamosActivity extends AppCompatActivity {
             String nom, desc;
             nom = nombrereclamo.getText().toString();
             desc = descreclamo.getText().toString();
-            InfoReclamosEpsgraumodel info = new InfoReclamosEpsgraumodel(1, nom, desc);
+            int id_empresa=1;
+            InfoReclamosEpsgraumodel info = new InfoReclamosEpsgraumodel(1,id_empresa, nom, desc);
             process1();
             http.post(getApplicationContext(), "informacion/createInfoReclamo", info, new TextHttpResponseHandler() {
 
