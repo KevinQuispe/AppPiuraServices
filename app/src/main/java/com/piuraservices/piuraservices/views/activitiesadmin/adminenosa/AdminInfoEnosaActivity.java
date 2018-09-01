@@ -33,16 +33,16 @@ public class AdminInfoEnosaActivity extends AppCompatActivity  implements Adapte
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         //Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
         if (i == 0) {
-            Intent epsgrau = new Intent(this, EnosaInfoReferencialActivity.class);
+            Intent epsgrau = new Intent(getApplicationContext(), EnosaInfoReferencialActivity.class);
             startActivity(epsgrau);
             //Toast.makeText(this, "item" + i, Toast.LENGTH_SHORT).show();
         }
         if (i == 1) {
-            Intent enosa = new Intent(this, EnosaInfoTramitesActivity.class);
+            Intent enosa = new Intent(getApplicationContext(), EnosaInfoTramitesActivity.class);
             startActivity(enosa);
         }
         if (i == 2) {
-            Intent telefonia = new Intent(this, EnosaInfoReclamosActivity.class);
+            Intent telefonia = new Intent(getApplicationContext(), EnosaInfoReclamosActivity.class);
             startActivity(telefonia);
         }
     }

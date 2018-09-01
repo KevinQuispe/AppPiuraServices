@@ -42,28 +42,28 @@ public class AdministrarInformacionActivity extends AppCompatActivity implements
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         //Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
         if (i == 0) {
-            //Intent epsgrau = new Intent(this, AdminInfoEpsgrauActivity.class);
-            //startActivity(epsgrau);
+            Intent epsgrau = new Intent(getApplicationContext(), AdminInfoEpsgrauActivity.class);
+            startActivity(epsgrau);
             //Toast.makeText(this, "item" + i, Toast.LENGTH_SHORT).show();
-            Intent addAccountIntent = new Intent(Settings.ACTION_ADD_ACCOUNT);
-            addAccountIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-            addAccountIntent.putExtra(Settings.EXTRA_AUTHORITIES, new String[]{"views.activitiesadmin.AdminInfoEpsgrauActivity"});
-            startActivity(addAccountIntent);
+            //Intent addAccountIntent = new Intent(Settings.ACTION_ADD_ACCOUNT);
+            //addAccountIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+            //addAccountIntent.putExtra(Settings.EXTRA_AUTHORITIES, new String[]{"views.activitiesadmin.AdminInfoEpsgrauActivity"});
+            //startActivity(addAccountIntent);
         }
         if (i == 1) {
-            Intent enosa = new Intent(this, AdminInfoEnosaActivity.class);
+            Intent enosa = new Intent(getApplicationContext(), AdminInfoEnosaActivity.class);
             startActivity(enosa);
         }
         if (i == 2) {
-            Intent telefonia = new Intent(this, AdminInfoTelefoniaActivity.class);
+            Intent telefonia = new Intent(getApplicationContext(), AdminInfoTelefoniaActivity.class);
             startActivity(telefonia);
         }
         if (i == 3) {
-            Intent telefonia = new Intent(this, AdminInfoClaroActivity.class);
+            Intent telefonia = new Intent(getApplicationContext(), AdminInfoClaroActivity.class);
             startActivity(telefonia);
         }
         if (i == 4) {
-            Intent telefonia = new Intent(this, AdminInfoEntelActivity.class);
+            Intent telefonia = new Intent(getApplicationContext(), AdminInfoEntelActivity.class);
             startActivity(telefonia);
         }
 
