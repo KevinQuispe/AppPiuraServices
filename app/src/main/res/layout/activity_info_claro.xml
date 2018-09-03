@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".views.activitiestelefonia.InfoClaroActivity">
+    tools:context=".views.activitiestelefonia.claro.InfoClaroActivity">
 
     <ScrollView
         android:layout_width="match_parent"

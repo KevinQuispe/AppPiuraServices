@@ -1,4 +1,4 @@
-package com.piuraservices.piuraservices.views.activitiestelefonia;
+package com.piuraservices.piuraservices.views.activitiestelefonia.movistar;
 
 import android.Manifest;
 import android.content.Intent;

@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.piuraservices.piuraservices.R;
+import com.piuraservices.piuraservices.views.activitiestelefonia.claro.InfoClaroActivity;
+import com.piuraservices.piuraservices.views.activitiestelefonia.entel.InfoEntelActivity;
+import com.piuraservices.piuraservices.views.activitiestelefonia.movistar.InfoMovistarActivity;
 
 public class TelefoniaActivity extends AppCompatActivity {
 
@@ -23,8 +26,6 @@ public class TelefoniaActivity extends AppCompatActivity {
         imgMovistar=(ImageView) findViewById(R.id.img_movistar);
         imgClaro=(ImageView) findViewById(R.id.img_claro);
         imgEntel=(ImageView) findViewById(R.id.img_entel);
-
-
     }
 
     public void onClickedMovistar(View v) {

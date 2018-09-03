@@ -1,4 +1,4 @@
-package com.piuraservices.piuraservices.views.activitiestelefonia;
+package com.piuraservices.piuraservices.views.activitiestelefonia.claro;
 
 import android.Manifest;
 import android.content.Intent;
@@ -13,17 +13,17 @@ import android.widget.Toast;
 
 import com.piuraservices.piuraservices.R;
 
-public class InfoEntelActivity extends AppCompatActivity {
+public class InfoClaroActivity extends AppCompatActivity {
     ImageView imgtramites;
     ImageView imgreclamos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_info_entel);
-        getSupportActionBar().setTitle("Empresa Entel");
+        setContentView(R.layout.activity_info_claro);
+        getSupportActionBar().setTitle("Empresa Claro");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        imgtramites = (ImageView) findViewById(R.id.img_tramitesentel);
-        imgreclamos = (ImageView) findViewById(R.id.img_reclamosentel);
+        imgtramites = (ImageView) findViewById(R.id.img_tramitesclaro);
+        imgreclamos = (ImageView) findViewById(R.id.img_reclamosclaro);
 
 
     }
@@ -32,7 +32,7 @@ public class InfoEntelActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Intent intent = new Intent("views.activities.InfoTramitesEpsActivity");
-                Intent intent = new Intent(getApplicationContext(),InfoTramitesEntelActivity.class);
+                Intent intent = new Intent(getApplicationContext(),InfoTramitesClaroActivity.class);
                 startActivity(intent);
             }
         });
@@ -43,14 +43,14 @@ public class InfoEntelActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Intent intent = new Intent("views.activities.InfoReclamosEpsActivity");
-                Intent intent = new Intent(getApplicationContext(),InfoReclamosEntelActivity.class);
+                Intent intent = new Intent(getApplicationContext(),InfoReclamosClaroActivity.class);
                 startActivity(intent);
             }
         });
     }
     public void onClickOpenGoogleMaps(View v) {
 
-        Uri uri = Uri.parse("geo:41.3825581,2.1704375?z=16&q=-5.19449, -80.6328201(Entel Piura)");
+        Uri uri = Uri.parse("geo:41.3825581,2.1704375?z=16&q=-5.19449, -80.6328201(Claro Piura)");
         //startActivity( new Intent(Intent.ACTION_VIEW, uri));
         Intent intent=new Intent(Intent.ACTION_VIEW,uri);
         Intent chooser=Intent.createChooser(intent,"Abrir Google Maps");

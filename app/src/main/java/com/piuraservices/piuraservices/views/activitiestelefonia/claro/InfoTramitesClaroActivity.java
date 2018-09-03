@@ -1,17 +1,17 @@
-package com.piuraservices.piuraservices.views.activitiestelefonia;
+package com.piuraservices.piuraservices.views.activitiestelefonia.claro;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.piuraservices.piuraservices.R;
 
-public class InfoReclamosEntelActivity extends AppCompatActivity {
+public class InfoTramitesClaroActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_info_reclamos_entel);
-        getSupportActionBar().setTitle("Infomación Reclamos Entel");
+        setContentView(R.layout.activity_info_tramites_claro);
+        getSupportActionBar().setTitle("Infomación Trámites Claro");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }

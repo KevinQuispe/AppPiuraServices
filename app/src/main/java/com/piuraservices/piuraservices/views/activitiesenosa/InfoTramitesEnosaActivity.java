@@ -73,8 +73,7 @@ public class InfoTramitesEnosaActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                adapter.getFilter().filter(newText);
-
+                listatramites.getAnimation();
                 return false;
             }
         });

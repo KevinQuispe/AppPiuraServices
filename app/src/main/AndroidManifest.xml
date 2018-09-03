@@ -190,13 +190,13 @@
             android:name=".views.activities.ConfigurarCuentaActivity"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".views.activitiestelefonia.InfoMovistarActivity"
+            android:name=".views.activitiestelefonia.movistar.InfoMovistarActivity"
             android:parentActivityName=".views.activitiestelefonia.TelefoniaActivity" />
         <activity
-            android:name=".views.activitiestelefonia.InfoEntelActivity"
+            android:name=".views.activitiestelefonia.entel.InfoEntelActivity"
             android:parentActivityName=".views.activitiestelefonia.TelefoniaActivity" />
         <activity
-            android:name=".views.activitiestelefonia.InfoClaroActivity"
+            android:name=".views.activitiestelefonia.claro.InfoClaroActivity"
             android:parentActivityName=".views.activitiestelefonia.TelefoniaActivity" />
         <activity
             android:name=".views.activitiesadmin.adminepsgrau.AdminInfoEpsgrauActivity"
@@ -217,23 +217,23 @@
             android:name=".views.activities.ContactosActivity"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".views.activitiestelefonia.InfoTramitesMovistarActivity"
-            android:parentActivityName=".views.activitiestelefonia.InfoMovistarActivity" />
+            android:name=".views.activitiestelefonia.movistar.InfoTramitesMovistarActivity"
+            android:parentActivityName=".views.activitiestelefonia.movistar.InfoMovistarActivity" />
         <activity
-            android:name=".views.activitiestelefonia.InfoReclamosMovistarActivity"
-            android:parentActivityName=".views.activitiestelefonia.InfoMovistarActivity" />
+            android:name=".views.activitiestelefonia.movistar.InfoReclamosMovistarActivity"
+            android:parentActivityName=".views.activitiestelefonia.movistar.InfoMovistarActivity" />
         <activity
-            android:name=".views.activitiestelefonia.InfoTramitesEntelActivity"
-            android:parentActivityName=".views.activitiestelefonia.InfoEntelActivity" />
+            android:name=".views.activitiestelefonia.entel.InfoTramitesEntelActivity"
+            android:parentActivityName=".views.activitiestelefonia.entel.InfoEntelActivity" />
         <activity
-            android:name=".views.activitiestelefonia.InfoReclamosEntelActivity"
-            android:parentActivityName=".views.activitiestelefonia.InfoEntelActivity" />
+            android:name=".views.activitiestelefonia.entel.InfoReclamosEntelActivity"
+            android:parentActivityName=".views.activitiestelefonia.entel.InfoEntelActivity" />
         <activity
-            android:name=".views.activitiestelefonia.InfoReclamosClaroActivity"
-            android:parentActivityName=".views.activitiestelefonia.InfoClaroActivity" />
+            android:name=".views.activitiestelefonia.claro.InfoReclamosClaroActivity"
+            android:parentActivityName=".views.activitiestelefonia.claro.InfoClaroActivity" />
         <activity
-            android:name=".views.activitiestelefonia.InfoTramitesClaroActivity"
-            android:parentActivityName=".views.activitiestelefonia.InfoClaroActivity" />
+            android:name=".views.activitiestelefonia.claro.InfoTramitesClaroActivity"
+            android:parentActivityName=".views.activitiestelefonia.claro.InfoClaroActivity" />
         <activity
             android:name=".views.activities.ListaDireccionesActivity"
             android:parentActivityName=".MainActivity" />

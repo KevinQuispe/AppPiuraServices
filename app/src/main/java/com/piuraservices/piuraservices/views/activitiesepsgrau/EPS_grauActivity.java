@@ -32,8 +32,8 @@ public class EPS_grauActivity extends AppCompatActivity {
         imgtramites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // Intent intent = new Intent("views.activities.InfoTramitesEpsActivity");
-                Intent intent = new Intent(getApplicationContext(), com.piuraservices.piuraservices.views.activitiesepsgrau.InfoTramitesEpsActivity.class);
+               Intent intent = new Intent("views.activitiesepsgrau.InfoTramitesEpsActivity");
+                //Intent intent = new Intent(getApplicationContext(), com.piuraservices.piuraservices.views.activitiesepsgrau.InfoTramitesEpsActivity.class);
                 startActivity(intent);
             }
         });
@@ -43,8 +43,8 @@ public class EPS_grauActivity extends AppCompatActivity {
         imgreclamos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent("views.activities.InfoReclamosEpsActivity");
-                Intent intent = new Intent(getApplicationContext(),InfoReclamosEpsActivity.class);
+                Intent intent = new Intent("views.activitiesepsgrau.InfoReclamosEpsActivity");
+                //Intent intent = new Intent(getApplicationContext(),InfoReclamosEpsActivity.class);
                 startActivity(intent);
             }
         });
