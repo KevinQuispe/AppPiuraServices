@@ -1,4 +1,4 @@
-package com.piuraservices.piuraservices.views.activities;
+package com.piuraservices.piuraservices.views.activitiesenosa;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,26 +7,23 @@ import android.webkit.WebViewClient;
 
 import com.piuraservices.piuraservices.R;
 
-public class OpenWebActivity extends AppCompatActivity {
+public class OpenWebEnosaActivity extends AppCompatActivity {
 
-
+    WebView webview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        WebView webview;
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_open_web);
-        getSupportActionBar().setTitle("Open Web");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        webview = (WebView) findViewById(R.id.webview);
+        setContentView(R.layout.activity_open_web_enosa);
+        webview=(WebView) findViewById(R.id.webviewenosa);
         String url = "http://www.epsgrau.pe/webpage/desktop/views/";
         webview.getSettings().setJavaScriptEnabled(true);
         webview.getSettings().setBuiltInZoomControls(true);
         webview.loadUrl(url);
         webview.setWebViewClient(new WebViewClient() {
-            public boolean shouldOverrideLoadURL(WebView v, String url) {
-                return false;
-                }
-            }
+                                     public boolean shouldOverrideLoadURL(WebView v, String url) {
+                                         return false;
+                                     }
+                                 }
         );
     }
 }

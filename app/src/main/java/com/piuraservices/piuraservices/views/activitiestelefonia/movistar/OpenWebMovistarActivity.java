@@ -1,4 +1,4 @@
-package com.piuraservices.piuraservices.views.activities;
+package com.piuraservices.piuraservices.views.activitiestelefonia.movistar;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,18 +7,19 @@ import android.webkit.WebViewClient;
 
 import com.piuraservices.piuraservices.R;
 
-public class OpenWebActivity extends AppCompatActivity {
+public class OpenWebMovistarActivity extends AppCompatActivity {
 
+    WebView webview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        WebView webview;
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_open_web);
-        getSupportActionBar().setTitle("Open Web");
+        setContentView(R.layout.activity_open_web_movistar);
+
+        getSupportActionBar().setTitle("Web Movistar");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        webview = (WebView) findViewById(R.id.webview);
-        String url = "http://www.epsgrau.pe/webpage/desktop/views/";
+        webview = (WebView) findViewById(R.id.webviewmovistar);
+        String url = "http://www.movistar.com.pe/atencion-al-cliente/";
         webview.getSettings().setJavaScriptEnabled(true);
         webview.getSettings().setBuiltInZoomControls(true);
         webview.loadUrl(url);
@@ -26,7 +27,7 @@ public class OpenWebActivity extends AppCompatActivity {
             public boolean shouldOverrideLoadURL(WebView v, String url) {
                 return false;
                 }
-            }
+             }
         );
     }
 }

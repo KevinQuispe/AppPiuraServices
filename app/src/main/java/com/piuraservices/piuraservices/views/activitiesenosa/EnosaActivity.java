@@ -77,7 +77,7 @@ public class EnosaActivity extends AppCompatActivity {
         //WebView webView=new WebView(this);
         //webView.setWebViewClient(new WebViewClient());
         //webView.loadUrl("https://www.epsgrau.pe/webpage/desktop/views/");
-        Intent intent = new Intent("views.activities.OpenWebActivity");
+        Intent intent = new Intent(EnosaActivity.this,OpenWebEnosaActivity.class);
         startActivity(intent);
     }
     public void onClickOpenCall(View v) {

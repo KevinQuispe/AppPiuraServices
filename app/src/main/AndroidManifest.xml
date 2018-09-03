@@ -52,8 +52,9 @@
             android:name=".UbicanosActivity"
             android:label="@string/title_activity_ubicanos"
             android:parentActivityName=".views.activities.LoginActivity" />
-        <activity android:name=".views.activities.RegisterUserActivity"
-            android:parentActivityName=".views.activities.LoginActivity"/>
+        <activity
+            android:name=".views.activities.RegisterUserActivity"
+            android:parentActivityName=".views.activities.LoginActivity" />
         <activity
             android:name=".views.activities.LoginActivity"
             android:label="@string/title_activity_login" />
@@ -240,7 +241,6 @@
         <activity
             android:name=".views.activities.ContactoDetalleActivity"
             android:parentActivityName=".views.activities.ContactosActivity" />
-
         <activity android:name=".views.activitiesadmin.admintelefonia.TelefoniaInfoReferencialActivity" />
         <activity android:name=".views.activitiesadmin.admintelefonia.TelefoniaInfoReclamosActivity" />
         <activity android:name=".views.activitiesadmin.admintelefonia.TelefoniaInfoTramitesActivity" />
@@ -249,7 +249,12 @@
         <activity android:name=".views.activitiesadmin.adminclaro.ClaroInfoReferencialActivity" />
         <activity android:name=".views.activitiesadmin.adminentel.EntelnfoReclamosActivity" />
         <activity android:name=".views.activitiesadmin.adminentel.EntelnfoTramitesActivity" />
-        <activity android:name=".views.activitiesadmin.adminentel.EntelInfoReferencialActivity"/>
+        <activity android:name=".views.activitiesadmin.adminentel.EntelInfoReferencialActivity" />
+        <activity android:name=".views.activitiesenosa.OpenWebEnosaActivity" />
+        <activity android:name=".views.activitiestelefonia.movistar.OpenWebMovistarActivity" />
+        <activity android:name=".views.activitiestelefonia.entel.OpenWebEntelActivity" />
+        <activity android:name=".views.activitiestelefonia.claro.OpenWebClaroActivity" />
+        <activity android:name=".views.activitiesepsgrau.OpenWebEpsGrauActivity"/>
     </application>
 
 </manifest>
