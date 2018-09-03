@@ -3,6 +3,7 @@ package com.piuraservices.piuraservices.views.activitiestelefonia.entel;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.ColorFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -23,7 +24,6 @@ public class InfoEntelActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         imgtramites = (ImageView) findViewById(R.id.img_tramitesentel);
         imgreclamos = (ImageView) findViewById(R.id.img_reclamosentel);
-
 
     }
     public void onClickedtramites(View v) {
@@ -62,32 +62,27 @@ public class InfoEntelActivity extends AppCompatActivity {
 
         Intent intent= new Intent(Intent.ACTION_SEND);
         intent.setData(Uri.parse("email"));
-        String[]s={"entel.com"};
+        String[]s={"contactoentel@entel.com"};
         intent.putExtra(Intent.EXTRA_EMAIL,s);
-        intent.putExtra(Intent.EXTRA_SUBJECT,"Solicitud");
-        intent.putExtra(Intent.EXTRA_TEXT,"Contenido");
+        intent.putExtra(Intent.EXTRA_SUBJECT,"");
+        intent.putExtra(Intent.EXTRA_TEXT,"");
         intent.setType("message/rfc822");
         Intent chooser=Intent.createChooser(intent,"Enviar Email");
         startActivity(chooser);
 
     }
     public void onClickOpenWeb(View v) {
-        //Uri uri = Uri.parse("https://www.epsgrau.pe/webpage/desktop/views/");
-        //Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-        //startActivity(intent);
-        //WebView webView=new WebView(this);
-        //webView.setWebViewClient(new WebViewClient());
-        //webView.loadUrl("https://www.epsgrau.pe/webpage/desktop/views/");
-        Intent intent = new Intent("views.activities.OpenWebActivity");
+        //Intent intent = new Intent("views.activities.OpenWebActivity");
+        Intent intent = new Intent(InfoEntelActivity.this,OpenWebEntelActivity.class);
         startActivity(intent);
     }
     public void onClickOpenCall(View v) {
         Intent i = new Intent(Intent.ACTION_DIAL);
-        String spsgrau= "073307741";
-        if (spsgrau.trim().isEmpty()) {
-            i.setData(Uri.parse("tel:073307741"));
+        String telentel= "0 800 11110";
+        if (telentel.trim().isEmpty()) {
+            i.setData(Uri.parse("tel:0 800 11110"));
         } else {
-            i.setData(Uri.parse("tel:" + spsgrau));
+            i.setData(Uri.parse("tel:" + telentel));
         }
         if (ActivityCompat.checkSelfPermission(getApplication(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
             Toast.makeText(getApplication(), "Please conceda permisos para llamar", Toast.LENGTH_LONG).show();

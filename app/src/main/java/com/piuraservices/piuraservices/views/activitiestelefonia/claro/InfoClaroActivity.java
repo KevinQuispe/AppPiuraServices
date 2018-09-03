@@ -63,23 +63,18 @@ public class InfoClaroActivity extends AppCompatActivity {
 
         Intent intent= new Intent(Intent.ACTION_SEND);
         intent.setData(Uri.parse("email"));
-        String[]s={"entel.com"};
+        String[]s={"claro.com"};
         intent.putExtra(Intent.EXTRA_EMAIL,s);
-        intent.putExtra(Intent.EXTRA_SUBJECT,"Solicitud");
-        intent.putExtra(Intent.EXTRA_TEXT,"Contenido");
+        intent.putExtra(Intent.EXTRA_SUBJECT,"");
+        intent.putExtra(Intent.EXTRA_TEXT,"");
         intent.setType("message/rfc822");
         Intent chooser=Intent.createChooser(intent,"Enviar Email");
         startActivity(chooser);
 
     }
     public void onClickOpenWeb(View v) {
-        //Uri uri = Uri.parse("https://www.epsgrau.pe/webpage/desktop/views/");
-        //Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-        //startActivity(intent);
-        //WebView webView=new WebView(this);
-        //webView.setWebViewClient(new WebViewClient());
-        //webView.loadUrl("https://www.epsgrau.pe/webpage/desktop/views/");
-        Intent intent = new Intent("views.activities.OpenWebActivity");
+
+        Intent intent = new Intent(InfoClaroActivity.this,OpenWebClaroActivity.class);
         startActivity(intent);
     }
     public void onClickOpenCall(View v) {

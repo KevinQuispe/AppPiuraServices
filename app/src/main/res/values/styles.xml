@@ -26,4 +26,15 @@
         <item name="colorButtonNormal">@color/buttonColorRegister</item>
         <item name="colorControlHighlight">@color/buttonHoverColor</item>
     </style>
+
+    <style name="ThemeEntelActivity" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/color_entel_card</item>
+        <item name="colorPrimaryDark">@android:color/holo_blue_dark</item> <!--Color naranja-->
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="ThemeMovistarActivity" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/color_movistar_card</item>
+        <item name="colorPrimaryDark">@android:color/holo_green_dark</item> <!--Color naranja-->
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
 </resources>

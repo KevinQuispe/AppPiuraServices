@@ -22,4 +22,7 @@
     <color name="color_card">#ff7961</color>
     <color name="color_search_background">#ede7f6</color>
 
+    <color name="color_movistar_card">#5bc500</color>
+    <color name="color_claro_card">#EF5350</color>
+    <color name="color_entel_card">#1565c0</color>
 </resources>

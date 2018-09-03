@@ -15,7 +15,9 @@ public class OpenWebEnosaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_open_web_enosa);
         webview=(WebView) findViewById(R.id.webviewenosa);
-        String url = "http://www.epsgrau.pe/webpage/desktop/views/";
+        getSupportActionBar().setTitle("Web Enosa");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        String url = "https://www.distriluz.com.pe/enosa/03_servicio/como_obt.html";
         webview.getSettings().setJavaScriptEnabled(true);
         webview.getSettings().setBuiltInZoomControls(true);
         webview.loadUrl(url);

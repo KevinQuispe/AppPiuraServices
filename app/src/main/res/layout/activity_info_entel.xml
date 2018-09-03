@@ -149,7 +149,7 @@
                     android:padding="10dp"
                     android:text="@string/text_view_informacion"
                     android:layout_gravity="bottom"
-                    android:background="@color/colorPrimaryDark"
+                    android:background="@color/color_entel_card"
                     android:textColor="#ffe3e3e3"
                     android:textSize="12sp"
                     android:textStyle="bold"/>
@@ -227,7 +227,7 @@
                     android:padding="10dp"
                     android:text="@string/text_view_tramites"
                     android:layout_gravity="bottom"
-                    android:background="@color/colorPrimaryDark"
+                    android:background="@color/color_entel_card"
                     android:textColor="#ffe3e3e3"
                     android:textSize="12sp"
                     android:textStyle="bold"/>
@@ -298,7 +298,7 @@
                     android:padding="10dp"
                     android:text="@string/text_view_reclamos"
                     android:layout_gravity="bottom"
-                    android:background="@color/colorPrimaryDark"
+                    android:background="@color/color_entel_card"
                     android:textColor="#ffe3e3e3"
                     android:textSize="12sp"
                     android:textStyle="bold"/>

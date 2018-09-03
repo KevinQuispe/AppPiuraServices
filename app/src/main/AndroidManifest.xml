@@ -176,9 +176,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".views.activitiesepsgrau.ListInfoReclamosEpsActivity"
-            android:parentActivityName=".views.activitiesepsgrau.EPS_grauActivity" />
-        <activity
             android:name=".views.activitiesadmin.adminepsgrau.EpsInfoTramitesActivity"
             android:parentActivityName=".views.activitiesadmin.adminepsgrau.EpsInfoReclamosActivity" />
         <activity
@@ -191,9 +188,11 @@
             android:name=".views.activities.ConfigurarCuentaActivity"
             android:parentActivityName=".MainActivity" />
         <activity
+            android:theme="@style/ThemeMovistarActivity"
             android:name=".views.activitiestelefonia.movistar.InfoMovistarActivity"
             android:parentActivityName=".views.activitiestelefonia.TelefoniaActivity" />
         <activity
+            android:theme="@style/ThemeEntelActivity"
             android:name=".views.activitiestelefonia.entel.InfoEntelActivity"
             android:parentActivityName=".views.activitiestelefonia.TelefoniaActivity" />
         <activity
@@ -251,10 +250,16 @@
         <activity android:name=".views.activitiesadmin.adminentel.EntelnfoTramitesActivity" />
         <activity android:name=".views.activitiesadmin.adminentel.EntelInfoReferencialActivity" />
         <activity android:name=".views.activitiesenosa.OpenWebEnosaActivity" />
-        <activity android:name=".views.activitiestelefonia.movistar.OpenWebMovistarActivity" />
-        <activity android:name=".views.activitiestelefonia.entel.OpenWebEntelActivity" />
-        <activity android:name=".views.activitiestelefonia.claro.OpenWebClaroActivity" />
-        <activity android:name=".views.activitiesepsgrau.OpenWebEpsGrauActivity"/>
+        <activity
+            android:theme="@style/ThemeMovistarActivity"
+            android:name=".views.activitiestelefonia.movistar.OpenWebMovistarActivity" />
+        <activity
+            android:theme="@style/ThemeEntelActivity"
+            android:name=".views.activitiestelefonia.entel.OpenWebEntelActivity" />
+        <activity
+            android:name=".views.activitiestelefonia.claro.OpenWebClaroActivity" />
+        <activity
+            android:name=".views.activitiesepsgrau.OpenWebEpsGrauActivity"/>
     </application>
 
 </manifest>

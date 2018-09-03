@@ -66,8 +66,8 @@ public class EPS_grauActivity extends AppCompatActivity {
         intent.setData(Uri.parse("email"));
         String[]s={"epsgrau.com"};
         intent.putExtra(Intent.EXTRA_EMAIL,s);
-        intent.putExtra(Intent.EXTRA_SUBJECT,"Solicitud");
-        intent.putExtra(Intent.EXTRA_TEXT,"Contenido");
+        intent.putExtra(Intent.EXTRA_SUBJECT," ");
+        intent.putExtra(Intent.EXTRA_TEXT," ");
         intent.setType("message/rfc822");
         Intent chooser=Intent.createChooser(intent,"Enviar Email");
         startActivity(chooser);
@@ -80,7 +80,8 @@ public class EPS_grauActivity extends AppCompatActivity {
         //WebView webView=new WebView(this);
         //webView.setWebViewClient(new WebViewClient());
         //webView.loadUrl("https://www.epsgrau.pe/webpage/desktop/views/");
-        Intent intent = new Intent("views.activities.OpenWebActivity");
+        //Intent intent = new Intent("views.activities.OpenWebActivity");
+        Intent intent = new Intent(EPS_grauActivity.this,OpenWebEpsGrauActivity.class);
         startActivity(intent);
     }
     public void onClickOpenCall(View v) {
@@ -101,5 +102,5 @@ public class EPS_grauActivity extends AppCompatActivity {
         //permisos para llamadas
         private void requestPermission() {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 1);
-        }
+    }
 }
