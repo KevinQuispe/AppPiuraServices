@@ -50,15 +50,15 @@ public class MainActivity extends AppCompatActivity
                     setTitle("Entidades");
                     return true;
                 case R.id.navigation_ubicanos:
-                    //UbicanosFragment ubicanos = new UbicanosFragment();
-                    //android.support.v4.app.FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
-                    //transaction2.replace(R.id.contenedorFragement, ubicanos);
-                    //transaction2.addToBackStack(null).commit();
+                    UbicanosFragment ubicanos = new UbicanosFragment();
+                    android.support.v4.app.FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
+                    transaction2.replace(R.id.contenedorFragement, ubicanos);
+                    transaction2.addToBackStack(null).commit();
                     setTitle("Ubicanos");
                     //Intent intent= new Intent(MainActivity.this, ListaDireccionesActivity.class);
                     //startActivity(intent);
-                    Intent intent= new Intent(MainActivity.this, UbicanosActivity.class);
-                    startActivity(intent);
+                    //Intent intent= new Intent(MainActivity.this, UbicanosActivity.class);
+                    //startActivity(intent);
                     return true;
             }
             return false;
