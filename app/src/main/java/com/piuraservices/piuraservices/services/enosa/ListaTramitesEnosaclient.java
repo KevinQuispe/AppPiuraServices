@@ -8,7 +8,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface ListaTramitesEnosaclient {
-    @GET("informacion/getInfoReclamos")
-    Call<List<InfoTramitesEnosamodel>> getInfoReclamosenosa();
+    @GET("informacion/getInfoTramites")
+    Call<List<InfoTramitesEnosamodel>> getInfoTramitesenosa();
 
 }

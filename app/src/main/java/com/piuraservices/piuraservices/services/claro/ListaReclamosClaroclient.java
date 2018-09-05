@@ -13,6 +13,7 @@ public interface ListaReclamosClaroclient {
 
     @GET("informacion/getInfoReclamos")
     Call<List<InfoReclamosEnosamodel>> getInfoReclamosClaro();
+
     @GET("informacion/getInfoReclamos/{id}")
     Call<InfoReclamosClaromodel> getInfoReclamosClaro(@Path("id") long id);
 }
