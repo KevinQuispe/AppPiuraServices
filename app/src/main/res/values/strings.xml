@@ -79,5 +79,9 @@
     <string name="title_img_empresaepsgrau">EPS GRAU SA,Servicio de agua</string>
     <string name="title_img_empresatelefonia">Telefonía,Movistar, claro, entel</string>
     <string name="title_img_empresaenosa">Enosa, servicio de luz</string>
+    <!-- TITULOS FRAGMENTES ENTIDAD RECLAMO -->
+    <string name="title_entidad_reclamo">Seleccione la entidad o empresa para consultar reclamos</string>
+    <string name="title_entidad_tramite">Seleccione la entidad  o empresa para consultar trámites</string>
+
 
 </resources>

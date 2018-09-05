@@ -18,6 +18,8 @@ import com.piuraservices.piuraservices.views.activities.ConfigurarCuentaActivity
 import com.piuraservices.piuraservices.views.activities.ContactosActivity;
 import com.piuraservices.piuraservices.views.activities.ListaDireccionesActivity;
 import com.piuraservices.piuraservices.views.activitiesadmin.AdministrarInformacionActivity;
+import com.piuraservices.piuraservices.views.fragments.EntidadReclamoFragment;
+import com.piuraservices.piuraservices.views.fragments.EntidadTramiteFragment;
 import com.piuraservices.piuraservices.views.fragments.EntidadesFragment;
 import com.piuraservices.piuraservices.views.fragments.HomeFragment;
 import com.piuraservices.piuraservices.views.fragments.UbicanosFragment;
@@ -148,8 +150,18 @@ public class MainActivity extends AppCompatActivity
             setTitle("Entidades");
 
         } else if (id == R.id.nav_tramites) {
+            EntidadTramiteFragment tramites = new EntidadTramiteFragment();
+            android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.contenedorFragement, tramites);
+            transaction.addToBackStack(null).commit();
+            setTitle("Elija Entidad");
 
         } else if (id == R.id.nav_reclamos) {
+            EntidadReclamoFragment reclamos = new EntidadReclamoFragment();
+            android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.contenedorFragement, reclamos);
+            transaction.addToBackStack(null).commit();
+            setTitle("Elija Entidad");
 
         } else if (id == R.id.nav_contactos) {
             Intent intent=new Intent(MainActivity.this, ContactosActivity.class);
