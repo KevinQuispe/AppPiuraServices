@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.activitiesadmin.AdminInfoEntelActivity">
+    tools:context=".views.activitiesadmin.adminentel.AdminInfoEntelActivity">
 
 </android.support.constraint.ConstraintLayout>

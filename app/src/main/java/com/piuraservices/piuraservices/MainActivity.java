@@ -50,13 +50,15 @@ public class MainActivity extends AppCompatActivity
                     setTitle("Entidades");
                     return true;
                 case R.id.navigation_ubicanos:
-                    UbicanosFragment ubicanos = new UbicanosFragment();
-                    android.support.v4.app.FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
-                    transaction2.replace(R.id.contenedorFragement, ubicanos);
-                    transaction2.addToBackStack(null).commit();
+                    //UbicanosFragment ubicanos = new UbicanosFragment();
+                    //android.support.v4.app.FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
+                    //transaction2.replace(R.id.contenedorFragement, ubicanos);
+                    //transaction2.addToBackStack(null).commit();
                     setTitle("Ubicanos");
                     //Intent intent= new Intent(MainActivity.this, ListaDireccionesActivity.class);
                     //startActivity(intent);
+                    Intent intent= new Intent(MainActivity.this, UbicanosActivity.class);
+                    startActivity(intent);
                     return true;
             }
             return false;
@@ -154,14 +156,14 @@ public class MainActivity extends AppCompatActivity
             android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.contenedorFragement, tramites);
             transaction.addToBackStack(null).commit();
-            setTitle("Elija Entidad");
+            setTitle("Elija Entidad o Empresa");
 
         } else if (id == R.id.nav_reclamos) {
             EntidadReclamoFragment reclamos = new EntidadReclamoFragment();
             android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.contenedorFragement, reclamos);
             transaction.addToBackStack(null).commit();
-            setTitle("Elija Entidad");
+            setTitle("Elija Entidad o Empresa");
 
         } else if (id == R.id.nav_contactos) {
             Intent intent=new Intent(MainActivity.this, ContactosActivity.class);

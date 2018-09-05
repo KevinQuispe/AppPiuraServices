@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context=".views.activities.ListaDireccionesActivity">
     <GridLayout
-        android:background="@color/colorPrimary"
+        android:background="@color/cardview_shadow_start_color"
         android:padding="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"

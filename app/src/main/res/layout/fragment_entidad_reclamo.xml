@@ -20,7 +20,10 @@
             android:textAlignment="center"
             android:textSize="20dp"
             android:textStyle="bold" />
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorPrimary" />
         <RadioGroup
             android:id="@+id/radio_group_entdades"
             android:layout_width="match_parent"
@@ -47,14 +50,27 @@
                 android:layout_height="wrap_content"
                 android:text="Empresa Movistar"
                 android:textSize="20dp" />
+            <RadioButton
+                android:id="@+id/rb_empresa_Claro_reclamo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Empresa Claro"
+                android:textSize="20dp" />
+
+            <RadioButton
+                android:id="@+id/rb_empresa_entel_reclamo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Empresa Entel"
+                android:textSize="20dp" />
         </RadioGroup>
 
         <Button
+            android:theme="@style/RaisedButtonDark"
             android:id="@+id/btn_entidad_siguiente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:background="@color/colorPrimary"
             android:text="Siguiente" />
     </LinearLayout>
 
