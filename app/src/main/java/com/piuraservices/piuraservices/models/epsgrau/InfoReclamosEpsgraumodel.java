@@ -46,4 +46,14 @@ public class InfoReclamosEpsgraumodel {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    @Override
+    public String toString() {
+        return "InfoReclamosEpsgraumodel{" +
+                "id=" + id +
+                ", entidadempresa_id=" + entidadempresa_id +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                '}';
+    }
 }

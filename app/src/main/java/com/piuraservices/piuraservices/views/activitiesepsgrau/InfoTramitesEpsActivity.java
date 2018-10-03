@@ -101,7 +101,6 @@ public class InfoTramitesEpsActivity extends AppCompatActivity {
                 listatramites.setAdapter(new ListaInfoTramitesepsAdapter(InfoTramitesEpsActivity.this,model));
                 progreso.dismiss();
             }
-
             @Override
             public void onFailure(Call<List<InfoTramitesEpsgraumodel>> call, Throwable t) {
                 progreso.dismiss();

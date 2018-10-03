@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.piuraservices.piuraservices.R;
 import com.piuraservices.piuraservices.models.enosa.InfoReclamosEnosamodel;
+import com.piuraservices.piuraservices.models.enosa.InfoTramitesEnosamodel;
 import com.piuraservices.piuraservices.models.epsgrau.InfoReclamosEpsgraumodel;
 
 import java.util.List;
@@ -16,11 +17,13 @@ import java.util.List;
 public class ListaInfoReclamosEnosaAdapter  extends ArrayAdapter<InfoReclamosEnosamodel> {
     private Context context;
     private List<InfoReclamosEnosamodel> values;
+
     public ListaInfoReclamosEnosaAdapter(Context context, List<InfoReclamosEnosamodel> values) {
         super(context, R.layout.lista_info_reclamos_enosa, values);
         this.context = context;
         this.values = values;
     }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;

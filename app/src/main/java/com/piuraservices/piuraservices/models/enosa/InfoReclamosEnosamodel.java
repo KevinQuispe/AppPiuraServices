@@ -47,4 +47,14 @@ public class InfoReclamosEnosamodel {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    @Override
+    public String toString() {
+        return "InfoReclamosEnosamodel{" +
+                "id=" + id +
+                ", entidadempresa_id=" + entidadempresa_id +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                '}';
+    }
 }

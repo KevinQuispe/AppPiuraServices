@@ -87,5 +87,18 @@ public class InfoReferencialEpsgraumodel {
     public void setWebentidad(String webentidad) {
         this.webentidad = webentidad;
     }
+
+    @Override
+    public String toString() {
+        return "InfoReferencialEpsgraumodel{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", correo='" + correo + '\'' +
+                ", horario='" + horario + '\'' +
+                ", webentidad='" + webentidad + '\'' +
+                '}';
+    }
 }
 

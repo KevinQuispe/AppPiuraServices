@@ -10,16 +10,27 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.piuraservices.piuraservices.R;
+import com.piuraservices.piuraservices.adapters.enosa.ListaInfoReclamosEnosaAdapter;
 import com.piuraservices.piuraservices.adapters.epsgrau.ListaInfoReclamosepsAdapter;
+import com.piuraservices.piuraservices.adapters.epsgrau.ListaInfoTramitesepsAdapter;
+import com.piuraservices.piuraservices.models.enosa.InfoReclamosEnosamodel;
 import com.piuraservices.piuraservices.models.epsgrau.InfoReclamosEpsgraumodel;
+import com.piuraservices.piuraservices.models.epsgrau.InfoTramitesEpsgraumodel;
 import com.piuraservices.piuraservices.services.epsgrau.ListaReclamosEpsclient;
 import com.piuraservices.piuraservices.utils.Config;
 import com.piuraservices.piuraservices.views.activities.ContactoDetalleActivity;
+import com.piuraservices.piuraservices.views.activitiesenosa.InfoReclamosEnosaActivity;
+import com.piuraservices.piuraservices.views.activitiesenosa.InfoTramitesEnosaActivity;
+
 import java.util.List;
+
+import butterknife.BindView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -30,9 +41,14 @@ public class InfoReclamosEpsActivity extends AppCompatActivity {
 
     ArrayAdapter<String> adapter;
     //variables retrofit
-    ListView listView;
+    ListView listareclamos;
     //variable para loading
     ProgressDialog progreso, progressDialog;
+
+    //varaibles para listar listview
+    @BindView(R.id.list_reclamoseps)
+    ListView nombrereclamoeps;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +61,8 @@ public class InfoReclamosEpsActivity extends AppCompatActivity {
         //adapter = new ArrayAdapter<String>(InfoReclamosEpsActivity.this, android.R.layout.simple_list_item_1, informacion);
         //listaelementos.setAdapter(adapter);
 
-        listView = (ListView) findViewById(R.id.list_reclamoseps);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listareclamos = (ListView) findViewById(R.id.list_reclamoseps);
+        listareclamos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent=new Intent(InfoReclamosEpsActivity.this, ContactoDetalleActivity.class);
@@ -60,7 +76,9 @@ public class InfoReclamosEpsActivity extends AppCompatActivity {
         final String url = Config.URL_SERVER;
         Retrofit.Builder builder = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create());
         Retrofit retrofit = builder.build();
+        //variable
         ListaReclamosEpsclient client = retrofit.create(ListaReclamosEpsclient.class); //here get la interface
+
         Call<List<InfoReclamosEpsgraumodel>> call = client.getInfoReclamoseps();//here el model
         //loading
         dialog();
@@ -68,7 +86,7 @@ public class InfoReclamosEpsActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<InfoReclamosEpsgraumodel>> call, Response<List<InfoReclamosEpsgraumodel>> response) {
                 List<InfoReclamosEpsgraumodel> model=response.body();
-                listView.setAdapter(new ListaInfoReclamosepsAdapter(InfoReclamosEpsActivity.this, model));
+                listareclamos.setAdapter(new ListaInfoReclamosepsAdapter(InfoReclamosEpsActivity.this,model));
                 progreso.dismiss();
             }
 
@@ -78,6 +96,7 @@ public class InfoReclamosEpsActivity extends AppCompatActivity {
                 Toast.makeText(InfoReclamosEpsActivity.this, "Error de conexion", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

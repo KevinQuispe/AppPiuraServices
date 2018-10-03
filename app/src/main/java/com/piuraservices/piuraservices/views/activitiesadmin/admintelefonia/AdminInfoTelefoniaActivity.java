@@ -14,6 +14,7 @@ public class AdminInfoTelefoniaActivity extends AppCompatActivity implements Ada
 
     ListView listaelementos;
     ArrayAdapter<String> adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

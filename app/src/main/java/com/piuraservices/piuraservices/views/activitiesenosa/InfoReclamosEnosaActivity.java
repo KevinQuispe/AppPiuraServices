@@ -99,7 +99,6 @@ public class InfoReclamosEnosaActivity extends AppCompatActivity {
                 listareclamos.setAdapter(new ListaInfoReclamosEnosaAdapter(InfoReclamosEnosaActivity.this, model));
                 progreso.dismiss();
             }
-
             @Override
             public void onFailure(Call<List<InfoReclamosEnosamodel>> call, Throwable t) {
                 progreso.dismiss();

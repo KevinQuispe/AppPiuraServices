@@ -25,9 +25,7 @@ public class EPS_grauActivity extends AppCompatActivity {
         imgtramites = (ImageView) findViewById(R.id.img_tramiteseps);
         imgreclamos = (ImageView) findViewById(R.id.img_reclamoseps);
 
-
     }
-
     public void onClickedtramites(View v) {
         imgtramites.setOnClickListener(new View.OnClickListener() {
             @Override

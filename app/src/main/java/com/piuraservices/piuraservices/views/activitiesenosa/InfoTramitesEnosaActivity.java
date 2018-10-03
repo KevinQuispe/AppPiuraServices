@@ -86,7 +86,7 @@ public class InfoTramitesEnosaActivity extends AppCompatActivity {
         Retrofit.Builder builder = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create());
         Retrofit retrofit = builder.build();
         ListaTramitesEnosaclient client = retrofit.create(ListaTramitesEnosaclient.class); //here get la interface
-        Call<List<InfoTramitesEnosamodel>> call = client.getInfoReclamosenosa();//here el model
+        Call<List<InfoTramitesEnosamodel>> call = client.getInfoTramitesenosa(1);//here el model
         //loading
         dialog();
         call.enqueue(new Callback<List<InfoTramitesEnosamodel>>() {

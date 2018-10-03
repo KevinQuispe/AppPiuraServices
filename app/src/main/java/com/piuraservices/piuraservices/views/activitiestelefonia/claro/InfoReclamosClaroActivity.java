@@ -14,14 +14,17 @@ import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.piuraservices.piuraservices.R;
+import com.piuraservices.piuraservices.adapters.enosa.ListaInfoReclamosEnosaAdapter;
 import com.piuraservices.piuraservices.adapters.epsgrau.ListaInfoReclamosepsAdapter;
 import com.piuraservices.piuraservices.adapters.telefonia.claro.ListaInfoReclamosClaroAdapter;
+import com.piuraservices.piuraservices.models.enosa.InfoReclamosEnosamodel;
 import com.piuraservices.piuraservices.models.epsgrau.InfoReclamosEpsgraumodel;
 import com.piuraservices.piuraservices.models.telefonia.claro.InfoReclamosClaromodel;
 import com.piuraservices.piuraservices.services.claro.ListaReclamosClaroclient;
 import com.piuraservices.piuraservices.services.epsgrau.ListaReclamosEpsclient;
 import com.piuraservices.piuraservices.utils.Config;
 import com.piuraservices.piuraservices.views.activities.ContactoDetalleActivity;
+import com.piuraservices.piuraservices.views.activitiesenosa.InfoReclamosEnosaActivity;
 import com.piuraservices.piuraservices.views.activitiesepsgrau.InfoReclamosEpsActivity;
 
 import java.util.List;
@@ -66,13 +69,14 @@ public class InfoReclamosClaroActivity extends AppCompatActivity {
             public void onResponse(Call<InfoReclamosClaromodel> call, Response<InfoReclamosClaromodel> response) {
                 try {
 
-
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
             @Override
             public void onFailure(Call<InfoReclamosClaromodel> call, Throwable t) {
+                progreso.dismiss();
+                Toast.makeText(InfoReclamosClaroActivity.this, "Error de conexion", Toast.LENGTH_SHORT).show();
 
             }
         });

@@ -25,7 +25,6 @@ public class InfoClaroActivity extends AppCompatActivity {
         imgtramites = (ImageView) findViewById(R.id.img_tramitesclaro);
         imgreclamos = (ImageView) findViewById(R.id.img_reclamosclaro);
 
-
     }
     public void onClickedtramites(View v) {
         imgtramites.setOnClickListener(new View.OnClickListener() {
@@ -79,11 +78,11 @@ public class InfoClaroActivity extends AppCompatActivity {
     }
     public void onClickOpenCall(View v) {
         Intent i = new Intent(Intent.ACTION_DIAL);
-        String spsgrau= "073307741";
-        if (spsgrau.trim().isEmpty()) {
+        String claro= "073307741";
+        if (claro.trim().isEmpty()) {
             i.setData(Uri.parse("tel:073307741"));
         } else {
-            i.setData(Uri.parse("tel:" + spsgrau));
+            i.setData(Uri.parse("tel:" + claro));
         }
         if (ActivityCompat.checkSelfPermission(getApplication(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
             Toast.makeText(getApplication(), "Please conceda permisos para llamar", Toast.LENGTH_LONG).show();
