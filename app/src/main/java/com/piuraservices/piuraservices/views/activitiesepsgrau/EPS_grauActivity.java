@@ -1,6 +1,7 @@
 package com.piuraservices.piuraservices.views.activitiesepsgrau;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -15,6 +16,7 @@ public class EPS_grauActivity extends AppCompatActivity {
 
     ImageView imgtramites;
     ImageView imgreclamos;
+    ProgressDialog ringProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,8 +81,11 @@ public class EPS_grauActivity extends AppCompatActivity {
         //webView.setWebViewClient(new WebViewClient());
         //webView.loadUrl("https://www.epsgrau.pe/webpage/desktop/views/");
         //Intent intent = new Intent("views.activities.OpenWebActivity");
+        loadingpage(v);
         Intent intent = new Intent(EPS_grauActivity.this,OpenWebEpsGrauActivity.class);
         startActivity(intent);
+
+
     }
     public void onClickOpenCall(View v) {
             Intent i = new Intent(Intent.ACTION_DIAL);
@@ -100,5 +105,24 @@ public class EPS_grauActivity extends AppCompatActivity {
         //permisos para llamadas
         private void requestPermission() {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 1);
+    }
+    //new with timer
+    public void loadingpage(View view) {
+         ringProgressDialog = ProgressDialog.show(EPS_grauActivity.this, "Please wait ...", "Loading...", true);
+        ringProgressDialog.setCancelable(true);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    // Here you should write your time consuming task...
+                    // Let the progress ring for 10 seconds...
+                    Thread.sleep(10000);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                ringProgressDialog.dismiss();
+            }
+        }).start();
     }
 }

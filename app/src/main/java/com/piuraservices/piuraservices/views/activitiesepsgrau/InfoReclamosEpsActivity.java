@@ -1,9 +1,14 @@
 package com.piuraservices.piuraservices.views.activitiesepsgrau;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -44,10 +49,16 @@ public class InfoReclamosEpsActivity extends AppCompatActivity {
     ListView listareclamos;
     //variable para loading
     ProgressDialog progreso, progressDialog;
-
+    List<InfoReclamosEpsgraumodel> list_reclamos;
     //varaibles para listar listview
     @BindView(R.id.list_reclamoseps)
     ListView nombrereclamoeps;
+    //variables for to send other activity
+    @BindView(R.id.list_reclamoseps)
+    ListView nombrereclamo;
+    @BindView(R.id.list_reclamoseps)
+    ListView descripcionreclamo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,12 +76,24 @@ public class InfoReclamosEpsActivity extends AppCompatActivity {
         listareclamos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent=new Intent(InfoReclamosEpsActivity.this, ContactoDetalleActivity.class);
-                startActivity(intent);
+                final int pos = i;
+               // Intent intent=new Intent(InfoReclamosEpsActivity.this, DetallereclamosEpsActivity.class);
+                //startActivity(intent);
+                editarDetalle(list_reclamos.get(pos));
             }
         });
         listaReclamosEPS();
 
+    }
+    //mostrardetalle lista
+    public void editarDetalle(final InfoReclamosEpsgraumodel post){
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("Post",post);
+        bundle.putString("nombreKey",post.getNombre().toString());
+        bundle.putString("descripcionKey",post.getDescripcion().toString());
+        Intent intent=new Intent(InfoReclamosEpsActivity.this, DetallereclamosEpsActivity.class);
+        startActivity(intent);
+          //call methods
     }
     public  void listaReclamosEPS(){
         final String url = Config.URL_SERVER;
@@ -85,9 +108,17 @@ public class InfoReclamosEpsActivity extends AppCompatActivity {
         call.enqueue(new Callback<List<InfoReclamosEpsgraumodel>>() {
             @Override
             public void onResponse(Call<List<InfoReclamosEpsgraumodel>> call, Response<List<InfoReclamosEpsgraumodel>> response) {
-                List<InfoReclamosEpsgraumodel> model=response.body();
-                listareclamos.setAdapter(new ListaInfoReclamosepsAdapter(InfoReclamosEpsActivity.this,model));
-                progreso.dismiss();
+                 if(response.isSuccessful()) {
+                    //showResponse(response.body().toString());
+                     List<InfoReclamosEpsgraumodel> model=response.body();
+                     listareclamos.setAdapter(new ListaInfoReclamosepsAdapter(InfoReclamosEpsActivity.this,model));
+                     Log.i("post submitted to API.",response.body().toString());
+                     progreso.dismiss();
+                }
+                else{
+                     warningmessage();
+                 }
+
             }
 
             @Override
@@ -128,5 +159,17 @@ public class InfoReclamosEpsActivity extends AppCompatActivity {
         // and show it
         progreso.show();
         progreso.setCancelable(false);
+    }
+    public void warningmessage(){
+        final AlertDialog.Builder alertaDeError2 = new AlertDialog.Builder(InfoReclamosEpsActivity.this);
+        alertaDeError2.setTitle("Advertencia");
+        alertaDeError2.setMessage("Selecione una alternativa para continuar.");
+        alertaDeError2.setPositiveButton("Entendido", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        alertaDeError2.create();
+        alertaDeError2.show();
     }
 }

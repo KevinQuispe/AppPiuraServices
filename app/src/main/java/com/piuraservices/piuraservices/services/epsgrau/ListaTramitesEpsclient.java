@@ -17,4 +17,7 @@ public interface ListaTramitesEpsclient {
     @GET("informacion/listainfotramites/{id}")
     Call<List<InfoTramitesEpsgraumodel>> getInfoTramiteseps (@Path("id") long id);
 
+    @GET("informacion/listainfotramites/{id}")
+    Call<InfoTramitesEpsgraumodel> getInfoTramitesepsgrau(@Path("id") long id);
+
 }

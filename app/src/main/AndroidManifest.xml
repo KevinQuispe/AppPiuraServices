@@ -261,7 +261,13 @@
             android:name=".views.activitiestelefonia.entel.OpenWebEntelActivity"
             android:theme="@style/ThemeEntelActivity" />
         <activity android:name=".views.activitiestelefonia.claro.OpenWebClaroActivity" />
-        <activity android:name=".views.activitiesepsgrau.OpenWebEpsGrauActivity" />
+        <activity
+            android:name=".views.activitiesepsgrau.OpenWebEpsGrauActivity"
+            android:parentActivityName=".views.activitiesepsgrau.OpenWebEpsGrauActivity" />
+        <activity android:name=".views.activitiesepsgrau.DetallereclamosEpsActivity" />
+        <activity android:name=".views.activitiesepsgrau.DetalleTramitesepsActivity">
+
+        </activity>
     </application>
 
 </manifest>

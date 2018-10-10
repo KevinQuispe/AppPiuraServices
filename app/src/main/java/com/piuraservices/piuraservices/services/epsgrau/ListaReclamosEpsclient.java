@@ -16,4 +16,8 @@ public interface ListaReclamosEpsclient {
 
     @GET("informacion/listainforeclamos/{id}")
     Call<List<InfoReclamosEpsgraumodel>> getInfoReclamoseps( @Path("id") long id);
+
+    @GET("informacion/listainforeclamos/{id}")
+    Call<InfoReclamosEpsgraumodel> getInfoReclamosepsgrau();
+
 }

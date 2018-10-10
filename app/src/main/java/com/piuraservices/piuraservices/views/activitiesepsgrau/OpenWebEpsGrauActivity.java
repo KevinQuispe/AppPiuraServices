@@ -18,6 +18,7 @@ public class OpenWebEpsGrauActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Web EPS Grau");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         webview = (WebView) findViewById(R.id.webviewepsgrau);
+
         String url = "http://www.epsgrau.pe/webpage/desktop/views/";
         webview.getSettings().setJavaScriptEnabled(true);
         webview.getSettings().setBuiltInZoomControls(true);

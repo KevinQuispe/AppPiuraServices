@@ -1,6 +1,8 @@
 package com.piuraservices.piuraservices.views.activitiesepsgrau;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -121,5 +123,46 @@ public class InfoTramitesEpsActivity extends AppCompatActivity {
         progreso.setCancelable(false);
     }
 
+    //cargando
+    public void cargando(){
+        progreso = ProgressDialog.show(this, "Procesando",
+                "Loading...", true);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run()
+            {
+                // do the thing that takes a long time
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run()
+                    {
+                        progreso.dismiss();
+                    }
+                });
+            }
+        }).start();
+    }
+    //new with timer
+    public void launchRingDialog(View view) {
+        final ProgressDialog ringProgressDialog =
+                ProgressDialog.show(InfoTramitesEpsActivity.this, "Please wait ...", "Loading...", true);
+        ringProgressDialog.setCancelable(true);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    // Here you should write your time consuming task...
+                    // Let the progress ring for 10 seconds...
+                    Thread.sleep(10000);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                ringProgressDialog.dismiss();
+            }
+        }).start();
+    }
 }
 
