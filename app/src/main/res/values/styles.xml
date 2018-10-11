@@ -34,7 +34,7 @@
     </style>
     <style name="ThemeMovistarActivity" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/color_movistar_card</item>
-        <item name="colorPrimaryDark">@android:color/holo_green_dark</item> <!--Color naranja-->
+        <item name="colorPrimaryDark">@android:color/holo_green_dark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 </resources>

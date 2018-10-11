@@ -21,6 +21,7 @@ import com.piuraservices.piuraservices.views.activitiestelefonia.claro.InfoTrami
 import com.piuraservices.piuraservices.views.activitiestelefonia.entel.InfoReclamosEntelActivity;
 import com.piuraservices.piuraservices.views.activitiestelefonia.entel.InfoTramitesEntelActivity;
 import com.piuraservices.piuraservices.views.activitiestelefonia.movistar.InfoReclamosMovistarActivity;
+import com.piuraservices.piuraservices.views.activitiestelefonia.movistar.InfoTramitesMovistarActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,7 +63,7 @@ public class EntidadTramiteFragment extends Fragment {
                     startActivity(intent);
                 }
                 if (rbmovistar.isChecked()) {
-                    Intent intent = new Intent(getContext(), InfoTramitesEnosaActivity.class);
+                    Intent intent = new Intent(getContext(), InfoTramitesMovistarActivity.class);
                     startActivity(intent);
                 }
                 if (rbclaro.isChecked()) {
