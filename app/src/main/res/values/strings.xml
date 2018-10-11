@@ -1,11 +1,18 @@
 <resources>
-    <string name="app_name">Piura Serviceso9897yt666gtttttt5r</string>
+    <string name="app_name">Piura Services</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Configurar cuenta</string>
-    <string name="action_admininfor">Administrar Información</string>
+    <string name="action_settings">Configurar</string>
     <string name="title_activity_ubicanos">Map</string>
+    <!-- acerca de-->
+    <string name="action_admininfor">Acerca de</string>
+    <string name="action_acercade"> App para acceder a consultar información de los servicios básicos de Luz, Agua y telefonía en la ciudad de Piura. \nPara el funcionamiento correcto de la aplicación es necesario activar sus <b>Datos</b> o conectarse a una red <b>Wi-Fi</b></string>
+    <string name="action_version"><b>Version de App:</b>V 1.0</string>
+    <string name="action_developer"><b>Desarrollador:</b> Kevin Quispe Rojas</string>
+    <string name="action_versionso"><b>Version de Android:</b> Lolipop 5.1</string>
+
+
     <!-- Splash screen -->
     <string name="titulo_splash_servicios">Servicios Básicos</string>
     <string name="text_splash_encuantra">Consulta información de los Servicios Básicos</string>
@@ -24,6 +31,7 @@
     <string name="title_tramites">Tramites</string>
     <string name="title_reclamos">Reclamos</string>
     <string name="title_config">Configurar cuenta</string>
+    <string name="title_acercade">Acerca de</string>
     <string name="title_comunicate">Comunicate</string>
     <string name="title_compartir">Compartir</string>
     <string name="title_salir">Salir</string>

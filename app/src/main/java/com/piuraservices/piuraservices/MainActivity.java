@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.piuraservices.piuraservices.views.activities.AcercadeActivity;
 import com.piuraservices.piuraservices.views.activities.ConfigurarCuentaActivity;
 import com.piuraservices.piuraservices.views.activities.ContactosActivity;
 import com.piuraservices.piuraservices.views.activities.ListaDireccionesActivity;
@@ -110,15 +111,9 @@ public class MainActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            Intent intent=new Intent(getApplicationContext(), ConfigurarCuentaActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        if (id == R.id.action_admininfo) {
-            Intent intent=new Intent(getApplicationContext(), AdministrarInformacionActivity.class);
+        if (id == R.id.action_acercade ) {
+            Intent intent=new Intent(getApplicationContext(), AcercadeActivity.class);
             startActivity(intent);
             return true;
         }
@@ -176,8 +171,8 @@ public class MainActivity extends AppCompatActivity
             transaction2.addToBackStack(null).commit();
             setTitle("Ubicanos");
 
-        } else if (id == R.id.nav_config) {
-            Intent intent=new Intent(MainActivity.this, ConfigurarCuentaActivity.class);
+        } else if (id == R.id.nav_acercade) {
+            Intent intent=new Intent(MainActivity.this, AcercadeActivity.class);
             startActivity(intent);
             return true;
 

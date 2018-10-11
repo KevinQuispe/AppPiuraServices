@@ -51,14 +51,6 @@ public class InfoReclamosEpsActivity extends AppCompatActivity {
     ProgressDialog progreso, progressDialog;
     List<InfoReclamosEpsgraumodel> list_reclamos;
     //varaibles para listar listview
-    @BindView(R.id.list_reclamoseps)
-    ListView nombrereclamoeps;
-    //variables for to send other activity
-    @BindView(R.id.list_reclamoseps)
-    ListView nombrereclamo;
-    @BindView(R.id.list_reclamoseps)
-    ListView descripcionreclamo;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,7 +110,6 @@ public class InfoReclamosEpsActivity extends AppCompatActivity {
                 else{
                      warningmessage();
                  }
-
             }
 
             @Override
