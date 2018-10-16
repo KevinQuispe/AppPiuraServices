@@ -1,9 +1,12 @@
 package com.piuraservices.piuraservices.views.activitiestelefonia.claro;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -12,21 +15,12 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
-
 import com.piuraservices.piuraservices.R;
-import com.piuraservices.piuraservices.adapters.enosa.ListaInfoReclamosEnosaAdapter;
-import com.piuraservices.piuraservices.adapters.epsgrau.ListaInfoReclamosepsAdapter;
 import com.piuraservices.piuraservices.adapters.telefonia.claro.ListaInfoReclamosClaroAdapter;
-import com.piuraservices.piuraservices.models.enosa.InfoReclamosEnosamodel;
-import com.piuraservices.piuraservices.models.epsgrau.InfoReclamosEpsgraumodel;
 import com.piuraservices.piuraservices.models.telefonia.claro.InfoReclamosClaromodel;
 import com.piuraservices.piuraservices.services.claro.ListaReclamosClaroclient;
-import com.piuraservices.piuraservices.services.epsgrau.ListaReclamosEpsclient;
 import com.piuraservices.piuraservices.utils.Config;
 import com.piuraservices.piuraservices.views.activities.ContactoDetalleActivity;
-import com.piuraservices.piuraservices.views.activitiesenosa.InfoReclamosEnosaActivity;
-import com.piuraservices.piuraservices.views.activitiesepsgrau.InfoReclamosEpsActivity;
-
 import java.util.List;
 
 import retrofit2.Call;
@@ -39,14 +33,14 @@ public class InfoReclamosClaroActivity extends AppCompatActivity {
 
     ListView listView;
     ProgressDialog progreso;
+    ListView listareclamos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_reclamos_claro);
         getSupportActionBar().setTitle("Infomación Reclamos Claro");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        listView = (ListView) findViewById(R.id.list_reclamosclaro);
-
+        listView = (ListView) findViewById(R.id.list_reclamos_claro);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -61,20 +55,25 @@ public class InfoReclamosClaroActivity extends AppCompatActivity {
         Retrofit.Builder builder = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create());
         Retrofit retrofit = builder.build();
         ListaReclamosClaroclient client = retrofit.create(ListaReclamosClaroclient.class); //here get la interface
-        Call<InfoReclamosClaromodel> call = client.getInfoReclamosClaro(1);//here el model
+        //Call<InfoReclamosClaromodel> call = client.getInfoReclamosclaro(4);//here el model
+        Call<List<InfoReclamosClaromodel>> call = client.getInfoReclamosclaro(4);//here el model
         //loading
         dialog();
-        call.enqueue(new Callback<InfoReclamosClaromodel>() {
+        call.enqueue(new Callback<List<InfoReclamosClaromodel>>() {
             @Override
-            public void onResponse(Call<InfoReclamosClaromodel> call, Response<InfoReclamosClaromodel> response) {
-                try {
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+            public void onResponse(Call<List<InfoReclamosClaromodel>> call, Response<List<InfoReclamosClaromodel>> response) {
+                if(response.isSuccessful()) {
+                    List<InfoReclamosClaromodel> model=response.body();
+                    listareclamos.setAdapter(new ListaInfoReclamosClaroAdapter(InfoReclamosClaroActivity.this,model));
+                    Log.i("post submitted to API.",response.body().toString());
+                    progreso.dismiss();
                 }
+                else{
+                    warningmessage();
+                }
+            }
             @Override
-            public void onFailure(Call<InfoReclamosClaromodel> call, Throwable t) {
+            public void onFailure(Call<List<InfoReclamosClaromodel>> call, Throwable t) {
                 progreso.dismiss();
                 Toast.makeText(InfoReclamosClaroActivity.this, "Error de conexion", Toast.LENGTH_SHORT).show();
 
@@ -111,5 +110,17 @@ public class InfoReclamosClaroActivity extends AppCompatActivity {
         // and show it
         progreso.show();
         progreso.setCancelable(false);
+    }
+    public void warningmessage(){
+        final AlertDialog.Builder alertaDeError2 = new AlertDialog.Builder(InfoReclamosClaroActivity.this);
+        alertaDeError2.setTitle("Advertencia");
+        alertaDeError2.setMessage("Selecione una alternativa para continuar.");
+        alertaDeError2.setPositiveButton("Entendido", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        alertaDeError2.create();
+        alertaDeError2.show();
     }
 }

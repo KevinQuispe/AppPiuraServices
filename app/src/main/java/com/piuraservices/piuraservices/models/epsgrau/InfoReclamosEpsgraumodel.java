@@ -19,7 +19,6 @@ public class InfoReclamosEpsgraumodel implements Serializable {
     @Expose
     private String descripcion;
 
-
     public InfoReclamosEpsgraumodel() {
 
     }

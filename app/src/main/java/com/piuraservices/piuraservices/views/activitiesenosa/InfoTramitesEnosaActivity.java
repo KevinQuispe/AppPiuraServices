@@ -86,19 +86,22 @@ public class InfoTramitesEnosaActivity extends AppCompatActivity {
         Retrofit.Builder builder = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create());
         Retrofit retrofit = builder.build();
         ListaTramitesEnosaclient client = retrofit.create(ListaTramitesEnosaclient.class); //here get la interface
-        Call<List<InfoTramitesEnosamodel>> call = client.getInfoTramitesenosa(1);//here el model
+        Call<List<InfoTramitesEnosamodel>> call = client.getInfoTramitesenosa(2);//here el model
         //loading
         dialog();
         call.enqueue(new Callback<List<InfoTramitesEnosamodel>>() {
             @Override
             public void onResponse(Call<List<InfoTramitesEnosamodel>> call, Response<List<InfoTramitesEnosamodel>> response) {
-                List<InfoTramitesEnosamodel> model=response.body();
-                listatramites.setAdapter(new ListaInfoTramitesEnosaAdapter(InfoTramitesEnosaActivity.this, model));
-               // adapter = new ArrayList<InfoTramitesEnosamodel>(InfoTramitesEnosaActivity.this, android.R.layout.simple_list_item_1,model);
-                //listatramites.setAdapter(adapter);
-                progreso.dismiss();
-            }
+               try {
+                   List<InfoTramitesEnosamodel> model=response.body();
+                   listatramites.setAdapter(new ListaInfoTramitesEnosaAdapter(InfoTramitesEnosaActivity.this, model));
+                   progreso.dismiss();
+               }
+               catch(Exception e){
+                   e.printStackTrace();
+               }
 
+            }
             @Override
             public void onFailure(Call<List<InfoTramitesEnosamodel>> call, Throwable t) {
                 progreso.dismiss();

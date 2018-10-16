@@ -5,6 +5,7 @@ public class InfoReclamosEnosamodel {
     private long entidadempresa_id;
     private String nombre;
     private String descripcion;
+
     public InfoReclamosEnosamodel(){
 
     }

@@ -10,6 +10,6 @@ import retrofit2.http.Path;
 
 public interface ListaTramitesEnosaclient {
 
-    @GET("informacion/getInfoTramites/{id}")
+    @GET("informacion/listainfotramites/{id}")
     Call<List<InfoTramitesEnosamodel>> getInfoTramitesenosa(@Path("id") long id);
 }

@@ -48,9 +48,8 @@ public class InfoReclamosEpsActivity extends AppCompatActivity {
     //variables retrofit
     ListView listareclamos;
     //variable para loading
-    ProgressDialog progreso, progressDialog;
+    ProgressDialog progreso;
     List<InfoReclamosEpsgraumodel> list_reclamos;
-    //varaibles para listar listview
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,9 +68,9 @@ public class InfoReclamosEpsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 final int pos = i;
-               // Intent intent=new Intent(InfoReclamosEpsActivity.this, DetallereclamosEpsActivity.class);
-                //startActivity(intent);
-                editarDetalle(list_reclamos.get(pos));
+               Intent intent=new Intent(InfoReclamosEpsActivity.this, DetallereclamosEpsActivity.class);
+               startActivity(intent);
+               //editarDetalle(list_reclamos.get(pos));
             }
         });
         listaReclamosEPS();
@@ -88,28 +87,29 @@ public class InfoReclamosEpsActivity extends AppCompatActivity {
           //call methods
     }
     public  void listaReclamosEPS(){
+
         final String url = Config.URL_SERVER;
         Retrofit.Builder builder = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create());
         Retrofit retrofit = builder.build();
         //variable
         ListaReclamosEpsclient client = retrofit.create(ListaReclamosEpsclient.class); //here get la interface
 
-        Call<List<InfoReclamosEpsgraumodel>> call = client.getInfoReclamoseps();//here el model
+        Call<List<InfoReclamosEpsgraumodel>> call = client.getInfoReclamoseps(1);//here el model
         //loading
         dialog();
         call.enqueue(new Callback<List<InfoReclamosEpsgraumodel>>() {
             @Override
             public void onResponse(Call<List<InfoReclamosEpsgraumodel>> call, Response<List<InfoReclamosEpsgraumodel>> response) {
-                 if(response.isSuccessful()) {
+                if(response.isSuccessful()) {
                     //showResponse(response.body().toString());
-                     List<InfoReclamosEpsgraumodel> model=response.body();
-                     listareclamos.setAdapter(new ListaInfoReclamosepsAdapter(InfoReclamosEpsActivity.this,model));
-                     Log.i("post submitted to API.",response.body().toString());
-                     progreso.dismiss();
+                    List<InfoReclamosEpsgraumodel> model=response.body();
+                    listareclamos.setAdapter(new ListaInfoReclamosepsAdapter(InfoReclamosEpsActivity.this,model));
+                    Log.i("post submitted to API.",response.body().toString());
+                    progreso.dismiss();
                 }
                 else{
-                     warningmessage();
-                 }
+                    warningmessage();
+                }
             }
 
             @Override
@@ -118,7 +118,6 @@ public class InfoReclamosEpsActivity extends AppCompatActivity {
                 Toast.makeText(InfoReclamosEpsActivity.this, "Error de conexion", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

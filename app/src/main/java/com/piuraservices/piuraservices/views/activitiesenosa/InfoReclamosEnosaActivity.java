@@ -16,11 +16,14 @@ import android.widget.Toast;
 import com.piuraservices.piuraservices.R;
 import com.piuraservices.piuraservices.adapters.enosa.ListaInfoReclamosEnosaAdapter;
 import com.piuraservices.piuraservices.adapters.epsgrau.ListaInfoReclamosepsAdapter;
+import com.piuraservices.piuraservices.adapters.epsgrau.ListaInfoTramitesepsAdapter;
 import com.piuraservices.piuraservices.models.enosa.InfoReclamosEnosamodel;
 import com.piuraservices.piuraservices.models.epsgrau.InfoReclamosEpsgraumodel;
+import com.piuraservices.piuraservices.models.epsgrau.InfoTramitesEpsgraumodel;
 import com.piuraservices.piuraservices.services.enosa.ListaReclamosEnosaclient;
 import com.piuraservices.piuraservices.utils.Config;
 import com.piuraservices.piuraservices.views.activitiesepsgrau.InfoReclamosEpsActivity;
+import com.piuraservices.piuraservices.views.activitiesepsgrau.InfoTramitesEpsActivity;
 
 import java.util.List;
 
@@ -45,13 +48,13 @@ public class InfoReclamosEnosaActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //String[] informacion = {"Información Referencial", "Información de Reclamos", "Información de Trámites"};
         //Inflater inflater;
-        listareclamos=(ListView) findViewById(R.id.list_reclamosenosa);
         //adapter = new ArrayAdapter<String>(InfoReclamosEnosaActivity.this, android.R.layout.simple_list_item_1, informacion);
         //listaelementos.setAdapter(adapter);
-
+        listareclamos=(ListView) findViewById(R.id.list_reclamosenosa);
         listareclamos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
                 Toast.makeText(InfoReclamosEnosaActivity.this, "Click me", Toast.LENGTH_SHORT).show();
 
             }
@@ -89,7 +92,7 @@ public class InfoReclamosEnosaActivity extends AppCompatActivity {
         Retrofit.Builder builder = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create());
         Retrofit retrofit = builder.build();
         ListaReclamosEnosaclient client = retrofit.create(ListaReclamosEnosaclient.class); //here get la interface
-        Call<List<InfoReclamosEnosamodel>> call = client.getInfoReclamosenosa();//here el model
+        Call<List<InfoReclamosEnosamodel>> call = client.getInfoReclamosenosa(2);//here el model
         //loading
         dialog();
         call.enqueue(new Callback<List<InfoReclamosEnosamodel>>() {

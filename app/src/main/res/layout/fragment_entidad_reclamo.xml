@@ -15,15 +15,17 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/title_entidad_reclamo"
             android:textAlignment="center"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+            android:textColor="@color/colorPrimary"
+            android:textSize="18dp" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="@color/colorPrimary" />
+
         <RadioGroup
             android:id="@+id/radio_group_entdades"
             android:layout_width="match_parent"
@@ -50,6 +52,7 @@
                 android:layout_height="wrap_content"
                 android:text="Empresa Movistar"
                 android:textSize="20dp" />
+
             <RadioButton
                 android:id="@+id/rb_empresa_Claro_reclamo"
                 android:layout_width="match_parent"
@@ -66,12 +69,13 @@
         </RadioGroup>
 
         <Button
-            android:theme="@style/RaisedButtonDark"
             android:id="@+id/btn_entidad_siguiente"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="51dp"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:text="Siguiente" />
+            android:text="Siguiente"
+            android:textColor="@color/color_text_boton_login"
+            android:theme="@style/RaisedButtonDark" />
     </LinearLayout>
 
 

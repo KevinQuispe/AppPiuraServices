@@ -17,7 +17,7 @@ public class ListaInfoReclamosEntelAdapter  extends ArrayAdapter<InfoReclamosEnt
     private List<InfoReclamosEntelmodel> values;
 
     public ListaInfoReclamosEntelAdapter(Context context, List<InfoReclamosEntelmodel> values) {
-        super(context, R.layout.lista_info_tramites_claro, values);
+        super(context, R.layout.lista_info_reclamos_entel, values);
         this.context = context;
         this.values = values;
     }

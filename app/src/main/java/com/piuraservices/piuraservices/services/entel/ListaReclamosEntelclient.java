@@ -1,6 +1,7 @@
 package com.piuraservices.piuraservices.services.entel;
 
 import com.piuraservices.piuraservices.models.enosa.InfoReclamosEnosamodel;
+import com.piuraservices.piuraservices.models.telefonia.entel.InfoReclamosEntelmodel;
 
 import java.util.List;
 
@@ -13,6 +14,6 @@ public interface ListaReclamosEntelclient {
     Call<List<InfoReclamosEnosamodel>> getInfoReclamosentel();
 
     @GET("informacion/listainforeclamos/{id}")
-    Call<List<InfoReclamosEnosamodel>> getInfoReclamosentel( @Path("id") long id);
+    Call<List<InfoReclamosEntelmodel>> getInfoReclamosentel(@Path("id") long id);
 
 }

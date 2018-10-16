@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ListView
-            android:id="@+id/list_reclamosclaro"
+            android:id="@+id/list_reclamos_claro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>

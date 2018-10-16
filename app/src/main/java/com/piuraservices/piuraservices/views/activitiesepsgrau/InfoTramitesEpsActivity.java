@@ -38,10 +38,10 @@ public class InfoTramitesEpsActivity extends AppCompatActivity {
 
     ListView listaelementos;
     ArrayAdapter<String> adapter;
-    //
+    //list view para tramites
     ListView listatramites;
     //dialog
-    ProgressDialog progreso, progressDialog; //variable para loading
+    ProgressDialog progreso;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +53,7 @@ public class InfoTramitesEpsActivity extends AppCompatActivity {
         //listaelementos=(ListView) findViewById(R.id.list_tramiteseps);
         //adapter = new ArrayAdapter<String>(InfoTramitesEpsActivity.this, android.R.layout.simple_list_item_1, informacion);
         //listaelementos.setAdapter(adapter);
+
         listatramites = (ListView) findViewById(R.id.list_tramiteseps);
         listatramites.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -93,7 +94,7 @@ public class InfoTramitesEpsActivity extends AppCompatActivity {
         Retrofit.Builder builder = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create());
         Retrofit retrofit = builder.build();
         ListaTramitesEpsclient client = retrofit.create(ListaTramitesEpsclient.class); //here get la interface
-        Call<List<InfoTramitesEpsgraumodel>> call = client.getInfoTramiteseps();
+        Call<List<InfoTramitesEpsgraumodel>> call = client.getInfoTramiteseps(1);
         //loading
         dialog();
         call.enqueue(new Callback<List<InfoTramitesEpsgraumodel>>() {

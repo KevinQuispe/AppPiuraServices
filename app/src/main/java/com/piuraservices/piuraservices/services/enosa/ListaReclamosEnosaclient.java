@@ -14,6 +14,6 @@ public interface ListaReclamosEnosaclient {
     @GET("informacion/getInfoReclamos")
     Call<List<InfoReclamosEnosamodel>> getInfoReclamosenosa();
 
-    @GET("informacion/getinforeclamos/{id}")
+    @GET("informacion/listainforeclamos/{id}")
     Call<List<InfoReclamosEnosamodel>> getInfoReclamosenosa( @Path("id") long id);
 }
