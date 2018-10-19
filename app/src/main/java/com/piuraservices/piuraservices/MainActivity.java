@@ -15,10 +15,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.piuraservices.piuraservices.views.activities.AcercadeActivity;
-import com.piuraservices.piuraservices.views.activities.ConfigurarCuentaActivity;
 import com.piuraservices.piuraservices.views.activities.ContactosActivity;
-import com.piuraservices.piuraservices.views.activities.ListaDireccionesActivity;
-import com.piuraservices.piuraservices.views.activitiesadmin.AdministrarInformacionActivity;
 import com.piuraservices.piuraservices.views.fragments.EntidadReclamoFragment;
 import com.piuraservices.piuraservices.views.fragments.EntidadTramiteFragment;
 import com.piuraservices.piuraservices.views.fragments.EntidadesFragment;

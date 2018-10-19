@@ -12,8 +12,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.piuraservices.piuraservices.R;
-import com.piuraservices.piuraservices.views.activitiesadmin.adminenosa.EnosaInfoReclamosActivity;
-import com.piuraservices.piuraservices.views.activitiestelefonia.claro.InfoReclamosClaroActivity;
 
 public class InfoMovistarActivity extends AppCompatActivity {
 
