@@ -33,21 +33,14 @@ public class InfoReclamosClaroActivity extends AppCompatActivity {
 
     ListView listView;
     ProgressDialog progreso;
-    ListView listareclamos;
+    ListView listareclamosclaro;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_reclamos_claro);
         getSupportActionBar().setTitle("Infomación Reclamos Claro");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        listView = (ListView) findViewById(R.id.list_reclamos_claro);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent=new Intent(InfoReclamosClaroActivity.this, ContactoDetalleActivity.class);
-                startActivity(intent);
-            }
-        });
+        listareclamosclaro = (ListView) findViewById(R.id.list_reclamos_claro);
         listaReclamosClaro();
     }
     public  void listaReclamosClaro(){
@@ -55,16 +48,15 @@ public class InfoReclamosClaroActivity extends AppCompatActivity {
         Retrofit.Builder builder = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create());
         Retrofit retrofit = builder.build();
         ListaReclamosClaroclient client = retrofit.create(ListaReclamosClaroclient.class); //here get la interface
-        //Call<InfoReclamosClaromodel> call = client.getInfoReclamosclaro(4);//here el model
         Call<List<InfoReclamosClaromodel>> call = client.getInfoReclamosclaro(4);//here el model
-        //loading
         dialog();
         call.enqueue(new Callback<List<InfoReclamosClaromodel>>() {
             @Override
             public void onResponse(Call<List<InfoReclamosClaromodel>> call, Response<List<InfoReclamosClaromodel>> response) {
+
                 if(response.isSuccessful()) {
                     List<InfoReclamosClaromodel> model=response.body();
-                    listareclamos.setAdapter(new ListaInfoReclamosClaroAdapter(InfoReclamosClaroActivity.this,model));
+                    listareclamosclaro.setAdapter(new ListaInfoReclamosClaroAdapter(InfoReclamosClaroActivity.this,model));
                     Log.i("post submitted to API.",response.body().toString());
                     progreso.dismiss();
                 }
@@ -114,8 +106,8 @@ public class InfoReclamosClaroActivity extends AppCompatActivity {
     public void warningmessage(){
         final AlertDialog.Builder alertaDeError2 = new AlertDialog.Builder(InfoReclamosClaroActivity.this);
         alertaDeError2.setTitle("Advertencia");
-        alertaDeError2.setMessage("Selecione una alternativa para continuar.");
-        alertaDeError2.setPositiveButton("Entendido", new DialogInterface.OnClickListener() {
+        alertaDeError2.setMessage("Recargar Información.");
+        alertaDeError2.setPositiveButton("Reintentar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
             }

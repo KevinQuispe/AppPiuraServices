@@ -43,6 +43,7 @@ public class InfoTramitesEntelActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Infomación Tramites Entel");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         listartramites=(ListView) findViewById(R.id.list_tramites_entel);
+        listarTramitesEntel();
     }
     public void listarTramitesEntel(){
         final String url = Config.URL_SERVER;
@@ -104,13 +105,13 @@ public class InfoTramitesEntelActivity extends AppCompatActivity {
         progreso.setMessage("Loading...");
         // and show it
         progreso.show();
-        progreso.setCancelable(false);
+        //progreso.setCancelable(false);
     }
     public void warningmessage(){
         final AlertDialog.Builder alertaDeError2 = new AlertDialog.Builder(InfoTramitesEntelActivity.this);
         alertaDeError2.setTitle("Advertencia");
-        alertaDeError2.setMessage("Selecione una alternativa para continuar.");
-        alertaDeError2.setPositiveButton("Entendido", new DialogInterface.OnClickListener() {
+        alertaDeError2.setMessage("Recargar informacion");
+        alertaDeError2.setPositiveButton("Reintentar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
             }

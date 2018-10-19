@@ -116,8 +116,8 @@ public class InfoReclamosMovistarActivity extends AppCompatActivity {
     public void warningmessage(){
         final AlertDialog.Builder alertaDeError2 = new AlertDialog.Builder(InfoReclamosMovistarActivity.this);
         alertaDeError2.setTitle("Advertencia");
-        alertaDeError2.setMessage("Selecione una alternativa para continuar.");
-        alertaDeError2.setPositiveButton("Entendido", new DialogInterface.OnClickListener() {
+        alertaDeError2.setMessage("Recargar la información");
+        alertaDeError2.setPositiveButton("Reintentar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
             }

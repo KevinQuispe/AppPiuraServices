@@ -11,6 +11,6 @@ import retrofit2.http.Path;
 
 public interface ListaTramitesEntelclient {
 
-    @GET("informacion/listaifotramites/{id}")
+    @GET("informacion/listainfotramites/{id}")
     Call<List<InfoTramitesEntelmodel>> getInfoTramitesentel(@Path("id") long id);
 }

@@ -265,7 +265,8 @@
             android:name=".views.activitiesepsgrau.OpenWebEpsGrauActivity"
             android:parentActivityName=".views.activitiesepsgrau.OpenWebEpsGrauActivity" />
         <activity android:name=".views.activitiesepsgrau.DetallereclamosEpsActivity" />
-        <activity android:name=".views.activitiesepsgrau.DetalleTramitesepsActivity"></activity>
+
+        <activity android:name=".views.activitiesepsgrau.DetalleTramitesepsActivity"/>
 
         <activity android:name=".views.activities.AcercadeActivity"
             android:parentActivityName=".MainActivity" />

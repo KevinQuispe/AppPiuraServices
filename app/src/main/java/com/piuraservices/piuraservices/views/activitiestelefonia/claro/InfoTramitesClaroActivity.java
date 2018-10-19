@@ -46,8 +46,9 @@ public class InfoTramitesClaroActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Infomación Trámites Claro");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         listatramites=(ListView) findViewById(R.id.list_tramites_claro);
+        listaTramitesClaro();
     }
-    public  void listaReclamosClaro(){
+    public  void listaTramitesClaro(){
         final String url = Config.URL_SERVER;
         Retrofit.Builder builder = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create());
         Retrofit retrofit = builder.build();
@@ -59,10 +60,17 @@ public class InfoTramitesClaroActivity extends AppCompatActivity {
         call.enqueue(new Callback<List<InfoTramitesClaromodel>>() {
             @Override
             public void onResponse(Call<List<InfoTramitesClaromodel>> call, Response<List<InfoTramitesClaromodel>> response) {
-                List<InfoTramitesClaromodel> model=response.body();
-                listatramites.setAdapter(new ListaInfoTramitesClaroAdapter(InfoTramitesClaroActivity.this,model));
-                Log.i("post submitted to API.",response.body().toString());
-                progreso.dismiss();
+
+                if(response.isSuccessful()) {
+                    List<InfoTramitesClaromodel> model=response.body();
+                    listatramites.setAdapter(new ListaInfoTramitesClaroAdapter(InfoTramitesClaroActivity.this,model));
+                    Log.i("post submitted to API.",response.body().toString());
+                    progreso.dismiss();
+                }
+                else{
+                    warningmessage();
+                }
+
             }
 
             @Override

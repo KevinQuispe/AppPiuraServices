@@ -8,9 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.piuraservices.piuraservices.R;
-import com.piuraservices.piuraservices.models.enosa.InfoReclamosEnosamodel;
 import com.piuraservices.piuraservices.models.telefonia.claro.InfoReclamosClaromodel;
-
 import java.util.List;
 
 public class ListaInfoReclamosClaroAdapter extends ArrayAdapter<InfoReclamosClaromodel> {
