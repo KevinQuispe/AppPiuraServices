@@ -1,6 +1,8 @@
 package com.piuraservices.piuraservices.models.epsgrau;
 
-public class InfoTramitesEpsgraumodel {
+import java.io.Serializable;
+
+public class InfoTramitesEpsgraumodel  implements Serializable{
     private long id;
     private long entidadempresa_id;
     private String nombre;

@@ -18,8 +18,9 @@ import java.util.List;
 public class ListaInfoTramitesepsAdapter extends ArrayAdapter<InfoTramitesEpsgraumodel> {
     private Context context;
     private List<InfoTramitesEpsgraumodel> values;
+
     public ListaInfoTramitesepsAdapter(Context context, List<InfoTramitesEpsgraumodel> values) {
-        super(context, R.layout.lista_info_reclamos_eps, values);
+        super(context, R.layout.lista_info_tramites_eps, values);
         this.context = context;
         this.values = values;
     }

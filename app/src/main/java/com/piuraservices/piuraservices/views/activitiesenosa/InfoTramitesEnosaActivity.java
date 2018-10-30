@@ -51,7 +51,7 @@ public class InfoTramitesEnosaActivity extends AppCompatActivity {
         listatramites.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(InfoTramitesEnosaActivity.this, "Click me", Toast.LENGTH_SHORT).show();
+                Toast.makeText(InfoTramitesEnosaActivity.this, "Click tramite "+i, Toast.LENGTH_SHORT).show();
 
             }
         });

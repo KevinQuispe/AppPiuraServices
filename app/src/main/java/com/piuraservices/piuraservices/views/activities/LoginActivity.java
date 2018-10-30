@@ -37,8 +37,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(intent);
                 break;
             case R.id.btn_register:
-                Intent register = new Intent(LoginActivity.this, RegisterUserActivity.class);
-                startActivity(register);
+
                 break;
             case R.id.idforgot:
                 Intent forgot = new Intent(LoginActivity.this, ResetPasswordActivity.class);

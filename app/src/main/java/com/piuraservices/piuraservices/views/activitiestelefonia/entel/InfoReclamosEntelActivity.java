@@ -121,6 +121,7 @@ public class InfoReclamosEntelActivity extends AppCompatActivity {
         alertaDeError2.setPositiveButton("Entendido", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                listarReclamosEntel();
             }
         });
         alertaDeError2.create();

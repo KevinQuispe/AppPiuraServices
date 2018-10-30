@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -51,9 +52,6 @@
         <activity
             android:name=".UbicanosActivity"
             android:label="@string/title_activity_ubicanos"
-            android:parentActivityName=".views.activities.LoginActivity" />
-        <activity
-            android:name=".views.activities.RegisterUserActivity"
             android:parentActivityName=".views.activities.LoginActivity" />
         <activity
             android:name=".views.activities.LoginActivity"
@@ -191,7 +189,9 @@
         <activity
             android:name=".views.activitiesepsgrau.OpenWebEpsGrauActivity"
             android:parentActivityName=".views.activitiesepsgrau.OpenWebEpsGrauActivity" />
-        <activity android:name=".views.activitiesepsgrau.DetallereclamosEpsActivity" />
+        <activity android:name=".views.activitiesepsgrau.DetallereclamosEpsActivity"
+            android:parentActivityName=".views.activitiesepsgrau.InfoReclamosEpsActivity"
+            />
 
         <activity android:name=".views.activitiesepsgrau.DetalleTramitesepsActivity"/>
 

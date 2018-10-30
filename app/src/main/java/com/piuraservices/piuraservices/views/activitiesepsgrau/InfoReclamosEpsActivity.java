@@ -2,6 +2,7 @@ package com.piuraservices.piuraservices.views.activitiesepsgrau;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.app.Service;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.nfc.Tag;
@@ -20,6 +21,10 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.loopj.android.http.TextHttpResponseHandler;
 import com.piuraservices.piuraservices.R;
 import com.piuraservices.piuraservices.adapters.enosa.ListaInfoReclamosEnosaAdapter;
 import com.piuraservices.piuraservices.adapters.epsgrau.ListaInfoReclamosepsAdapter;
@@ -28,11 +33,15 @@ import com.piuraservices.piuraservices.models.enosa.InfoReclamosEnosamodel;
 import com.piuraservices.piuraservices.models.epsgrau.InfoReclamosEpsgraumodel;
 import com.piuraservices.piuraservices.models.epsgrau.InfoTramitesEpsgraumodel;
 import com.piuraservices.piuraservices.services.epsgrau.ListaReclamosEpsclient;
+import com.piuraservices.piuraservices.services.http;
 import com.piuraservices.piuraservices.utils.Config;
 import com.piuraservices.piuraservices.views.activities.ContactoDetalleActivity;
 import com.piuraservices.piuraservices.views.activitiesenosa.InfoReclamosEnosaActivity;
 import com.piuraservices.piuraservices.views.activitiesenosa.InfoTramitesEnosaActivity;
 
+import org.apache.http.Header;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -42,14 +51,16 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class InfoReclamosEpsActivity extends AppCompatActivity {
+public class InfoReclamosEpsActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
     ArrayAdapter<String> adapter;
     //variables retrofit
-    ListView listareclamos;
+    ListView listViewreclamos;
     //variable para loading
     ProgressDialog progreso;
     List<InfoReclamosEpsgraumodel> list_reclamos;
+    //info
+    ArrayList<InfoReclamosEpsgraumodel> lista = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,17 +74,17 @@ public class InfoReclamosEpsActivity extends AppCompatActivity {
         //adapter = new ArrayAdapter<String>(InfoReclamosEpsActivity.this, android.R.layout.simple_list_item_1, informacion);
         //listaelementos.setAdapter(adapter);
 
-        listareclamos = (ListView) findViewById(R.id.list_reclamoseps);
-        listareclamos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listViewreclamos = (ListView) findViewById(R.id.list_reclamoseps);
+        listViewreclamos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 final int pos = i;
                Intent intent=new Intent(InfoReclamosEpsActivity.this, DetallereclamosEpsActivity.class);
                startActivity(intent);
-               //editarDetalle(list_reclamos.get(pos));
+               editarDetalle(list_reclamos.get(pos));
             }
         });
-        listaReclamosEPS();
+        listareclamos();
 
     }
     //mostrardetalle lista
@@ -82,9 +93,49 @@ public class InfoReclamosEpsActivity extends AppCompatActivity {
         bundle.putSerializable("Post",post);
         bundle.putString("nombreKey",post.getNombre().toString());
         bundle.putString("descripcionKey",post.getDescripcion().toString());
+        //capturar datos
         Intent intent=new Intent(InfoReclamosEpsActivity.this, DetallereclamosEpsActivity.class);
+        Bundle parametros = new Bundle();
+        String nombretramite = post.getNombre().toString();
+        String descripciontramite = post.getDescripcion().toString();
+        parametros.putString("descripcionKey",descripciontramite);
+        intent.putExtras(parametros);
         startActivity(intent);
-          //call methods
+    }
+    public void listareclamos(){
+        dialog();
+        String url="informacion/listainforeclamos/1";
+        http.get(getApplicationContext(), url, new TextHttpResponseHandler() {
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                System.out.println(responseString);
+                Toast.makeText(getApplicationContext(), "Error de Conexion http", Toast.LENGTH_SHORT).show();
+                progreso.hide();
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                System.out.println(responseString);
+                try {
+                    Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
+                    lista=new Gson().fromJson(responseString,new TypeToken<ArrayList<InfoReclamosEpsgraumodel>>(){}.getType());
+                    listViewreclamos.setAdapter(new ListaInfoReclamosepsAdapter(getApplicationContext(),lista));
+                    listViewreclamos.setOnItemClickListener(InfoReclamosEpsActivity.this);
+
+                    listViewreclamos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            Toast.makeText(getApplicationContext(), "item " +i, Toast.LENGTH_SHORT).show();
+                            editarDetalle(lista.get(i)); //call data detalle
+                        }
+                    });
+                    progreso.hide();
+                }
+                catch (Exception e){
+                    System.out.println(e.getMessage());
+                }
+            }
+        });
     }
     public  void listaReclamosEPS(){
 
@@ -103,7 +154,7 @@ public class InfoReclamosEpsActivity extends AppCompatActivity {
                 if(response.isSuccessful()) {
                     //showResponse(response.body().toString());
                     List<InfoReclamosEpsgraumodel> model=response.body();
-                    listareclamos.setAdapter(new ListaInfoReclamosepsAdapter(InfoReclamosEpsActivity.this,model));
+                    //listareclamos.setAdapter(new ListaInfoReclamosepsAdapter(InfoReclamosEpsActivity.this,model));
                     Log.i("post submitted to API.",response.body().toString());
                     progreso.dismiss();
                 }
@@ -161,5 +212,15 @@ public class InfoReclamosEpsActivity extends AppCompatActivity {
         });
         alertaDeError2.create();
         alertaDeError2.show();
+    }
+
+    @Override
+    public void onClick(View view) {
+
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
     }
 }

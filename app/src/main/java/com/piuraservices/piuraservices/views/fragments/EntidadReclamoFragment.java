@@ -47,12 +47,12 @@ public class EntidadReclamoFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                if (rbenosa.isChecked()) {
-                    Intent intent = new Intent(getContext(), InfoReclamosEnosaActivity.class);
-                    startActivity(intent);
-                }
                 if (rbepsgrau.isChecked()) {
                     Intent intent = new Intent(getContext(), InfoReclamosEpsActivity.class);
+                    startActivity(intent);
+                }
+                if (rbenosa.isChecked()) {
+                    Intent intent = new Intent(getContext(), InfoReclamosEnosaActivity.class);
                     startActivity(intent);
                 }
                 if (rbmovistar.isChecked()) {

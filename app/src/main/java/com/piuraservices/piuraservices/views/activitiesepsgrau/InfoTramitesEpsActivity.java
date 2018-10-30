@@ -36,12 +36,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class InfoTramitesEpsActivity extends AppCompatActivity {
 
-    ListView listaelementos;
     ArrayAdapter<String> adapter;
     //list view para tramites
     ListView listatramites;
     //dialog
     ProgressDialog progreso;
+    List<InfoTramitesEpsgraumodel> list_tramites;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +60,7 @@ public class InfoTramitesEpsActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent=new Intent(InfoTramitesEpsActivity.this, ContactoDetalleActivity.class);
                 startActivity(intent);
+
             }
         });
         listatramitesEPS();
@@ -88,6 +89,7 @@ public class InfoTramitesEpsActivity extends AppCompatActivity {
 
         return super.onCreateOptionsMenu(menu);
     }
+
     //listar tramites
     public  void listatramitesEPS(){
         final String url = Config.URL_SERVER;
@@ -110,6 +112,16 @@ public class InfoTramitesEpsActivity extends AppCompatActivity {
                 Toast.makeText(InfoTramitesEpsActivity.this, "Error de conexion", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void editarDetalle(final InfoTramitesEpsgraumodel post){
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("Post",post);
+        bundle.putString("nombreKey",post.getNombre().toString());
+        bundle.putString("descripcionKey",post.getDescripcion().toString());
+        Intent intent=new Intent(InfoTramitesEpsActivity.this, DetallereclamosEpsActivity.class);
+        startActivity(intent);
+        //call methods
     }
     public void dialog() {
         //progreso = new ProgressDialog(EpsInfoReclamosActivity.this, ProgressDialog.THEME_HOLO_LIGHT);

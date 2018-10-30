@@ -72,6 +72,7 @@ public class InfoReclamosMovistarActivity extends AppCompatActivity {
                 }
                 else{
                     warningmessage();
+
                 }
             }
             @Override
@@ -120,6 +121,7 @@ public class InfoReclamosMovistarActivity extends AppCompatActivity {
         alertaDeError2.setPositiveButton("Reintentar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                listarReclamosMovistar();
             }
         });
         alertaDeError2.create();

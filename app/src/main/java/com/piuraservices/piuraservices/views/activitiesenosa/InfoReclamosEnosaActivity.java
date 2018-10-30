@@ -55,7 +55,7 @@ public class InfoReclamosEnosaActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                Toast.makeText(InfoReclamosEnosaActivity.this, "Click me", Toast.LENGTH_SHORT).show();
+                Toast.makeText(InfoReclamosEnosaActivity.this, "Click me reclamos"+i, Toast.LENGTH_SHORT).show();
 
             }
         });

@@ -4,24 +4,18 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
-public class InfoReclamosEpsgraumodel implements Serializable {
-    @SerializedName("id")
-    @Expose
+public class InfoReclamosEpsgraumodel  implements Serializable {
     private long id;
-    @SerializedName("entidadempresa_id")
-    @Expose
     private long entidadempresa_id;
-    @SerializedName("nombre")
-    @Expose
     private String nombre;
-    @SerializedName("decripcion")
-    @Expose
     private String descripcion;
 
     public InfoReclamosEpsgraumodel() {
 
     }
+
     public InfoReclamosEpsgraumodel(long id, long entidadempresa_id, String nombre, String descripcion) {
         this.id = id;
         this.entidadempresa_id = entidadempresa_id;
@@ -59,15 +53,5 @@ public class InfoReclamosEpsgraumodel implements Serializable {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    @Override
-    public String toString() {
-        return "InfoReclamosEpsgraumodel{" +
-                "id=" + id +
-                ", entidadempresa_id=" + entidadempresa_id +
-                ", nombre='" + nombre + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                '}';
     }
 }
