@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content" >
     <TextView
+        android:textColor="@color/cardview_dark_background"
         android:textSize="16dp"
         android:id="@+id/list_tramites_movistar_text"
         android:layout_width="match_parent"

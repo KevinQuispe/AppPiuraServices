@@ -1,11 +1,5 @@
 package com.piuraservices.piuraservices.models.epsgrau;
-
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 import java.io.Serializable;
-import java.util.ArrayList;
-
 public class InfoReclamosEpsgraumodel  implements Serializable {
     private long id;
     private long entidadempresa_id;
@@ -13,7 +7,6 @@ public class InfoReclamosEpsgraumodel  implements Serializable {
     private String descripcion;
 
     public InfoReclamosEpsgraumodel() {
-
     }
 
     public InfoReclamosEpsgraumodel(long id, long entidadempresa_id, String nombre, String descripcion) {

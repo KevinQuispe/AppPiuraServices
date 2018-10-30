@@ -80,6 +80,10 @@ public class InfoTramitesEnosaActivity extends AppCompatActivity {
 
         return super.onCreateOptionsMenu(menu);
     }
+    public void listarTramites(){
+
+    }
+
     //metodo para listar informacion de reclamos enosa
     public void listaTramitesEnosa(){
         final String url = Config.URL_SERVER;

@@ -189,14 +189,14 @@
         <activity
             android:name=".views.activitiesepsgrau.OpenWebEpsGrauActivity"
             android:parentActivityName=".views.activitiesepsgrau.OpenWebEpsGrauActivity" />
-        <activity android:name=".views.activitiesepsgrau.DetallereclamosEpsActivity"
-            android:parentActivityName=".views.activitiesepsgrau.InfoReclamosEpsActivity"
-            />
-
-        <activity android:name=".views.activitiesepsgrau.DetalleTramitesepsActivity"/>
-
-        <activity android:name=".views.activities.AcercadeActivity"
+        <activity
+            android:name=".views.activitiesepsgrau.DetallereclamosEpsActivity"
+            android:parentActivityName=".views.activitiesepsgrau.InfoReclamosEpsActivity" />
+        <activity
+            android:name=".views.activities.AcercadeActivity"
             android:parentActivityName=".MainActivity" />
+        <activity android:name=".views.activitiesenosa.DetalleReclamosEnosaActivity" />
+        <activity android:name=".views.activitiesepsgrau.DetalleTramitesEpsgrauActivity"></activity>
     </application>
 
 </manifest>

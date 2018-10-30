@@ -117,7 +117,7 @@ public class EPS_grauActivity extends AppCompatActivity {
                 try {
                     // Here you should write your time consuming task...
                     // Let the progress ring for 10 seconds...
-                    Thread.sleep(10000);
+                    Thread.sleep(5000);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

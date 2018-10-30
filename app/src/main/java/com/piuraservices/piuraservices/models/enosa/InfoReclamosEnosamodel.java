@@ -1,6 +1,8 @@
 package com.piuraservices.piuraservices.models.enosa;
 
-public class InfoReclamosEnosamodel {
+import java.io.Serializable;
+
+public class InfoReclamosEnosamodel implements Serializable {
     private long id;
     private long entidadempresa_id;
     private String nombre;

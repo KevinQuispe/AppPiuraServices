@@ -2,13 +2,14 @@ package com.piuraservices.piuraservices.models.epsgrau;
 
 import java.io.Serializable;
 
-public class InfoTramitesEpsgraumodel  implements Serializable{
+public class InfoTramitesEpsgraumodel implements Serializable {
     private long id;
     private long entidadempresa_id;
     private String nombre;
     private String descripcion;
 
-    public InfoTramitesEpsgraumodel() {
+    public InfoTramitesEpsgraumodel(){
+
     }
     public InfoTramitesEpsgraumodel(long id, long entidadempresa_id, String nombre, String descripcion) {
         this.id = id;
@@ -47,15 +48,5 @@ public class InfoTramitesEpsgraumodel  implements Serializable{
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    @Override
-    public String toString() {
-        return "InfoTramitesEpsgraumodel{" +
-                "id=" + id +
-                ", entidadempresa_id=" + entidadempresa_id +
-                ", nombre='" + nombre + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                '}';
     }
 }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.piuraservices.piuraservices.R;
@@ -12,18 +13,30 @@ import com.piuraservices.piuraservices.models.enosa.InfoReclamosEnosamodel;
 import com.piuraservices.piuraservices.models.enosa.InfoTramitesEnosamodel;
 import com.piuraservices.piuraservices.models.epsgrau.InfoReclamosEpsgraumodel;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ListaInfoReclamosEnosaAdapter  extends ArrayAdapter<InfoReclamosEnosamodel> {
+public class ListaInfoReclamosEnosaAdapter  extends BaseAdapter {
     private Context context;
-    private List<InfoReclamosEnosamodel> values;
+    protected ArrayList<InfoReclamosEnosamodel> lista;
 
-    public ListaInfoReclamosEnosaAdapter(Context context, List<InfoReclamosEnosamodel> values) {
-        super(context, R.layout.lista_info_reclamos_enosa, values);
+    public ListaInfoReclamosEnosaAdapter(Context context, ArrayList<InfoReclamosEnosamodel> lista) {
         this.context = context;
-        this.values = values;
+        this.lista = lista;
     }
 
+    @Override
+    public int getCount() {
+        return lista.size();
+    }
+    @Override
+    public InfoReclamosEnosamodel getItem(int position) {
+        return lista.get(position);
+    }
+    @Override
+    public long getItemId(int position) {
+        return lista.get(position).getId();
+    }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
@@ -32,7 +45,7 @@ public class ListaInfoReclamosEnosaAdapter  extends ArrayAdapter<InfoReclamosEno
             row = inflater.inflate(R.layout.lista_info_reclamos_enosa, parent, false);
         }
         TextView textView = (TextView) row.findViewById(R.id.list_reclamos_enosa_text);
-        InfoReclamosEnosamodel item = values.get(position);
+        InfoReclamosEnosamodel item = lista.get(position);
         String message = item.getNombre();
         textView.setText(message);
         return row;

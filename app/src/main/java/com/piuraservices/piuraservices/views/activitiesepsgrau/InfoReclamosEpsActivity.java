@@ -2,12 +2,9 @@ package com.piuraservices.piuraservices.views.activitiesepsgrau;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.app.Service;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -16,35 +13,25 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.loopj.android.http.TextHttpResponseHandler;
 import com.piuraservices.piuraservices.R;
-import com.piuraservices.piuraservices.adapters.enosa.ListaInfoReclamosEnosaAdapter;
 import com.piuraservices.piuraservices.adapters.epsgrau.ListaInfoReclamosepsAdapter;
-import com.piuraservices.piuraservices.adapters.epsgrau.ListaInfoTramitesepsAdapter;
-import com.piuraservices.piuraservices.models.enosa.InfoReclamosEnosamodel;
 import com.piuraservices.piuraservices.models.epsgrau.InfoReclamosEpsgraumodel;
-import com.piuraservices.piuraservices.models.epsgrau.InfoTramitesEpsgraumodel;
 import com.piuraservices.piuraservices.services.epsgrau.ListaReclamosEpsclient;
 import com.piuraservices.piuraservices.services.http;
 import com.piuraservices.piuraservices.utils.Config;
-import com.piuraservices.piuraservices.views.activities.ContactoDetalleActivity;
-import com.piuraservices.piuraservices.views.activitiesenosa.InfoReclamosEnosaActivity;
-import com.piuraservices.piuraservices.views.activitiesenosa.InfoTramitesEnosaActivity;
 
 import org.apache.http.Header;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -58,8 +45,9 @@ public class InfoReclamosEpsActivity extends AppCompatActivity implements View.O
     ListView listViewreclamos;
     //variable para loading
     ProgressDialog progreso;
+    //lista de reclamos
     List<InfoReclamosEpsgraumodel> list_reclamos;
-    //info
+    //array list for to http
     ArrayList<InfoReclamosEpsgraumodel> lista = new ArrayList();
 
     @Override
@@ -68,11 +56,6 @@ public class InfoReclamosEpsActivity extends AppCompatActivity implements View.O
         setContentView(R.layout.activity_info_reclamos_eps);
         getSupportActionBar().setTitle("Información de Reclamos");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //String[] informacion = {"Información Referencial", "Información de Reclamos", "Información de Trámites"};
-        //Inflater inflater;
-        //listaelementos=(ListView) findViewById(R.id.list_reclamoseps);
-        //adapter = new ArrayAdapter<String>(InfoReclamosEpsActivity.this, android.R.layout.simple_list_item_1, informacion);
-        //listaelementos.setAdapter(adapter);
 
         listViewreclamos = (ListView) findViewById(R.id.list_reclamoseps);
         listViewreclamos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -85,23 +68,8 @@ public class InfoReclamosEpsActivity extends AppCompatActivity implements View.O
             }
         });
         listareclamos();
+    }
 
-    }
-    //mostrardetalle lista
-    public void editarDetalle(final InfoReclamosEpsgraumodel post){
-        Bundle bundle=new Bundle();
-        bundle.putSerializable("Post",post);
-        bundle.putString("nombreKey",post.getNombre().toString());
-        bundle.putString("descripcionKey",post.getDescripcion().toString());
-        //capturar datos
-        Intent intent=new Intent(InfoReclamosEpsActivity.this, DetallereclamosEpsActivity.class);
-        Bundle parametros = new Bundle();
-        String nombretramite = post.getNombre().toString();
-        String descripciontramite = post.getDescripcion().toString();
-        parametros.putString("descripcionKey",descripciontramite);
-        intent.putExtras(parametros);
-        startActivity(intent);
-    }
     public void listareclamos(){
         dialog();
         String url="informacion/listainforeclamos/1";
@@ -109,7 +77,7 @@ public class InfoReclamosEpsActivity extends AppCompatActivity implements View.O
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 System.out.println(responseString);
-                Toast.makeText(getApplicationContext(), "Error de Conexion http", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Error de Conexion", Toast.LENGTH_SHORT).show();
                 progreso.hide();
             }
 
@@ -125,7 +93,7 @@ public class InfoReclamosEpsActivity extends AppCompatActivity implements View.O
                     listViewreclamos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                            Toast.makeText(getApplicationContext(), "item " +i, Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getApplicationContext(), "item " +i, Toast.LENGTH_SHORT).show();
                             editarDetalle(lista.get(i)); //call data detalle
                         }
                     });
@@ -136,6 +104,21 @@ public class InfoReclamosEpsActivity extends AppCompatActivity implements View.O
                 }
             }
         });
+    }
+    //mostrardetalle lista
+    public void editarDetalle(final InfoReclamosEpsgraumodel post){
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("Post",post);
+        bundle.putString("nombreKey",post.getNombre().toString());
+        bundle.putString("descripcionKey",post.getDescripcion().toString());
+        //capturar datos
+        Intent intent=new Intent(InfoReclamosEpsActivity.this, DetallereclamosEpsActivity.class);
+        Bundle parametros = new Bundle();
+        String nombretramite = post.getNombre().toString();
+        String descripciontramite = post.getDescripcion().toString();
+        parametros.putString("descripcionKey",descripciontramite);
+        intent.putExtras(parametros);
+        startActivity(intent);
     }
     public  void listaReclamosEPS(){
 

@@ -1,31 +1,34 @@
-package com.piuraservices.piuraservices.adapters.epsgrau;
+package com.piuraservices.piuraservices.adapters.enosa;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
 import com.piuraservices.piuraservices.R;
-import com.piuraservices.piuraservices.models.epsgrau.InfoTramitesEpsgraumodel;
+import com.piuraservices.piuraservices.models.enosa.InfoReclamosEnosamodel;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class ListaInfoTramitesepsAdapter extends BaseAdapter {
-
+public abstract class ListaInfoReferencialEnosaAdapter  extends ArrayAdapter<InfoReclamosEnosamodel> {
     private Context context;
-    protected ArrayList<InfoTramitesEpsgraumodel> lista;
+    private List<InfoReclamosEnosamodel> lista;
 
-    public ListaInfoTramitesepsAdapter(Context context, ArrayList<InfoTramitesEpsgraumodel> lista) {
+    public ListaInfoReferencialEnosaAdapter(Context context, List<InfoReclamosEnosamodel> values) {
+        super(context, R.layout.lista_info_reclamos_enosa, values);
         this.context = context;
-        this.lista = lista;
+        this.lista = values;
     }
+
     @Override
     public int getCount() {
         return lista.size();
     }
     @Override
-    public InfoTramitesEpsgraumodel getItem(int position) {
+    public InfoReclamosEnosamodel getItem(int position) {
         return lista.get(position);
     }
     @Override
@@ -37,13 +40,12 @@ public class ListaInfoTramitesepsAdapter extends BaseAdapter {
         View row = convertView;
         if (row == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            row = inflater.inflate(R.layout.lista_info_tramites_eps, parent, false);
+            row = inflater.inflate(R.layout.lista_info_reclamos_enosa, parent, false);
         }
-        TextView textView = (TextView) row.findViewById(R.id.list_tramites_pagination_text);
-        InfoTramitesEpsgraumodel item = lista.get(position);
+        TextView textView = (TextView) row.findViewById(R.id.list_reclamos_enosa_text);
+        InfoReclamosEnosamodel item = lista.get(position);
         String message = item.getNombre();
         textView.setText(message);
         return row;
     }
 }
-
