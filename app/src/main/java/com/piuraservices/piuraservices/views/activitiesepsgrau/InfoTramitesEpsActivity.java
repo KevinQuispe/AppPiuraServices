@@ -64,12 +64,12 @@ public class InfoTramitesEpsActivity extends AppCompatActivity implements View.O
                 final int pos = i;
                 Intent intent=new Intent(InfoTramitesEpsActivity.this, DetallereclamosEpsActivity.class);
                 startActivity(intent);
-                editarDetalle(list_tramites.get(pos));;
+                editarDetalle(list_tramites.get(pos));
             }
         });
-        listarTramites();
+        listarTramitesEps();
     }
-    public void listarTramites()
+    public void listarTramitesEps()
     {
         dialog();
         String url="informacion/listainfotramites/1";

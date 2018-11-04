@@ -67,10 +67,10 @@ public class InfoReclamosEpsActivity extends AppCompatActivity implements View.O
                editarDetalle(list_reclamos.get(pos));
             }
         });
-        listareclamos();
+        listareclamoEps();
     }
 
-    public void listareclamos(){
+    public void listareclamoEps(){
         dialog();
         String url="informacion/listainforeclamos/1";
         http.get(getApplicationContext(), url, new TextHttpResponseHandler() {

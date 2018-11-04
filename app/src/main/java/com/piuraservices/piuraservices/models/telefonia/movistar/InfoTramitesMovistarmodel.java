@@ -6,25 +6,15 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class InfoTramitesMovistarmodel  implements Serializable {
-    @SerializedName("id")
-    @Expose
     private long id;
-    @SerializedName("entidadempresa_id")
-    @Expose
-    private long entidadempresa_id;
-    @SerializedName("nombre")
-    @Expose
     private String nombre;
-    @SerializedName("decripcion")
-    @Expose
     private String descripcion;
 
     public InfoTramitesMovistarmodel() {
     }
 
-    public InfoTramitesMovistarmodel(long id, long entidadempresa_id, String nombre, String descripcion) {
+    public InfoTramitesMovistarmodel(long id, String nombre, String descripcion) {
         this.id = id;
-        this.entidadempresa_id = entidadempresa_id;
         this.nombre = nombre;
         this.descripcion = descripcion;
     }
@@ -35,14 +25,6 @@ public class InfoTramitesMovistarmodel  implements Serializable {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public long getEntidadempresa_id() {
-        return entidadempresa_id;
-    }
-
-    public void setEntidadempresa_id(long entidadempresa_id) {
-        this.entidadempresa_id = entidadempresa_id;
     }
 
     public String getNombre() {
@@ -60,14 +42,5 @@ public class InfoTramitesMovistarmodel  implements Serializable {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
-    @Override
-    public String toString() {
-        return "InfoTramitesMovistarmodel{" +
-                "id=" + id +
-                ", entidadempresa_id=" + entidadempresa_id +
-                ", nombre='" + nombre + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                '}';
-    }
 }
+

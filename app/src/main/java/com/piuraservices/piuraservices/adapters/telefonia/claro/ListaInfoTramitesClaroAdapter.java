@@ -5,22 +5,36 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.piuraservices.piuraservices.R;
 import com.piuraservices.piuraservices.models.epsgrau.InfoReclamosEpsgraumodel;
 import com.piuraservices.piuraservices.models.telefonia.claro.InfoReclamosClaromodel;
 import com.piuraservices.piuraservices.models.telefonia.claro.InfoTramitesClaromodel;
+import com.piuraservices.piuraservices.models.telefonia.entel.InfoTramitesEntelmodel;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ListaInfoTramitesClaroAdapter  extends ArrayAdapter<InfoTramitesClaromodel> {
+public class ListaInfoTramitesClaroAdapter extends BaseAdapter {
     private Context context;
-    private List<InfoTramitesClaromodel> values;
+    protected ArrayList<InfoTramitesClaromodel> lista;
 
-    public ListaInfoTramitesClaroAdapter(Context context, List<InfoTramitesClaromodel> values) {
-        super(context, R.layout.lista_info_tramites_claro, values);
+    public ListaInfoTramitesClaroAdapter(Context context, ArrayList<InfoTramitesClaromodel> lista) {
         this.context = context;
-        this.values = values;
+        this.lista = lista;
+    }
+    @Override
+    public int getCount() {
+        return lista.size();
+    }
+    @Override
+    public InfoTramitesClaromodel getItem(int position) {
+        return lista.get(position);
+    }
+    @Override
+    public long getItemId(int position) {
+        return lista.get(position).getId();
     }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -30,7 +44,7 @@ public class ListaInfoTramitesClaroAdapter  extends ArrayAdapter<InfoTramitesCla
             row = inflater.inflate(R.layout.lista_info_tramites_claro, parent, false);
         }
         TextView textView = (TextView) row.findViewById(R.id.list_tramites_claro_text);
-        InfoTramitesClaromodel item = values.get(position);
+        InfoTramitesClaromodel item = lista.get(position);
         String message = item.getNombre();
         textView.setText(message);
         return row;

@@ -5,36 +5,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.piuraservices.piuraservices.R;
-import com.piuraservices.piuraservices.models.telefonia.entel.InfoReclamosEntelmodel;
 import com.piuraservices.piuraservices.models.telefonia.movistar.InfoReclamosMovistarmodel;
-import com.piuraservices.piuraservices.models.telefonia.movistar.InfoTramitesMovistarmodel;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class ListaInfoReclamosMovistarAdapter extends BaseAdapter {
+public class ListaInfoReferencialMovistarAdapter extends ArrayAdapter<InfoReclamosMovistarmodel> {
     private Context context;
-    protected ArrayList<InfoReclamosMovistarmodel> lista;
+    private List<InfoReclamosMovistarmodel> values;
 
-    public ListaInfoReclamosMovistarAdapter(Context context, ArrayList<InfoReclamosMovistarmodel> lista) {
+    public ListaInfoReferencialMovistarAdapter(Context context, List<InfoReclamosMovistarmodel> values) {
+        super(context, R.layout.lista_info_reclamos_movistar, values);
         this.context = context;
-        this.lista = lista;
-    }
-    @Override
-    public int getCount() {
-        return lista.size();
-    }
-    @Override
-    public InfoReclamosMovistarmodel getItem(int position) {
-        return lista.get(position);
-    }
-    @Override
-    public long getItemId(int position) {
-        return lista.get(position).getId();
+        this.values = values;
     }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -44,9 +29,10 @@ public class ListaInfoReclamosMovistarAdapter extends BaseAdapter {
             row = inflater.inflate(R.layout.lista_info_reclamos_movistar, parent, false);
         }
         TextView textView = (TextView) row.findViewById(R.id.list_reclamos_movistar_text);
-        InfoReclamosMovistarmodel item = lista.get(position);
+        InfoReclamosMovistarmodel item = values.get(position);
         String message = item.getNombre();
         textView.setText(message);
         return row;
     }
 }
+

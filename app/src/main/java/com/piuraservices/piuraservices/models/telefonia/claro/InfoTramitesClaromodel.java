@@ -1,6 +1,8 @@
 package com.piuraservices.piuraservices.models.telefonia.claro;
 
-public class InfoTramitesClaromodel {
+import java.io.Serializable;
+
+public class InfoTramitesClaromodel implements Serializable {
     private  long id;
     private String nombre;
     private String descripcion;

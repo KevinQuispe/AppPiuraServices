@@ -1,6 +1,8 @@
 package com.piuraservices.piuraservices.models.telefonia.entel;
 
-public class InfoTramitesEntelmodel {
+import java.io.Serializable;
+
+public class InfoTramitesEntelmodel implements Serializable {
 
     private  long id;
     private String nombre;

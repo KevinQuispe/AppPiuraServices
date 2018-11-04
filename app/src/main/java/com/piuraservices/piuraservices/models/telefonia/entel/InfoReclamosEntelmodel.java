@@ -1,6 +1,8 @@
 package com.piuraservices.piuraservices.models.telefonia.entel;
 
-public class InfoReclamosEntelmodel {
+import java.io.Serializable;
+
+public class InfoReclamosEntelmodel implements Serializable {
     private long id;
     private long entidadempresa_id;
     private String nombre;

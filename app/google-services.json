@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "144149993816",
+    "firebase_url": "https://piuraservices-208822.firebaseio.com",
+    "project_id": "piuraservices-208822",
+    "storage_bucket": "piuraservices-208822.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:144149993816:android:5330b2b484c8e6ea",
+        "android_client_info": {
+          "package_name": "com.piuraservices.piuraservices"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "144149993816-6g0hcne81emokg1ml332gl437qr4q06m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.piuraservices.piuraservices",
+            "certificate_hash": "640cc43d420a2d476016034cc5753c63969aa8e6"
+          }
+        },
+        {
+          "client_id": "144149993816-4sfhdte4d7kh9e85h15nvttudp49j0b7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_IQ7cQAxHBy57SLCHZQdt_0F7sSSCTBM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "144149993816-4sfhdte4d7kh9e85h15nvttudp49j0b7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

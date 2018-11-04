@@ -46,7 +46,7 @@ public class InfoReclamosEnosaActivity extends AppCompatActivity implements View
     ListView listareclamos;
     //lista data del modelo de reclamos
     List<InfoReclamosEnosamodel> list_reclamos;
-    //Array list for to http
+    //Array list for to http and to converter to gson
     ArrayList<InfoReclamosEnosamodel> lista = new ArrayList();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,10 +69,10 @@ public class InfoReclamosEnosaActivity extends AppCompatActivity implements View
                 editarDetalle(list_reclamos.get(pos));
             }
         });
-        lsitarReclamos();
+        listarReclamosEnosa();
     }
     //lista reclamos con http
-    public void lsitarReclamos(){
+    public void listarReclamosEnosa(){
         dialog();
         String url="informacion/listainforeclamos/2";
         http.get(getApplicationContext(), url, new TextHttpResponseHandler() {

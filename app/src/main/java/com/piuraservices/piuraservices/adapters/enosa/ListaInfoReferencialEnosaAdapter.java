@@ -36,6 +36,7 @@ public abstract class ListaInfoReferencialEnosaAdapter  extends ArrayAdapter<Inf
         return lista.get(position).getId();
     }
     @Override
+
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
         if (row == null) {
