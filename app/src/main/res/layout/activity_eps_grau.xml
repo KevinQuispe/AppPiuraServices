@@ -40,9 +40,10 @@
                             android:layout_height="wrap_content"
                             android:text="@string/text_view_direccion" />
                         <TextView
+                            android:id="@+id/tv_direccion_eps"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
-                            android:text="Jiron Arena y Jr. Zelaya S/N" />
+                            />
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -61,11 +62,12 @@
                             android:layout_height="wrap_content"
                             android:text="@string/text_view_telefono" />
                         <TextView
+                            android:id="@+id/tv_telefono_eps"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:clickable="true"
                             android:onClick="onClickOpenCall"
-                            android:text="(073) 307741" />
+                             />
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -83,11 +85,12 @@
                             android:layout_height="wrap_content"
                             android:text="@string/text_view_correo" />
                         <TextView
+                            android:id="@+id/tv_email_eps"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:clickable="true"
                             android:onClick="onClickOpenWeb"
-                            android:text="epsgrau.com" />
+                            android:text="" />
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -106,12 +109,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/text_view_horario" />
                         <TextView
+                            android:id="@+id/tv_horario_eps"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:clickable="true"
                             android:onClick="onClickOpenWeb"
-                            android:text="8:00am-4:00pm" />
+                            android:text="" />
                         <ImageView
+                            android:id="@+id/tv_horario"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:clickable="true"
@@ -128,11 +133,12 @@
                             android:layout_height="wrap_content"
                             android:text="@string/text_view_pagina" />
                         <TextView
+                            android:id="@+id/tv_web_eps"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:clickable="true"
                             android:onClick="onClickOpenWeb"
-                            android:text="www.epsgrau.com.pe" />
+                            android:text="" />
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -140,7 +146,6 @@
                             android:onClick="onClickOpenWeb"
                             android:src="@drawable/ic_web_24dp" />
                     </LinearLayout>
-
                 </GridLayout>
                 <TextView
                     android:id="@+id/txt2"

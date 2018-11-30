@@ -13,7 +13,6 @@ public class ListaInfoReclamosepsAdapter extends BaseAdapter {
 
     private Context context;
     protected ArrayList<InfoReclamosEpsgraumodel> lista;
-
     public ListaInfoReclamosepsAdapter(Context context, ArrayList<InfoReclamosEpsgraumodel> lista) {
         this.context = context;
         this.lista = lista;
@@ -38,7 +37,7 @@ public class ListaInfoReclamosepsAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = inflater.inflate(R.layout.lista_info_reclamos_eps, parent, false);
         }
-        TextView textView = (TextView) row.findViewById(R.id.list_item_pagination_text);
+        TextView textView = (TextView) row.findViewById(R.id.list_reclamos_pagination_text);
         InfoReclamosEpsgraumodel item = lista.get(position);
         String message = item.getNombre();
         textView.setText(message);

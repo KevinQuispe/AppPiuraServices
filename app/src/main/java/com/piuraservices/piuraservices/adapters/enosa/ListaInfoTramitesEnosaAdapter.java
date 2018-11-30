@@ -42,7 +42,7 @@ public class ListaInfoTramitesEnosaAdapter  extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = inflater.inflate(R.layout.lista_info_tramites_enosa, parent, false);
         }
-        TextView textView = (TextView) row.findViewById(R.id.list_tramites_enosa_text);
+        TextView textView = (TextView) row.findViewById(R.id.list_item_pagination_text);
         InfoTramitesEnosamodel item = lista.get(position);
         String message = item.getNombre();
         textView.setText(message);

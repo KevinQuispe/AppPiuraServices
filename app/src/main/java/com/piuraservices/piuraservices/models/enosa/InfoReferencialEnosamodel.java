@@ -1,6 +1,8 @@
 package com.piuraservices.piuraservices.models.enosa;
 
-public class InfoReferencialEnosamodel {
+import java.io.Serializable;
+
+public class InfoReferencialEnosamodel implements Serializable {
 
     private long id;
     private String nombre;

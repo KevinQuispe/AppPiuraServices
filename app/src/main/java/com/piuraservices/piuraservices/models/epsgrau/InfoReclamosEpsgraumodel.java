@@ -1,6 +1,6 @@
 package com.piuraservices.piuraservices.models.epsgrau;
 import java.io.Serializable;
-public class InfoReclamosEpsgraumodel  implements Serializable {
+public class InfoReclamosEpsgraumodel implements Serializable {
     private long id;
     private long entidadempresa_id;
     private String nombre;

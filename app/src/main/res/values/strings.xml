@@ -12,6 +12,8 @@
     <string name="action_developer"><b>Desarrollador:</b> Kevin Quispe Rojas</string>
     <string name="action_versionso"><b>Version de Android:</b> Lolipop 5.1</string>
 
+    <!-- datos para informacion referencial epsgtrau -->
+    <string name="action_direccion_eps">S/N</string>
 
     <!-- Splash screen -->
     <string name="titulo_splash_servicios">Servicios Básicos</string>

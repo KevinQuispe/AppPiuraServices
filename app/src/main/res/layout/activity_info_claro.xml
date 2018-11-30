@@ -41,6 +41,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/text_view_direccion" />
                         <TextView
+                            android:id="@+id/tv_direccion_claro"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:text="Jiron Arena y Jr. Zelaya S/N" />
@@ -62,6 +63,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/text_view_telefono" />
                         <TextView
+                            android:id="@+id/tv_telefono_claro"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:clickable="true"
@@ -84,6 +86,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/text_view_correo" />
                         <TextView
+                            android:id="@+id/tv_email_claro"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:clickable="true"
@@ -107,6 +110,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/text_view_horario" />
                         <TextView
+                            android:id="@+id/tv_horario_claro"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:clickable="true"
@@ -119,21 +123,26 @@
                             android:onClick="onClickOpenWeb"
                             android:src="@drawable/ic_clock_black_24dp" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
+
                         <TextView
-                            android:padding="4dp"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
+                            android:padding="4dp"
                             android:text="@string/text_view_pagina" />
+
                         <TextView
+                            android:id="@+id/tv_web_claro"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:clickable="true"
                             android:onClick="onClickOpenWeb"
                             android:text="www.movistar.com.pe" />
+
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
