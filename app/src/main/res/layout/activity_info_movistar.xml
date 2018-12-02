@@ -19,7 +19,7 @@
                 android:id="@+id/card1"
                 android:background="#949494"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="240dp"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="1dp"
                 app:cardUseCompatPadding="true" >
@@ -39,11 +39,12 @@
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:text="@string/text_view_direccion" />
+
                         <TextView
                             android:id="@+id/tv_direccion_movistar"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
-                            android:text="Jiron Arena y Jr. Zelaya S/N" />
+                            android:text="@string/text_direccion_movistar" />
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -69,6 +70,7 @@
                             android:onClick="onClickOpenCall"
                             android:text="(073) 307741" />
                         <ImageView
+                            android:layout_marginTop="@dimen/activity_vertical_horario"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:clickable="true"
@@ -90,8 +92,9 @@
                             android:layout_height="wrap_content"
                             android:clickable="true"
                             android:onClick="onClickOpenWeb"
-                            android:text="movistar.com" />
+                            android:text="@string/text_correo_movistar" />
                         <ImageView
+                            android:layout_marginTop="@dimen/activity_vertical_horario"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:clickable="true"
@@ -102,7 +105,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
-
                         <TextView
                             android:padding="4dp"
                             android:layout_width="100dp"
@@ -114,8 +116,9 @@
                             android:layout_height="wrap_content"
                             android:clickable="true"
                             android:onClick="onClickOpenWeb"
-                            android:text="8:00am-4:00pm" />
+                            android:text="@string/text_horario_movistar" />
                         <ImageView
+                            android:layout_marginTop="@dimen/activity_vertical_horario"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:clickable="true"
@@ -138,8 +141,9 @@
                             android:layout_height="wrap_content"
                             android:clickable="true"
                             android:onClick="onClickOpenWeb"
-                            android:text="www.movistar.com.pe" />
+                            android:text="@string/text_web_movistar" />
                         <ImageView
+                            android:layout_marginTop="@dimen/activity_vertical_horario"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:clickable="true"

@@ -20,7 +20,7 @@
                 android:id="@+id/card1"
                 android:background="#949494"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="220dp"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="1dp"
                 app:cardUseCompatPadding="true" >
@@ -44,7 +44,7 @@
                             android:id="@+id/tv_direccion_claro"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
-                            android:text="Jiron Arena y Jr. Zelaya S/N" />
+                            android:text="@string/text_direccion_claro" />
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
                             android:layout_height="wrap_content"
                             android:clickable="true"
                             android:onClick="onClickOpenCall"
-                            android:text="(073) 307741" />
+                            android:text="@string/text_telefono_claro"/>
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -90,8 +90,8 @@
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:clickable="true"
-                            android:onClick="onClickOpenWeb"
-                            android:text="movistar.com" />
+                            android:onClick="onClickOpenEmail"
+                            android:text="@string/text_correo_claro" />
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -115,7 +115,7 @@
                             android:layout_height="wrap_content"
                             android:clickable="true"
                             android:onClick="onClickOpenWeb"
-                            android:text="8:00am-4:00pm" />
+                            android:text="@string/text_horario_claro" />
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -141,7 +141,7 @@
                             android:layout_height="wrap_content"
                             android:clickable="true"
                             android:onClick="onClickOpenWeb"
-                            android:text="www.movistar.com.pe" />
+                            android:text="@string/text_web_claro" />
 
                         <ImageView
                             android:layout_width="match_parent"

@@ -17,33 +17,36 @@
 
             <android.support.v7.widget.CardView
                 android:id="@+id/card1"
-                android:background="#949494"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="240dp"
+                android:background="#949494"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="1dp"
-                app:cardUseCompatPadding="true" >
+                app:cardUseCompatPadding="true">
 
                 <GridLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:columnCount="1"
                     android:padding="6dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="4dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:padding="4dp">
 
                         <TextView
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:text="@string/text_view_direccion" />
+
                         <TextView
                             android:id="@+id/tv_direccion_eps"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
-                            />
+                            android:text="@string/text_direccion_eps" />
+
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -51,23 +54,26 @@
                             android:onClick="onClickOpenGoogleMaps"
                             android:src="@drawable/ic_place_black_24dp" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="4dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:padding="4dp">
 
                         <TextView
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:text="@string/text_view_telefono" />
+
                         <TextView
                             android:id="@+id/tv_telefono_eps"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:clickable="true"
                             android:onClick="onClickOpenCall"
-                             />
+                            android:text="@string/text_telefono_eps" />
+
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -75,22 +81,27 @@
                             android:onClick="onClickOpenCall"
                             android:src="@drawable/ic_local_phone_black_24dp" />
                     </LinearLayout>
+
                     <LinearLayout
+                        android:layout_marginTop="@dimen/activity_vertical_referencial"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
+
                         <TextView
-                            android:padding="4dp"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
+                            android:padding="4dp"
                             android:text="@string/text_view_correo" />
+
                         <TextView
                             android:id="@+id/tv_email_eps"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:clickable="true"
-                            android:onClick="onClickOpenWeb"
-                            android:text="" />
+                            android:onClick="onClickOpenEmail"
+                            android:text="@string/text_correo_eps" />
+
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -98,23 +109,27 @@
                             android:onClick="onClickOpenEmail"
                             android:src="@drawable/ic_email_black_24dp" />
                     </LinearLayout>
+
                     <LinearLayout
+                        android:layout_marginTop="@dimen/activity_vertical_h"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:padding="4dp"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
+                            android:padding="4dp"
                             android:text="@string/text_view_horario" />
+
                         <TextView
                             android:id="@+id/tv_horario_eps"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:clickable="true"
                             android:onClick="onClickOpenWeb"
-                            android:text="" />
+                            android:text="@string/text_horario_eps" />
+
                         <ImageView
                             android:id="@+id/tv_horario"
                             android:layout_width="match_parent"
@@ -123,22 +138,27 @@
                             android:onClick="onClickOpenWeb"
                             android:src="@drawable/ic_clock_black_24dp" />
                     </LinearLayout>
+
                     <LinearLayout
+                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
+
                         <TextView
-                            android:padding="4dp"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
+                            android:padding="4dp"
                             android:text="@string/text_view_pagina" />
+
                         <TextView
                             android:id="@+id/tv_web_eps"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:clickable="true"
                             android:onClick="onClickOpenWeb"
-                            android:text="" />
+                            android:text="@string/text_web_eps" />
+
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -151,13 +171,15 @@
                     android:id="@+id/txt2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/colorPrimaryDark"
                     android:padding="10dp"
                     android:text="@string/text_view_informacion"
-                    android:layout_gravity="bottom"
-                    android:background="@color/colorPrimaryDark"
                     android:textColor="#ffe3e3e3"
                     android:textSize="12sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
+
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView

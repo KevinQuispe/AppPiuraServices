@@ -66,8 +66,8 @@ public class EPS_grauActivity extends AppCompatActivity {
         //call peticoon to retrofit
         //listaentidadasync();
 
-        //lista funcion call
-        listainfoEntidad();
+        //lista funcion call lista ok
+        //listainfoEntidad();
 
     }
 
@@ -210,7 +210,7 @@ public class EPS_grauActivity extends AppCompatActivity {
 
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setData(Uri.parse("email"));
-        String[] s = {"epsgrau.com"};
+        String[] s = {"epsgrau.imageninstitucional@gmail.com"};
         intent.putExtra(Intent.EXTRA_EMAIL, s);
         intent.putExtra(Intent.EXTRA_SUBJECT, " ");
         intent.putExtra(Intent.EXTRA_TEXT, " ");
@@ -237,9 +237,9 @@ public class EPS_grauActivity extends AppCompatActivity {
 
     public void onClickOpenCall(View v) {
         Intent i = new Intent(Intent.ACTION_DIAL);
-        String spsgrau = "073307741";
+        String spsgrau = "080026026";
         if (spsgrau.trim().isEmpty()) {
-            i.setData(Uri.parse("tel:073307741"));
+            i.setData(Uri.parse("tel:080026026"));
         } else {
             i.setData(Uri.parse("tel:" + spsgrau));
         }

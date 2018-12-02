@@ -13,7 +13,35 @@
     <string name="action_versionso"><b>Version de Android:</b> Lolipop 5.1</string>
 
     <!-- datos para informacion referencial epsgtrau -->
-    <string name="action_direccion_eps">S/N</string>
+    <string name="text_direccion_eps">Jr. La Arena y Jr. Zelaya S/N - Urb. Santa Ana, Piura</string>
+    <string name="text_correo_eps">epsgrau.imageninstitucional@gmail.com</string>
+    <string name="text_telefono_eps">080026026</string>
+    <string name="text_horario_eps">L-V 8:00am-16:00pm Sábado:8:00-12:00 Domingo Cerrado</string>
+    <string name="text_web_eps">https://epsgrau.pe</string>
+    <!-- datos para informacion referencial enosa -->
+    <string name="text_direccion_enosa">Jirón Callao, 875, Piura - Piura</string>
+    <string name="text_correo_enosa">enosa@distriluz.com.pe</string>
+    <string name="text_telefono_enosa">(073)28-4030</string>
+    <string name="text_horario_enosa">L-V 08:00 am a 06:30pm,  Sábado  y Domingos de 8:30am a 6:05 a.m</string>
+    <string name="text_web_enosa">www.distriluz.com.pe/enosa</string>
+    <!-- datos para informacion referencial movistar-->
+    <string name="text_direccion_movistar">AV Loreto 247 Piura</string>
+    <string name="text_correo_movistar">registrocontactos@movistar.com.pe</string>
+    <string name="text_telefono_movistar">(073)28-4030</string>
+    <string name="text_horario_movistar">L-V  9:00am-6:00pm y sábados 9:00 am a 1:00 pm</string>
+    <string name="text_web_movistar">http://www.movistar.com.pe</string>
+    <!-- datos para informacion referencial claro -->
+    <string name="text_direccion_claro">Tienda 39, Open Plaza Piura</string>
+    <string name="text_correo_claro">clarocontactos@claro.com</string>
+    <string name="text_telefono_claro">946 573 918</string>
+    <string name="text_horario_claro">Lunes-Domingo 11:00am a 9:00pm</string>
+    <string name="text_web_claro">http://www.claro.com.pe</string>
+    <!-- datos para informacion referencial entel -->
+    <string name="text_direccion_entel">Jr. Libertad 607, Piura, Tienda Piura</string>
+    <string name="text_correo_entel">entelcontacto@entel.com.pe</string>
+    <string name="text_telefono_entel">0800 18844</string>
+    <string name="text_horario_entel">L-V 9:00am a 7:00pm sábado 9:00am a 12:30pm</string>
+    <string name="text_web_entel">http://www.entel.pe</string>
 
     <!-- Splash screen -->
     <string name="titulo_splash_servicios">Servicios Básicos</string>
