@@ -20,7 +20,7 @@
                 android:id="@+id/card1"
                 android:background="#949494"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
+                android:layout_height="240dp"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="1dp"
                 app:cardUseCompatPadding="true" >
@@ -53,6 +53,7 @@
                             android:src="@drawable/ic_place_black_24dp" />
                     </LinearLayout>
                     <LinearLayout
+                        android:paddingTop="@dimen/activity_vertical_referencial"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="4dp"
@@ -77,6 +78,7 @@
                             android:src="@drawable/ic_local_phone_black_24dp" />
                     </LinearLayout>
                     <LinearLayout
+                        android:paddingTop="@dimen/activity_vertical_referencial"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
@@ -100,10 +102,10 @@
                             android:src="@drawable/ic_email_black_24dp" />
                     </LinearLayout>
                     <LinearLayout
+                        android:paddingTop="@dimen/activity_vertical_referencial"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
-
                         <TextView
                             android:padding="4dp"
                             android:layout_width="100dp"
@@ -125,6 +127,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:paddingTop="@dimen/activity_vertical_referencial"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">

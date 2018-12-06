@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_fragmentos"
+    tools:context=".views.fragments.EntidadContactoFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorPrimary" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_entidad_contacto"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18dp" />
+
+        <RadioGroup
+            android:id="@+id/radio_group_entdades"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/activity_horizontal_margin">
+
+            <RadioButton
+                android:id="@+id/rb_epsgrau_entidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Entidad EPS Grau SA"
+                android:textSize="20dp" />
+
+            <RadioButton
+                android:id="@+id/rb_enosa_entidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Entidad  Enosa"
+                android:textSize="20dp" />
+
+            <RadioButton
+                android:id="@+id/rb_telefonia_empresa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Empresa Movistar"
+                android:textSize="20dp" />
+
+            <RadioButton
+                android:id="@+id/rb_empresa_Claro_reclamo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Empresa Claro"
+                android:textSize="20dp" />
+
+            <RadioButton
+                android:id="@+id/rb_empresa_entel_reclamo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Empresa Entel"
+                android:textSize="20dp" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btn_entidad_siguiente"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:text="Siguiente"
+            android:textColor="@color/color_text_boton_login"
+            android:theme="@style/RaisedButtonDark" />
+    </LinearLayout>
+
+
+</FrameLayout>

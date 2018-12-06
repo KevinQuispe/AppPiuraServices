@@ -4,6 +4,9 @@
     <color name="colorPrimaryDark">#EF5350</color>
     <color name="colorAccent">#F44336</color>
     <color name="colorSplasch">#FFF</color>
+    <!-- color para fragmentos-->
+    <color name="colorfragmento">#ffe3e3e3</color>
+
 
     <color name="color_fragmentos">#fafafa</color>
     <color name="color_boton_ubicame">#ff6f00</color>

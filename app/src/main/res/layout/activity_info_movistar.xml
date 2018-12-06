@@ -19,7 +19,7 @@
                 android:id="@+id/card1"
                 android:background="#949494"
                 android:layout_width="match_parent"
-                android:layout_height="240dp"
+                android:layout_height="250dp"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="1dp"
                 app:cardUseCompatPadding="true" >
@@ -53,6 +53,7 @@
                             android:src="@drawable/ic_place_black_24dp" />
                     </LinearLayout>
                     <LinearLayout
+                        android:layout_marginTop="@dimen/activity_vertical_referencial"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="4dp"
@@ -70,7 +71,6 @@
                             android:onClick="onClickOpenCall"
                             android:text="(073) 307741" />
                         <ImageView
-                            android:layout_marginTop="@dimen/activity_vertical_horario"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:clickable="true"
@@ -78,6 +78,7 @@
                             android:src="@drawable/ic_local_phone_black_24dp" />
                     </LinearLayout>
                     <LinearLayout
+                        android:layout_marginTop="@dimen/activity_vertical_referencial"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
@@ -94,14 +95,14 @@
                             android:onClick="onClickOpenWeb"
                             android:text="@string/text_correo_movistar" />
                         <ImageView
-                            android:layout_marginTop="@dimen/activity_vertical_horario"
-                            android:layout_width="match_parent"
+                           android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:clickable="true"
                             android:onClick="onClickOpenEmail"
                             android:src="@drawable/ic_email_black_24dp" />
                     </LinearLayout>
                     <LinearLayout
+                        android:layout_marginTop="@dimen/activity_vertical_referencial"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
@@ -118,7 +119,6 @@
                             android:onClick="onClickOpenWeb"
                             android:text="@string/text_horario_movistar" />
                         <ImageView
-                            android:layout_marginTop="@dimen/activity_vertical_horario"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:clickable="true"
@@ -126,6 +126,7 @@
                             android:src="@drawable/ic_clock_black_24dp" />
                     </LinearLayout>
                     <LinearLayout
+                        android:layout_marginTop="@dimen/activity_vertical_referencial"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
@@ -143,8 +144,7 @@
                             android:onClick="onClickOpenWeb"
                             android:text="@string/text_web_movistar" />
                         <ImageView
-                            android:layout_marginTop="@dimen/activity_vertical_horario"
-                            android:layout_width="match_parent"
+                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:clickable="true"
                             android:onClick="onClickOpenWeb"

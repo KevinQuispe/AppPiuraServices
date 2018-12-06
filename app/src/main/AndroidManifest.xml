@@ -204,7 +204,12 @@
         <activity android:name=".views.activitiestelefonia.entel.DetalleTramitesEntelActivity" />
         <activity android:name=".views.activitiestelefonia.entel.DetalleReclamosEntelActivity" />
         <activity android:name=".views.activitiestelefonia.claro.DetalleTramitesClaroActivity" />
-        <activity android:name=".views.activitiestelefonia.claro.DetalleReclamosClaroActivity"></activity>
+        <activity android:name=".views.activitiestelefonia.claro.DetalleReclamosClaroActivity" />
+        <activity android:name=".views.activitiesenosa.InfoContactosEnosaActivity" />
+        <activity android:name=".views.activitiesepsgrau.InfoContactosEpsgrauActivity" />
+        <activity android:name=".views.activitiestelefonia.claro.InfoContactosClaroActivity" />
+        <activity android:name=".views.activitiestelefonia.entel.InfoContactosEntelActivity" />
+        <activity android:name=".views.activitiestelefonia.movistar.InfoContactosMovistarActivity"></activity>
     </application>
 
 </manifest>

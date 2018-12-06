@@ -24,6 +24,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.piuraservices.piuraservices.views.activities.AcercadeActivity;
 import com.piuraservices.piuraservices.views.activities.ContactosActivity;
+import com.piuraservices.piuraservices.views.fragments.EntidadContactoFragment;
 import com.piuraservices.piuraservices.views.fragments.EntidadReclamoFragment;
 import com.piuraservices.piuraservices.views.fragments.EntidadTramiteFragment;
 import com.piuraservices.piuraservices.views.fragments.EntidadesFragment;
@@ -197,8 +198,13 @@ public class MainActivity extends AppCompatActivity
             setTitle("Elija Entidad o Empresa");
 
         } else if (id == R.id.nav_contactos) {
-            Intent intent=new Intent(MainActivity.this, ContactosActivity.class);
-            startActivity(intent);
+            //Intent intent=new Intent(MainActivity.this, ContactosActivity.class);
+            //startActivity(intent);
+            EntidadContactoFragment reclamos = new EntidadContactoFragment();
+            android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.contenedorFragement, reclamos);
+            transaction.addToBackStack(null).commit();
+            setTitle("Elija Entidad o Empresa");
 
         } else if (id == R.id.nav_ubicanos) {
             UbicanosFragment ubicanos = new UbicanosFragment();
