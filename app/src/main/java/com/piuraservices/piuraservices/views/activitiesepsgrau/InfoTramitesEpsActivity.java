@@ -49,7 +49,7 @@ public class InfoTramitesEpsActivity extends AppCompatActivity implements View.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_tramites_eps);
-        getSupportActionBar().setTitle("Información de Trámites");
+        getSupportActionBar().setTitle("Información de trámites");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //String[] informacion = {"Información Referencial", "Información de Reclamos", "Información de Trámites"};
         //Inflater inflater;
@@ -62,7 +62,7 @@ public class InfoTramitesEpsActivity extends AppCompatActivity implements View.O
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 final int pos = i;
-                Intent intent=new Intent(InfoTramitesEpsActivity.this, DetallereclamosEpsActivity.class);
+                Intent intent=new Intent(InfoTramitesEpsActivity.this, DetalleTramitesEpsgrauActivity.class);
                 startActivity(intent);
                 editarDetalle(list_tramites.get(pos));
             }
@@ -109,6 +109,7 @@ public class InfoTramitesEpsActivity extends AppCompatActivity implements View.O
         String nombretramite = post.getNombre().toString();
         String descripciontramite = post.getDescripcion().toString();
         parametros.putString("descripcionKey",descripciontramite);
+        parametros.putString("nombreKey",nombretramite);
         intent.putExtras(parametros);
         startActivity(intent);
         //call methods

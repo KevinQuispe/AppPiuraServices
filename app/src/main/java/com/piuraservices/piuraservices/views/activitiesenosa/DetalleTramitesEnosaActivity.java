@@ -10,6 +10,7 @@ import com.piuraservices.piuraservices.R;
 public class DetalleTramitesEnosaActivity extends AppCompatActivity {
 
     TextView desctramite;
+    TextView nombretramite;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,10 +19,13 @@ public class DetalleTramitesEnosaActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         desctramite=(TextView) findViewById(R.id.tv_desc_tramite_enosa);
+        nombretramite=(TextView) findViewById(R.id.tv_nombre_tramite_enosa);
         //recibir parametros
         Intent thisForm = getIntent();
         Bundle parametros = thisForm.getExtras();
         String descripcion = parametros.getString("descripcionKey");
+        String nombre = parametros.getString("nombreKey");
         desctramite.setText(descripcion);
+        nombretramite.setText(nombre);
     }
 }

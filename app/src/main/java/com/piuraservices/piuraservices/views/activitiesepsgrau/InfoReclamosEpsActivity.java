@@ -107,16 +107,13 @@ public class InfoReclamosEpsActivity extends AppCompatActivity implements View.O
     }
     //mostrardetalle lista
     public void editarDetalle(final InfoReclamosEpsgraumodel post){
-        Bundle bundle=new Bundle();
-        bundle.putSerializable("Post",post);
-        bundle.putString("nombreKey",post.getNombre().toString());
-        bundle.putString("descripcionKey",post.getDescripcion().toString());
         //capturar datos
         Intent intent=new Intent(InfoReclamosEpsActivity.this, DetallereclamosEpsActivity.class);
         Bundle parametros = new Bundle();
-        String nombretramite = post.getNombre().toString();
-        String descripciontramite = post.getDescripcion().toString();
-        parametros.putString("descripcionKey",descripciontramite);
+        String nombrereclamo = post.getNombre().toString();
+        String descripcionreclamo = post.getDescripcion().toString();
+        parametros.putString("nombreKey",nombrereclamo);
+        parametros.putString("descripcionKey",descripcionreclamo);
         intent.putExtras(parametros);
         startActivity(intent);
     }

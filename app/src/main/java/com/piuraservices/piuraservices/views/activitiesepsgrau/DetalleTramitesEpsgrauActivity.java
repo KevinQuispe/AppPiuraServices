@@ -10,18 +10,23 @@ import com.piuraservices.piuraservices.R;
 public class DetalleTramitesEpsgrauActivity extends AppCompatActivity {
 
     TextView descTramite;
+    TextView nombreTramite;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_tramites_epsgrau);
-        getSupportActionBar().setTitle("Descripción de Tramite");
+        getSupportActionBar().setTitle("Descripción de trámite");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         descTramite=(TextView) findViewById(R.id.tv_desc_tramite_eps);
+        nombreTramite=(TextView) findViewById(R.id.tv_nombre_tramite_eps);
         //recibir parametros
         Intent thisForm = getIntent();
         Bundle parametros = thisForm.getExtras();
+
         String descripcion = parametros.getString("descripcionKey");
+        String nombre = parametros.getString("nombreKey");
         descTramite.setText(descripcion);
+        nombreTramite.setText(nombre);
     }
 }

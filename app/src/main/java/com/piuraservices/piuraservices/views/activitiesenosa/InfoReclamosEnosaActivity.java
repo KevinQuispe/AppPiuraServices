@@ -119,6 +119,7 @@ public class InfoReclamosEnosaActivity extends AppCompatActivity implements View
         String nombrereclamo = post.getNombre().toString();
         String descripcionreclamo = post.getDescripcion().toString();
         parametros.putString("descripcionKey",descripcionreclamo);
+        parametros.putString("nombreKey",nombrereclamo);
         intent.putExtras(parametros);
         startActivity(intent);
     }

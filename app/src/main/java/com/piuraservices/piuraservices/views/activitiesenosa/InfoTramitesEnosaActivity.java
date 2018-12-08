@@ -51,7 +51,7 @@ public class InfoTramitesEnosaActivity extends AppCompatActivity implements View
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_tramites_enosa);
-        getSupportActionBar().setTitle("Información de Tramites");
+        getSupportActionBar().setTitle("Información de trámites");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         listatramites=(ListView) findViewById(R.id.list_tramitesenosa);
         listatramites.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -59,7 +59,7 @@ public class InfoTramitesEnosaActivity extends AppCompatActivity implements View
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 //Toast.makeText(InfoTramitesEnosaActivity.this, "Click tramite "+i, Toast.LENGTH_SHORT).show();
                 final int pos = i;
-                Intent intent=new Intent(InfoTramitesEnosaActivity.this, DetalleTramitesEpsgrauActivity.class);
+                Intent intent=new Intent(InfoTramitesEnosaActivity.this, DetalleTramitesEnosaActivity.class);
                 startActivity(intent);
                 editarDetalle(lista_tramites.get(pos));
 
@@ -110,7 +110,7 @@ public class InfoTramitesEnosaActivity extends AppCompatActivity implements View
                     listatramites.setAdapter(new ListaInfoTramitesEnosaAdapter(getApplicationContext(),lista));
                     listatramites.setOnItemClickListener(InfoTramitesEnosaActivity.this);
 
-                    listatramites.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            listatramites.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                             //Toast.makeText(getApplicationContext(), "item " +i, Toast.LENGTH_SHORT).show();
@@ -132,11 +132,12 @@ public class InfoTramitesEnosaActivity extends AppCompatActivity implements View
         bundle.putString("nombreKey",post.getNombre().toString());
         bundle.putString("descripcionKey",post.getDescripcion().toString());
         //capturar datos
-        Intent intent=new Intent(InfoTramitesEnosaActivity.this, DetalleTramitesEpsgrauActivity.class);
+        Intent intent=new Intent(InfoTramitesEnosaActivity.this, DetalleTramitesEnosaActivity.class);
         Bundle parametros = new Bundle();
-        String nombrereclamo = post.getNombre().toString();
-        String descripcionreclamo = post.getDescripcion().toString();
-        parametros.putString("descripcionKey",descripcionreclamo);
+        String nombretramite = post.getNombre().toString();
+        String descripciontramite = post.getDescripcion().toString();
+        parametros.putString("nombreKey",nombretramite);
+        parametros.putString("descripcionKey",descripciontramite);
         intent.putExtras(parametros);
         startActivity(intent);
     }

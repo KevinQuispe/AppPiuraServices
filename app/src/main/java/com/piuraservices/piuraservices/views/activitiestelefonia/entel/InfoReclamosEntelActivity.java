@@ -32,6 +32,7 @@ import com.piuraservices.piuraservices.services.entel.ListaReclamosEntelclient;
 import com.piuraservices.piuraservices.services.http;
 import com.piuraservices.piuraservices.services.telefonia.ListaReclamosMovistarclient;
 import com.piuraservices.piuraservices.utils.Config;
+import com.piuraservices.piuraservices.views.activitiesenosa.DetalleReclamosEnosaActivity;
 import com.piuraservices.piuraservices.views.activitiestelefonia.claro.InfoReclamosClaroActivity;
 import com.piuraservices.piuraservices.views.activitiestelefonia.movistar.DetalleReclamosMovistarActivity;
 import com.piuraservices.piuraservices.views.activitiestelefonia.movistar.InfoReclamosMovistarActivity;
@@ -115,6 +116,7 @@ public class InfoReclamosEntelActivity extends AppCompatActivity implements View
         String nombrereclamo = post.getNombre().toString();
         String descripcionreclamo = post.getDescripcion().toString();
         parametros.putString("descripcionKey",descripcionreclamo);
+        parametros.putString("nombreKey",nombrereclamo);
         intent.putExtras(parametros);
         startActivity(intent);
     }
