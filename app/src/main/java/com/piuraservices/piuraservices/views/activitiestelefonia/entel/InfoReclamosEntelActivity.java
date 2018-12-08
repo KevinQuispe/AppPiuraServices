@@ -110,7 +110,7 @@ public class InfoReclamosEntelActivity extends AppCompatActivity implements View
         bundle.putString("nombreKey",post.getNombre().toString());
         bundle.putString("descripcionKey",post.getDescripcion().toString());
         //capturar datos
-        Intent intent=new Intent(InfoReclamosEntelActivity.this, DetalleReclamosMovistarActivity.class);
+        Intent intent=new Intent(InfoReclamosEntelActivity.this, DetalleReclamosEntelActivity.class);
         Bundle parametros = new Bundle();
         String nombrereclamo = post.getNombre().toString();
         String descripcionreclamo = post.getDescripcion().toString();

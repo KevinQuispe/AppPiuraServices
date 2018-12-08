@@ -5,8 +5,6 @@ import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.piuraservices.piuraservices.views.activities.LoginActivity;
-
 import java.util.Timer;
 import java.util.TimerTask;
 

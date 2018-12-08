@@ -14,7 +14,7 @@ public class DetalleTramitesClaroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_tramites_claro);
-        getSupportActionBar().setTitle("Descripción de tramite");
+        getSupportActionBar().setTitle("Descripción de trámite");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         desctramite=(TextView) findViewById(R.id.tv_desc_reclamo_entel);
         //recibir parametros

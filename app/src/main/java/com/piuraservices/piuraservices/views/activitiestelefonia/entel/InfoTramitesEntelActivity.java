@@ -53,7 +53,7 @@ public class InfoTramitesEntelActivity extends AppCompatActivity implements View
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_tramites_entel);
-        getSupportActionBar().setTitle("Infomación Tramites Entel");
+        getSupportActionBar().setTitle("Infomación trámites Entel");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         listartramites=(ListView) findViewById(R.id.list_tramites_entel);
         listarTramitesEntel();
@@ -103,7 +103,7 @@ public class InfoTramitesEntelActivity extends AppCompatActivity implements View
         bundle.putString("nombreKey",post.getNombre().toString());
         bundle.putString("descripcionKey",post.getDescripcion().toString());
         //capturar datos
-        Intent intent=new Intent(InfoTramitesEntelActivity.this, DetalleReclamosMovistarActivity.class);
+        Intent intent=new Intent(InfoTramitesEntelActivity.this, DetalleTramitesEntelActivity.class);
         Bundle parametros = new Bundle();
         String nombrereclamo = post.getNombre().toString();
         String descripcionreclamo = post.getDescripcion().toString();
