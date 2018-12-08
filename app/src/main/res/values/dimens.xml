@@ -9,5 +9,5 @@
     <dimen name="txtSizeSplash">30dp</dimen>
     <dimen name="textoSize">20dp</dimen>
     <dimen name="activity_header_escudo">60dp</dimen>
-    <dimen name="activity_vertical_referencial">6dp</dimen>
+    <dimen name="activity_vertical_referencial">4dp</dimen>
 </resources>

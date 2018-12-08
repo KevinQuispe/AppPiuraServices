@@ -17,7 +17,7 @@ public class OpenWebEnosaActivity extends AppCompatActivity {
         webview=(WebView) findViewById(R.id.webviewenosa);
         getSupportActionBar().setTitle("Web Enosa");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        String url = "https://www.distriluz.com.pe/enosa/03_servicio/como_obt.html";
+        String url = "http://www.distriluz.com.pe/enosa/";
         webview.getSettings().setJavaScriptEnabled(true);
         webview.getSettings().setBuiltInZoomControls(true);
         webview.loadUrl(url);

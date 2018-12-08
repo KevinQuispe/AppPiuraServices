@@ -118,8 +118,8 @@
     <string name="title_img_empresatelefonia">Telefonía,Movistar, claro, entel</string>
     <string name="title_img_empresaenosa">Enosa, servicio de luz</string>
     <!-- TITULOS FRAGMENTES ENTIDAD RECLAMO -->
-    <string name="title_entidad_reclamo">Seleccione entidad o empresa para consultar pasos para realizar reclamos</string>
-    <string name="title_entidad_tramite">Seleccione entidad  o empresa para consultar pasos para realizar trámites</string>
+    <string name="title_entidad_reclamo">Seleccione entidad o empresa para consultar información de reclamos</string>
+    <string name="title_entidad_tramite">Seleccione entidad  o empresa para consultar informacón de trámites</string>
     <!-- TITULOS FRAGMENTES ENTIDAD CONTACTO -->
     <string name="title_entidad_contacto">Seleccione entidad o empresa para consultar contactos y direcioones</string>
 

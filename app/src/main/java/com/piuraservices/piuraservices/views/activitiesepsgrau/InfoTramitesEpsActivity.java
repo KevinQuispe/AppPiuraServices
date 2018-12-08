@@ -49,7 +49,7 @@ public class InfoTramitesEpsActivity extends AppCompatActivity implements View.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_tramites_eps);
-        getSupportActionBar().setTitle("Información de Tramites");
+        getSupportActionBar().setTitle("Información de Trámites");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //String[] informacion = {"Información Referencial", "Información de Reclamos", "Información de Trámites"};
         //Inflater inflater;

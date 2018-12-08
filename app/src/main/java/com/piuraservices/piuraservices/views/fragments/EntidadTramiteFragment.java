@@ -28,7 +28,6 @@ import com.piuraservices.piuraservices.views.activitiestelefonia.movistar.InfoTr
  */
 public class EntidadTramiteFragment extends Fragment {
 
-
     RadioGroup grupo;
     RadioButton rbmovistar, rbepsgrau, rbenosa, rbclaro, rbentel;
     Button buttonnext;

@@ -11,5 +11,7 @@ public class InfoContactosMovistarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_contactos_movistar);
+        getSupportActionBar().setTitle("Información de Contactos");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }

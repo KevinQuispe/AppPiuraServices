@@ -11,5 +11,7 @@ public class InfoContactosEntelActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_contactos_entel);
+        getSupportActionBar().setTitle("Información de Contactos");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }

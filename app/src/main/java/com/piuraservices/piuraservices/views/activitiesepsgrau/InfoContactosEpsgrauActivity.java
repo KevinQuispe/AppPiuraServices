@@ -11,5 +11,7 @@ public class InfoContactosEpsgrauActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_contactos_epsgrau);
+        getSupportActionBar().setTitle("Información de Contactos");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }
