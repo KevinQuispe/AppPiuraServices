@@ -56,8 +56,8 @@ public class EnosaActivity extends AppCompatActivity {
         //'https: //maps.google.com/? Q = 38.6531004, -90.243462 & ll = 38.6531004, -90.243462 & z = 3'
 
         //Uri uri = Uri.parse("geo:41.3825581,2.1704375?z=16&q=-5.1919654,-80.6281973,15z(Enosa Piura)");
-        //-5.1954659,-80.6318516
-        Uri uri = Uri.parse("https://www.google.com.pe/maps/dir/-5.1952355,-80.6095077/ENOSA,+Sullana/@-5.1919654,-80.6281973,17z/data=!3m1!4b1!4m16!1m6!3m5!1s0x904a107f28c128d3:0xba15734a28591ed3!2sENOSA!8m2!3d-5.1939378!4d-80.6301963!4m8!1m1!4e1!1m5!1m1!1s0x904a107f28c128d3:0xba15734a28591ed3!2m2!1d-80.6301963!2d-5.1939378");
+        //Uri uri = Uri.parse("https://www.google.com.pe/maps/dir/-5.1952355,-80.6095077/ENOSA,+Sullana/@-5.1954659,-80.6318516,17z/data=!4m12!1m6!3m5!1s0x904a107f28c128d3:0xba15734a28591ed3!2sENOSA!8m2!3d-5.1939041!4d-80.6301856!3m4!1s0x904a107f28c128d3:0xba15734a28591ed3!8m2!3d-5.1939041!4d-80.6301856");
+        Uri uri = Uri.parse("https://www.google.com.pe/maps/place/ENOSA/@-5.1939448,-80.6304994,19z/data=!4m13!1m7!3m6!1s0x904a107f28c128d3:0xba15734a28591ed3!2sENOSA!3b1!8m2!3d-5.1939041!4d-80.6301856!3m4!1s0x904a107f28c128d3:0xba15734a28591ed3!8m2!3d-5.1939041!4d-80.6301856");
         //Uri uri = Uri.parse("geo:41.3825581,2.1704375?z=16&q=-5.1954659,-80.6318516(Enosa Piura)");
         //startActivity( new Intent(Intent.ACTION_VIEW, uri));
         Intent intent=new Intent(Intent.ACTION_VIEW,uri);
