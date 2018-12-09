@@ -10,6 +10,7 @@ import com.piuraservices.piuraservices.R;
 public class DetalleReclamosMovistarActivity extends AppCompatActivity {
 
     TextView descReclamo;
+    TextView nombreReclamo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,10 +18,13 @@ public class DetalleReclamosMovistarActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Descripción de reclamo");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         descReclamo=(TextView) findViewById(R.id.tv_desc_reclamo_movistar);
+        nombreReclamo=(TextView) findViewById(R.id.tv_nombre_reclamo_movistar);
         //recibir parametros
         Intent thisForm = getIntent();
         Bundle parametros = thisForm.getExtras();
         String descripcion = parametros.getString("descripcionKey");
+        String nombre = parametros.getString("nombreKey");
         descReclamo.setText(descripcion);
+        nombreReclamo.setText(nombre);
     }
 }

@@ -62,7 +62,7 @@ public class InfoReclamosEntelActivity extends AppCompatActivity implements View
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_reclamos_entel);
-        getSupportActionBar().setTitle("Infomación Reclamos Entel");
+        getSupportActionBar().setTitle("Infomación reclamos Entel");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         listareclamosentel=(ListView) findViewById(R.id.list_reclamos_entel);
         listarReclamosEntel();

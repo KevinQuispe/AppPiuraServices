@@ -54,7 +54,7 @@ public class InfoReclamosEpsActivity extends AppCompatActivity implements View.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_reclamos_eps);
-        getSupportActionBar().setTitle("Información de Reclamos");
+        getSupportActionBar().setTitle("Información de reclamos");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         listViewreclamos = (ListView) findViewById(R.id.list_reclamoseps);
@@ -106,12 +106,16 @@ public class InfoReclamosEpsActivity extends AppCompatActivity implements View.O
         });
     }
     //mostrardetalle lista
-    public void editarDetalle(final InfoReclamosEpsgraumodel post){
+    public void editarDetalle(final InfoReclamosEpsgraumodel reclamo){
         //capturar datos
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("Reclamo",reclamo);
+        bundle.putString("nombreKey",reclamo.getNombre().toString());
+        bundle.putString("descripcionKey",reclamo.getDescripcion().toString());
         Intent intent=new Intent(InfoReclamosEpsActivity.this, DetallereclamosEpsActivity.class);
         Bundle parametros = new Bundle();
-        String nombrereclamo = post.getNombre().toString();
-        String descripcionreclamo = post.getDescripcion().toString();
+        String nombrereclamo = reclamo.getNombre().toString();
+        String descripcionreclamo = reclamo.getDescripcion().toString();
         parametros.putString("nombreKey",nombrereclamo);
         parametros.putString("descripcionKey",descripcionreclamo);
         intent.putExtras(parametros);

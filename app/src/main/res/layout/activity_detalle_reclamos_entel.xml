@@ -18,7 +18,7 @@
             <TextView
                 android:textAlignment="center"
                 android:textColor="@color/cardview_dark_background"
-                android:id="@+id/textView1"
+                android:id="@+id/tv_nombre_reclamo_entel"
                 android:textStyle="bold"
                 android:text="Descripcion de Reclamo"
                 android:layout_width="match_parent"

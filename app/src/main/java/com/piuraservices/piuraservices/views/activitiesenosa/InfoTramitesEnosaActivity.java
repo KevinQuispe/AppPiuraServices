@@ -127,11 +127,12 @@ public class InfoTramitesEnosaActivity extends AppCompatActivity implements View
     }
     //mostrardetalle lista
     public void editarDetalle(final InfoTramitesEnosamodel post){
+        //capturar datos
         Bundle bundle=new Bundle();
         bundle.putSerializable("Post",post);
         bundle.putString("nombreKey",post.getNombre().toString());
         bundle.putString("descripcionKey",post.getDescripcion().toString());
-        //capturar datos
+
         Intent intent=new Intent(InfoTramitesEnosaActivity.this, DetalleTramitesEnosaActivity.class);
         Bundle parametros = new Bundle();
         String nombretramite = post.getNombre().toString();

@@ -23,10 +23,10 @@ public class DetalleTramitesEpsgrauActivity extends AppCompatActivity {
         //recibir parametros
         Intent thisForm = getIntent();
         Bundle parametros = thisForm.getExtras();
-
-        String descripcion = parametros.getString("descripcionKey");
         String nombre = parametros.getString("nombreKey");
-        descTramite.setText(descripcion);
+        String descripcion = parametros.getString("descripcionKey");
         nombreTramite.setText(nombre);
+        descTramite.setText(descripcion);
+
     }
 }

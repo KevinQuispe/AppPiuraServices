@@ -52,7 +52,7 @@ public class InfoReclamosClaroActivity extends AppCompatActivity implements View
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_reclamos_claro);
-        getSupportActionBar().setTitle("Infomación Reclamos Claro");
+        getSupportActionBar().setTitle("Infomación reclamos Claro");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         listareclamosclaro = (ListView) findViewById(R.id.list_reclamos_claro);
         listarReclamosClaro();
@@ -101,11 +101,12 @@ public class InfoReclamosClaroActivity extends AppCompatActivity implements View
         bundle.putString("nombreKey",post.getNombre().toString());
         bundle.putString("descripcionKey",post.getDescripcion().toString());
         //capturar datos
-        Intent intent=new Intent(InfoReclamosClaroActivity.this, DetalleReclamosMovistarActivity.class);
+        Intent intent=new Intent(InfoReclamosClaroActivity.this, DetalleReclamosClaroActivity.class);
         Bundle parametros = new Bundle();
         String nombrereclamo = post.getNombre().toString();
         String descripcionreclamo = post.getDescripcion().toString();
         parametros.putString("descripcionKey",descripcionreclamo);
+        parametros.putString("nombreKey",nombrereclamo);
         intent.putExtras(parametros);
         startActivity(intent);
     }

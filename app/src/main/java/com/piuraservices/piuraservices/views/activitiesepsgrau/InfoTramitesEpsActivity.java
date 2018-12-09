@@ -102,14 +102,18 @@ public class InfoTramitesEpsActivity extends AppCompatActivity implements View.O
             }
         });
     }
-    public void editarDetalle(final InfoTramitesEpsgraumodel post){
+    public void editarDetalle(final InfoTramitesEpsgraumodel tramite){
         //capturar datos
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("Tramite",tramite);
+        bundle.putString("nombreKey",tramite.getNombre().toString());
+        bundle.putString("descripcionKey",tramite.getDescripcion().toString());
         Intent intent=new Intent(InfoTramitesEpsActivity.this, DetalleTramitesEpsgrauActivity.class);
         Bundle parametros = new Bundle();
-        String nombretramite = post.getNombre().toString();
-        String descripciontramite = post.getDescripcion().toString();
-        parametros.putString("descripcionKey",descripciontramite);
+        String nombretramite = tramite.getNombre().toString();
+        String descripciontramite = tramite.getDescripcion().toString();
         parametros.putString("nombreKey",nombretramite);
+        parametros.putString("descripcionKey",descripciontramite);
         intent.putExtras(parametros);
         startActivity(intent);
         //call methods

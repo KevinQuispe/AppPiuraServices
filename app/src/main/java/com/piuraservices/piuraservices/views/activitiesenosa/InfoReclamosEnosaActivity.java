@@ -52,7 +52,7 @@ public class InfoReclamosEnosaActivity extends AppCompatActivity implements View
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_reclamos_enosa);
-        getSupportActionBar().setTitle("Información de Reclamos");
+        getSupportActionBar().setTitle("Información de reclamos");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //String[] informacion = {"Información Referencial", "Información de Reclamos", "Información de Trámites"};
         //Inflater inflater;
@@ -118,8 +118,8 @@ public class InfoReclamosEnosaActivity extends AppCompatActivity implements View
         Bundle parametros = new Bundle();
         String nombrereclamo = post.getNombre().toString();
         String descripcionreclamo = post.getDescripcion().toString();
-        parametros.putString("descripcionKey",descripcionreclamo);
         parametros.putString("nombreKey",nombrereclamo);
+        parametros.putString("descripcionKey",descripcionreclamo);
         intent.putExtras(parametros);
         startActivity(intent);
     }

@@ -24,7 +24,7 @@ public class DetalleReclamosEnosaActivity extends AppCompatActivity {
         Intent thisForm = getIntent();
         Bundle parametros = thisForm.getExtras();
 
-        String nombrereclamo=parametros.getString("nombrereclamoKey");
+        String nombrereclamo=parametros.getString("nombreKey");
         String descripcion = parametros.getString("descripcionKey");
         descReclamo.setText(descripcion);
         nombreReclamo.setText(nombrereclamo);

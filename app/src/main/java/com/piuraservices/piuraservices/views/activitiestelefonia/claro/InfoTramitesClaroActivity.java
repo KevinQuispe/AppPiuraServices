@@ -65,7 +65,7 @@ public class InfoTramitesClaroActivity extends AppCompatActivity implements View
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_tramites_claro);
-        getSupportActionBar().setTitle("Infomación Trámites Claro");
+        getSupportActionBar().setTitle("Infomación trámites Claro");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         listatramites=(ListView) findViewById(R.id.list_tramites_claro);
         listaTramitesClaro();
@@ -104,21 +104,23 @@ public class InfoTramitesClaroActivity extends AppCompatActivity implements View
                     System.out.println(e.getMessage());
                 }
             }
-        });
-    }
+    });
+}
 
     //mostrardetalle lista
-    public void editarDetalle(final InfoTramitesClaromodel post){
-        Bundle bundle=new Bundle();
-        bundle.putSerializable("Post",post);
-        bundle.putString("nombreKey",post.getNombre().toString());
-        bundle.putString("descripcionKey",post.getDescripcion().toString());
+    public void editarDetalle(final InfoTramitesClaromodel claro){
         //capturar datos
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("Claro",claro);
+        bundle.putString("nombreKey",claro.getNombre().toString());
+        bundle.putString("descripcionKey",claro.getDescripcion().toString());
+
         Intent intent=new Intent(InfoTramitesClaroActivity.this, DetalleTramitesClaroActivity.class);
         Bundle parametros = new Bundle();
-        String nombrereclamo = post.getNombre().toString();
-        String descripcionreclamo = post.getDescripcion().toString();
+        String nombrereclamo = claro.getNombre().toString();
+        String descripcionreclamo = claro.getDescripcion().toString();
         parametros.putString("descripcionKey",descripcionreclamo);
+        parametros.putString("nombreKey",nombrereclamo);
         intent.putExtras(parametros);
         startActivity(intent);
     }
