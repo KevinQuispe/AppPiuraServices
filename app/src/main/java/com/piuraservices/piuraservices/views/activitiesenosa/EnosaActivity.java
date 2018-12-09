@@ -12,6 +12,9 @@ import android.webkit.URLUtil;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.piuraservices.piuraservices.R;
 
 public class EnosaActivity extends AppCompatActivity {
@@ -48,22 +51,29 @@ public class EnosaActivity extends AppCompatActivity {
         });
     }
     public void onClickOpenGoogleMaps(View v) {
-        /*
-        Uri uri = Uri.parse("https://www.google.com/maps/@41.3825581,2.1704375,16z");
-        if (URLUtil.isValidUrl(uri.toString())) {
-            startActivity( new Intent(Intent.ACTION_VIEW, uri));
-        */
-        //'https: //maps.google.com/? Q = 38.6531004, -90.243462 & ll = 38.6531004, -90.243462 & z = 3'
 
-        //Uri uri = Uri.parse("geo:41.3825581,2.1704375?z=16&q=-5.1919654,-80.6281973,15z(Enosa Piura)");
-        //Uri uri = Uri.parse("https://www.google.com.pe/maps/dir/-5.1952355,-80.6095077/ENOSA,+Sullana/@-5.1954659,-80.6318516,17z/data=!4m12!1m6!3m5!1s0x904a107f28c128d3:0xba15734a28591ed3!2sENOSA!8m2!3d-5.1939041!4d-80.6301856!3m4!1s0x904a107f28c128d3:0xba15734a28591ed3!8m2!3d-5.1939041!4d-80.6301856");
-        Uri uri = Uri.parse("https://www.google.com.pe/maps/place/ENOSA/@-5.1939448,-80.6304994,19z/data=!4m13!1m7!3m6!1s0x904a107f28c128d3:0xba15734a28591ed3!2sENOSA!3b1!8m2!3d-5.1939041!4d-80.6301856!3m4!1s0x904a107f28c128d3:0xba15734a28591ed3!8m2!3d-5.1939041!4d-80.6301856");
+        //Uri uri = Uri.parse("https://www.google.com.pe/maps/place/ENOSA/@-5.1938667,-80.630659,19z/data=!4m12!1m6!3m5!1s0x904a107f28c128d3:0xba15734a28591ed3!2sENOSA!8m2!3d-5.1939041!4d-80.6301856!3m4!1s0x904a107f28c128d3:0xba15734a28591ed3!8m2!3d-5.1939041!4d-80.6301856");
         //Uri uri = Uri.parse("geo:41.3825581,2.1704375?z=16&q=-5.1954659,-80.6318516(Enosa Piura)");
         //startActivity( new Intent(Intent.ACTION_VIEW, uri));
-        Intent intent=new Intent(Intent.ACTION_VIEW,uri);
-        Intent chooser=Intent.createChooser(intent,"Abrir Google Maps");
+        //Intent intent=new Intent(Intent.ACTION_VIEW,uri);
+        //Intent chooser=Intent.createChooser(intent,"Abrir Google Maps");
+        //startActivity(chooser);
+
+        String centralenosa="ENOSA, Piura";
+        Uri gmmIntentUri = Uri.parse("geo:0,0?q="+centralenosa);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        Intent chooser = Intent.createChooser(mapIntent, "Abrir Google Maps");
         startActivity(chooser);
     }
+    public MarkerOptions getMarkerOptions() {
+        return new MarkerOptions()
+                .title("hola")
+                .position(new LatLng(99393, 02202))
+                .snippet("Piura" + ", mile ")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+    }
+
     public void onClickOpenEmail(View v) {
 
         Intent intent= new Intent(Intent.ACTION_SEND);

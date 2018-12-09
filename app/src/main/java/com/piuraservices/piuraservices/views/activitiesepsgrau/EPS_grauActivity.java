@@ -196,15 +196,18 @@ public class EPS_grauActivity extends AppCompatActivity {
 
     public void onClickOpenGoogleMaps(View v) {
 
-        Uri uri = Uri.parse("https://www.google.com.pe/maps/place/EPS+GRAU+S.A./@-5.1909756,-80.6422337,17z/data=!4m12!1m6!3m5!1s0x904a1a85053ff85b:0xd40ce7e54eb08b5e!2sEPS+GRAU+S.A.!8m2!3d-5.1908153!4d-80.6415363!3m4!1s0x904a1a85053ff85b:0xd40ce7e54eb08b5e!8m2!3d-5.1908153!4d-80.6415363");
+        //Uri uri = Uri.parse("https://www.google.com.pe/maps/place/EPS+GRAU+S.A./@-5.1909756,-80.6422337,17z/data=!4m12!1m6!3m5!1s0x904a1a85053ff85b:0xd40ce7e54eb08b5e!2sEPS+GRAU+S.A.!8m2!3d-5.1908153!4d-80.6415363!3m4!1s0x904a1a85053ff85b:0xd40ce7e54eb08b5e!8m2!3d-5.1908153!4d-80.6415363");
         //Uri uri = Uri.parse("geo:41.3825581,2.1704375?z=16&q=-5.1907272,-80.6634602(EPS Grau Piura)");
         //startActivity( new Intent(Intent.ACTION_VIEW, uri));
-        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-        Intent chooser = Intent.createChooser(intent, "Abrir Google Maps");
+        //Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        //Intent chooser = Intent.createChooser(intent, "Abrir Google Maps");
+        //startActivity(chooser);
+        String centralepsgrau="EPS GRAU S.A., La Arena, Piura";
+        Uri gmmIntentUri = Uri.parse("geo:0,0?q="+centralepsgrau);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        Intent chooser = Intent.createChooser(mapIntent, "Abrir Google Maps");
         startActivity(chooser);
-        //Uri uri = Uri.parse("geo:41.3825581,2.1704375?z=16&q=-5.19449, -80.6328201(EPS Grau Piura)");
-        //startActivity(new Intent(Intent.ACTION_VIEW,uri));
-
     }
 
     public void onClickOpenEmail(View v) {

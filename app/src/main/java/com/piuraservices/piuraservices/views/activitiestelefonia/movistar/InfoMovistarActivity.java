@@ -51,14 +51,21 @@ public class InfoMovistarActivity extends AppCompatActivity {
         }
         public void onClickOpenGoogleMaps(View v) {
 
-            Uri uri = Uri.parse("geo:41.3825581,2.1704375?z=16&q=-5.19449, -80.6328201(Movistar Piura)");
+            //Uri uri = Uri.parse("geo:41.3825581,2.1704375?z=16&q=-5.19449, -80.6328201(Movistar Piura)");
+            //Uri uri = Uri.parse("https://www.google.com.pe/maps/place/Movistar/@-5.1911462,-80.6278862,17z/data=!4m12!1m6!3m5!1s0x904a1079765f570d:0xc82b56ea40e29959!2sMovistar!8m2!3d-5.1909367!4d-80.6280761!3m4!1s0x904a1079765f570d:0xc82b56ea40e29959!8m2!3d-5.1909367!4d-80.6280761");
             //startActivity( new Intent(Intent.ACTION_VIEW, uri));
-            Intent intent=new Intent(Intent.ACTION_VIEW,uri);
-            Intent chooser=Intent.createChooser(intent,"Abrir Google Maps");
-            startActivity(chooser);
+            //Intent intent=new Intent(Intent.ACTION_VIEW,uri);
+            //Intent chooser=Intent.createChooser(intent,"Abrir Google Maps");
+            //startActivity(chooser);
             //Uri uri = Uri.parse("geo:41.3825581,2.1704375?z=16&q=-5.19449, -80.6328201(EPS Grau Piura)");
             //startActivity(new Intent(Intent.ACTION_VIEW,uri));
 
+            String centralmovistar="Movistar, Loreto, Piura";
+            Uri gmmIntentUri = Uri.parse("geo:0,0?q="+centralmovistar);
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+            mapIntent.setPackage("com.google.android.apps.maps");
+            Intent chooser = Intent.createChooser(mapIntent, "Abrir Google Maps");
+            startActivity(chooser);
         }
         public void onClickOpenEmail(View v) {
 
