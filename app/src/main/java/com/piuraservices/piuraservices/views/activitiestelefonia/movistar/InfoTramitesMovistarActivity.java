@@ -84,7 +84,7 @@ public class InfoTramitesMovistarActivity extends AppCompatActivity  implements 
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
                 System.out.println(responseString);
                 try {
-                    Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
                     lista=new Gson().fromJson(responseString,new TypeToken<ArrayList<InfoTramitesMovistarmodel>>(){}.getType());
                     listatramites.setAdapter(new ListaInfoTramitesMovistarAdapter(getApplicationContext(),lista));
                     listatramites.setOnItemClickListener(InfoTramitesMovistarActivity.this);

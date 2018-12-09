@@ -86,7 +86,7 @@ public class InfoTramitesClaroActivity extends AppCompatActivity implements View
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
                 System.out.println(responseString);
                 try {
-                    Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
                     lista=new Gson().fromJson(responseString,new TypeToken<ArrayList<InfoTramitesClaromodel>>(){}.getType());
                     listatramites.setAdapter(new ListaInfoTramitesClaroAdapter(getApplicationContext(),lista));
                     listatramites.setOnItemClickListener(InfoTramitesClaroActivity.this);

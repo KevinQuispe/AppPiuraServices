@@ -196,7 +196,7 @@ public class EPS_grauActivity extends AppCompatActivity {
 
     public void onClickOpenGoogleMaps(View v) {
 
-        Uri uri = Uri.parse("geo:41.3825581,2.1704375?z=16&q=-5.1906978,-80.6424214,18z(EPS Grau Piura)");
+        Uri uri = Uri.parse("geo:41.3825581,2.1704375?z=16&q=-5.1907272,-80.6634602(EPS Grau Piura)");
         //startActivity( new Intent(Intent.ACTION_VIEW, uri));
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         Intent chooser = Intent.createChooser(intent, "Abrir Google Maps");

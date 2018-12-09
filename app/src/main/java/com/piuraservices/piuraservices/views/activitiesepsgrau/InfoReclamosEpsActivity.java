@@ -85,7 +85,7 @@ public class InfoReclamosEpsActivity extends AppCompatActivity implements View.O
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
                 System.out.println(responseString);
                 try {
-                    Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
                     lista=new Gson().fromJson(responseString,new TypeToken<ArrayList<InfoReclamosEpsgraumodel>>(){}.getType());
                     listViewreclamos.setAdapter(new ListaInfoReclamosepsAdapter(getApplicationContext(),lista));
                     listViewreclamos.setOnItemClickListener(InfoReclamosEpsActivity.this);
