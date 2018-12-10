@@ -27,4 +27,6 @@
     <color name="color_movistar_card">#5bc500</color>
     <color name="color_claro_card">#EF5350</color>
     <color name="color_entel_card">#1565c0</color>
+    <!--color de fondo activities-->
+    <color name="color_fondo_activity">#ffe3e3e3</color>
 </resources>

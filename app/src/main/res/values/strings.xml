@@ -22,7 +22,7 @@
     <string name="text_direccion_enosa">Jirón Callao, 875, Piura - Piura</string>
     <string name="text_correo_enosa">enosa@distriluz.com.pe</string>
     <string name="text_telefono_enosa">(073)28-4030</string>
-    <string name="text_horario_enosa">L-V 08:00 am a 06:30pm,  S-D de 8:30am a 6:30 a.m</string>
+    <string name="text_horario_enosa">L-V 08:00 am a 06:30pm,S-D de 8:30am a 6:30 a.m</string>
     <string name="text_web_enosa">www.distriluz.com.pe/enosa</string>
     <!-- datos para informacion referencial movistar-->
     <string name="text_direccion_movistar">AV Loreto 247 Piura</string>
@@ -95,13 +95,15 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <!-- INFORMACION DE CONTACTO EPSGRAUD -->
+    <!-- INFORMACION DE CONTACTO EPSGRAU -->
     <string name="text_view_informacion">Información Referencial</string>
     <string name="text_view_direccion">Dirección:</string>
     <string name="text_view_telefono">Teléfono:</string>
     <string name="text_view_horario">Horario:</string>
     <string name="text_view_correo">Email:</string>
     <string name="text_view_pagina">Página Web:</string>
+    <string name="text_view_tipo">Tipo de atención:</string>
+    <string name="text_view_oficina">Oficina/Lugar:</string>
     <!-- INFORMACION DE CONTACTO ESPGRAU -->
     <string name="text_view_tramites">Información de Trámites </string>
     <string name="text_view_info_tramites">En esta sección Ud podrá consultar la siguiente información:</string>

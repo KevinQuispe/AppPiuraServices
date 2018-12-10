@@ -127,9 +127,6 @@
         </activity>
         <!-- administrar Informacion tramites enosa -->
         <activity
-            android:name=".views.activities.ConfigurarCuentaActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
             android:name=".views.activitiestelefonia.movistar.InfoMovistarActivity"
             android:parentActivityName=".views.activitiestelefonia.TelefoniaActivity"
             android:theme="@style/ThemeMovistarActivity" />
@@ -186,7 +183,6 @@
         <activity
             android:name=".views.activitiesepsgrau.DetallereclamosEpsActivity"
             android:parentActivityName=".views.activitiesepsgrau.InfoReclamosEpsActivity" />
-
         <activity
             android:name=".views.activitiesepsgrau.DetalleTramitesEpsgrauActivity"
             android:parentActivityName=".views.activitiesepsgrau.InfoTramitesEpsActivity" />
@@ -202,7 +198,6 @@
             android:name=".views.activitiestelefonia.movistar.DetalleReclamosMovistarActivity"
             android:parentActivityName=".views.activitiestelefonia.movistar.InfoReclamosMovistarActivity"
             android:theme="@style/ThemeMovistarActivity" />
-
         <activity
             android:name=".views.activitiestelefonia.movistar.DetalleTramitesMovistarActivity"
             android:parentActivityName=".views.activitiestelefonia.movistar.InfoTramitesMovistarActivity"
@@ -213,18 +208,15 @@
             android:name=".views.activitiestelefonia.entel.DetalleTramitesEntelActivity"
             android:parentActivityName=".views.activitiestelefonia.entel.InfoTramitesEntelActivity"
             android:theme="@style/ThemeEntelActivity" />
-
         <activity
             android:name=".views.activitiestelefonia.entel.DetalleReclamosEntelActivity"
             android:parentActivityName=".views.activitiestelefonia.entel.InfoReclamosEntelActivity"
             android:theme="@style/ThemeEntelActivity" />
 
-
         <!-- informacion detalle de reclamos y tramites claro -->
         <activity
             android:name=".views.activitiestelefonia.claro.DetalleTramitesClaroActivity"
             android:parentActivityName=".views.activitiestelefonia.claro.InfoTramitesClaroActivity" />
-
         <activity
             android:name=".views.activitiestelefonia.claro.DetalleReclamosClaroActivity"
             android:parentActivityName=".views.activitiestelefonia.claro.InfoReclamosClaroActivity" />
@@ -233,7 +225,7 @@
         <activity
             android:name=".views.activitiesenosa.InfoContactosEnosaActivity"
             android:parentActivityName=".MainActivity" />
-        <!-- informacion de contacto eps-->
+        <!-- informacion de contacto eps -->
         <activity
             android:name=".views.activitiesepsgrau.InfoContactosEpsgrauActivity"
             android:parentActivityName=".MainActivity" />
@@ -242,20 +234,24 @@
         <activity
             android:name=".views.activitiestelefonia.claro.InfoContactosClaroActivity"
             android:parentActivityName=".MainActivity" />
-        <!-- informacion de contacto entel-->
+        <!-- informacion de contacto entel -->
         <activity
             android:name=".views.activitiestelefonia.entel.InfoContactosEntelActivity"
             android:parentActivityName=".MainActivity"
             android:theme="@style/ThemeEntelActivity" />
-
         <activity
             android:name=".views.activitiestelefonia.movistar.InfoContactosMovistarActivity"
             android:parentActivityName=".MainActivity"
             android:theme="@style/ThemeMovistarActivity" />
-
         <activity
             android:name=".views.activities.AcercadeActivity"
             android:parentActivityName=".MainActivity" />
+
+        <activity android:name=".views.activitiesepsgrau.DetalleContactoEpsActivity" />
+        <activity android:name=".views.activitiesenosa.DestalleContactoEnosaActivity" />
+        <activity android:name=".views.activitiestelefonia.movistar.DetalleContactoMovistarActivity" />
+        <activity android:name=".views.activitiestelefonia.entel.DetalleContactoEntelActivity" />
+        <activity android:name=".views.activitiestelefonia.claro.DetalleContactoClaroActivity"></activity>
     </application>
 
 </manifest>
