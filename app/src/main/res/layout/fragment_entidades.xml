@@ -90,12 +90,11 @@
                     android:src="@drawable/telefonia"
                     android:scaleType="centerCrop"/>
                 <TextView
-
                     android:id="@+id/txt24"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="4dp"
-                    android:text="Telefonia"
+                    android:text="Empresas de Telefonia"
                     android:layout_gravity="bottom"
                     android:background="@color/colorPrimaryDark"
                     android:textColor="#ffe3e3e3"
