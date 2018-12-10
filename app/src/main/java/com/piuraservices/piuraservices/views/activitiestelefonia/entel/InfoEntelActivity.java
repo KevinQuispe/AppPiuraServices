@@ -49,22 +49,30 @@ public class InfoEntelActivity extends AppCompatActivity {
     }
     public void onClickOpenGoogleMaps(View v) {
 
+        String centralentel="Jr. Libertad 607, Piura, Tienda Piura";
+        Uri gmmIntentUri = Uri.parse("google.navigation:q="+centralentel);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        Intent chooser = Intent.createChooser(mapIntent, "Abrir Google Maps");
+        startActivity(chooser);
+
         //Uri uri = Uri.parse("geo:41.3825581,2.1704375?z=16&q=-5.19449, -80.6328201(Entel Piura)");
         //startActivity( new Intent(Intent.ACTION_VIEW, uri));
         //Uri uri = Uri.parse("https://www.google.com.pe/maps/place/Entel+Per%C3%BA/@-5.1955993,-80.6261248,19z/data=!4m12!1m6!3m5!1s0x904a107c378a0833:0x22691540f5193030!2sEntel+Per%C3%BA!8m2!3d-5.1955993!4d-80.6255776!3m4!1s0x904a107c378a0833:0x22691540f5193030!8m2!3d-5.1955993!4d-80.6255776");
         //Intent intent=new Intent(Intent.ACTION_VIEW,uri);
         //Intent chooser=Intent.createChooser(intent,"Abrir Google Maps");
         //startActivity(chooser);
+
         //Uri uri = Uri.parse("geo:41.3825581,2.1704375?z=16&q=-5.19449, -80.6328201(EPS Grau Piura)");
         //startActivity(new Intent(Intent.ACTION_VIEW,uri));
         //Uri gmmIntentUri = Uri.parse("google.navigation:q=Taronga+Zoo,+Sydney+Australia");
 
-        String centralentel="Jr. Libertad 607, Piura, Tienda Piura";
-        Uri gmmIntentUri = Uri.parse("geo:0,0?q="+centralentel+"Entel Piura");
-        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-        mapIntent.setPackage("com.google.android.apps.maps");
-        Intent chooser = Intent.createChooser(mapIntent, "Abrir Google Maps");
-        startActivity(chooser);
+        //String centralentel="Jr. Libertad 607, Piura, Tienda Piura";
+        //Uri gmmIntentUri = Uri.parse("geo:0,0?q="+centralentel+"Entel Piura");
+        //Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        //mapIntent.setPackage("com.google.android.apps.maps");
+        //Intent chooser = Intent.createChooser(mapIntent, "Abrir Google Maps");
+        //startActivity(chooser);
     }
     public void onClickOpenEmail(View v) {
 

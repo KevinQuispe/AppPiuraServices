@@ -49,6 +49,13 @@ public class InfoClaroActivity extends AppCompatActivity {
     }
     public void onClickOpenGoogleMaps(View v) {
 
+        String centralclaro="Claro Piura, Open Plaza";
+        Uri gmmIntentUri = Uri.parse("google.navigation:q="+centralclaro);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        Intent chooser = Intent.createChooser(mapIntent, "Abrir Google Maps");
+        startActivity(chooser);
+
         //Uri uri = Uri.parse("geo:41.3825581,2.1704375?z=16&q=-5.19449, -80.6328201(Claro Piura)");
         //Uri uri = Uri.parse("https://www.google.com.pe/maps/place/Claro/@-5.1820349,-80.6225762,19z/data=!4m5!3m4!1s0x904a1072044aeeb5:0xcdd06e07e86c1d88!8m2!3d-5.1821711!4d-80.6220371(Claro Piura)");
         //Uri uri = Uri.parse("https://www.google.com.pe/maps/place/Claro/@-5.1822152,-80.6222758,20z/data=!4m6!3m5!1s0x904a1072044aeeb5:0xcdd06e07e86c1d88!4b1!8m2!3d-5.1821711!4d-80.6220371");
@@ -74,22 +81,15 @@ public class InfoClaroActivity extends AppCompatActivity {
         //mapIntent.setPackage("com.google.android.apps.maps");
         //startActivity(mapIntent);
 
-        String centralclaro="Claro Piura, Open Plaza";
-        Uri gmmIntentUri = Uri.parse("geo:0,0?q="+centralclaro);
-        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-        mapIntent.setPackage("com.google.android.apps.maps");
-        Intent chooser = Intent.createChooser(mapIntent, "Abrir Google Maps");
-        startActivity(chooser);
-
         // Display the location of Google, San Francisco using a global plus code.
         //Uri gmmIntentUri = Uri.parse("http://plus.codes/849VQJQ5+XX");
         // Equivalently, define the same location using a local plus code
-
         //String piura="Piura";
         //Uri  gmmIntentUri = Uri.parse("https://plus.codes/"+piura);
         //Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         //mapIntent.setPackage("com.google.android.apps.maps");
         //startActivity(mapIntent);
+
 
     }
     public void onClickOpenEmail(View v) {

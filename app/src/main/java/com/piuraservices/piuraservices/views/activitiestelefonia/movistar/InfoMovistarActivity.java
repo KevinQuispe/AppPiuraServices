@@ -61,7 +61,7 @@ public class InfoMovistarActivity extends AppCompatActivity {
             //startActivity(new Intent(Intent.ACTION_VIEW,uri));
 
             String centralmovistar="Movistar, Loreto, Piura";
-            Uri gmmIntentUri = Uri.parse("geo:0,0?q="+centralmovistar);
+            Uri gmmIntentUri = Uri.parse("google.navigation:q="+centralmovistar);
             Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
             mapIntent.setPackage("com.google.android.apps.maps");
             Intent chooser = Intent.createChooser(mapIntent, "Abrir Google Maps");

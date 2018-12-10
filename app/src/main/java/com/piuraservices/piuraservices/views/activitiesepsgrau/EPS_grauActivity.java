@@ -203,7 +203,7 @@ public class EPS_grauActivity extends AppCompatActivity {
         //Intent chooser = Intent.createChooser(intent, "Abrir Google Maps");
         //startActivity(chooser);
         String centralepsgrau="EPS GRAU S.A., La Arena, Piura";
-        Uri gmmIntentUri = Uri.parse("geo:0,0?q="+centralepsgrau);
+        Uri gmmIntentUri = Uri.parse("google.navigation:q="+centralepsgrau);
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         mapIntent.setPackage("com.google.android.apps.maps");
         Intent chooser = Intent.createChooser(mapIntent, "Abrir Google Maps");
