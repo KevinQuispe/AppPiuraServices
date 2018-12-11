@@ -39,9 +39,9 @@ public class ListaInfoContactosEnosaAdapter extends BaseAdapter {
         View row = convertView;
         if (row == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            row = inflater.inflate(R.layout.lista_info_reclamos_enosa, parent, false);
+            row = inflater.inflate(R.layout.lista_info_contactos_enosa, parent, false);
         }
-        TextView textView = (TextView) row.findViewById(R.id.list_reclamos_enosa_text);
+        TextView textView = (TextView) row.findViewById(R.id.lista_contactos_enosa_text);
         InfoContactosEnosamodel item = lista.get(position);
         String nombreempresa = item.getNombreempresa();
         String oficinalugar = item.getOficinalugar();

@@ -246,12 +246,11 @@
         <activity
             android:name=".views.activities.AcercadeActivity"
             android:parentActivityName=".MainActivity" />
-
         <activity android:name=".views.activitiesepsgrau.DetalleContactoEpsActivity" />
-        <activity android:name=".views.activitiesenosa.DestalleContactoEnosaActivity" />
         <activity android:name=".views.activitiestelefonia.movistar.DetalleContactoMovistarActivity" />
         <activity android:name=".views.activitiestelefonia.entel.DetalleContactoEntelActivity" />
-        <activity android:name=".views.activitiestelefonia.claro.DetalleContactoClaroActivity"></activity>
+        <activity android:name=".views.activitiestelefonia.claro.DetalleContactoClaroActivity" />
+        <activity android:name=".views.activitiesenosa.DetalleContactoEnosaActivity"/>
     </application>
 
 </manifest>

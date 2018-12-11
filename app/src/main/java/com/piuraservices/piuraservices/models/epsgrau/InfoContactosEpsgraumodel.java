@@ -1,23 +1,27 @@
 package com.piuraservices.piuraservices.models.epsgrau;
 
-import java.util.ArrayList;
 
 public class InfoContactosEpsgraumodel {
-    private  long id;
-    private  String nombre_empresa;
-    private  long numero;
-    private  String descripcion;
-    ArrayList<InfoContactosEpsgraumodel> contactosepsgrau=new ArrayList<>();
+    private long id;
+    private String nombreempresa;
+    private String oficinalugar;
+    private String direccion;
+    private String telefono;
+    private String horario;
+    private String tipoatencion;
 
     public InfoContactosEpsgraumodel(){
 
     }
-    public InfoContactosEpsgraumodel(long id, String nombre_empresa, long numero, String descripcion, ArrayList<InfoContactosEpsgraumodel> contactosepsgrau) {
+
+    public InfoContactosEpsgraumodel(long id, String nombreempresa, String oficinalugar, String direccion, String telefono, String horario, String tipoatencion) {
         this.id = id;
-        this.nombre_empresa = nombre_empresa;
-        this.numero = numero;
-        this.descripcion = descripcion;
-        this.contactosepsgrau = contactosepsgrau;
+        this.nombreempresa = nombreempresa;
+        this.oficinalugar = oficinalugar;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.horario = horario;
+        this.tipoatencion = tipoatencion;
     }
 
     public long getId() {
@@ -28,36 +32,65 @@ public class InfoContactosEpsgraumodel {
         this.id = id;
     }
 
-    public String getNombre_empresa() {
-        return nombre_empresa;
+    public String getNombreempresa() {
+        return nombreempresa;
     }
 
-    public void setNombre_empresa(String nombre_empresa) {
-        this.nombre_empresa = nombre_empresa;
+    public void setNombreempresa(String nombreempresa) {
+        this.nombreempresa = nombreempresa;
     }
 
-    public long getNumero() {
-        return numero;
+    public String getOficinalugar() {
+        return oficinalugar;
     }
 
-    public void setNumero(long numero) {
-        this.numero = numero;
+    public void setOficinalugar(String oficinalugar) {
+        this.oficinalugar = oficinalugar;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
-    public ArrayList<InfoContactosEpsgraumodel> getContactosepsgrau() {
-        return contactosepsgrau;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setContactosepsgrau(ArrayList<InfoContactosEpsgraumodel> contactosepsgrau) {
-        this.contactosepsgrau = contactosepsgrau;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getHorario() {
+        return horario;
+    }
+
+    public void setHorario(String horario) {
+        this.horario = horario;
+    }
+
+    public String getTipoatencion() {
+        return tipoatencion;
+    }
+
+    public void setTipoatencion(String tipoatencion) {
+        this.tipoatencion = tipoatencion;
+    }
+
+    @Override
+    public String toString() {
+        return "InfoContactosEpsgraumodel{" +
+                "id=" + id +
+                ", nombreempresa='" + nombreempresa + '\'' +
+                ", oficinalugar='" + oficinalugar + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", horario='" + horario + '\'' +
+                ", tipoatencion='" + tipoatencion + '\'' +
+                '}';
     }
 }
 
