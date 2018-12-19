@@ -29,10 +29,12 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:textColor="@color/color_inforeferencial"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="@string/text_view_oficina" />
                 <TextView
+                    android:id="@+id/tv_centro_contacto_entel"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="Movistar" />
@@ -49,10 +51,12 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:textColor="@color/color_inforeferencial"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="@string/text_view_direccion" />
                 <TextView
+                    android:id="@+id/tv_direccion_contacto_entel"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="Piura jr callao" />
@@ -69,10 +73,12 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:textColor="@color/color_inforeferencial"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="@string/text_view_telefono" />
                 <TextView
+                    android:id="@+id/tv_telefono_contacto_entel"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="(073) 307741" />
@@ -89,10 +95,12 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:textColor="@color/color_inforeferencial"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="@string/text_view_horario" />
                 <TextView
+                    android:id="@+id/tv_horario_contacto_entel"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="(073) 307741" />
@@ -107,12 +115,13 @@
                 android:layout_height="wrap_content"
                 android:padding="4dp"
                 android:orientation="horizontal">
-
                 <TextView
+                    android:textColor="@color/color_inforeferencial"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="@string/text_view_tipo" />
                 <TextView
+                    android:id="@+id/tv_tiposervicio_contcto_entel"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="Todo" />
@@ -121,7 +130,6 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_live_help_black_24dp" />
             </LinearLayout>
-
         </GridLayout>
     </android.support.v7.widget.CardView>
 </LinearLayout>

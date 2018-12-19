@@ -43,6 +43,7 @@ public class InfoContactosEnosaActivity extends AppCompatActivity implements Vie
         setContentView(R.layout.activity_info_contactos_enosa);
         getSupportActionBar().setTitle("Información de Contactos");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         listacontactos=(ListView) findViewById(R.id.id_lista_contactos_enosa);
         listacontactos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

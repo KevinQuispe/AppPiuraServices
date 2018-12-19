@@ -1,6 +1,8 @@
 package com.piuraservices.piuraservices.models.telefonia.claro;
 
-public class InfoContactosClaromodel {
+import java.io.Serializable;
+
+public class InfoContactosClaromodel implements Serializable {
     private long id;
     private String nombreempresa;
     private String oficinalugar;

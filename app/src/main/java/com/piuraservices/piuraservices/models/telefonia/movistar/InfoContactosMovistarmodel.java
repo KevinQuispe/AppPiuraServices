@@ -1,6 +1,8 @@
 package com.piuraservices.piuraservices.models.telefonia.movistar;
 
-public class InfoContactosMovistarmodel {
+import java.io.Serializable;
+
+public class InfoContactosMovistarmodel implements Serializable {
     private long id;
     private String nombreempresa;
     private String oficinalugar;
