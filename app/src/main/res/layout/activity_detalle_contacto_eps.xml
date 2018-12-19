@@ -29,10 +29,12 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:textColor="@color/color_inforeferencial"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="@string/text_view_oficina" />
                 <TextView
+                    android:id="@+id/tv_oficina_contacto_eps"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="Movistar" />
@@ -49,10 +51,12 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:textColor="@color/color_inforeferencial"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="@string/text_view_direccion" />
                 <TextView
+                    android:id="@+id/tv_direccion_contacto_eps"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="Piura jr callao" />
@@ -69,10 +73,12 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:textColor="@color/color_inforeferencial"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="@string/text_view_telefono" />
                 <TextView
+                    android:id="@+id/tv_telefonodetail_eps"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="(073) 307741" />
@@ -89,10 +95,12 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:textColor="@color/color_inforeferencial"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="@string/text_view_horario" />
                 <TextView
+                    android:id="@+id/tv_horariodetail_eps"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="(073) 307741" />
@@ -107,12 +115,13 @@
                 android:layout_height="wrap_content"
                 android:padding="4dp"
                 android:orientation="horizontal">
-
                 <TextView
+                    android:textColor="@color/color_inforeferencial"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="@string/text_view_tipo" />
                 <TextView
+                    android:id="@+id/tv_tipoatencion_eps"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="Todo" />

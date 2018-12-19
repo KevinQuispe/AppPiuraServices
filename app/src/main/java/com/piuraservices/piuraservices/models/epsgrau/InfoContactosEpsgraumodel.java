@@ -1,27 +1,17 @@
 package com.piuraservices.piuraservices.models.epsgrau;
 
 
-public class InfoContactosEpsgraumodel {
+import java.io.Serializable;
+
+public class InfoContactosEpsgraumodel  implements Serializable{
     private long id;
     private String nombreempresa;
-    private String oficinalugar;
     private String direccion;
     private String telefono;
     private String horario;
     private String tipoatencion;
 
-    public InfoContactosEpsgraumodel(){
-
-    }
-
-    public InfoContactosEpsgraumodel(long id, String nombreempresa, String oficinalugar, String direccion, String telefono, String horario, String tipoatencion) {
-        this.id = id;
-        this.nombreempresa = nombreempresa;
-        this.oficinalugar = oficinalugar;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.horario = horario;
-        this.tipoatencion = tipoatencion;
+    public InfoContactosEpsgraumodel() {
     }
 
     public long getId() {
@@ -38,14 +28,6 @@ public class InfoContactosEpsgraumodel {
 
     public void setNombreempresa(String nombreempresa) {
         this.nombreempresa = nombreempresa;
-    }
-
-    public String getOficinalugar() {
-        return oficinalugar;
-    }
-
-    public void setOficinalugar(String oficinalugar) {
-        this.oficinalugar = oficinalugar;
     }
 
     public String getDireccion() {
@@ -85,7 +67,6 @@ public class InfoContactosEpsgraumodel {
         return "InfoContactosEpsgraumodel{" +
                 "id=" + id +
                 ", nombreempresa='" + nombreempresa + '\'' +
-                ", oficinalugar='" + oficinalugar + '\'' +
                 ", direccion='" + direccion + '\'' +
                 ", telefono='" + telefono + '\'' +
                 ", horario='" + horario + '\'' +

@@ -9,23 +9,35 @@ import com.piuraservices.piuraservices.R;
 
 public class DetalleContactoEnosaActivity extends AppCompatActivity {
 
-    TextView oficinalugar;
-    TextView direccionempresa;
+    TextView centroatencion;
+    TextView direccion;
+    TextView telefono;
+    TextView horario;
+    TextView tiposervicio;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_contacto_enosa);
         getSupportActionBar().setTitle("Detalle de contacto");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        oficinalugar=(TextView) findViewById(R.id.tv_oficina_enosa);
-        direccionempresa=(TextView) findViewById(R.id.tv_direccion_contacto_enosa);
+        //vindear datos
+        centroatencion=(TextView) findViewById(R.id.tv_centro_contacto_enosa);
+        direccion=(TextView) findViewById(R.id.tv_direccion_contacto_enosa);
+        telefono=(TextView) findViewById(R.id.tv_telefono_contacto_enosa);
+        horario=(TextView) findViewById(R.id.tv_horario_contacto_enosa);
+        tiposervicio=(TextView) findViewById(R.id.tv_tiposervicio_contcto_enosa);
         //recibir parametros
         Intent thisForm = getIntent();
         Bundle parametros = thisForm.getExtras();
-
-        String oficina=parametros.getString("oficinaKey");
-        String direccion = parametros.getString("direccionKey");
-        oficinalugar.setText(oficina);
-        direccionempresa.setText(direccion);
+        String center=parametros.getString("centerKey");
+        String direction = parametros.getString("direccionKey");
+        String phone = parametros.getString("telefonoKey");
+        String hoararioatencion = parametros.getString("horarioKey");
+        String type = parametros.getString("tiposervicioKey");
+        centroatencion.setText(center);
+        direccion.setText(direction);
+        telefono.setText(phone);
+        horario.setText(hoararioatencion);
+        tiposervicio.setText(type);
     }
 }

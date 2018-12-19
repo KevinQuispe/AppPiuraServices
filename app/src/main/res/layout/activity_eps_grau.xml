@@ -37,6 +37,7 @@
                         android:padding="4dp">
 
                         <TextView
+                            android:textColor="@color/color_inforeferencial"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:text="@string/text_view_direccion" />
@@ -62,6 +63,7 @@
                         android:padding="4dp">
 
                         <TextView
+                            android:textColor="@color/color_inforeferencial"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:text="@string/text_view_telefono" />
@@ -89,6 +91,7 @@
                         android:orientation="horizontal">
 
                         <TextView
+                            android:textColor="@color/color_inforeferencial"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:padding="4dp"
@@ -116,6 +119,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
                         <TextView
+                            android:textColor="@color/color_inforeferencial"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:padding="4dp"
@@ -144,6 +148,7 @@
                         android:orientation="horizontal">
 
                         <TextView
+                            android:textColor="@color/color_inforeferencial"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:padding="4dp"

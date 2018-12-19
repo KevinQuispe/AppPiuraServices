@@ -36,14 +36,13 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class InfoTramitesEnosaActivity extends AppCompatActivity implements View.OnClickListener,AdapterView.OnItemClickListener  {
-
-    ListView listaelementos;
+    //DECLARE VARIABALES
     ArrayAdapter<InfoTramitesEnosamodel> adapter;
     //lista reclamos
     ProgressDialog progreso;
     // ListView listatramites;
     ListView listatramites;
-    List<InfoTramitesEnosamodel> lista_tramites;;
+    List<InfoTramitesEnosamodel> lista_tramites;
     //array for to http
     ArrayList<InfoTramitesEnosamodel> lista=new ArrayList<>();
 
@@ -57,12 +56,10 @@ public class InfoTramitesEnosaActivity extends AppCompatActivity implements View
         listatramites.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //Toast.makeText(InfoTramitesEnosaActivity.this, "Click tramite "+i, Toast.LENGTH_SHORT).show();
                 final int pos = i;
                 Intent intent=new Intent(InfoTramitesEnosaActivity.this, DetalleTramitesEnosaActivity.class);
                 startActivity(intent);
                 editarDetalle(lista_tramites.get(pos));
-
             }
         });
         listarTramitesEnosa();
@@ -109,7 +106,6 @@ public class InfoTramitesEnosaActivity extends AppCompatActivity implements View
                     lista=new Gson().fromJson(responseString,new TypeToken<ArrayList<InfoTramitesEnosamodel>>(){}.getType());
                     listatramites.setAdapter(new ListaInfoTramitesEnosaAdapter(getApplicationContext(),lista));
                     listatramites.setOnItemClickListener(InfoTramitesEnosaActivity.this);
-
                             listatramites.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

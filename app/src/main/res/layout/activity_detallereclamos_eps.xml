@@ -22,7 +22,7 @@
                 android:textColor="@color/cardview_dark_background"
                 android:id="@+id/tv_nombre_reclamo_eps"
                 android:textStyle="bold"
-                android:text="Descripcion de Reclamo"
+                android:text="Descripción de Reclamo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <TextView

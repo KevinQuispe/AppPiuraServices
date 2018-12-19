@@ -102,8 +102,9 @@
     <string name="text_view_horario">Horario:</string>
     <string name="text_view_correo">Email:</string>
     <string name="text_view_pagina">Página Web:</string>
-    <string name="text_view_tipo">Tipo de atención:</string>
-    <string name="text_view_oficina">Oficina/Lugar:</string>
+    <string name="text_view_tipo">Tipo de servicio:</string>
+    <string name="text_view_oficina">Centro de atención</string>
+    <string name="text_view_lista_centros_atencion">Centros de atención</string>
     <!-- INFORMACION DE CONTACTO ESPGRAU -->
     <string name="text_view_tramites">Información de Trámites </string>
     <string name="text_view_info_tramites">En esta sección Ud podrá consultar la siguiente información:</string>
@@ -123,7 +124,7 @@
     <string name="title_entidad_reclamo">Seleccione entidad o empresa para consultar información de reclamos</string>
     <string name="title_entidad_tramite">Seleccione entidad  o empresa para consultar informacón de trámites</string>
     <!-- TITULOS FRAGMENTES ENTIDAD CONTACTO -->
-    <string name="title_entidad_contacto">Seleccione entidad o empresa para consultar contactos y direcioones</string>
+    <string name="title_entidad_contacto">Seleccione entidad o empresa para consultar contactos y direciones</string>
 
 
 </resources>

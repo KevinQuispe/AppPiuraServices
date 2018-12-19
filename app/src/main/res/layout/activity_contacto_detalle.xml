@@ -31,6 +31,7 @@
                     android:layout_height="wrap_content"
                     android:text="Empresa:" />
                 <TextView
+                    android:id="@+id/tv_nombre_empresa"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="Movistar" />
@@ -50,6 +51,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/text_view_telefono" />
                 <TextView
+                    android:id="@+id/tv_contacto_empresa"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="(073) 307741" />

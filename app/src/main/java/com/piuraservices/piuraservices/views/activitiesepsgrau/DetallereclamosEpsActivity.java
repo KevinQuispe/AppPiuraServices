@@ -29,7 +29,7 @@ public class DetallereclamosEpsActivity extends AppCompatActivity {
         String descripcion = parametros.getString("descripcionKey");
         String nombre = parametros.getString("nombreKey ");
         descReclamo.setText(descripcion);
-        nombreReclamo.setText(nombre);
+        //nombreReclamo.setText(nombre);
         Log.i("DisplayMessage", "RECIBIR message = " + descReclamo);
     }
 }

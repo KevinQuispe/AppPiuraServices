@@ -18,6 +18,7 @@ import com.piuraservices.piuraservices.adapters.enosa.ListaInfoReclamosEnosaAdap
 import com.piuraservices.piuraservices.models.enosa.InfoContactosEnosamodel;
 import com.piuraservices.piuraservices.models.enosa.InfoReclamosEnosamodel;
 import com.piuraservices.piuraservices.services.http;
+import com.piuraservices.piuraservices.views.activities.ContactoDetalleActivity;
 
 import org.apache.http.Header;
 
@@ -30,9 +31,9 @@ public class InfoContactosEnosaActivity extends AppCompatActivity implements Vie
     //prograso loading
     ProgressDialog progreso;
     //list view de reclamos
-    ListView listareclamos;
+    ListView listacontactos;
     //lista data del modelo de reclamos
-    List<InfoReclamosEnosamodel> list_reclamos;
+    List<InfoContactosEnosamodel> list_contactos;
     //Array list for to http and to converter to gson
     ArrayList<InfoContactosEnosamodel> lista = new ArrayList();
 
@@ -42,12 +43,24 @@ public class InfoContactosEnosaActivity extends AppCompatActivity implements Vie
         setContentView(R.layout.activity_info_contactos_enosa);
         getSupportActionBar().setTitle("Información de Contactos");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        listacontactos=(ListView) findViewById(R.id.id_lista_contactos_enosa);
+        listacontactos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                //Toast.makeText(InfoReclamosEnosaActivity.this, "Click me reclamos"+i, Toast.LENGTH_SHORT).show();
+                final int pos = i;
+                Intent intent=new Intent(InfoContactosEnosaActivity.this, DetalleContactoEnosaActivity.class);
+                startActivity(intent);
+                mostrarDetalle(list_contactos.get(pos));
+            }
+        });
+        listarContactosEnosa();
 
     }
     //lista contactos enosa con http
-    public void listarReclamosEnosa(){
+    public void listarContactosEnosa(){
         dialog();
-        String url="informacion/listainfocontactos/2";
+        String url="informacion/listacontactos/2";
         http.get(getApplicationContext(), url, new TextHttpResponseHandler() {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
@@ -61,14 +74,12 @@ public class InfoContactosEnosaActivity extends AppCompatActivity implements Vie
                 System.out.println(responseString);
                 try {
                     //Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
-                    lista=new Gson().fromJson(responseString,new TypeToken<ArrayList<InfoReclamosEnosamodel>>(){}.getType());
-                    listareclamos.setAdapter(new ListaInfoContactosEnosaAdapter(getApplicationContext(),lista));
-                    listareclamos.setOnItemClickListener(InfoContactosEnosaActivity.this);
-
-                    listareclamos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    lista=new Gson().fromJson(responseString,new TypeToken<ArrayList<InfoContactosEnosamodel>>(){}.getType());
+                    listacontactos.setAdapter(new ListaInfoContactosEnosaAdapter(getApplicationContext(),lista));
+                    listacontactos.setOnItemClickListener(InfoContactosEnosaActivity.this);
+                    listacontactos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                            //Toast.makeText(getApplicationContext(), "item " +i, Toast.LENGTH_SHORT).show();
                             mostrarDetalle(lista.get(i));
                         }
                     });
@@ -81,18 +92,27 @@ public class InfoContactosEnosaActivity extends AppCompatActivity implements Vie
         });
     }
     //mostrardetalle lista
-    public void mostrarDetalle(final InfoContactosEnosamodel post){
-        Bundle bundle=new Bundle();
-        bundle.putSerializable("Post",post);
-        bundle.putString("oficinaKey",post.getOficinalugar().toString());
-        bundle.putString("direccionKey",post.getDireccion().toString());
+    public void mostrarDetalle(final InfoContactosEnosamodel contacto){
         //capturar datos
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("Contacto",contacto);
+        bundle.putString("centerKey",contacto.getNombreempresa().toString());
+        bundle.putString("direccionKey",contacto.getDireccion().toString());
+        bundle.putString("telefonoKey",contacto.getTelefono().toString());
+        bundle.putString("horarioKey",contacto.getHorario().toString());
+        bundle.putString("tiposervicioKey",contacto.getTipoatencion().toString());
         Intent intent=new Intent(InfoContactosEnosaActivity.this, DetalleContactoEnosaActivity.class);
         Bundle parametros = new Bundle();
-        String nombreoficina = post.getOficinalugar().toString();
-        String direccionoficina = post.getDireccion().toString();
-        parametros.putString("oficinaKey",nombreoficina);
-        parametros.putString("direccionKey",direccionoficina);
+        String center = contacto.getNombreempresa().toString();
+        String diretion = contacto.getDireccion().toString();
+        String phone = contacto.getDireccion().toString();
+        String horarioatencion = contacto.getHorario().toString();
+        String type = contacto.getTipoatencion().toString();
+        parametros.putString("centerKey",center);
+        parametros.putString("direccionKey",diretion);
+        parametros.putString("telefonoKey",phone);
+        parametros.putString("horarioKey",horarioatencion);
+        parametros.putString("tiposervicioKey",type);
         intent.putExtras(parametros);
         startActivity(intent);
     }

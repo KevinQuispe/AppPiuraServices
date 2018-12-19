@@ -26,14 +26,17 @@ public class ListaInfoContactosEnosaAdapter extends BaseAdapter {
     public int getCount() {
         return lista.size();
     }
+
     @Override
     public InfoContactosEnosamodel getItem(int position) {
         return lista.get(position);
     }
+
     @Override
     public long getItemId(int position) {
         return lista.get(position).getId();
     }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
@@ -44,13 +47,11 @@ public class ListaInfoContactosEnosaAdapter extends BaseAdapter {
         TextView textView = (TextView) row.findViewById(R.id.lista_contactos_enosa_text);
         InfoContactosEnosamodel item = lista.get(position);
         String nombreempresa = item.getNombreempresa();
-        String oficinalugar = item.getOficinalugar();
         String direccion = item.getDireccion();
         String horario = item.getHorario();
         String telefono = item.getTelefono();
         String tipoatencion = item.getTipoatencion();
-
-        textView.setText(oficinalugar);
+        textView.setText(nombreempresa);
         return row;
     }
 }

@@ -41,11 +41,12 @@ public class EPS_grauActivity extends AppCompatActivity {
     ImageView imgreclamos;
     ProgressDialog ringProgressDialog;
     ProgressDialog progreso;
-    TextView direccion;
-    TextView telefono;
-    TextView correo;
-    TextView horario;
-    TextView page;
+    //decrlare variables para informacion referencial
+    public TextView direccion;
+    public TextView telefono;
+    public TextView correo;
+    public TextView horario;
+    public TextView page;
 
 
     @Override
@@ -56,7 +57,7 @@ public class EPS_grauActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         imgtramites = (ImageView) findViewById(R.id.img_tramiteseps);
         imgreclamos = (ImageView) findViewById(R.id.img_reclamoseps);
-        //infor getentidad
+        //informacion referencion bindear elementos
         direccion = (TextView) findViewById(R.id.tv_direccion_eps);
         telefono = (TextView) findViewById(R.id.tv_telefono_eps);
         correo = (TextView) findViewById(R.id.tv_email_eps);
@@ -67,7 +68,9 @@ public class EPS_grauActivity extends AppCompatActivity {
         //listaentidadasync();
 
         //lista funcion call lista ok
-        //listainfoEntidad();
+        listainfoEntidad();
+        //call funtion
+        //listainfoEntidadCall();
 
     }
 
@@ -87,13 +90,16 @@ public class EPS_grauActivity extends AppCompatActivity {
 
             try {
                 for (InfoReferencialEpsgraumodel info : response.execute().body()) {
-                    Log.e("DIRECCION", info.getDireccion() + "CORREO:" + info.getCorreo());
-
-                    if (info.getId() == 1) {
-                        direccion.setText(info.getDireccion().toString());
-                        telefono.setText(response.execute().body().get(1).getTelefono().toString());
-                        correo.setText(info.getCorreo().toString());
-                    }
+                    Log.e("DIRECCION", info.getDireccion().toString()
+                            + "CORREO:" + info.getCorreo().toString()
+                            + "HORARIO:" + info.getHorario().toString()
+                    );
+                    direccion.setText(info.getDireccion().toString());
+                    telefono.setText(response.execute().body().get(1).getTelefono().toString());
+                    correo.setText(info.getCorreo().toString());
+                    horario.setText(info.getHorario().toString());
+                    page.setText(info.getWebentidad().toString());
+                    //direccion.setText(response.execute().body().get(1).getDireccion().toString());
 
                 }
 
@@ -104,40 +110,39 @@ public class EPS_grauActivity extends AppCompatActivity {
         }
     }
 
-    //lista informacion de entidad
+    //lista informacion de entidad con retrofit OK
     public void listainfoEntidad() {
-        // process();
+        process();
         final String url = Config.URL_SERVER;
         Retrofit retrofit = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create()).build();
         ListaReferencialEpsclient servicio = retrofit.create(ListaReferencialEpsclient.class);
-
         Call<List<InfoReferencialEpsgraumodel>> call = servicio.getInfoReferencialeps();
         call.enqueue(new Callback<List<InfoReferencialEpsgraumodel>>() {
             @Override
             public void onResponse(Call<List<InfoReferencialEpsgraumodel>> call, Response<List<InfoReferencialEpsgraumodel>> response) {
-                for (InfoReferencialEpsgraumodel info : response.body()) {
-                    if (info.getId() == 1) {
-                        Log.e("DIRECCION", info.getDireccion() + "\nCORREO:" + info.getCorreo());
-                        direccion.setText(info.getDireccion().toString());
-                        telefono.setText(info.getTelefono().toString());
-                        correo.setText(info.getCorreo().toString());
-                        horario.setText(info.getHorario().toString());
-                        page.setText(info.getWebentidad().toString());
-
-                        //direccion.setText(response.body().get(1).getDireccion());
-                        //telefono.setText(response.body().get(2).getTelefono());
-                        //correo.setText(response.body().get(3).getCorreo());
+                try {
+                    for (InfoReferencialEpsgraumodel info : response.body()) {
+                        if (info.getId() == 1) {
+                            Log.e("DIRECCION", info.getDireccion() + "\nCORREO:" + info.getCorreo());
+                            direccion.setText(info.getDireccion().toString());
+                            telefono.setText(info.getTelefono().toString());
+                            correo.setText(info.getCorreo().toString());
+                            horario.setText(info.getHorario().toString());
+                            page.setText(info.getWebentidad().toString());
+                            progreso.hide();
+                            //direccion.setText(response.body().get(1).getDireccion());
+                        }
                     }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
-
             @Override
             public void onFailure(Call<List<InfoReferencialEpsgraumodel>> call, Throwable t) {
                 Toast.makeText(EPS_grauActivity.this, "Error de conexion", Toast.LENGTH_SHORT).show();
             }
         });
     }
-
     //metodo para listar datos referenciales de la entidad
     public void listainfoEntidadCall() {
         process();
@@ -149,6 +154,7 @@ public class EPS_grauActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<InfoReferencialEpsgraumodel> call, Response<InfoReferencialEpsgraumodel> response) {
                 try {
+
                     direccion.setText(response.body().getDireccion().toString());
                     telefono.setText(response.body().getTelefono().toString());
                     System.out.println(response);
@@ -202,8 +208,8 @@ public class EPS_grauActivity extends AppCompatActivity {
         //Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         //Intent chooser = Intent.createChooser(intent, "Abrir Google Maps");
         //startActivity(chooser);
-        String centralepsgrau="EPS GRAU S.A., La Arena, Piura";
-        Uri gmmIntentUri = Uri.parse("google.navigation:q="+centralepsgrau);
+        String centralepsgrau = "EPS GRAU S.A., La Arena, Piura";
+        Uri gmmIntentUri = Uri.parse("google.navigation:q=" + centralepsgrau);
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         mapIntent.setPackage("com.google.android.apps.maps");
         Intent chooser = Intent.createChooser(mapIntent, "Abrir Google Maps");

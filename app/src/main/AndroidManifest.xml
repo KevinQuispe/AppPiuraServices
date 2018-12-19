@@ -246,11 +246,23 @@
         <activity
             android:name=".views.activities.AcercadeActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".views.activitiesepsgrau.DetalleContactoEpsActivity" />
-        <activity android:name=".views.activitiestelefonia.movistar.DetalleContactoMovistarActivity" />
-        <activity android:name=".views.activitiestelefonia.entel.DetalleContactoEntelActivity" />
-        <activity android:name=".views.activitiestelefonia.claro.DetalleContactoClaroActivity" />
-        <activity android:name=".views.activitiesenosa.DetalleContactoEnosaActivity"/>
+        <activity android:name=".views.activitiesepsgrau.DetalleContactoEpsActivity"
+            android:parentActivityName=".views.activitiesepsgrau.InfoContactosEpsgrauActivity"
+            />
+        <activity android:name=".views.activitiestelefonia.movistar.DetalleContactoMovistarActivity"
+            android:theme="@style/ThemeMovistarActivity"
+            android:parentActivityName=".views.activitiestelefonia.movistar.InfoContactosMovistarActivity"
+            />
+        <activity android:name=".views.activitiestelefonia.entel.DetalleContactoEntelActivity"
+            android:theme="@style/ThemeEntelActivity"
+            android:parentActivityName=".views.activitiestelefonia.entel.InfoContactosEntelActivity"
+            />
+        <activity android:name=".views.activitiestelefonia.claro.DetalleContactoClaroActivity"
+            android:parentActivityName=".views.activitiestelefonia.claro.InfoContactosClaroActivity"
+            />
+        <activity android:name=".views.activitiesenosa.DetalleContactoEnosaActivity"
+            android:parentActivityName=".views.activitiesenosa.InfoContactosEnosaActivity"
+            />
     </application>
 
 </manifest>
