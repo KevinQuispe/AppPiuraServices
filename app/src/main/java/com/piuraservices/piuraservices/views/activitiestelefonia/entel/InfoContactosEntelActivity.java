@@ -33,7 +33,7 @@ public class InfoContactosEntelActivity extends AppCompatActivity implements Vie
     ProgressDialog progreso;
     //list view de reclamos
     ListView listacontactos;
-    //lista data del modelo de reclamos
+    //lista data del modelo de contacto entel
     List<InfoContactosEntelmodel> list_contactos;
     //Array list for to http and to converter to gson
     ArrayList<InfoContactosEntelmodel> lista = new ArrayList();
@@ -45,7 +45,7 @@ public class InfoContactosEntelActivity extends AppCompatActivity implements Vie
         getSupportActionBar().setTitle("Información de Contactos");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-            listacontactos=(ListView) findViewById(R.id.id_lista_contactos_enosa);
+            listacontactos=(ListView) findViewById(R.id.id_lista_contactos_entel);
             listacontactos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -56,13 +56,13 @@ public class InfoContactosEntelActivity extends AppCompatActivity implements Vie
                     mostrarDetalle(list_contactos.get(pos));
                 }
             });
-            listarContactosEnosa();
+        listarContactosEntel();
 
         }
         //lista contactos enosa con http
-        public void listarContactosEnosa(){
+        public void listarContactosEntel(){
             dialog();
-            String url="informacion/listacontactos/2";
+            String url="informacion/listacontactos/4";
             http.get(getApplicationContext(), url, new TextHttpResponseHandler() {
                 @Override
                 public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
@@ -76,7 +76,7 @@ public class InfoContactosEntelActivity extends AppCompatActivity implements Vie
                     System.out.println(responseString);
                     try {
                         //Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
-                        lista=new Gson().fromJson(responseString,new TypeToken<ArrayList<InfoContactosEnosamodel>>(){}.getType());
+                        lista=new Gson().fromJson(responseString,new TypeToken<ArrayList<InfoContactosEntelmodel>>(){}.getType());
                         listacontactos.setAdapter(new ListaInfoContactosEntelAdapter(getApplicationContext(),lista));
                         listacontactos.setOnItemClickListener(InfoContactosEntelActivity.this);
                         listacontactos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -103,7 +103,7 @@ public class InfoContactosEntelActivity extends AppCompatActivity implements Vie
             bundle.putString("telefonoKey",contacto.getTelefono().toString());
             bundle.putString("horarioKey",contacto.getHorario().toString());
             bundle.putString("tiposervicioKey",contacto.getTipoatencion().toString());
-            Intent intent=new Intent(InfoContactosEntelActivity.this, DetalleContactoEnosaActivity.class);
+            Intent intent=new Intent(InfoContactosEntelActivity.this, DetalleContactoEntelActivity.class);
             Bundle parametros = new Bundle();
             String center = contacto.getNombreempresa().toString();
             String diretion = contacto.getDireccion().toString();

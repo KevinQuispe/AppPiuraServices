@@ -58,11 +58,11 @@ public class InfoContactosClaroActivity extends AppCompatActivity implements Vie
                 mostrarDetalle(list_contactos.get(pos));
             }
         });
-        listarContactosMovistar();
+        listarContactosClaro();
 
     }
     //lista contactos enosa con http
-    public void listarContactosMovistar(){
+    public void listarContactosClaro(){
         dialog();
         String url="informacion/listacontactos/3";
         http.get(getApplicationContext(), url, new TextHttpResponseHandler() {
