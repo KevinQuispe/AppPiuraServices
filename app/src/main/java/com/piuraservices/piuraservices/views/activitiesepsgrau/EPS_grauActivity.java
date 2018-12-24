@@ -209,8 +209,8 @@ public class EPS_grauActivity extends AppCompatActivity {
         //Intent chooser = Intent.createChooser(intent, "Abrir Google Maps");
         //startActivity(chooser);
         String centralepsgrau = "EPS GRAU S.A., La Arena, Piura";
-        Uri gmmIntentUri = Uri.parse("google.navigation:q=" + centralepsgrau);
-        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        Uri IntentUri = Uri.parse("google.navigation:q=" + centralepsgrau);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, IntentUri);
         mapIntent.setPackage("com.google.android.apps.maps");
         Intent chooser = Intent.createChooser(mapIntent, "Abrir Google Maps");
         startActivity(chooser);
@@ -242,14 +242,13 @@ public class EPS_grauActivity extends AppCompatActivity {
         Intent intent = new Intent(EPS_grauActivity.this, OpenWebEpsGrauActivity.class);
         startActivity(intent);
 
-
     }
 
     public void onClickOpenCall(View v) {
         Intent i = new Intent(Intent.ACTION_DIAL);
-        String spsgrau = "080026026";
+        String spsgrau = "(073) 307741";
         if (spsgrau.trim().isEmpty()) {
-            i.setData(Uri.parse("tel:080026026"));
+            i.setData(Uri.parse("tel:(073) 307741"));
         } else {
             i.setData(Uri.parse("tel:" + spsgrau));
         }
@@ -295,7 +294,7 @@ public class EPS_grauActivity extends AppCompatActivity {
         progreso.setMessage("Loading...");
         // and show it
         progreso.show();
-        progreso.setCancelable(false);
+
     }
 
     public void warningmessage() {

@@ -21,7 +21,9 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.piuraservices.piuraservices.R;
+import com.piuraservices.piuraservices.models.enosa.InfoReferencialEnosamodel;
 import com.piuraservices.piuraservices.models.epsgrau.InfoReferencialEpsgraumodel;
+import com.piuraservices.piuraservices.services.enosa.ListaReferencialEnosaclient;
 import com.piuraservices.piuraservices.services.epsgrau.ListaReferencialEpsclient;
 import com.piuraservices.piuraservices.utils.Config;
 import com.piuraservices.piuraservices.views.activitiesepsgrau.EPS_grauActivity;
@@ -38,7 +40,6 @@ public class EnosaActivity extends AppCompatActivity {
 
     ImageView imgtramites;
     ImageView imgreclamos;
-    ProgressDialog ringProgressDialog;
     ProgressDialog progreso;
     //declare variables
     public TextView direccion;
@@ -46,7 +47,6 @@ public class EnosaActivity extends AppCompatActivity {
     public TextView correo;
     public TextView horario;
     public TextView page;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,20 +64,21 @@ public class EnosaActivity extends AppCompatActivity {
         //call funtion para listar informacion referencial
         listainfoEntidad();
 
-}
+    }
+
     //lista informacion de entidad con http OK
     public void listainfoEntidad() {
         process();
         final String url = Config.URL_SERVER;
         Retrofit retrofit = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create()).build();
-        ListaReferencialEpsclient servicio = retrofit.create(ListaReferencialEpsclient.class);
-        Call<List<InfoReferencialEpsgraumodel>> call = servicio.getInfoReferencialeps();
-        call.enqueue(new Callback<List<InfoReferencialEpsgraumodel>>() {
+        ListaReferencialEnosaclient servicio = retrofit.create(ListaReferencialEnosaclient.class);
+        Call<List<InfoReferencialEnosamodel>> call = servicio.getInfoReferencialenosa();
+        call.enqueue(new Callback<List<InfoReferencialEnosamodel>>() {
             @Override
-            public void onResponse(Call<List<InfoReferencialEpsgraumodel>> call, Response<List<InfoReferencialEpsgraumodel>> response) {
+            public void onResponse(Call<List<InfoReferencialEnosamodel>> call, Response<List<InfoReferencialEnosamodel>> response) {
                 try {
-                    for (InfoReferencialEpsgraumodel info : response.body()) {
-                        if (info.getId() == 1) {
+                    for (InfoReferencialEnosamodel info : response.body()) {
+                        if (info.getId() == 2) {
                             Log.e("DIRECCION", info.getDireccion() + "\nCORREO:" + info.getCorreo());
                             direccion.setText(info.getDireccion().toString());
                             telefono.setText(info.getTelefono().toString());
@@ -85,15 +86,16 @@ public class EnosaActivity extends AppCompatActivity {
                             horario.setText(info.getHorario().toString());
                             page.setText(info.getWebentidad().toString());
                             progreso.hide();
-                            //direccion.setText(response.body().get(1).getDireccion());
+
                         }
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
+
             @Override
-            public void onFailure(Call<List<InfoReferencialEpsgraumodel>> call, Throwable t) {
+            public void onFailure(Call<List<InfoReferencialEnosamodel>> call, Throwable t) {
                 Toast.makeText(EnosaActivity.this, "Error de conexion", Toast.LENGTH_SHORT).show();
             }
         });
@@ -108,6 +110,7 @@ public class EnosaActivity extends AppCompatActivity {
             }
         });
     }
+
     public void onClickedtramites(View v) {
         imgtramites.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,15 +120,17 @@ public class EnosaActivity extends AppCompatActivity {
             }
         });
     }
+
     public void onClickOpenGoogleMaps(View v) {
 
-        String centralenosa="ENOSA, Piura";
-        Uri gmmIntentUri = Uri.parse("google.navigation:q="+centralenosa);
+        String centralenosa = "ENOSA, Piura";
+        Uri gmmIntentUri = Uri.parse("google.navigation:q=" + centralenosa);
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         mapIntent.setPackage("com.google.android.apps.maps");
         Intent chooser = Intent.createChooser(mapIntent, "Abrir Google Maps");
         startActivity(chooser);
     }
+
     public MarkerOptions getMarkerOptions() {
         return new MarkerOptions()
                 .title("hola")
@@ -136,24 +141,26 @@ public class EnosaActivity extends AppCompatActivity {
 
     public void onClickOpenEmail(View v) {
 
-        Intent intent= new Intent(Intent.ACTION_SEND);
+        Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setData(Uri.parse("email"));
-        String[]s={"contactoenosa@enosa.com"};
-        intent.putExtra(Intent.EXTRA_EMAIL,s);
-        intent.putExtra(Intent.EXTRA_SUBJECT," ");
-        intent.putExtra(Intent.EXTRA_TEXT," ");
+        String[] s = {"enosa@distriluz.com.pe"};
+        intent.putExtra(Intent.EXTRA_EMAIL, s);
+        intent.putExtra(Intent.EXTRA_SUBJECT, " ");
+        intent.putExtra(Intent.EXTRA_TEXT, " ");
         intent.setType("message/rfc822");
-        Intent chooser=Intent.createChooser(intent,"Enviar Email");
+        Intent chooser = Intent.createChooser(intent, "Enviar Email");
         startActivity(chooser);
 
     }
+
     public void onClickOpenWeb(View v) {
-        Intent intent = new Intent(EnosaActivity.this,OpenWebEnosaActivity.class);
+        Intent intent = new Intent(EnosaActivity.this, OpenWebEnosaActivity.class);
         startActivity(intent);
     }
+
     public void onClickOpenCall(View v) {
         Intent i = new Intent(Intent.ACTION_DIAL);
-        String telenosa= "073 284050";
+        String telenosa = "(073) 284050";
         if (telenosa.trim().isEmpty()) {
             i.setData(Uri.parse("tel:073 284050"));
         } else {
@@ -166,6 +173,7 @@ public class EnosaActivity extends AppCompatActivity {
             startActivity(i);
         }
     }
+
     //permisos para llamadas
     private void requestPermission() {
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 1);
@@ -181,7 +189,7 @@ public class EnosaActivity extends AppCompatActivity {
         progreso.setMessage("Loading...");
         // and show it
         progreso.show();
-        progreso.setCancelable(false);
+        //progreso.setCancelable(false);
     }
 
     public void warningmessage() {

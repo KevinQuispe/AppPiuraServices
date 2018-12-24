@@ -27,7 +27,7 @@
 
                 <GridLayout
                     android:layout_width="match_parent"
-                    android:layout_height="220dp"
+                    android:layout_height="230dp"
                     android:columnCount="1"
                     android:padding="6dp">
 
@@ -38,10 +38,10 @@
                         android:padding="4dp">
 
                         <TextView
-                            android:textColor="@color/color_inforeferencial"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
-                            android:text="@string/text_view_direccion" />
+                            android:text="@string/text_view_direccion"
+                            android:textColor="@color/color_inforeferencial" />
 
                         <TextView
                             android:id="@+id/tv_direccion_enosa"
@@ -58,16 +58,17 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_marginTop="@dimen/activity_vertical_referencial"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                         android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/activity_vertical_referencial"
+                        android:orientation="horizontal"
                         android:padding="4dp">
+
                         <TextView
-                            android:textColor="@color/color_inforeferencial"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
-                            android:text="@string/text_view_telefono" />
+                            android:text="@string/text_view_telefono"
+                            android:textColor="@color/color_inforeferencial" />
 
                         <TextView
                             android:id="@+id/tv_telefono_enosa"
@@ -86,17 +87,17 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_marginTop="@dimen/activity_vertical_referencial"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_vertical_referencial"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:textColor="@color/color_inforeferencial"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:padding="4dp"
-                            android:text="@string/text_view_correo" />
+                            android:text="@string/text_view_correo"
+                            android:textColor="@color/color_inforeferencial" />
 
                         <TextView
                             android:id="@+id/tv_email_enosa"
@@ -121,11 +122,11 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:textColor="@color/color_inforeferencial"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:padding="4dp"
-                            android:text="@string/text_view_horario" />
+                            android:text="@string/text_view_horario"
+                            android:textColor="@color/color_inforeferencial" />
 
                         <TextView
                             android:id="@+id/tv_horario_enosa"
@@ -145,16 +146,17 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:layout_marginTop="@dimen/activity_vertical_referencial"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:textColor="@color/color_inforeferencial"
-                            android:layout_width="100dp"
+                            android:layout_width="104dp"
                             android:layout_height="wrap_content"
                             android:padding="4dp"
-                            android:text="@string/text_view_pagina" />
+                            android:text="@string/text_view_pagina"
+                            android:textColor="@color/color_inforeferencial" />
 
                         <TextView
                             android:id="@+id/tv_pagina_enosa"

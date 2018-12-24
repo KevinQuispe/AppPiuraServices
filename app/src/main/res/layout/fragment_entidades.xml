@@ -80,6 +80,7 @@
                 android:layout_height="160dp"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="4dp"
+
                 app:cardUseCompatPadding="true" >
                 <ImageView
                     android:clickable="true"

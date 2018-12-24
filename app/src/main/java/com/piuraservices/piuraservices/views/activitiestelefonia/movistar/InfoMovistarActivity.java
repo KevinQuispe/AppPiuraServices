@@ -1,22 +1,48 @@
 package com.piuraservices.piuraservices.views.activitiestelefonia.movistar;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.piuraservices.piuraservices.R;
+import com.piuraservices.piuraservices.models.telefonia.claro.InfoReferencialClaromodel;
+import com.piuraservices.piuraservices.models.telefonia.movistar.InfoReferencialMovistarmodel;
+import com.piuraservices.piuraservices.services.claro.ListaReferencialClaroclient;
+import com.piuraservices.piuraservices.services.telefonia.ListaReferencialMovistarclient;
+import com.piuraservices.piuraservices.utils.Config;
+import com.piuraservices.piuraservices.views.activitiestelefonia.claro.InfoClaroActivity;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class InfoMovistarActivity extends AppCompatActivity {
 
     ImageView imgtramites;
     ImageView imgreclamos;
+    ProgressDialog ringProgressDialog;
+    ProgressDialog progreso;
+    //decrlare variables para informacion referencial
+    public TextView direccion;
+    public TextView telefono;
+    public TextView correo;
+    public TextView horario;
+    public TextView page;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,83 +51,155 @@ public class InfoMovistarActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         imgtramites = (ImageView) findViewById(R.id.img_tramitesmovistar);
         imgreclamos = (ImageView) findViewById(R.id.img_reclamosmovistar);
-
+        //vindear datos
+        direccion = (TextView) findViewById(R.id.tv_direccion_movistar);
+        telefono = (TextView) findViewById(R.id.tv_telefono_movistar);
+        correo = (TextView) findViewById(R.id.tv_correo_movistar);
+        horario = (TextView) findViewById(R.id.tv_horario_movistar);
+        page = (TextView) findViewById(R.id.tv_web_movistar);
+        //call metodo
+        listainfoEntidad();
 
     }
-        public void onClickedtramites(View v) {
-            imgtramites.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // Intent intent = new Intent("views.activities.InfoTramitesEpsActivity");
-                    Intent intent = new Intent(getApplicationContext(),InfoTramitesMovistarActivity.class);
-                    startActivity(intent);
+
+    public void listainfoEntidad() {
+        process();
+        final String url = Config.URL_SERVER;
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create()).build();
+        ListaReferencialMovistarclient servicio = retrofit.create(ListaReferencialMovistarclient.class);
+        Call<List<InfoReferencialMovistarmodel>> call = servicio.getInfoReferencialmovistar();
+        call.enqueue(new Callback<List<InfoReferencialMovistarmodel>>() {
+            @Override
+            public void onResponse(Call<List<InfoReferencialMovistarmodel>> call, Response<List<InfoReferencialMovistarmodel>> response) {
+                try {
+                    for (InfoReferencialMovistarmodel info : response.body()) {
+                        if (info.getId() == 3) {
+                            Log.e("DIRECCION", info.getDireccion() + "\nCORREO:" + info.getCorreo());
+                            direccion.setText(info.getDireccion().toString());
+                            telefono.setText(info.getTelefono().toString());
+                            correo.setText(info.getCorreo().toString());
+                            horario.setText(info.getHorario().toString());
+                            page.setText(info.getWebentidad().toString());
+                            progreso.hide();
+
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-            });
-        }
+            }
 
-        public void onClickedreclamos(View v) {
-            imgreclamos.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //Intent intent = new Intent("views.activities.InfoReclamosEpsActivity");
-                    Intent intent = new Intent(getApplicationContext(),InfoReclamosMovistarActivity.class);
-                    startActivity(intent);
+            @Override
+            public void onFailure(Call<List<InfoReferencialMovistarmodel>> call, Throwable t) {
+                Toast.makeText(InfoMovistarActivity.this, "Error de conexion", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void onClickedtramites(View v) {
+        imgtramites.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Intent intent = new Intent("views.activities.InfoTramitesEpsActivity");
+                Intent intent = new Intent(getApplicationContext(), InfoTramitesMovistarActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    public void onClickedreclamos(View v) {
+        imgreclamos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Intent intent = new Intent("views.activities.InfoReclamosEpsActivity");
+                Intent intent = new Intent(getApplicationContext(), InfoReclamosMovistarActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    public void onClickOpenGoogleMaps(View v) {
+
+        String centralmovistar = "Movistar, Loreto, Piura";
+        Uri gmmIntentUri = Uri.parse("google.navigation:q=" + centralmovistar);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        Intent chooser = Intent.createChooser(mapIntent, "Abrir Google Maps");
+        startActivity(chooser);
+    }
+
+    public void onClickOpenEmail(View v) {
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setData(Uri.parse("email"));
+        String[] s = {"registrocontactos@movistar.com.pe"};
+        intent.putExtra(Intent.EXTRA_EMAIL, s);
+        intent.putExtra(Intent.EXTRA_SUBJECT, " ");
+        intent.putExtra(Intent.EXTRA_TEXT, " ");
+        intent.setType("message/rfc822");
+        Intent chooser = Intent.createChooser(intent, "Enviar Email");
+        startActivity(chooser);
+
+    }
+
+    public void onClickOpenWeb(View v) {
+        //Intent intent = new Intent("views.activities.OpenWebActivity");
+        Intent intent = new Intent(InfoMovistarActivity.this, OpenWebMovistarActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickOpenCall(View v) {
+        Intent i = new Intent(Intent.ACTION_DIAL);
+        String telmovistar = "(073)28-4030";
+
+        if (telmovistar.trim().isEmpty()) {
+            i.setData(Uri.parse("tel:(073)28-4030"));
+        } else {
+            i.setData(Uri.parse("tel:" + telmovistar));
+        }
+        if (ActivityCompat.checkSelfPermission(getApplication(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(getApplication(), "Please conceda permisos para llamar", Toast.LENGTH_LONG).show();
+            requestPermission();
+        } else {
+            startActivity(i);
+        }
+    }
+
+    //permisos para llamadas
+    private void requestPermission() {
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 1);
+    }
+
+    //new with timer
+    public void loadingpage(View view) {
+        ringProgressDialog = ProgressDialog.show(InfoMovistarActivity.this, "Please wait ...", "Loading...", true);
+        ringProgressDialog.setCancelable(true);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(5000);
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-            });
-        }
-        public void onClickOpenGoogleMaps(View v) {
-
-            //Uri uri = Uri.parse("geo:41.3825581,2.1704375?z=16&q=-5.19449, -80.6328201(Movistar Piura)");
-            //Uri uri = Uri.parse("https://www.google.com.pe/maps/place/Movistar/@-5.1911462,-80.6278862,17z/data=!4m12!1m6!3m5!1s0x904a1079765f570d:0xc82b56ea40e29959!2sMovistar!8m2!3d-5.1909367!4d-80.6280761!3m4!1s0x904a1079765f570d:0xc82b56ea40e29959!8m2!3d-5.1909367!4d-80.6280761");
-            //startActivity( new Intent(Intent.ACTION_VIEW, uri));
-            //Intent intent=new Intent(Intent.ACTION_VIEW,uri);
-            //Intent chooser=Intent.createChooser(intent,"Abrir Google Maps");
-            //startActivity(chooser);
-            //Uri uri = Uri.parse("geo:41.3825581,2.1704375?z=16&q=-5.19449, -80.6328201(EPS Grau Piura)");
-            //startActivity(new Intent(Intent.ACTION_VIEW,uri));
-
-            String centralmovistar="Movistar, Loreto, Piura";
-            Uri gmmIntentUri = Uri.parse("google.navigation:q="+centralmovistar);
-            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-            mapIntent.setPackage("com.google.android.apps.maps");
-            Intent chooser = Intent.createChooser(mapIntent, "Abrir Google Maps");
-            startActivity(chooser);
-        }
-        public void onClickOpenEmail(View v) {
-
-            Intent intent= new Intent(Intent.ACTION_SEND);
-            intent.setData(Uri.parse("email"));
-            String[]s={"movistar.com"};
-            intent.putExtra(Intent.EXTRA_EMAIL,s);
-            intent.putExtra(Intent.EXTRA_SUBJECT," ");
-            intent.putExtra(Intent.EXTRA_TEXT," ");
-            intent.setType("message/rfc822");
-            Intent chooser=Intent.createChooser(intent,"Enviar Email");
-            startActivity(chooser);
-
-        }
-        public void onClickOpenWeb(View v) {
-            //Intent intent = new Intent("views.activities.OpenWebActivity");
-            Intent intent = new Intent(InfoMovistarActivity.this,OpenWebMovistarActivity.class);
-            startActivity(intent);
-        }
-        public void onClickOpenCall(View v) {
-            Intent i = new Intent(Intent.ACTION_DIAL);
-            String telmovistar= "104";
-            if (telmovistar.trim().isEmpty()) {
-                i.setData(Uri.parse("tel:104"));
-            } else {
-                i.setData(Uri.parse("tel:" + telmovistar));
+                ringProgressDialog.dismiss();
             }
-            if (ActivityCompat.checkSelfPermission(getApplication(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(getApplication(), "Please conceda permisos para llamar", Toast.LENGTH_LONG).show();
-                requestPermission();
-            } else {
-                startActivity(i);
-            }
-        }
-        //permisos para llamadas
-        private void requestPermission() {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 1);
-        }
+        }).start();
+    }
+
+    //
+    public void process() {
+        //progreso = new ProgressDialog(EpsInfoReclamosActivity.this, ProgressDialog.THEME_HOLO_LIGHT);
+        progreso = new ProgressDialog(InfoMovistarActivity.this, ProgressDialog.BUTTON_POSITIVE);
+        // set indeterminate style
+        progreso.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        // set title and message
+        progreso.setTitle("Procesando");
+        progreso.setMessage("Loading...");
+        // and show it
+        progreso.show();
+
+    }
+
 }

@@ -11,6 +11,7 @@ public class InfoReferencialEnosamodel implements Serializable {
     private String correo;
     private String horario;
     private String webentidad;
+
     public  InfoReferencialEnosamodel(){
 
     }

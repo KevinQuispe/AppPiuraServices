@@ -1,6 +1,8 @@
 package com.piuraservices.piuraservices.models.telefonia.movistar;
 
-public class InfoReferencialMovistarmodel {
+import java.io.Serializable;
+
+public class InfoReferencialMovistarmodel implements Serializable {
     private long id;
     private String nombre;
     private String direccion;

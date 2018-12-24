@@ -1,6 +1,8 @@
 package com.piuraservices.piuraservices.models.telefonia.claro;
 
-public class InfoReferencialClaromodel {
+import java.io.Serializable;
+
+public class InfoReferencialClaromodel  implements Serializable{
 
     private long id;
     private String nombre;
