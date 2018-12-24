@@ -53,15 +53,6 @@
         <activity
             android:name=".UbicanosActivity"
             android:label="@string/title_activity_ubicanos" />
-        <activity
-            android:name=".views.activities.OpenWebActivity"
-            android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="views.activities.OpenWebActivity" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
         <!-- activiteoes for to epsgrau -->
         <activity
             android:name=".views.activitiesepsgrau.EPS_grauActivity"
@@ -138,9 +129,6 @@
             android:name=".views.activitiestelefonia.claro.InfoClaroActivity"
             android:parentActivityName=".views.activitiestelefonia.TelefoniaActivity" />
         <activity
-            android:name=".views.activities.ContactosActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
             android:name=".views.activitiestelefonia.movistar.InfoTramitesMovistarActivity"
             android:parentActivityName=".views.activitiestelefonia.movistar.InfoMovistarActivity"
             android:theme="@style/ThemeMovistarActivity" />
@@ -165,9 +153,6 @@
         <activity
             android:name=".views.activities.ListaDireccionesActivity"
             android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".views.activities.ContactoDetalleActivity"
-            android:parentActivityName=".views.activities.ContactosActivity" />
         <activity android:name=".views.activitiesenosa.OpenWebEnosaActivity" />
         <activity
             android:name=".views.activitiestelefonia.movistar.OpenWebMovistarActivity"
@@ -246,22 +231,26 @@
         <activity
             android:name=".views.activities.AcercadeActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".views.activitiesepsgrau.DetalleContactoEpsActivity"
-            android:parentActivityName=".views.activitiesepsgrau.InfoContactosEpsgrauActivity"
-            />
-        <activity android:name=".views.activitiestelefonia.movistar.DetalleContactoMovistarActivity"
-            android:theme="@style/ThemeMovistarActivity"
+        <activity
+            android:name=".views.activitiesepsgrau.DetalleContactoEpsActivity"
+            android:parentActivityName=".views.activitiesepsgrau.InfoContactosEpsgrauActivity" />
+        <activity
+            android:name=".views.activitiestelefonia.movistar.DetalleContactoMovistarActivity"
             android:parentActivityName=".views.activitiestelefonia.movistar.InfoContactosMovistarActivity"
-            />
-        <activity android:name=".views.activitiestelefonia.entel.DetalleContactoEntelActivity"
-            android:theme="@style/ThemeEntelActivity"
+            android:theme="@style/ThemeMovistarActivity" />
+        <activity
+            android:name=".views.activitiestelefonia.entel.DetalleContactoEntelActivity"
             android:parentActivityName=".views.activitiestelefonia.entel.InfoContactosEntelActivity"
-            />
-        <activity android:name=".views.activitiestelefonia.claro.DetalleContactoClaroActivity"
-            android:parentActivityName=".views.activitiestelefonia.claro.InfoContactosClaroActivity"
-            />
-        <activity android:name=".views.activitiesenosa.DetalleContactoEnosaActivity"
-            android:parentActivityName=".views.activitiesenosa.InfoContactosEnosaActivity"
+            android:theme="@style/ThemeEntelActivity" />
+        <activity
+            android:name=".views.activitiestelefonia.claro.DetalleContactoClaroActivity"
+            android:parentActivityName=".views.activitiestelefonia.claro.InfoContactosClaroActivity" />
+        <activity
+            android:name=".views.activitiesenosa.DetalleContactoEnosaActivity"
+            android:parentActivityName=".views.activitiesenosa.InfoContactosEnosaActivity" />
+
+        <activity android:name=".views.activitiesubicanos.ListaDireccionesMapaActivity"
+            android:parentActivityName=".MainActivity"
             />
     </application>
 

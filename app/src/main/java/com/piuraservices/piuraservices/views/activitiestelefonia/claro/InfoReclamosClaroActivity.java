@@ -21,15 +21,10 @@ import com.google.gson.reflect.TypeToken;
 import com.loopj.android.http.TextHttpResponseHandler;
 import com.piuraservices.piuraservices.R;
 import com.piuraservices.piuraservices.adapters.telefonia.claro.ListaInfoReclamosClaroAdapter;
-import com.piuraservices.piuraservices.adapters.telefonia.movistar.ListaInfoReclamosMovistarAdapter;
 import com.piuraservices.piuraservices.models.telefonia.claro.InfoReclamosClaromodel;
-import com.piuraservices.piuraservices.models.telefonia.movistar.InfoReclamosMovistarmodel;
 import com.piuraservices.piuraservices.services.claro.ListaReclamosClaroclient;
 import com.piuraservices.piuraservices.services.http;
 import com.piuraservices.piuraservices.utils.Config;
-import com.piuraservices.piuraservices.views.activities.ContactoDetalleActivity;
-import com.piuraservices.piuraservices.views.activitiestelefonia.movistar.DetalleReclamosMovistarActivity;
-import com.piuraservices.piuraservices.views.activitiestelefonia.movistar.InfoReclamosMovistarActivity;
 
 import org.apache.http.Header;
 

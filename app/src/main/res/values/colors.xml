@@ -6,7 +6,7 @@
     <color name="colorSplasch">#FFF</color>
     <!-- color para fragmentos-->
     <color name="colorfragmento">#ffe3e3e3</color>
-
+    <color name="color_direcciones_maps">#64b5f6 </color>
 
     <color name="color_fragmentos">#fafafa</color>
     <color name="color_boton_ubicame">#ff6f00</color>

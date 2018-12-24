@@ -14,11 +14,8 @@ import com.google.gson.reflect.TypeToken;
 import com.loopj.android.http.TextHttpResponseHandler;
 import com.piuraservices.piuraservices.R;
 import com.piuraservices.piuraservices.adapters.enosa.ListaInfoContactosEnosaAdapter;
-import com.piuraservices.piuraservices.adapters.enosa.ListaInfoReclamosEnosaAdapter;
 import com.piuraservices.piuraservices.models.enosa.InfoContactosEnosamodel;
-import com.piuraservices.piuraservices.models.enosa.InfoReclamosEnosamodel;
 import com.piuraservices.piuraservices.services.http;
-import com.piuraservices.piuraservices.views.activities.ContactoDetalleActivity;
 
 import org.apache.http.Header;
 

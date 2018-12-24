@@ -23,7 +23,7 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.piuraservices.piuraservices.views.activities.AcercadeActivity;
-import com.piuraservices.piuraservices.views.activities.ContactosActivity;
+import com.piuraservices.piuraservices.views.activitiesubicanos.ListaDireccionesMapaActivity;
 import com.piuraservices.piuraservices.views.fragments.EntidadContactoFragment;
 import com.piuraservices.piuraservices.views.fragments.EntidadReclamoFragment;
 import com.piuraservices.piuraservices.views.fragments.EntidadTramiteFragment;
@@ -61,15 +61,14 @@ public class MainActivity extends AppCompatActivity
                     setTitle("Entidades");
                     return true;
                 case R.id.navigation_ubicanos:
-                    UbicanosFragment ubicanos = new UbicanosFragment();
-                    android.support.v4.app.FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
-                    transaction2.replace(R.id.contenedorFragement, ubicanos);
-                    transaction2.addToBackStack(null).commit();
-                    setTitle("Ubicanos");
-                    //Intent intent= new Intent(MainActivity.this, ListaDireccionesActivity.class);
-                    //startActivity(intent);
-                    //Intent intent= new Intent(MainActivity.this, UbicanosActivity.class);
-                    //startActivity(intent);
+                    //UbicanosFragment ubicanos = new UbicanosFragment();
+                    //android.support.v4.app.FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
+                    //transaction2.replace(R.id.contenedorFragement, ubicanos);
+                    //transaction2.addToBackStack(null).commit();
+                    //setTitle("Ubicanos");
+                    Intent intentmap= new Intent(MainActivity.this, ListaDireccionesMapaActivity.class);
+                    startActivity(intentmap);
+
                     return true;
             }
             return false;
