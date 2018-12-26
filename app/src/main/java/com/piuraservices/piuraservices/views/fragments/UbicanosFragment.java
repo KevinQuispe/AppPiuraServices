@@ -163,7 +163,6 @@ public class UbicanosFragment extends Fragment implements OnMapReadyCallback, an
         Toast toast = Toast.makeText(getContext(), "Tu ubicacion exacta", Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
         toast.show();
-
         //Toast.makeText(getActivity(), "Tu Ubicacion", Toast.LENGTH_LONG).show();
 
     }

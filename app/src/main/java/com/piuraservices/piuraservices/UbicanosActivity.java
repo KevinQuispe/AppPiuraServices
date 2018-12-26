@@ -61,12 +61,11 @@ public class UbicanosActivity extends FragmentActivity implements OnMapReadyCall
     double lat = 0.0;
     double lng = 0.0;
     String mensaje1;
-    String direccion = "";
-    String pais = "";
+    String direccion = " ";
+    String pais = " ";
     Button ubicame;
     Button favorito;
-    EditText direction, country;
-
+    EditText direction,country;
     //variables para subir latitud y longitud a firebase
     private DatabaseReference mdatabase;
     private ArrayList<Marker> tmprealtimemarkers = new ArrayList<>();
@@ -86,13 +85,13 @@ public class UbicanosActivity extends FragmentActivity implements OnMapReadyCall
         mdatabase = FirebaseDatabase.getInstance().getReference();
         //llamar al metodo obtener lat y longitud
         obtenerLatitudLongitud();
-        //permisos gps
         //vefificar si los servicios de gogle maps estan activos
         int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
         if (status == ConnectionResult.SUCCESS) {
             SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                     .findFragmentById(R.id.map);
             mapFragment.getMapAsync(this);
+
         } else {
             Dialog dialog = GooglePlayServicesUtil.getErrorDialog(status, (Activity) getApplicationContext(), 10);
             dialog.show();
@@ -112,7 +111,7 @@ public class UbicanosActivity extends FragmentActivity implements OnMapReadyCall
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String nombre = dataSnapshot.getValue().toString();
-                Log.e("mi dato firebase es:", nombre);
+                Log.e("Mi dato firebase es:", nombre);
             }
 
             @Override
@@ -137,7 +136,6 @@ public class UbicanosActivity extends FragmentActivity implements OnMapReadyCall
         //get location en google maps
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
             return;
         }
         mFusedLocationClient.getLastLocation()
@@ -148,10 +146,13 @@ public class UbicanosActivity extends FragmentActivity implements OnMapReadyCall
                         if (location != null) {
                             Log.e("LATITUD:" + location.getLatitude(), "LONGITUD   " + location.getLongitude());
                             Map<String, Object> latlong = new HashMap<>();
+                            MapsPojo m=new MapsPojo();
                             latlong.put("latitud", location.getLatitude());
                             latlong.put("longitud", location.getLongitude());
-                            //mdatabase.child("places").push().setValue(latlong);
+                            latlong.put("nombre",m.getNombre());
+                            mdatabase.child("places").push().setValue(latlong);
                         }
+
                     }
                 });
     }
@@ -173,7 +174,7 @@ public class UbicanosActivity extends FragmentActivity implements OnMapReadyCall
         //if (marcador != null) marcador.remove();
         //marcador = mMap.addMarker(new MarkerOptions().position(peru).title("Perú" + direccion).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
         //mMap.animateCamera(miubicacion);
-
+        //miUbicacion();
         mdatabase.child("places").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -188,7 +189,7 @@ public class UbicanosActivity extends FragmentActivity implements OnMapReadyCall
                     MarkerOptions meMarkerOptions = new MarkerOptions();
                     meMarkerOptions.position(new LatLng(latitud, longitud)).title(mp.getNombre().toString());
                     tmprealtimemarkers.add(mMap.addMarker(meMarkerOptions)); //agrego los marcadores de la base firebase
-                    AgregarMarcador(latitud,longitud);
+                    AgregarMarcador(latitud, longitud);
                 }
                 realtimemarkers.clear();
                 realtimemarkers.addAll(tmprealtimemarkers);
@@ -196,15 +197,16 @@ public class UbicanosActivity extends FragmentActivity implements OnMapReadyCall
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.e("Eerror",databaseError.getMessage());
+                Log.e("Error", databaseError.getMessage());
             }
         });
 
     }
-    //MI UBICACION
+
+    //MI UBICACION GOOGLE MAPS
     private static int PETICION_PERMISO_LOCALIZACION = 101;
     private void miUbicacion() {
-
+    try {
         if (ActivityCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getApplicationContext().getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(UbicanosActivity.this,
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PETICION_PERMISO_LOCALIZACION);
@@ -215,9 +217,10 @@ public class UbicanosActivity extends FragmentActivity implements OnMapReadyCall
             ActualizarUbicacion(location);
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, locListener);
         }
+    }catch (Exception e){
+        e.printStackTrace();
     }
-
-
+    }
 
     //actualizar la ubicacion
     private void ActualizarUbicacion(Location location) {
@@ -236,7 +239,7 @@ public class UbicanosActivity extends FragmentActivity implements OnMapReadyCall
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         UiSettings uiSettings = mMap.getUiSettings();
         uiSettings.setZoomControlsEnabled(true);
-        float zoomlevel =15f;
+        float zoomlevel = 14.5f;
         CameraUpdate MiUbicacion = CameraUpdateFactory.newLatLngZoom(coordenadas, zoomlevel);
 
         if (marcador != null) marcador.remove();
@@ -244,8 +247,7 @@ public class UbicanosActivity extends FragmentActivity implements OnMapReadyCall
                 .position(coordenadas)
                 .title("Mi Ubicación:" + direccion)
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
-                //.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_person_home)));
-
+        //.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_person_home)));
         mMap.animateCamera(MiUbicacion);
     }
 
@@ -270,7 +272,9 @@ public class UbicanosActivity extends FragmentActivity implements OnMapReadyCall
                 e.printStackTrace();
             }
         }
+
     }
+
     //control del gps
     LocationListener locListener = new LocationListener() {
 

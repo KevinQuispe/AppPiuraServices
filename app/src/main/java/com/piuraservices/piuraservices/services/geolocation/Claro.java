@@ -1,12 +1,18 @@
 package com.piuraservices.piuraservices.services.geolocation;
 
-public class MapsPojo {
+public class Claro {
     private double latitud;
     private double longitud;
     private String nombre;
+    private String direccion;
 
-    public MapsPojo() {
-        nombre="Mi Ubicación";
+    public Claro() {
+    }
+    public Claro(double latitud, double longitud, String nombre, String direccion) {
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.nombre = nombre;
+        this.direccion = direccion;
     }
 
     public double getLatitud() {
@@ -33,4 +39,11 @@ public class MapsPojo {
         this.nombre = nombre;
     }
 
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
 }
