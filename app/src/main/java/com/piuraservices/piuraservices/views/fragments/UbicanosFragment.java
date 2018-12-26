@@ -99,6 +99,7 @@ public class UbicanosFragment extends Fragment implements OnMapReadyCallback, an
 
     }
 
+
     private static int PETICION_PERMISO_LOCALIZACION = 101;
 
     private void miUbicacion() {

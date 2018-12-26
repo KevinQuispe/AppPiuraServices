@@ -50,6 +50,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
     //add firebase
     implementation 'com.google.firebase:firebase-core:16.0.1'
+    //FirebaseDatabase
+    implementation "com.google.firebase:firebase-database:16.0.1"
 
 }
 //add plugin firebase

@@ -22,6 +22,7 @@ import android.widget.TextView;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.FirebaseDatabase;
 import com.piuraservices.piuraservices.views.activities.AcercadeActivity;
 import com.piuraservices.piuraservices.views.activitiesubicanos.ListaDireccionesMapaActivity;
 import com.piuraservices.piuraservices.views.fragments.EntidadContactoFragment;
@@ -39,6 +40,8 @@ public class MainActivity extends AppCompatActivity
 
     //get location en google maps
     private FusedLocationProviderClient mFusedLocationClient;
+
+    //datos de firebase
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
