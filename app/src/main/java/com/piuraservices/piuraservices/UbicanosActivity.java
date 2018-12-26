@@ -42,6 +42,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.piuraservices.piuraservices.services.geolocation.MapsPojo;
+import com.piuraservices.piuraservices.services.geolocation.Movistar;
 import com.piuraservices.piuraservices.utils.FirebaseReferences;
 
 import java.io.IOException;
@@ -65,7 +66,7 @@ public class UbicanosActivity extends FragmentActivity implements OnMapReadyCall
     String pais = " ";
     Button ubicame;
     Button favorito;
-    EditText direction,country;
+    EditText direction, country;
     //variables para subir latitud y longitud a firebase
     private DatabaseReference mdatabase;
     private ArrayList<Marker> tmprealtimemarkers = new ArrayList<>();
@@ -146,11 +147,11 @@ public class UbicanosActivity extends FragmentActivity implements OnMapReadyCall
                         if (location != null) {
                             Log.e("LATITUD:" + location.getLatitude(), "LONGITUD   " + location.getLongitude());
                             Map<String, Object> latlong = new HashMap<>();
-                            MapsPojo m=new MapsPojo();
+                            MapsPojo m = new MapsPojo();
                             latlong.put("latitud", location.getLatitude());
                             latlong.put("longitud", location.getLongitude());
-                            latlong.put("nombre",m.getNombre());
-                            mdatabase.child("places").push().setValue(latlong);
+                            latlong.put("nombre", m.getNombre());
+                            //mdatabase.child("places").push().setValue(latlong);
                         }
 
                     }
@@ -174,8 +175,106 @@ public class UbicanosActivity extends FragmentActivity implements OnMapReadyCall
         //if (marcador != null) marcador.remove();
         //marcador = mMap.addMarker(new MarkerOptions().position(peru).title("Perú" + direccion).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
         //mMap.animateCamera(miubicacion);
-        //miUbicacion();
-        mdatabase.child("places").addValueEventListener(new ValueEventListener() {
+        miUbicacion();
+        validarBasedatos("movistar");
+
+
+    }
+
+    public void validarBasedatos(final String nombre) {
+        final FirebaseDatabase database = FirebaseDatabase.getInstance(); //mi base de datos
+        final DatabaseReference myref = database.getReference(FirebaseReferences.ENTIDADES_REFERENCES); //coje la referencia
+        final DatabaseReference myrefmovistar = database.getReference(FirebaseReferences.MOVISTAR_REFERENCES); //coje la referencia
+        final DatabaseReference myrefclaro = database.getReference(FirebaseReferences.CLARO_REFERENCES); //coje la referencia
+        final DatabaseReference myrefentel = database.getReference(FirebaseReferences.ENTEL_REFERENCES); //coje la referencia
+        myref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Movistar mov = dataSnapshot.getValue(Movistar.class);
+                //capturar las referencias de las base de datos
+                String entidades = myref.getKey().toString();
+                String movistar = myrefmovistar.getKey().toString();
+                String claro = myrefclaro.getKey().toString();
+                String entel = myrefentel.getKey().toString();
+
+                if (myrefmovistar.getKey().equals(nombre)) {
+                    marcadorPuntosMovistar();
+
+                } else if (myrefclaro.getKey().equals(nombre)) {
+                    marcadorPuntosClaro();
+                } else if (myrefentel.getKey().equals(nombre)) {
+                    marcadorPuntosEntel();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    //obtener datos
+    public void obtenerdatosdirebase() {
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference myref = database.getReference(FirebaseReferences.ENTIDADES_REFERENCES);
+        myref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        Movistar mp = snapshot.getValue(Movistar.class);
+                        String data = snapshot.getValue().toString();
+                        Log.e("MI DATO CHILDREN MOVI", data);
+
+                        //DatabaseReference objRef = myref.child( dataSnapshot.getChildren().toString());
+                        //Map<String, Object> taskMap = new HashMap<String, Object>();
+                        //taskMap.put("is_read", "1");
+                        //objRef.updateChildren(taskMap); //should I use setValue()...?
+                        //Log.v("Testing", "" + snapshot.getKey()); //displays
+                    }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    //marcador de puntos para la empresa movistar
+    public void marcadorPuntosMovistar() {
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        //get location en google maps
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        mFusedLocationClient.getLastLocation()
+                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        // Got last known location. In some rare situations this can be null.
+                        if (location != null) {
+                            Log.e("LATITUD:" + location.getLatitude(), "LONGITUD   " + location.getLongitude());
+                            Map<String, Object> latlong = new HashMap<>();
+                            Movistar m = new Movistar();
+                            latlong.put("latitud", location.getLatitude());
+                            latlong.put("longitud", location.getLongitude());
+                            latlong.put("nombre", m.getNombre());
+                            mdatabase.child("movistar").push().setValue(latlong);
+                        }
+
+                    }
+                });
+    }
+
+    //marcador de puntos para la empresa claro
+    public void marcadorPuntosClaro() {
+        mdatabase.child("claro").addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -190,6 +289,7 @@ public class UbicanosActivity extends FragmentActivity implements OnMapReadyCall
                     meMarkerOptions.position(new LatLng(latitud, longitud)).title(mp.getNombre().toString());
                     tmprealtimemarkers.add(mMap.addMarker(meMarkerOptions)); //agrego los marcadores de la base firebase
                     AgregarMarcador(latitud, longitud);
+
                 }
                 realtimemarkers.clear();
                 realtimemarkers.addAll(tmprealtimemarkers);
@@ -200,26 +300,56 @@ public class UbicanosActivity extends FragmentActivity implements OnMapReadyCall
                 Log.e("Error", databaseError.getMessage());
             }
         });
+    }
 
+    public void marcadorPuntosEntel() {
+        mdatabase.child("entel").addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (Marker marker : realtimemarkers) {
+                    marker.remove();
+                }
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    MapsPojo mp = snapshot.getValue(MapsPojo.class);
+                    Double latitud = mp.getLatitud();
+                    Double longitud = mp.getLongitud();
+                    MarkerOptions meMarkerOptions = new MarkerOptions();
+                    meMarkerOptions.position(new LatLng(latitud, longitud)).title(mp.getNombre().toString());
+                    tmprealtimemarkers.add(mMap.addMarker(meMarkerOptions)); //agrego los marcadores de la base firebase
+                    AgregarMarcador(latitud, longitud);
+
+                }
+                realtimemarkers.clear();
+                realtimemarkers.addAll(tmprealtimemarkers);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("Error", databaseError.getMessage());
+            }
+        });
     }
 
     //MI UBICACION GOOGLE MAPS
     private static int PETICION_PERMISO_LOCALIZACION = 101;
+
     private void miUbicacion() {
-    try {
-        if (ActivityCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getApplicationContext().getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(UbicanosActivity.this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PETICION_PERMISO_LOCALIZACION);
-            return;
-        } else {
-            LocationManager locationManager = (LocationManager) getApplication().getSystemService(Context.LOCATION_SERVICE);
-            Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            ActualizarUbicacion(location);
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, locListener);
+        try {
+            if (ActivityCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getApplicationContext().getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(UbicanosActivity.this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PETICION_PERMISO_LOCALIZACION);
+                return;
+            } else {
+                LocationManager locationManager = (LocationManager) getApplication().getSystemService(Context.LOCATION_SERVICE);
+                Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                ActualizarUbicacion(location);
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, locListener);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-    }catch (Exception e){
-        e.printStackTrace();
-    }
     }
 
     //actualizar la ubicacion
@@ -239,7 +369,7 @@ public class UbicanosActivity extends FragmentActivity implements OnMapReadyCall
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         UiSettings uiSettings = mMap.getUiSettings();
         uiSettings.setZoomControlsEnabled(true);
-        float zoomlevel = 14.5f;
+        float zoomlevel = 15.5f;
         CameraUpdate MiUbicacion = CameraUpdateFactory.newLatLngZoom(coordenadas, zoomlevel);
 
         if (marcador != null) marcador.remove();
