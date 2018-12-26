@@ -7,12 +7,8 @@ public class Claro {
     private String direccion;
 
     public Claro() {
-    }
-    public Claro(double latitud, double longitud, String nombre, String direccion) {
-        this.latitud = latitud;
-        this.longitud = longitud;
-        this.nombre = nombre;
-        this.direccion = direccion;
+        nombre="movistar";
+        direccion="Piura";
     }
 
     public double getLatitud() {
