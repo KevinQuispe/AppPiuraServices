@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -57,8 +58,6 @@ import java.util.Map;
 public class UbicanosActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    //get location en google maps
-    private FusedLocationProviderClient mFusedLocationClient;
     private Marker marcador;
     private GoogleMap googleMap;
     double lat = 0.0;
@@ -69,6 +68,9 @@ public class UbicanosActivity extends FragmentActivity implements OnMapReadyCall
     Button ubicame;
     Button favorito;
     EditText direction, country;
+
+    //get location en google maps
+    private FusedLocationProviderClient mFusedLocationClient;
     //variables para subir latitud y longitud a firebase
     private DatabaseReference mdatabase;
     private ArrayList<Marker> tmprealtimemarkers = new ArrayList<>();
@@ -79,14 +81,8 @@ public class UbicanosActivity extends FragmentActivity implements OnMapReadyCall
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ubicanos);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        //SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-        //      .findFragmentById(R.id.map);
-        //mapFragment.getMapAsync(this);
-
         //inicializar la variable de base de datos firebase
         mdatabase = FirebaseDatabase.getInstance().getReference();
-
         //vefificar si los servicios de gogle maps estan activos
         int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
         if (status == ConnectionResult.SUCCESS) {
@@ -185,7 +181,7 @@ public class UbicanosActivity extends FragmentActivity implements OnMapReadyCall
         //actualiza la ubicacion en tiempo real cada 10 segundos
          miUbicacion();
         //pasarle la entidad o empresa para que carge los puntos marker
-        elijebaseentidad("entel");
+        elijebaseentidad("claro");
         //subir data a base de datos entel
         //subirpuntosEntel();
     }

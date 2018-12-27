@@ -79,14 +79,12 @@ public class InfoClaroActivity extends AppCompatActivity {
                             horario.setText(info.getHorario().toString());
                             page.setText(info.getWebentidad().toString());
                             progreso.hide();
-
                         }
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-
             @Override
             public void onFailure(Call<List<InfoReferencialClaromodel>> call, Throwable t) {
                 Toast.makeText(InfoClaroActivity.this, "Error de conexion", Toast.LENGTH_SHORT).show();

@@ -248,10 +248,11 @@
         <activity
             android:name=".views.activitiesenosa.DetalleContactoEnosaActivity"
             android:parentActivityName=".views.activitiesenosa.InfoContactosEnosaActivity" />
-
-        <activity android:name=".views.activitiesubicanos.ListaDireccionesMapaActivity"
-            android:parentActivityName=".MainActivity"
-            />
+        <activity
+            android:name=".views.activitiesubicanos.ListaDireccionesMapaActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".views.activitiesubicanos.DetalleDireccionesActivity" />
+        <activity android:name=".views.activitiesubicanos.ListaEmpresasTelefoniaActivity"></activity>
     </application>
 
 </manifest>

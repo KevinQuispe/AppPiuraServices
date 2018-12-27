@@ -42,6 +42,7 @@
     <string name="text_telefono_entel">0800 18844</string>
     <string name="text_horario_entel">L-V 9:00am a 7:00pm sábado 9:00am a 12:30pm</string>
     <string name="text_web_entel">http://www.entel.pe</string>
+    <string name="text_boton_openmaps">Abrir Google Maps</string>
 
     <!-- Splash screen -->
     <string name="titulo_splash_servicios">Servicios Básicos</string>

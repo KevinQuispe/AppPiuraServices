@@ -6,47 +6,71 @@
     android:background="#ffe3e3e3"
     android:orientation="vertical"
     tools:context=".views.fragments.UbicanosFragment">
-
-    <SearchView
-        android:background="@color/cardview_shadow_start_color"
-        android:id="@+id/id_search_ubicaciones"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/map"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/img_ubicame"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="320dp"
+                android:scaleType="centerCrop"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ic_my_location_black_24dp" />
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/map"
+                android:layout_width="match_parent"
+                android:layout_height="300dp" />
+        </LinearLayout>
+    </ScrollView>
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="300dp" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="#eeee"
-        android:orientation="vertical"
-        android:padding="10dp">
-
-        <TextView
+        android:layout_height="match_parent">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:text="DATOS DEL LUGAR"
-            android:textAlignment="center"
-            android:textColor="#000"
-            android:textStyle="bold" />
+            android:layout_height="200dp"
+            android:background="#eeee"
+            android:orientation="vertical"
+            android:padding="10dp">
 
-        <EditText
-            android:id="@+id/text_direccion_mapa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:background="#d1c4e9"
-            android:hint="Direccion"
-            android:padding="5dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="DATOS DEL LUGAR"
+                android:textAlignment="center"
+                android:textColor="#000"
+                android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/txt_ciudad_mapa"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="5dp"
-            android:background="#d1c4e9"
-            android:hint="Ciudad"
-            android:padding="5dp" />
-    </LinearLayout>
+            <EditText
+                android:id="@+id/text_direccion_mapa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="#d1c4e9"
+                android:hint="Direccion"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/txt_ciudad_mapa"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:background="#d1c4e9"
+                android:hint="Ciudad"
+                android:padding="5dp" />
+            <Button
+                android:layout_marginTop="10dp"
+                android:text="@string/text_boton_openmaps"
+                android:id="@+id/btn_openmas"
+                android:textColor="@color/color_text_boton_login"
+                android:background="@color/buttonPressedColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

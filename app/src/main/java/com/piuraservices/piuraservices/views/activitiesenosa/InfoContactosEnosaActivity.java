@@ -45,8 +45,7 @@ public class InfoContactosEnosaActivity extends AppCompatActivity implements Vie
         listacontactos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //Toast.makeText(InfoReclamosEnosaActivity.this, "Click me reclamos"+i, Toast.LENGTH_SHORT).show();
-                final int pos = i;
+                 final int pos = i;
                 Intent intent=new Intent(InfoContactosEnosaActivity.this, DetalleContactoEnosaActivity.class);
                 startActivity(intent);
                 mostrarDetalle(list_contactos.get(pos));
