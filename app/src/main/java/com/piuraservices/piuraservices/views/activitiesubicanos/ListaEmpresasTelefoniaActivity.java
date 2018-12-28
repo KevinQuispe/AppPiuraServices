@@ -11,5 +11,8 @@ public class ListaEmpresasTelefoniaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_empresas_telefonia);
+        getSupportActionBar().setTitle("Empresas de telefonía");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 }

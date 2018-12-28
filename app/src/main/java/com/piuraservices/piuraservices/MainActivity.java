@@ -34,14 +34,10 @@ import com.piuraservices.piuraservices.views.fragments.UbicanosFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
     //navigation buton
     private TextView mTextMessage;
-
     //get location en google maps
     private FusedLocationProviderClient mFusedLocationClient;
-
-    //datos de firebase
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -56,6 +52,7 @@ public class MainActivity extends AppCompatActivity
                     transaction1.addToBackStack(null).commit();
                     setTitle("Piura Services");
                     return true;
+
                 case R.id.navigation_entidades:
                     EntidadesFragment form = new EntidadesFragment();
                     android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -71,7 +68,6 @@ public class MainActivity extends AppCompatActivity
                     //setTitle("Ubicanos");
                     Intent intentmap= new Intent(MainActivity.this, ListaDireccionesMapaActivity.class);
                     startActivity(intentmap);
-
                     return true;
             }
             return false;
@@ -91,9 +87,9 @@ public class MainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+        //clase  navigation
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        //
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -118,7 +114,6 @@ public class MainActivity extends AppCompatActivity
                         }
                     }
                 });
-
     }
     @Override
     public void onBackPressed() {
@@ -140,8 +135,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_acercade ) {
@@ -195,9 +188,9 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_contactos) {
             //Intent intent=new Intent(MainActivity.this, ContactosActivity.class);
             //startActivity(intent);
-            EntidadContactoFragment reclamos = new EntidadContactoFragment();
+            EntidadContactoFragment contactos = new EntidadContactoFragment();
             android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.contenedorFragement, reclamos);
+            transaction.replace(R.id.contenedorFragement, contactos);
             transaction.addToBackStack(null).commit();
             setTitle("Elija Entidad o Empresa");
 
@@ -227,5 +220,5 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
+        }
     }

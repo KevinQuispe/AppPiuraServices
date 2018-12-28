@@ -14,23 +14,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <RadioGroup
-            android:id="@+id/radio_group_maps"
+            android:id="@+id/radio_group_mapa"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
                 android:text="EPS Grau S.A"
-                android:id="@+id/rb_eps_grau_maps"
+                android:id="@+id/rb_epsgrau_mapa"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content" />
             <RadioButton
                 android:text="Enosa"
-                android:id="@+id/rb_enosa_maps"
+                android:id="@+id/rb_enosa_mapa"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content" />
             <RadioButton
                 android:text="Telefonía"
-                android:id="@+id/rb_telefonia_maps"
+                android:id="@+id/rb_telefonia_mapa"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content" />
         </RadioGroup>

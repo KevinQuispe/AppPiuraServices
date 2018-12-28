@@ -110,6 +110,14 @@ public class UbicanosFragment extends Fragment implements OnMapReadyCallback, an
                 miUbicacion();
             }
         });
+
+        //String name=this.getArguments().getString("epsgrau").toString();
+        //Toast.makeText(getContext(), name, Toast.LENGTH_SHORT).show();
+
+        //Bundle bundle = this.getArguments();
+        //String myValue = bundle.getString("epsgrau");
+        //Toast.makeText(getContext(), myValue, Toast.LENGTH_SHORT).show();
+
         return mView;
 
     }
@@ -160,7 +168,7 @@ public class UbicanosFragment extends Fragment implements OnMapReadyCallback, an
                 if (myrefentel.getKey().toString().equals(nombre)) {
                     marcadorPuntosEntel();
                 } else {
-                    Toast.makeText(getContext(), "DatabaseUnkonw", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "GoogleMaps", Toast.LENGTH_SHORT).show();
                 }
             }
 

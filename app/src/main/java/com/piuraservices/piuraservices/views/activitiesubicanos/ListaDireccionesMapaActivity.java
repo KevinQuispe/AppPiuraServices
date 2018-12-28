@@ -1,9 +1,11 @@
 package com.piuraservices.piuraservices.views.activitiesubicanos;
-
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.IdRes;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -24,19 +26,16 @@ import com.loopj.android.http.TextHttpResponseHandler;
 import com.piuraservices.piuraservices.R;
 import com.piuraservices.piuraservices.UbicanosActivity;
 import com.piuraservices.piuraservices.adapters.epsgrau.ListaInfoContactosEpsgrauAdapter;
-import com.piuraservices.piuraservices.models.enosa.InfoContactosEnosamodel;
 import com.piuraservices.piuraservices.models.epsgrau.InfoContactosEpsgraumodel;
-import com.piuraservices.piuraservices.models.telefonia.movistar.InfoContactosMovistarmodel;
 import com.piuraservices.piuraservices.services.http;
-import com.piuraservices.piuraservices.views.activities.ListaDireccionesActivity;
+import com.piuraservices.piuraservices.views.activitiesenosa.EnosaActivity;
 import com.piuraservices.piuraservices.views.activitiesepsgrau.DetalleContactoEpsActivity;
-import com.piuraservices.piuraservices.views.activitiesepsgrau.InfoContactosEpsgrauActivity;
+import com.piuraservices.piuraservices.views.fragments.UbicanosFragment;
 
 import org.apache.http.Header;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class ListaDireccionesMapaActivity extends AppCompatActivity implements  View.OnClickListener,AdapterView.OnItemClickListener {
     ListView listaelementos;
@@ -50,27 +49,57 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
     List<InfoContactosEpsgraumodel> list_contactos;
     //Array list for to http and to converter to gson EPSGRAU
     ArrayList<InfoContactosEpsgraumodel> lista = new ArrayList();
-
+    RadioButton rbepsgrau;
+    public static final String nombreempresa="epsgrau";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_direcciones_mapa);
         getSupportActionBar().setTitle("Ubica tu servicio");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        radioentidad=(RadioGroup) findViewById(R.id.radio_group_maps);
+        radioentidad=(RadioGroup) findViewById(R.id.radio_group_mapa);
         listViewContactos = (ListView) findViewById(R.id.lista_direciones_mapa);
+        rbepsgrau=(RadioButton) findViewById(R.id.rb_epsgrau_mapa);
+        //oncliek para ver el detalle de os contactos
         listViewContactos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 final int pos = i;
-                Intent intent=new Intent(ListaDireccionesMapaActivity.this, DetalleContactoEpsActivity.class);
+                Intent intent=new Intent(ListaDireccionesMapaActivity.this, DetalleDireccionesActivity.class);
                 startActivity(intent);
                 mostrarDetalle(list_contactos.get(pos));
             }
         });
+        warningmessage();
+         //medoto lista entidades local central
         listaEntidadCentral();
         //llamar al metodo elija entidad
         elijaentidad();
+
+        //conditional para llamar a fragmento
+        //if (savedInstanceState==null){
+          //  getSupportFragmentManager().beginTransaction().add(R.id.container,retornarFagmento()).commit();
+       // }
+
+    }
+    //mesaje de apertura en lista entidades
+    public void mostarMensaje(){
+        Toast.makeText(getApplicationContext(),"Elija entidad o haga Click en la lista y ubique la central de los servicios Básicos",Toast.LENGTH_LONG).show();
+
+    }
+    //mesaje de apertura en lista entidades
+    public void warningmessage() {
+        final AlertDialog.Builder alertaDeError2 = new AlertDialog.Builder(ListaDireccionesMapaActivity.this);
+        alertaDeError2.setTitle("Readme");
+        alertaDeError2.setMessage("Elija entidad o haga " +
+                "Click en la lista y ubique la central de los servicios Básicos mediante Google Maps");
+        alertaDeError2.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        alertaDeError2.create();
+        alertaDeError2.show();
     }
     public void listarCotactosEps()
     {
@@ -163,7 +192,7 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
                     startActivity(mapIntent2);
                     break;
                     case 2:
-                    Uri usrimovistar = Uri.parse("google.navigation:q=Claro+Piura");
+                    Uri usrimovistar = Uri.parse("google.navigation:q=Movistar+Piura");
                     Intent mapIntent3 = new Intent(Intent.ACTION_VIEW, usrimovistar);
                     mapIntent3.setPackage("com.google.android.apps.maps");
                     startActivity(mapIntent3);
@@ -182,6 +211,7 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
                     break;
                     default:
                         Toast.makeText(getApplicationContext(),"Select Option",Toast.LENGTH_SHORT).show();
+                    break;
             }
 
         }
@@ -189,17 +219,23 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
         radioentidad.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-
                 switch (checkedId){
-                    case R.id.rb_eps_grau:
-                        listarCotactosEps();
-                        break;
-                    case R.id.rb_enosa_maps:
+                    case R.id.rb_epsgrau_mapa:
+                        Intent intent=new Intent(ListaDireccionesMapaActivity.this,UbicanosActivity.class);
+                        Bundle parametros = new Bundle();
+                       // String entidad = rbepsgrau.getText().toString();
+                        String entidad ="movistar";
+                        parametros.putString("entidadKey",entidad);
+                        intent.putExtras(parametros);
+                        startActivity(intent);
                         break;
 
-                    case R.id.rb_telefonia_maps:
-                        Intent intent=new Intent(ListaDireccionesMapaActivity.this, DetalleContactoEpsActivity.class);
-                        startActivity(intent);
+                    case R.id.rb_enosa_mapa:
+                        break;
+
+                    case R.id.rb_telefonia_mapa:
+                        Intent intent1=new Intent(ListaDireccionesMapaActivity.this, ListaEmpresasTelefoniaActivity.class);
+                        startActivity(intent1);
                         break;
                     default:
 
@@ -207,6 +243,16 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
 
             }
         });
+    }
+    private Fragment retornarFagmento(){
+        String entidad = rbepsgrau.getText().toString();//nombre epsgrau
+        Bundle bundle = new Bundle();
+        bundle.putString(nombreempresa, entidad);
+        UbicanosFragment ubicanos = new UbicanosFragment();
+        android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.contenedorFragement, ubicanos);
+        transaction.addToBackStack(null).commit();
+        return ubicanos;
     }
     public void dialog() {
         //progreso = new ProgressDialog(EpsInfoReclamosActivity.this, ProgressDialog.THEME_HOLO_LIGHT);

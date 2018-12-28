@@ -20,17 +20,17 @@
             android:layout_height="wrap_content">
             <RadioButton
                 android:text="Movistar"
-                android:id="@+id/rb_empresa_movistar_maps"
+                android:id="@+id/rb_empresa_movistar_mapa"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content" />
             <RadioButton
                 android:text="Claro"
-                android:id="@+id/rb_empresa_enosa_maps"
+                android:id="@+id/rb_empresa_claro_mapa"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content" />
             <RadioButton
                 android:text="Entel"
-                android:id="@+id/rb_empresa_entel_maps"
+                android:id="@+id/rb_empresa_entel_mapa"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content" />
         </RadioGroup>
@@ -39,9 +39,8 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <ImageView
-            android:background="@drawable/claro"
+            android:background="@drawable/googlemaps"
             android:id="@+id/lista_empresas_mapa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
