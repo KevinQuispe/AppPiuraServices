@@ -1,13 +1,13 @@
 package com.piuraservices.piuraservices.services.geolocation;
 
-public class Enosa {
+public class EpsGrau {
     private double latitud;
     private double longitud;
     private String nombre;
     private String direccion;
 
-    public Enosa() {
-        nombre="enosa";
+    public EpsGrau() {
+        nombre="Epsgrau";
         direccion="Piura";
     }
 
@@ -43,4 +43,3 @@ public class Enosa {
         this.direccion = direccion;
     }
 }
-

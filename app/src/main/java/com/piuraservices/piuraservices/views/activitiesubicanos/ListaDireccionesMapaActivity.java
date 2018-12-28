@@ -41,6 +41,7 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
     ListView listaelementos;
     ArrayAdapter<String> adapter;
     RadioGroup radioentidad;
+    RadioButton rbepsgrau;
     //prograso loading
     ProgressDialog progreso;
     //list view de reclamos
@@ -49,7 +50,7 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
     List<InfoContactosEpsgraumodel> list_contactos;
     //Array list for to http and to converter to gson EPSGRAU
     ArrayList<InfoContactosEpsgraumodel> lista = new ArrayList();
-    RadioButton rbepsgrau;
+
     public static final String nombreempresa="epsgrau";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +59,8 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
         getSupportActionBar().setTitle("Ubica tu servicio");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         radioentidad=(RadioGroup) findViewById(R.id.radio_group_mapa);
-        listViewContactos = (ListView) findViewById(R.id.lista_direciones_mapa);
         rbepsgrau=(RadioButton) findViewById(R.id.rb_epsgrau_mapa);
+        listViewContactos = (ListView) findViewById(R.id.lista_direciones_mapa);
         //oncliek para ver el detalle de os contactos
         listViewContactos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -91,7 +92,7 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
     public void warningmessage() {
         final AlertDialog.Builder alertaDeError2 = new AlertDialog.Builder(ListaDireccionesMapaActivity.this);
         alertaDeError2.setTitle("Readme");
-        alertaDeError2.setMessage("Elija entidad o haga " +
+        alertaDeError2.setMessage("Elija una entidad o haga " +
                 "Click en la lista y ubique la central de los servicios Básicos mediante Google Maps");
         alertaDeError2.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
@@ -224,13 +225,19 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
                         Intent intent=new Intent(ListaDireccionesMapaActivity.this,UbicanosActivity.class);
                         Bundle parametros = new Bundle();
                        // String entidad = rbepsgrau.getText().toString();
-                        String entidad ="movistar";
+                        String entidad ="epsgrau";
                         parametros.putString("entidadKey",entidad);
                         intent.putExtras(parametros);
                         startActivity(intent);
                         break;
 
                     case R.id.rb_enosa_mapa:
+                        Intent intentenosa=new Intent(ListaDireccionesMapaActivity.this,UbicanosActivity.class);
+                        Bundle parametrosenosa = new Bundle();
+                        String entidadenosa ="enosa";
+                        parametrosenosa.putString("entidadKey",entidadenosa);
+                        intentenosa.putExtras(parametrosenosa);
+                        startActivity(intentenosa);
                         break;
 
                     case R.id.rb_telefonia_mapa:

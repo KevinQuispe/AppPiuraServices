@@ -7,6 +7,8 @@ public class Entel {
     private double longitud;
 
     public Entel() {
+        nombre="entel";
+        direccion="Piura";
     }
 
     public String getNombre() {

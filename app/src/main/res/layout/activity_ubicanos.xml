@@ -19,6 +19,7 @@
         android:textAlignment="viewStart"
         android:layout_height="wrap_content">
         <Button
+            android:id="@+id/btn_ubicame"
             android:textColor="@color/color_fragmentos"
             android:text="Ubicanos"
             android:background="@color/buttonPressedColor"
