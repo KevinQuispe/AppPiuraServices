@@ -50,8 +50,8 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
     List<InfoContactosEpsgraumodel> list_contactos;
     //Array list for to http and to converter to gson EPSGRAU
     ArrayList<InfoContactosEpsgraumodel> lista = new ArrayList();
-
     public static final String nombreempresa="epsgrau";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -162,27 +162,28 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
     }
 
     public void listaEntidadCentral(){
-        String[] enosa = {"Central Eps Grau,Calle Libertad #698 Piura",
+        String[] enosa = {"Central Eps Grau,Jr. La Arena y Jr. Zelaya S/N - Urb. Santa Ana",
                         "Central Enosa,Esquina Av. Andrés Avelino Cáceres 147",
                         "Central Movistar,Calle Tacna #432 Piura",
                         "Central Claro,Calle Tacna #432 Piura",
                         "Central Entel,Calle Tacna #432 Piura"};
+
         listaelementos=(ListView) findViewById(R.id.lista_direciones_mapa);
         adapter = new ArrayAdapter<String>(ListaDireccionesMapaActivity.this, android.R.layout.simple_list_item_1, enosa);
         listaelementos.setAdapter(adapter);
         listaelementos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                openGogleMapsEntidadCentral(i);
+                openGoogleMapsEntidadCentral(i);
             }
         });
     }
-    public void openGogleMapsEntidadCentral(int i){
+    public void openGoogleMapsEntidadCentral(int i){
 
             switch (i) {
                     case 0:
-                    Uri usisps = Uri.parse("google.navigation:q=EPS Grau S.A,+Piura");
-                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, usisps);
+                    Uri urisps = Uri.parse("google.navigation:q=EPS Grau S.A,+Piura");
+                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, urisps);
                     mapIntent.setPackage("com.google.android.apps.maps");
                     startActivity(mapIntent);
                     break;
