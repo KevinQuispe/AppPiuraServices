@@ -143,13 +143,7 @@ public class UbicanosActivity extends FragmentActivity implements View.OnClickLi
         //llamar a metodo elije entiddad
         recivedatosEntidad();
 
-
     }
-    public void getEntidadCentral(){
-
-
-    }
-
     //revive datos de entidad y pasarle el nombre al metodo elije entidad
     public void recivedatosEntidad() {
         Intent thisForm = getIntent();

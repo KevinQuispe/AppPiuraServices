@@ -117,7 +117,7 @@ public class InfoEntelActivity extends AppCompatActivity {
     }
     public void onClickOpenGoogleMaps(View v) {
 
-        String centralentel="Jr. Libertad 607, Piura, Tienda Piura";
+        String centralentel="Entel Peru, Piura, Tienda Piura";
         Uri gmmIntentUri = Uri.parse("google.navigation:q="+centralentel);
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         mapIntent.setPackage("com.google.android.apps.maps");

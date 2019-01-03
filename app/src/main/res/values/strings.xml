@@ -105,7 +105,11 @@
     <string name="text_view_pagina">Página Web:</string>
     <string name="text_view_tipo">Tipo de servicio:</string>
     <string name="text_view_oficina">Centro de atención</string>
-    <string name="text_view_lista_centros_atencion">Centros de atención:</string>
+    <string name="text_view_centros_atencion_epsgrau">Centros de atención Eps Grau S.A</string>
+    <string name="text_view_centros_atencion_enosa">Centros de atención Enosa</string>
+    <string name="text_view_centros_atencion_movistar">Centros de atención Movistar</string>
+    <string name="text_view_centros_atencion_claro">Centros de atención Claro</string>
+    <string name="text_view_centros_atencion_entel">Centros de atención Entel</string>
     <!-- INFORMACION DE CONTACTO ESPGRAU -->
     <string name="text_view_tramites">Información de Trámites </string>
     <string name="text_view_info_tramites">En esta sección Ud podrá consultar la siguiente información:</string>

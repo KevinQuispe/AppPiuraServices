@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_acercade ) {
-            Intent intent=new Intent(getApplicationContext(), UbicanosActivity.class);
+            Intent intent=new Intent(getApplicationContext(), AcercadeActivity.class);
             startActivity(intent);
             return true;
         }
@@ -195,11 +195,8 @@ public class MainActivity extends AppCompatActivity
             setTitle("Elija Entidad o Empresa");
 
         } else if (id == R.id.nav_ubicanos) {
-            UbicanosFragment ubicanos = new UbicanosFragment();
-            android.support.v4.app.FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
-            transaction2.replace(R.id.contenedorFragement, ubicanos);
-            transaction2.addToBackStack(null).commit();
-            setTitle("Ubicanos");
+            Intent intent=new Intent(MainActivity.this, ListaDireccionesMapaActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_acercade) {
             Intent intent=new Intent(MainActivity.this, AcercadeActivity.class);

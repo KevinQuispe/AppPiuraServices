@@ -16,7 +16,7 @@
             android:textSize="20dp"
             android:padding="@dimen/activity_vertical_referencial"
             android:textAlignment="center"
-            android:text="@string/text_view_lista_centros_atencion"
+            android:text="@string/text_view_centros_atencion_movistar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <View

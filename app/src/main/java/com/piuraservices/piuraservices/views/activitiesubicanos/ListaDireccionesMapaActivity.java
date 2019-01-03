@@ -1,4 +1,5 @@
 package com.piuraservices.piuraservices.views.activitiesubicanos;
+
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -49,7 +50,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ListaDireccionesMapaActivity extends AppCompatActivity implements  View.OnClickListener,AdapterView.OnItemClickListener {
+public class ListaDireccionesMapaActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
     ListView listaelementos;
     ArrayAdapter<String> adapter;
     RadioGroup radioentidad;
@@ -62,13 +63,13 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
     List<InfoContactosEpsgraumodel> list_contactos;
     //Array list for to http and to converter to gson EPSGRAU
     ArrayList<InfoContactosEpsgraumodel> lista = new ArrayList();
-    public static final String nombreempresa="epsgrau";
+    public static final String nombreempresa = "epsgrau";
     //variables para mostrar datos de la central
-    String direccioneps="";
-    String direccionenosa="";
-    String direccionmovistar="";
-    String direccionclaro="";
-    String direccionentel="";
+    String direccioneps = "";
+    String direccionenosa = "";
+    String direccionmovistar = "";
+    String direccionclaro = "";
+    String direccionentel = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,8 +77,8 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
         setContentView(R.layout.activity_lista_direcciones_mapa);
         getSupportActionBar().setTitle("Ubica tu servicio");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        radioentidad=(RadioGroup) findViewById(R.id.radio_group_mapa);
-        rbepsgrau=(RadioButton) findViewById(R.id.rb_epsgrau_mapa);
+        radioentidad = (RadioGroup) findViewById(R.id.radio_group_mapa);
+        rbepsgrau = (RadioButton) findViewById(R.id.rb_epsgrau_mapa);
         listViewContactos = (ListView) findViewById(R.id.lista_direciones_mapa);
         //llamar al metodo elija entidad
         elijaentidad();
@@ -90,6 +91,7 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
         //  getSupportFragmentManager().beginTransaction().add(R.id.container,retornarFagmento()).commit();
         // }
     }
+
     //mesaje de apertura en lista entidades
     public void warningmessage() {
         final AlertDialog.Builder alertaDeError2 = new AlertDialog.Builder(ListaDireccionesMapaActivity.this);
@@ -105,11 +107,11 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
         alertaDeError2.show();
 
     }
+
     //metodo para listar contactos
-    public void listarCotactosEps()
-    {
+    public void listarCotactosEps() {
         dialog();
-        String url="informacion/listacontactos/1";
+        String url = "informacion/listacontactos/1";
         http.get(getApplicationContext(), url, new TextHttpResponseHandler() {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
@@ -117,13 +119,15 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
                 Toast.makeText(getApplicationContext(), "Error de Conexion", Toast.LENGTH_SHORT).show();
                 progreso.hide();
             }
+
             @Override
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
                 System.out.println(responseString);
                 try {
                     //Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
-                    lista=new Gson().fromJson(responseString,new TypeToken<ArrayList<InfoContactosEpsgraumodel>>(){}.getType());
-                    listViewContactos.setAdapter(new ListaInfoContactosEpsgrauAdapter(getApplicationContext(),lista));
+                    lista = new Gson().fromJson(responseString, new TypeToken<ArrayList<InfoContactosEpsgraumodel>>() {
+                    }.getType());
+                    listViewContactos.setAdapter(new ListaInfoContactosEpsgrauAdapter(getApplicationContext(), lista));
                     listViewContactos.setOnItemClickListener(ListaDireccionesMapaActivity.this);
                     listViewContactos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
@@ -132,35 +136,35 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
                         }
                     });
                     progreso.hide();
-                }
-                catch (Exception e){
+                } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
             }
         });
 
     }
-    public void mostrarDetalle(final InfoContactosEpsgraumodel tramite){
+
+    public void mostrarDetalle(final InfoContactosEpsgraumodel tramite) {
         //capturar datos
-        Bundle bundle=new Bundle();
-        bundle.putSerializable("Tramite",tramite);
-        bundle.putString("nombreKey",tramite.getNombreempresa().toString());
-        bundle.putString("direccionKey",tramite.getDireccion().toString());
-        bundle.putString("telefonoKey",tramite.getDireccion().toString());
-        bundle.putString("horarioKey",tramite.getDireccion().toString());
-        bundle.putString("tipoatencionKey",tramite.getDireccion().toString());
-        Intent intent=new Intent(ListaDireccionesMapaActivity.this, DetalleContactoEpsActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("Tramite", tramite);
+        bundle.putString("nombreKey", tramite.getNombreempresa().toString());
+        bundle.putString("direccionKey", tramite.getDireccion().toString());
+        bundle.putString("telefonoKey", tramite.getDireccion().toString());
+        bundle.putString("horarioKey", tramite.getDireccion().toString());
+        bundle.putString("tipoatencionKey", tramite.getDireccion().toString());
+        Intent intent = new Intent(ListaDireccionesMapaActivity.this, DetalleContactoEpsActivity.class);
         Bundle parametros = new Bundle();
         String nombre = tramite.getNombreempresa().toString();
         String direccion = tramite.getDireccion().toString();
         String telefono = tramite.getTelefono().toString();
         String horario = tramite.getHorario().toString();
         String tipoatencion = tramite.getTipoatencion().toString();
-        parametros.putString("nombreKey",nombre);
-        parametros.putString("direccionKey",direccion);
-        parametros.putString("telefonoKey",telefono);
-        parametros.putString("horarioKey",horario);
-        parametros.putString("tipoatencionKey",tipoatencion);
+        parametros.putString("nombreKey", nombre);
+        parametros.putString("direccionKey", direccion);
+        parametros.putString("telefonoKey", telefono);
+        parametros.putString("horarioKey", horario);
+        parametros.putString("tipoatencionKey", tipoatencion);
         intent.putExtras(parametros);
         startActivity(intent);
     }
@@ -184,7 +188,7 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
                             // progreso.hide();
                             //direccion.setText(response.body().get(1).getDireccion());
                         }
-                        if (info.getId()==2){
+                        if (info.getId() == 2) {
                             direccionenosa = info.getDireccion().toString();
 
                         }
@@ -200,6 +204,7 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
             }
         });
     }
+
     //metodo que lista las entidades centrales de los servicios
     public void listaEntidadCentral() {
         final String url = Config.URL_SERVER;
@@ -214,21 +219,21 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
                         if (info.getId() == 1) {
                             Log.e("DIRECCION", info.getDireccion() + "\nNOMBRE:" + info.getNombre());
                             direccioneps = response.body().get(0).getDireccion();
-                            direccionenosa=response.body().get(1).getDireccion();
-                            direccionmovistar=response.body().get(2).getDireccion();
-                            direccionclaro=response.body().get(3).getDireccion();
-                            direccionentel=response.body().get(4).getDireccion();
+                            direccionenosa = response.body().get(1).getDireccion();
+                            direccionmovistar = response.body().get(2).getDireccion();
+                            direccionclaro = response.body().get(3).getDireccion();
+                            direccionentel = response.body().get(4).getDireccion();
                             //mostrar cuando hay internet
                             warningmessage();
                             //direccion.setText(response.body().get(1).getDireccion());
                             //Arreglo  tipo string
                             String[] entidades =
-                                    {"Central Eps Grau S.A,"+" "+direccioneps,
-                                            "Central Enosa,"+" "+ direccionenosa,
-                                            "Central Movistar,"+" "+direccionmovistar,
-                                            "Central Claro,"+" "+ direccionclaro,
-                                            "Central Entel,"+" "+ direccionentel};
-                            listaelementos=(ListView) findViewById(R.id.lista_direciones_mapa);
+                                    {"Central Eps Grau S.A," + " " + direccioneps,
+                                            "Central Enosa," + " " + direccionenosa,
+                                            "Central Movistar," + " " + direccionmovistar,
+                                            "Central Claro," + " " + direccionclaro,
+                                            "Central Entel," + " " + direccionentel};
+                            listaelementos = (ListView) findViewById(R.id.lista_direciones_mapa);
                             adapter = new ArrayAdapter<String>(ListaDireccionesMapaActivity.this, android.R.layout.simple_list_item_1, entidades);
                             listaelementos.setAdapter(adapter);
                             listaelementos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -243,6 +248,7 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
                     e.printStackTrace();
                 }
             }
+
             @Override
             public void onFailure(Call<List<InfoReferencialEpsgraumodel>> call, Throwable t) {
                 Toast.makeText(ListaDireccionesMapaActivity.this, "No tiene acceso a internet :(", Toast.LENGTH_SHORT).show();
@@ -252,71 +258,73 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
 
 
     }
-    public void openGoogleMapsEntidadCentral(int i){
 
-            switch (i) {
-                    case 0:
-                    Uri urisps = Uri.parse("google.navigation:q=EPS Grau S.A,+Piura");
-                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, urisps);
-                    mapIntent.setPackage("com.google.android.apps.maps");
-                    startActivity(mapIntent);
-                    break;
-                    case 1:
-                    Uri urienosa = Uri.parse("google.navigation:q=Enosa+Piura");
-                    Intent mapIntent2 = new Intent(Intent.ACTION_VIEW, urienosa);
-                    mapIntent2.setPackage("com.google.android.apps.maps");
-                    startActivity(mapIntent2);
-                    break;
-                    case 2:
-                    Uri usrimovistar = Uri.parse("google.navigation:q=Movistar+Piura");
-                    Intent mapIntent3 = new Intent(Intent.ACTION_VIEW, usrimovistar);
-                    mapIntent3.setPackage("com.google.android.apps.maps");
-                    startActivity(mapIntent3);
-                    break;
-                    case 3:
-                    Uri uriclaro= Uri.parse("google.navigation:q=Claro+Piura");
-                    Intent mapIntent4 = new Intent(Intent.ACTION_VIEW, uriclaro);
-                    mapIntent4.setPackage("com.google.android.apps.maps");
-                    startActivity(mapIntent4);
-                    break;
-                    case 4:
-                    Uri urentel = Uri.parse("google.navigation:q=Entel+Piura");
-                    Intent mapIntent5 = new Intent(Intent.ACTION_VIEW, urentel);
-                    mapIntent5.setPackage("com.google.android.apps.maps");
-                    startActivity(mapIntent5);
-                    break;
-                    default:
-                        Toast.makeText(getApplicationContext(),"Select Option",Toast.LENGTH_SHORT).show();
-                    break;
-            }
+    public void openGoogleMapsEntidadCentral(int i) {
 
+        switch (i) {
+            case 0:
+                Uri urisps = Uri.parse("google.navigation:q=EPS Grau S.A,+Piura");
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, urisps);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                startActivity(mapIntent);
+                break;
+            case 1:
+                Uri urienosa = Uri.parse("google.navigation:q=Enosa+Piura");
+                Intent mapIntent2 = new Intent(Intent.ACTION_VIEW, urienosa);
+                mapIntent2.setPackage("com.google.android.apps.maps");
+                startActivity(mapIntent2);
+                break;
+            case 2:
+                Uri usrimovistar = Uri.parse("google.navigation:q=Movistar+Piura");
+                Intent mapIntent3 = new Intent(Intent.ACTION_VIEW, usrimovistar);
+                mapIntent3.setPackage("com.google.android.apps.maps");
+                startActivity(mapIntent3);
+                break;
+            case 3:
+                Uri uriclaro = Uri.parse("google.navigation:q=Claro+Piura");
+                Intent mapIntent4 = new Intent(Intent.ACTION_VIEW, uriclaro);
+                mapIntent4.setPackage("com.google.android.apps.maps");
+                startActivity(mapIntent4);
+                break;
+            case 4:
+                Uri urentel = Uri.parse("google.navigation:q=Entel+Piura");
+                Intent mapIntent5 = new Intent(Intent.ACTION_VIEW, urentel);
+                mapIntent5.setPackage("com.google.android.apps.maps");
+                startActivity(mapIntent5);
+                break;
+            default:
+                Toast.makeText(getApplicationContext(), "Select Option", Toast.LENGTH_SHORT).show();
+                break;
         }
-    public void elijaentidad(){
+
+    }
+
+    public void elijaentidad() {
         radioentidad.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                switch (checkedId){
+                switch (checkedId) {
                     case R.id.rb_epsgrau_mapa:
-                        Intent intent=new Intent(ListaDireccionesMapaActivity.this,UbicanosActivity.class);
+                        Intent intent = new Intent(ListaDireccionesMapaActivity.this, UbicanosActivity.class);
                         Bundle parametros = new Bundle();
-                       // String entidad = rbepsgrau.getText().toString();
-                        String entidad ="epsgrau";
-                        parametros.putString("entidadKey",entidad);
+                        // String entidad = rbepsgrau.getText().toString();
+                        String entidad = "epsgrau";
+                        parametros.putString("entidadKey", entidad);
                         intent.putExtras(parametros);
                         startActivity(intent);
                         break;
 
                     case R.id.rb_enosa_mapa:
-                        Intent intentenosa=new Intent(ListaDireccionesMapaActivity.this,UbicanosActivity.class);
+                        Intent intentenosa = new Intent(ListaDireccionesMapaActivity.this, UbicanosActivity.class);
                         Bundle parametrosenosa = new Bundle();
-                        String entidadenosa ="enosa";
-                        parametrosenosa.putString("entidadKey",entidadenosa);
+                        String entidadenosa = "enosa";
+                        parametrosenosa.putString("entidadKey", entidadenosa);
                         intentenosa.putExtras(parametrosenosa);
                         startActivity(intentenosa);
                         break;
 
                     case R.id.rb_telefonia_mapa:
-                        Intent intent1=new Intent(ListaDireccionesMapaActivity.this, ListaEmpresasTelefoniaActivity.class);
+                        Intent intent1 = new Intent(ListaDireccionesMapaActivity.this, ListaEmpresasTelefoniaActivity.class);
                         startActivity(intent1);
                         break;
                     default:
@@ -326,7 +334,8 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
             }
         });
     }
-    private Fragment retornarFagmento(){
+
+    private Fragment retornarFagmento() {
         String entidad = rbepsgrau.getText().toString();//nombre epsgrau
         Bundle bundle = new Bundle();
         bundle.putString(nombreempresa, entidad);
@@ -336,6 +345,7 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
         transaction.addToBackStack(null).commit();
         return ubicanos;
     }
+
     public void dialog() {
         //progreso = new ProgressDialog(EpsInfoReclamosActivity.this, ProgressDialog.THEME_HOLO_LIGHT);
         progreso = new ProgressDialog(ListaDireccionesMapaActivity.this, ProgressDialog.BUTTON_POSITIVE);
@@ -358,12 +368,13 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_search, menu);
         MenuItem item = menu.findItem(R.id.menuSearch);
-        SearchView searchView = (SearchView)item.getActionView();
+        SearchView searchView = (SearchView) item.getActionView();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
