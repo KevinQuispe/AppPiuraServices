@@ -145,13 +145,17 @@ public class UbicanosActivity extends FragmentActivity implements View.OnClickLi
 
 
     }
+    public void getEntidadCentral(){
+
+
+    }
 
     //revive datos de entidad y pasarle el nombre al metodo elije entidad
     public void recivedatosEntidad() {
         Intent thisForm = getIntent();
         Bundle parametros = thisForm.getExtras();
         String entidad = parametros.getString("entidadKey");
-        Toast.makeText(getApplicationContext(), entidad, Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), entidad, Toast.LENGTH_LONG).show();
 
         if (entidad.equals("epsgrau")) {
             elijebaseentidad(entidad);

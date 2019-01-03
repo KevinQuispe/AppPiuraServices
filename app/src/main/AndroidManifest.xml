@@ -248,8 +248,8 @@
         <activity
             android:name=".views.activitiesubicanos.ListaDireccionesMapaActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".views.activitiesubicanos.DetalleDireccionesActivity" />
-        <activity android:name=".views.activitiesubicanos.ListaEmpresasTelefoniaActivity"/>
+        <activity android:name=".views.activitiesubicanos.ListaEmpresasTelefoniaActivity"
+            android:parentActivityName=".views.activitiesubicanos.ListaEmpresasTelefoniaActivity" />
     </application>
 
 </manifest>

@@ -8,6 +8,7 @@ import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,6 +19,7 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -27,15 +29,25 @@ import com.piuraservices.piuraservices.R;
 import com.piuraservices.piuraservices.UbicanosActivity;
 import com.piuraservices.piuraservices.adapters.epsgrau.ListaInfoContactosEpsgrauAdapter;
 import com.piuraservices.piuraservices.models.epsgrau.InfoContactosEpsgraumodel;
+import com.piuraservices.piuraservices.models.epsgrau.InfoReferencialEpsgraumodel;
+import com.piuraservices.piuraservices.services.epsgrau.ListaReferencialEpsclient;
 import com.piuraservices.piuraservices.services.http;
+import com.piuraservices.piuraservices.utils.Config;
 import com.piuraservices.piuraservices.views.activitiesenosa.EnosaActivity;
 import com.piuraservices.piuraservices.views.activitiesepsgrau.DetalleContactoEpsActivity;
+import com.piuraservices.piuraservices.views.activitiesepsgrau.EPS_grauActivity;
 import com.piuraservices.piuraservices.views.fragments.UbicanosFragment;
 
 import org.apache.http.Header;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ListaDireccionesMapaActivity extends AppCompatActivity implements  View.OnClickListener,AdapterView.OnItemClickListener {
     ListView listaelementos;
@@ -51,6 +63,12 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
     //Array list for to http and to converter to gson EPSGRAU
     ArrayList<InfoContactosEpsgraumodel> lista = new ArrayList();
     public static final String nombreempresa="epsgrau";
+    //variables para mostrar datos de la central
+    String direccioneps="";
+    String direccionenosa="";
+    String direccionmovistar="";
+    String direccionclaro="";
+    String direccionentel="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,32 +79,16 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
         radioentidad=(RadioGroup) findViewById(R.id.radio_group_mapa);
         rbepsgrau=(RadioButton) findViewById(R.id.rb_epsgrau_mapa);
         listViewContactos = (ListView) findViewById(R.id.lista_direciones_mapa);
-        //oncliek para ver el detalle de os contactos
-        listViewContactos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                final int pos = i;
-                Intent intent=new Intent(ListaDireccionesMapaActivity.this, DetalleDireccionesActivity.class);
-                startActivity(intent);
-                mostrarDetalle(list_contactos.get(pos));
-            }
-        });
-        warningmessage();
-         //medoto lista entidades local central
-        listaEntidadCentral();
         //llamar al metodo elija entidad
         elijaentidad();
-
+        //medoto lista entidades local central
+        listaEntidadCentral();
+        //lista infor entidades
+        //listainfoEntidad();
         //conditional para llamar a fragmento
         //if (savedInstanceState==null){
-          //  getSupportFragmentManager().beginTransaction().add(R.id.container,retornarFagmento()).commit();
-       // }
-
-    }
-    //mesaje de apertura en lista entidades
-    public void mostarMensaje(){
-        Toast.makeText(getApplicationContext(),"Elija entidad o haga Click en la lista y ubique la central de los servicios Básicos",Toast.LENGTH_LONG).show();
-
+        //  getSupportFragmentManager().beginTransaction().add(R.id.container,retornarFagmento()).commit();
+        // }
     }
     //mesaje de apertura en lista entidades
     public void warningmessage() {
@@ -101,7 +103,9 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
         });
         alertaDeError2.create();
         alertaDeError2.show();
+
     }
+    //metodo para listar contactos
     public void listarCotactosEps()
     {
         dialog();
@@ -161,22 +165,92 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements  
         startActivity(intent);
     }
 
-    public void listaEntidadCentral(){
-        String[] enosa = {"Central Eps Grau,Jr. La Arena y Jr. Zelaya S/N - Urb. Santa Ana",
-                        "Central Enosa,Esquina Av. Andrés Avelino Cáceres 147",
-                        "Central Movistar,Calle Tacna #432 Piura",
-                        "Central Claro,Calle Tacna #432 Piura",
-                        "Central Entel,Calle Tacna #432 Piura"};
-
-        listaelementos=(ListView) findViewById(R.id.lista_direciones_mapa);
-        adapter = new ArrayAdapter<String>(ListaDireccionesMapaActivity.this, android.R.layout.simple_list_item_1, enosa);
-        listaelementos.setAdapter(adapter);
-        listaelementos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    //retornar datos de entidad
+    //lista informacion de entidad con retrofit OK
+    public void listainfoEntidad() {
+        //process();
+        final String url = Config.URL_SERVER;
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create()).build();
+        ListaReferencialEpsclient servicio = retrofit.create(ListaReferencialEpsclient.class);
+        Call<List<InfoReferencialEpsgraumodel>> call = servicio.getInfoReferencialeps();
+        call.enqueue(new Callback<List<InfoReferencialEpsgraumodel>>() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                openGoogleMapsEntidadCentral(i);
+            public void onResponse(Call<List<InfoReferencialEpsgraumodel>> call, Response<List<InfoReferencialEpsgraumodel>> response) {
+                try {
+                    for (InfoReferencialEpsgraumodel info : response.body()) {
+                        if (info.getId() == 1) {
+                            Log.e("DIRECCION", info.getDireccion() + "\nNOMBRE:" + info.getNombre());
+                            direccioneps = info.getDireccion().toString();
+                            // progreso.hide();
+                            //direccion.setText(response.body().get(1).getDireccion());
+                        }
+                        if (info.getId()==2){
+                            direccionenosa = info.getDireccion().toString();
+
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<InfoReferencialEpsgraumodel>> call, Throwable t) {
+                Toast.makeText(ListaDireccionesMapaActivity.this, "Error de conexion", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    //metodo que lista las entidades centrales de los servicios
+    public void listaEntidadCentral() {
+        final String url = Config.URL_SERVER;
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create()).build();
+        ListaReferencialEpsclient servicio = retrofit.create(ListaReferencialEpsclient.class);
+        Call<List<InfoReferencialEpsgraumodel>> call = servicio.getInfoReferencialeps();
+        call.enqueue(new Callback<List<InfoReferencialEpsgraumodel>>() {
+            @Override
+            public void onResponse(Call<List<InfoReferencialEpsgraumodel>> call, Response<List<InfoReferencialEpsgraumodel>> response) {
+                try {
+                    for (InfoReferencialEpsgraumodel info : response.body()) {
+                        if (info.getId() == 1) {
+                            Log.e("DIRECCION", info.getDireccion() + "\nNOMBRE:" + info.getNombre());
+                            direccioneps = response.body().get(0).getDireccion();
+                            direccionenosa=response.body().get(1).getDireccion();
+                            direccionmovistar=response.body().get(2).getDireccion();
+                            direccionclaro=response.body().get(3).getDireccion();
+                            direccionentel=response.body().get(4).getDireccion();
+                            //mostrar cuando hay internet
+                            warningmessage();
+                            //direccion.setText(response.body().get(1).getDireccion());
+                            //Arreglo  tipo string
+                            String[] entidades =
+                                    {"Central Eps Grau S.A,"+" "+direccioneps,
+                                            "Central Enosa,"+" "+ direccionenosa,
+                                            "Central Movistar,"+" "+direccionmovistar,
+                                            "Central Claro,"+" "+ direccionclaro,
+                                            "Central Entel,"+" "+ direccionentel};
+                            listaelementos=(ListView) findViewById(R.id.lista_direciones_mapa);
+                            adapter = new ArrayAdapter<String>(ListaDireccionesMapaActivity.this, android.R.layout.simple_list_item_1, entidades);
+                            listaelementos.setAdapter(adapter);
+                            listaelementos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                    openGoogleMapsEntidadCentral(i);
+                                }
+                            });
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            @Override
+            public void onFailure(Call<List<InfoReferencialEpsgraumodel>> call, Throwable t) {
+                Toast.makeText(ListaDireccionesMapaActivity.this, "No tiene acceso a internet :(", Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
+
     }
     public void openGoogleMapsEntidadCentral(int i){
 
