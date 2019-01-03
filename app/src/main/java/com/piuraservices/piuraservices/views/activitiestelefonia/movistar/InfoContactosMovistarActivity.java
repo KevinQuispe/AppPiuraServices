@@ -56,8 +56,6 @@ public class InfoContactosMovistarActivity extends AppCompatActivity implements 
             }
         });
         listarContactosMovistar();
-
-
     }
         //lista contactos enosa con http
         public void listarContactosMovistar(){
@@ -94,22 +92,22 @@ public class InfoContactosMovistarActivity extends AppCompatActivity implements 
             });
         }
         //mostrardetalle lista
-        public void mostrarDetalle(final InfoContactosMovistarmodel contacto){
+        public void mostrarDetalle(final InfoContactosMovistarmodel contactoMovistar){
             //capturar datos
             Bundle bundle=new Bundle();
-            bundle.putSerializable("Contacto",contacto);
-            bundle.putString("centerKey",contacto.getNombreempresa().toString());
-            bundle.putString("direccionKey",contacto.getDireccion().toString());
-            bundle.putString("telefonoKey",contacto.getTelefono().toString());
-            bundle.putString("horarioKey",contacto.getHorario().toString());
-            bundle.putString("tiposervicioKey",contacto.getTipoatencion().toString());
+            bundle.putSerializable("contactoMovistar",contactoMovistar);
+            bundle.putString("centerKey",contactoMovistar.getNombreempresa().toString());
+            bundle.putString("direccionKey",contactoMovistar.getDireccion().toString());
+            bundle.putString("telefonoKey",contactoMovistar.getTelefono().toString());
+            bundle.putString("horarioKey",contactoMovistar.getHorario().toString());
+            bundle.putString("tiposervicioKey",contactoMovistar.getTipoatencion().toString());
             Intent intent=new Intent(InfoContactosMovistarActivity.this, DetalleContactoMovistarActivity.class);
             Bundle parametros = new Bundle();
-            String center = contacto.getNombreempresa().toString();
-            String diretion = contacto.getDireccion().toString();
-            String phone = contacto.getDireccion().toString();
-            String horarioatencion = contacto.getHorario().toString();
-            String type = contacto.getTipoatencion().toString();
+            String center = contactoMovistar.getNombreempresa().toString();
+            String diretion = contactoMovistar.getDireccion().toString();
+            String phone = contactoMovistar.getTelefono().toString();
+            String horarioatencion = contactoMovistar.getHorario().toString();
+            String type = contactoMovistar.getTipoatencion().toString();
             parametros.putString("centerKey",center);
             parametros.putString("direccionKey",diretion);
             parametros.putString("telefonoKey",phone);

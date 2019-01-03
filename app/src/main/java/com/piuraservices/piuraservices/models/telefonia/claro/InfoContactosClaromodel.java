@@ -14,16 +14,6 @@ public class InfoContactosClaromodel implements Serializable {
     public InfoContactosClaromodel() {
     }
 
-    public InfoContactosClaromodel(long id, String nombreempresa, String oficinalugar, String direccion, String telefono, String horario, String tipoatencion) {
-        this.id = id;
-        this.nombreempresa = nombreempresa;
-        this.oficinalugar = oficinalugar;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.horario = horario;
-        this.tipoatencion = tipoatencion;
-    }
-
     public long getId() {
         return id;
     }

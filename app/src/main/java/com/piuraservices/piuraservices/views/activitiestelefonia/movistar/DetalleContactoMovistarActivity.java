@@ -30,15 +30,16 @@ public class DetalleContactoMovistarActivity extends AppCompatActivity {
         //recibir parametros
         Intent thisForm = getIntent();
         Bundle parametros = thisForm.getExtras();
-        String center=parametros.getString("centerKey");
+        String center = parametros.getString("centerKey");
         String direction = parametros.getString("direccionKey");
         String phone = parametros.getString("telefonoKey");
-        String hoararioatencion = parametros.getString("horarioKey");
-        String type = parametros.getString("tiposervicioKey");
+        String horarios = parametros.getString("horarioKey");
+        String typeservice = parametros.getString("tiposervicioKey");
         centroatencion.setText(center);
         direccion.setText(direction);
         telefono.setText(phone);
-        horario.setText(hoararioatencion);
-        tiposervicio.setText(type);
+        horario.setText(horarios);
+        tiposervicio.setText(typeservice);
+
     }
 }

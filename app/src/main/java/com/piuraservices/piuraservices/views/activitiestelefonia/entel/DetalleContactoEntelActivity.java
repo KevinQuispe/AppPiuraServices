@@ -27,6 +27,9 @@ public class DetalleContactoEntelActivity extends AppCompatActivity {
         telefono=(TextView) findViewById(R.id.tv_telefono_contacto_entel);
         horario=(TextView) findViewById(R.id.tv_horario_contacto_entel);
         tiposervicio=(TextView) findViewById(R.id.tv_tiposervicio_contcto_entel);
+        recibeParametros();
+    }
+    public void recibeParametros(){
         //recibir parametros
         Intent thisForm = getIntent();
         Bundle parametros = thisForm.getExtras();
@@ -39,6 +42,5 @@ public class DetalleContactoEntelActivity extends AppCompatActivity {
         direccion.setText(direction);
         telefono.setText(phone);
         horario.setText(hoararioatencion);
-        tiposervicio.setText(type);
     }
 }

@@ -48,10 +48,10 @@ public class InfoContactosClaroActivity extends AppCompatActivity implements Vie
         getSupportActionBar().setTitle("Información de Contactos");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         listacontactos=(ListView) findViewById(R.id.id_lista_contactos_claro);
+
         listacontactos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //Toast.makeText(InfoReclamosEnosaActivity.this, "Click me reclamos"+i, Toast.LENGTH_SHORT).show();
                 final int pos = i;
                 Intent intent=new Intent(InfoContactosClaroActivity.this, DetalleContactoClaroActivity.class);
                 startActivity(intent);
@@ -64,7 +64,7 @@ public class InfoContactosClaroActivity extends AppCompatActivity implements Vie
     //lista contactos enosa con http
     public void listarContactosClaro(){
         dialog();
-        String url="informacion/listacontactos/3";
+        String url="informacion/listacontactos/4";
         http.get(getApplicationContext(), url, new TextHttpResponseHandler() {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
@@ -96,22 +96,22 @@ public class InfoContactosClaroActivity extends AppCompatActivity implements Vie
         });
     }
     //mostrardetalle lista
-    public void mostrarDetalle(final InfoContactosClaromodel contacto){
+    public void mostrarDetalle(final InfoContactosClaromodel contactoClaro){
         //capturar datos
         Bundle bundle=new Bundle();
-        bundle.putSerializable("Contacto",contacto);
-        bundle.putString("centerKey",contacto.getNombreempresa().toString());
-        bundle.putString("direccionKey",contacto.getDireccion().toString());
-        bundle.putString("telefonoKey",contacto.getTelefono().toString());
-        bundle.putString("horarioKey",contacto.getHorario().toString());
-        bundle.putString("tiposervicioKey",contacto.getTipoatencion().toString());
+        bundle.putSerializable("Contacto",contactoClaro);
+        bundle.putString("centerKey",contactoClaro.getNombreempresa().toString());
+        bundle.putString("direccionKey",contactoClaro.getDireccion().toString());
+        bundle.putString("telefonoKey",contactoClaro.getTelefono().toString());
+        bundle.putString("horarioKey",contactoClaro.getHorario().toString());
+        bundle.putString("tiposervicioKey",contactoClaro.getTipoatencion().toString());
         Intent intent=new Intent(InfoContactosClaroActivity.this, DetalleContactoClaroActivity.class);
         Bundle parametros = new Bundle();
-        String center = contacto.getNombreempresa().toString();
-        String diretion = contacto.getDireccion().toString();
-        String phone = contacto.getDireccion().toString();
-        String horarioatencion = contacto.getHorario().toString();
-        String type = contacto.getTipoatencion().toString();
+        String center = contactoClaro.getNombreempresa().toString();
+        String diretion = contactoClaro.getDireccion().toString();
+        String phone = contactoClaro.getTelefono().toString();
+        String horarioatencion = contactoClaro.getHorario().toString();
+        String type = contactoClaro.getTipoatencion().toString();
         parametros.putString("centerKey",center);
         parametros.putString("direccionKey",diretion);
         parametros.putString("telefonoKey",phone);

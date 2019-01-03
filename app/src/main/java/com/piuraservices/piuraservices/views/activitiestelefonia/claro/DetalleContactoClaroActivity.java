@@ -26,6 +26,10 @@ public class DetalleContactoClaroActivity extends AppCompatActivity {
         telefono=(TextView) findViewById(R.id.tv_telefono_contacto_claro);
         horario=(TextView) findViewById(R.id.tv_horario_contacto_claro);
         tiposervicio=(TextView) findViewById(R.id.tv_tiposervicio_contcto_claro);
+        recibeParametros();
+
+    }
+    public  void recibeParametros(){
         //recibir parametros
         Intent thisForm = getIntent();
         Bundle parametros = thisForm.getExtras();

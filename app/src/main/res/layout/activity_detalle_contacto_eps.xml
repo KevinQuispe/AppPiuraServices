@@ -78,7 +78,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/text_view_telefono" />
                 <TextView
-                    android:id="@+id/tv_telefonodetail_eps"
+                    android:id="@+id/tv_telefono_contacto_eps"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="(073) 307741" />
@@ -100,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/text_view_horario" />
                 <TextView
-                    android:id="@+id/tv_horariodetail_eps"
+                    android:id="@+id/tv_horario_contacto_eps"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="(073) 307741" />
@@ -121,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/text_view_tipo" />
                 <TextView
-                    android:id="@+id/tv_tipoatencion_eps"
+                    android:id="@+id/tv_tiposervicio_contcto_eps"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="Todo" />

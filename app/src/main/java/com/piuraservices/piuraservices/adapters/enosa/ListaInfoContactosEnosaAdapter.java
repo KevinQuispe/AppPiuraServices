@@ -47,10 +47,6 @@ public class ListaInfoContactosEnosaAdapter extends BaseAdapter {
         TextView textView = (TextView) row.findViewById(R.id.lista_contactos_enosa_text);
         InfoContactosEnosamodel item = lista.get(position);
         String nombreempresa = item.getNombreempresa();
-        String direccion = item.getDireccion();
-        String horario = item.getHorario();
-        String telefono = item.getTelefono();
-        String tipoatencion = item.getTipoatencion();
         textView.setText(nombreempresa);
         return row;
     }

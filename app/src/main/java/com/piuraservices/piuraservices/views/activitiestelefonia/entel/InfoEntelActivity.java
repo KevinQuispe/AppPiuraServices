@@ -59,8 +59,6 @@ public class InfoEntelActivity extends AppCompatActivity {
         horario = (TextView) findViewById(R.id.tv_horario_entel);
         page = (TextView) findViewById(R.id.tv_web_entel);
         listainfoEntidad();
-
-
     }
 
     public void listainfoEntidad() {

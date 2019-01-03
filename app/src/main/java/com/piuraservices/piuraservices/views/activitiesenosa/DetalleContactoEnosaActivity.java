@@ -26,18 +26,26 @@ public class DetalleContactoEnosaActivity extends AppCompatActivity {
         telefono=(TextView) findViewById(R.id.tv_telefono_contacto_enosa);
         horario=(TextView) findViewById(R.id.tv_horario_contacto_enosa);
         tiposervicio=(TextView) findViewById(R.id.tv_tiposervicio_contcto_enosa);
+        recibeParametros();
+
+    }
+    public void recibeParametros(){
         //recibir parametros
         Intent thisForm = getIntent();
         Bundle parametros = thisForm.getExtras();
-        String center=parametros.getString("centerKey");
+        String center=parametros.getString("nombreKey");
         String direction = parametros.getString("direccionKey");
         String phone = parametros.getString("telefonoKey");
-        String hoararioatencion = parametros.getString("horarioKey");
+        String horarioatencion = parametros.getString("horarioKey");
         String type = parametros.getString("tiposervicioKey");
         centroatencion.setText(center);
         direccion.setText(direction);
         telefono.setText(phone);
-        horario.setText(hoararioatencion);
+        horario.setText(horarioatencion);
         tiposervicio.setText(type);
+    }
+    public void getTelfefono(){
+        String call=telefono.getText().toString();
+
     }
 }

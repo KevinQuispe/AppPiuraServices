@@ -28,11 +28,11 @@ public class InfoContactosEpsgrauActivity extends AppCompatActivity implements V
 
     ArrayAdapter<String> adapter;
     //list view para tramites
-    ListView listViewTramites;
+    ListView listViewCotactos;
     //dialog
     ProgressDialog progreso;
     //lista tramites
-    List<InfoContactosEpsgraumodel> list_tramites;
+    List<InfoContactosEpsgraumodel> lista_Contactos;
     //array list for to http
     ArrayList<InfoContactosEpsgraumodel> lista = new ArrayList();
     @Override
@@ -41,20 +41,21 @@ public class InfoContactosEpsgrauActivity extends AppCompatActivity implements V
         setContentView(R.layout.activity_info_contactos_epsgrau);
         getSupportActionBar().setTitle("Información de Contactos");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        listViewTramites = (ListView) findViewById(R.id.id_lista_contactos_eps);
-        listViewTramites.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listViewCotactos = (ListView) findViewById(R.id.id_lista_contactos_eps);
+
+        listViewCotactos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 final int pos = i;
                 Intent intent=new Intent(InfoContactosEpsgrauActivity.this, DetalleContactoEpsActivity.class);
                 startActivity(intent);
-                mostrarDetalle(list_tramites.get(pos));
+                mostrarDetalle(lista_Contactos.get(pos));
             }
         });
-        listarCotactosEps();
+        listarContactosEps();
 
     }
-    public void listarCotactosEps()
+    public void listarContactosEps()
     {
         dialog();
         String url="informacion/listacontactos/1";
@@ -71,9 +72,9 @@ public class InfoContactosEpsgrauActivity extends AppCompatActivity implements V
                 try {
                     //Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
                     lista=new Gson().fromJson(responseString,new TypeToken<ArrayList<InfoContactosEpsgraumodel>>(){}.getType());
-                    listViewTramites.setAdapter(new ListaInfoContactosEpsgrauAdapter(getApplicationContext(),lista));
-                    listViewTramites.setOnItemClickListener(InfoContactosEpsgrauActivity.this);
-                    listViewTramites.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    listViewCotactos.setAdapter(new ListaInfoContactosEpsgrauAdapter(getApplicationContext(),lista));
+                    listViewCotactos.setOnItemClickListener(InfoContactosEpsgrauActivity.this);
+                    listViewCotactos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                             mostrarDetalle(lista.get(i)); //call data detalle
@@ -87,28 +88,28 @@ public class InfoContactosEpsgrauActivity extends AppCompatActivity implements V
             }
         });
     }
-    public void mostrarDetalle(final InfoContactosEpsgraumodel tramite){
+    public void mostrarDetalle(final InfoContactosEpsgraumodel contactoEps){
         //capturar datos
         Bundle bundle=new Bundle();
-        bundle.putSerializable("Tramite",tramite);
-        bundle.putString("nombreKey",tramite.getNombreempresa().toString());
-        bundle.putString("direccionKey",tramite.getDireccion().toString());
-        bundle.putString("telefonoKey",tramite.getDireccion().toString());
-        bundle.putString("horarioKey",tramite.getDireccion().toString());
-        bundle.putString("tipoatencionKey",tramite.getDireccion().toString());
+        bundle.putSerializable("contactoEps",contactoEps);
+        bundle.putString("nombreKey",contactoEps.getNombreempresa().toString());
+        bundle.putString("direccionKey",contactoEps.getDireccion().toString());
+        bundle.putString("telefonoKey",contactoEps.getDireccion().toString());
+        bundle.putString("horarioKey",contactoEps.getDireccion().toString());
+        bundle.putString("tiposervicioKey",contactoEps.getDireccion().toString());
         Intent intent=new Intent(InfoContactosEpsgrauActivity.this, DetalleContactoEpsActivity.class);
         Bundle parametros = new Bundle();
 
-        String nombre = tramite.getNombreempresa().toString();
-        String direccion = tramite.getDireccion().toString();
-        String telefono = tramite.getTelefono().toString();
-        String horario = tramite.getHorario().toString();
-        String tipoatencion = tramite.getTipoatencion().toString();
+        String nombre = contactoEps.getNombreempresa().toString();
+        String direccion = contactoEps.getDireccion().toString();
+        String telefono = contactoEps.getTelefono().toString();
+        String horario = contactoEps.getHorario().toString();
+        String tipoatencion = contactoEps.getTipoatencion().toString();
         parametros.putString("nombreKey",nombre);
         parametros.putString("direccionKey",direccion);
         parametros.putString("telefonoKey",telefono);
         parametros.putString("horarioKey",horario);
-        parametros.putString("tipoatencionKey",tipoatencion);
+        parametros.putString("tiposervicioKey",tipoatencion);
         intent.putExtras(parametros);
         startActivity(intent);
 

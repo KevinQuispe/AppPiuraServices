@@ -13,7 +13,7 @@ public class DetalleContactoEpsActivity extends AppCompatActivity {
     TextView direccion;
     TextView telefono;
     TextView horario;
-    TextView tipoatencion;
+    TextView tiposervicio;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,23 +23,24 @@ public class DetalleContactoEpsActivity extends AppCompatActivity {
 
         oficina=(TextView) findViewById(R.id.tv_oficina_contacto_eps);
         direccion=(TextView) findViewById(R.id.tv_direccion_contacto_eps);
-        telefono=(TextView) findViewById(R.id.tv_telefonodetail_eps);
-        horario=(TextView) findViewById(R.id.tv_horariodetail_eps);
-        tipoatencion=(TextView) findViewById(R.id.tv_tipoatencion_eps);
+        telefono=(TextView) findViewById(R.id.tv_telefono_contacto_eps);
+        horario=(TextView) findViewById(R.id.tv_horario_contacto_eps);
+        tiposervicio=(TextView) findViewById(R.id.tv_tiposervicio_contcto_eps);
+        recibeParametros();
+    }
+    public  void recibeParametros(){
         //recibir parametros
-
         Intent thisForm = getIntent();
         Bundle parametros = thisForm.getExtras();
-        String nombres = parametros.getString("nombreKey");
+        String empresa = parametros.getString("nombreKey");
         String direction = parametros.getString("direccionKey");
-        String telefonos = parametros.getString("telefonoKey");
         String horarios = parametros.getString("horarioKey");
-        String tipoatencions = parametros.getString("tipoatencionKey");
-        oficina.setText(nombres);
+        String telefonos = parametros.getString("telefonoKey");
+        String tipoatencions = parametros.getString("tiposervicioKey");
+        oficina.setText(empresa);
         direccion.setText(direction);
         telefono.setText(telefonos);
         horario.setText(horarios);
-        tipoatencion.setText(tipoatencions);
-
+        tiposervicio.setText(tipoatencions);
     }
 }

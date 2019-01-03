@@ -150,9 +150,6 @@
         <activity
             android:name=".views.activitiestelefonia.claro.InfoTramitesClaroActivity"
             android:parentActivityName=".views.activitiestelefonia.claro.InfoClaroActivity" />
-        <activity
-            android:name=".views.activities.ListaDireccionesActivity"
-            android:parentActivityName=".MainActivity" />
         <activity android:name=".views.activitiesenosa.OpenWebEnosaActivity" />
         <activity
             android:name=".views.activitiestelefonia.movistar.OpenWebMovistarActivity"
@@ -252,7 +249,7 @@
             android:name=".views.activitiesubicanos.ListaDireccionesMapaActivity"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".views.activitiesubicanos.DetalleDireccionesActivity" />
-        <activity android:name=".views.activitiesubicanos.ListaEmpresasTelefoniaActivity"></activity>
+        <activity android:name=".views.activitiesubicanos.ListaEmpresasTelefoniaActivity"/>
     </application>
 
 </manifest>

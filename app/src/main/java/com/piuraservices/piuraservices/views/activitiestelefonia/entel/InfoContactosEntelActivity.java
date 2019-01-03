@@ -62,7 +62,7 @@ public class InfoContactosEntelActivity extends AppCompatActivity implements Vie
         //lista contactos enosa con http
         public void listarContactosEntel(){
             dialog();
-            String url="informacion/listacontactos/4";
+            String url="informacion/listacontactos/5";
             http.get(getApplicationContext(), url, new TextHttpResponseHandler() {
                 @Override
                 public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
@@ -94,22 +94,22 @@ public class InfoContactosEntelActivity extends AppCompatActivity implements Vie
             });
         }
         //mostrardetalle lista
-        public void mostrarDetalle(final InfoContactosEntelmodel contacto){
+        public void mostrarDetalle(final InfoContactosEntelmodel contactoEntel){
             //capturar datos
             Bundle bundle=new Bundle();
-            bundle.putSerializable("Contacto",contacto);
-            bundle.putString("centerKey",contacto.getNombreempresa().toString());
-            bundle.putString("direccionKey",contacto.getDireccion().toString());
-            bundle.putString("telefonoKey",contacto.getTelefono().toString());
-            bundle.putString("horarioKey",contacto.getHorario().toString());
-            bundle.putString("tiposervicioKey",contacto.getTipoatencion().toString());
+            bundle.putSerializable("contactoEntel",contactoEntel);
+            bundle.putString("centerKey",contactoEntel.getNombreempresa().toString());
+            bundle.putString("direccionKey",contactoEntel.getDireccion().toString());
+            bundle.putString("telefonoKey",contactoEntel.getTelefono().toString());
+            bundle.putString("horarioKey",contactoEntel.getHorario().toString());
+            bundle.putString("tiposervicioKey",contactoEntel.getTipoatencion().toString());
             Intent intent=new Intent(InfoContactosEntelActivity.this, DetalleContactoEntelActivity.class);
             Bundle parametros = new Bundle();
-            String center = contacto.getNombreempresa().toString();
-            String diretion = contacto.getDireccion().toString();
-            String phone = contacto.getDireccion().toString();
-            String horarioatencion = contacto.getHorario().toString();
-            String type = contacto.getTipoatencion().toString();
+            String center = contactoEntel.getNombreempresa().toString();
+            String diretion = contactoEntel.getDireccion().toString();
+            String phone = contactoEntel.getTelefono().toString();
+            String horarioatencion = contactoEntel.getHorario().toString();
+            String type = contactoEntel.getTipoatencion().toString();
             parametros.putString("centerKey",center);
             parametros.putString("direccionKey",diretion);
             parametros.putString("telefonoKey",phone);
