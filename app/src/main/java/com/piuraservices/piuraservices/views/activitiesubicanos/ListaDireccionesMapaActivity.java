@@ -2,8 +2,11 @@ package com.piuraservices.piuraservices.views.activitiesubicanos;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
@@ -41,6 +44,9 @@ import com.piuraservices.piuraservices.views.fragments.UbicanosFragment;
 
 import org.apache.http.Header;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -86,14 +92,11 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements V
         listaEntidadCentral();
         //lista infor entidades
         //listainfoEntidad();
-        //conditional para llamar a fragmento
-        //if (savedInstanceState==null){
-        //  getSupportFragmentManager().beginTransaction().add(R.id.container,retornarFagmento()).commit();
-        // }
+        
     }
 
     //mesaje de apertura en lista entidades
-    public void warningmessage() {
+    public void messageListaCentrales() {
         final AlertDialog.Builder alertaDeError2 = new AlertDialog.Builder(ListaDireccionesMapaActivity.this);
         alertaDeError2.setTitle("Readme");
         alertaDeError2.setMessage("Elija una entidad o haga " +
@@ -101,14 +104,60 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements V
         alertaDeError2.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+
             }
         });
         alertaDeError2.create();
         alertaDeError2.show();
 
     }
+    //mesaje recargar inter
+    public void mensajeSinInternet(){
+        final AlertDialog.Builder alertaDeError2 = new AlertDialog.Builder(ListaDireccionesMapaActivity.this);
+        alertaDeError2.setTitle("Sin Acceso a Internet");
+        alertaDeError2.setMessage("Compruebe su conexion de internet o active sus datos");
+        alertaDeError2.setPositiveButton("Recargar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                listaEntidadCentral();
+            }
+        });
+        alertaDeError2.create();
+        alertaDeError2.show();
+       // alertaDeError2.setCancelable(false);
+    }
 
-    //metodo para listar contactos
+    //metodo que comrueba el acceso a internet
+    public void compruebaConexionInternet() {
+        verificaConexion(getApplication());
+        if (!verificaConexion(this)) {
+            //Toast.makeText(getBaseContext(), "Comprueba tu conexión a Internet.", Toast.LENGTH_SHORT).show();
+            mensajeSinInternet();
+            //dialog();
+        }
+        else{
+            listaEntidadCentral();
+        }
+
+    }
+    //verifica conexion a internet
+    public static boolean verificaConexion(Context ctx) {
+        boolean bConectado = false;
+        ConnectivityManager connec = (ConnectivityManager) ctx
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        // No sólo wifi, también GPRS
+        NetworkInfo[] redes = connec.getAllNetworkInfo();
+        // este bucle debería no ser tan ñapa
+        for (int i = 0; i < 2; i++) {
+            // ¿Tenemos conexión? ponemos a true
+            if (redes[i].getState() == NetworkInfo.State.CONNECTED) {
+                bConectado = true;
+            }
+        }
+        return bConectado;
+    }
+
+    //metodo para listar contactos ok
     public void listarCotactosEps() {
         dialog();
         String url = "informacion/listacontactos/1";
@@ -169,42 +218,6 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements V
         startActivity(intent);
     }
 
-    //retornar datos de entidad
-    //lista informacion de entidad con retrofit OK
-    public void listainfoEntidad() {
-        //process();
-        final String url = Config.URL_SERVER;
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create()).build();
-        ListaReferencialEpsclient servicio = retrofit.create(ListaReferencialEpsclient.class);
-        Call<List<InfoReferencialEpsgraumodel>> call = servicio.getInfoReferencialeps();
-        call.enqueue(new Callback<List<InfoReferencialEpsgraumodel>>() {
-            @Override
-            public void onResponse(Call<List<InfoReferencialEpsgraumodel>> call, Response<List<InfoReferencialEpsgraumodel>> response) {
-                try {
-                    for (InfoReferencialEpsgraumodel info : response.body()) {
-                        if (info.getId() == 1) {
-                            Log.e("DIRECCION", info.getDireccion() + "\nNOMBRE:" + info.getNombre());
-                            direccioneps = info.getDireccion().toString();
-                            // progreso.hide();
-                            //direccion.setText(response.body().get(1).getDireccion());
-                        }
-                        if (info.getId() == 2) {
-                            direccionenosa = info.getDireccion().toString();
-
-                        }
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<InfoReferencialEpsgraumodel>> call, Throwable t) {
-                Toast.makeText(ListaDireccionesMapaActivity.this, "Error de conexion", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
     //metodo que lista las entidades centrales de los servicios
     public void listaEntidadCentral() {
         final String url = Config.URL_SERVER;
@@ -224,7 +237,7 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements V
                             direccionclaro = response.body().get(3).getDireccion();
                             direccionentel = response.body().get(4).getDireccion();
                             //mostrar cuando hay internet
-                            warningmessage();
+                            messageListaCentrales();
                             //direccion.setText(response.body().get(1).getDireccion());
                             //Arreglo  tipo string
                             String[] entidades =
@@ -251,11 +264,11 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements V
 
             @Override
             public void onFailure(Call<List<InfoReferencialEpsgraumodel>> call, Throwable t) {
-                Toast.makeText(ListaDireccionesMapaActivity.this, "No tiene acceso a internet :(", Toast.LENGTH_SHORT).show();
+                compruebaConexionInternet();
+                //Toast.makeText(ListaDireccionesMapaActivity.this, "No tiene acceso a internet :(", Toast.LENGTH_SHORT).show();
             }
 
         });
-
 
     }
 
@@ -334,18 +347,7 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements V
             }
         });
     }
-
-    private Fragment retornarFagmento() {
-        String entidad = rbepsgrau.getText().toString();//nombre epsgrau
-        Bundle bundle = new Bundle();
-        bundle.putString(nombreempresa, entidad);
-        UbicanosFragment ubicanos = new UbicanosFragment();
-        android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.contenedorFragement, ubicanos);
-        transaction.addToBackStack(null).commit();
-        return ubicanos;
-    }
-
+    //mesaje de dialog
     public void dialog() {
         //progreso = new ProgressDialog(EpsInfoReclamosActivity.this, ProgressDialog.THEME_HOLO_LIGHT);
         progreso = new ProgressDialog(ListaDireccionesMapaActivity.this, ProgressDialog.BUTTON_POSITIVE);
