@@ -92,7 +92,7 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements V
         listaEntidadCentral();
         //lista infor entidades
         //listainfoEntidad();
-        
+
     }
 
     //mesaje de apertura en lista entidades
@@ -115,7 +115,7 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements V
     public void mensajeSinInternet(){
         final AlertDialog.Builder alertaDeError2 = new AlertDialog.Builder(ListaDireccionesMapaActivity.this);
         alertaDeError2.setTitle("Sin Acceso a Internet");
-        alertaDeError2.setMessage("Compruebe su conexion de internet o active sus datos");
+        alertaDeError2.setMessage("Compruebe su conexion a una red Wi-Fi o active sus datos");
         alertaDeError2.setPositiveButton("Recargar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -129,25 +129,30 @@ public class ListaDireccionesMapaActivity extends AppCompatActivity implements V
 
     //metodo que comrueba el acceso a internet
     public void compruebaConexionInternet() {
+        try{
+            if (!verificaConexion(this)) {
+                //Toast.makeText(getBaseContext(), "Comprueba tu conexión a Internet.", Toast.LENGTH_SHORT).show();
+                mensajeSinInternet();
+                //dialog();
+            }
+            else{
+                listaEntidadCentral();
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
         verificaConexion(getApplication());
-        if (!verificaConexion(this)) {
-            //Toast.makeText(getBaseContext(), "Comprueba tu conexión a Internet.", Toast.LENGTH_SHORT).show();
-            mensajeSinInternet();
-            //dialog();
-        }
-        else{
-            listaEntidadCentral();
-        }
+
 
     }
     //verifica conexion a internet
     public static boolean verificaConexion(Context ctx) {
         boolean bConectado = false;
-        ConnectivityManager connec = (ConnectivityManager) ctx
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connec = (ConnectivityManager) ctx.getSystemService(Context.CONNECTIVITY_SERVICE);
         // No sólo wifi, también GPRS
         NetworkInfo[] redes = connec.getAllNetworkInfo();
-        // este bucle debería no ser tan ñapa
+        // este bucle debería no ser
         for (int i = 0; i < 2; i++) {
             // ¿Tenemos conexión? ponemos a true
             if (redes[i].getState() == NetworkInfo.State.CONNECTED) {

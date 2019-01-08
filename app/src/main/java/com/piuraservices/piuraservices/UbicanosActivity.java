@@ -552,6 +552,7 @@ public class UbicanosActivity extends FragmentActivity implements View.OnClickLi
                     Double latitud = mp.getLatitud();
                     Double longitud = mp.getLongitud();
                     MarkerOptions meMarkerOptions = new MarkerOptions();
+                    meMarkerOptions.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_entel));
                     //mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(LayoutInflater.from(getApplicationContext())));
                     meMarkerOptions.position(new LatLng(latitud, longitud)).title(mp.getNombre().toString()+" "+mp.getDireccion());
                     tmprealtimemarkers.add(mMap.addMarker(meMarkerOptions)); //agrego los marcadores de la base firebase
@@ -582,6 +583,7 @@ public class UbicanosActivity extends FragmentActivity implements View.OnClickLi
                     Double latitud = mp.getLatitud();
                     Double longitud = mp.getLongitud();
                     MarkerOptions meMarkerOptions = new MarkerOptions();
+                    meMarkerOptions.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_claro));
                     meMarkerOptions.position(new LatLng(latitud, longitud)).title(mp.getNombre().toString());
                     tmprealtimemarkers.add(mMap.addMarker(meMarkerOptions)); //agrego los marcadores de la base firebase
                     AgregarMarcador(latitud, longitud);
@@ -609,6 +611,7 @@ public class UbicanosActivity extends FragmentActivity implements View.OnClickLi
                     Double latitud = mp.getLatitud();
                     Double longitud = mp.getLongitud();
                     MarkerOptions meMarkerOptions = new MarkerOptions();
+                    meMarkerOptions.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_movistar));
                     meMarkerOptions.position(new LatLng(latitud, longitud)).title(mp.getNombre().toString());
                     tmprealtimemarkers.add(mMap.addMarker(meMarkerOptions)); //agrego los marcadores de la base firebase
                     AgregarMarcador(latitud, longitud);
@@ -670,7 +673,7 @@ public class UbicanosActivity extends FragmentActivity implements View.OnClickLi
                     .position(coordenadas)
                     .title("Mi Ubicación:" + direccion)
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
-            //.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_person_home)));
+            //.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher_movistar_round)));
             //mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(LayoutInflater.from(getApplicationContext())));
             mMap.animateCamera(MiUbicacion);
         }
