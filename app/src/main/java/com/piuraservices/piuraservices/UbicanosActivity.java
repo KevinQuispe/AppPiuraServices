@@ -230,10 +230,25 @@ public class UbicanosActivity extends FragmentActivity implements View.OnClickLi
         //subirpuntosEpsGrau();
         //subirpuntosClaro();
         //subirpuntosEntel();
-        miUbicacion();
+        //subirpuntosMovistar();
+
+        //miUbicacion();
         recivedatosEntidad();
     }
 
+    public void ubicamePiura(){
+        //que tipo de mapa queremso
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        //DESABILITAR
+        UiSettings uiSettings=mMap.getUiSettings();
+        uiSettings.setZoomControlsEnabled(true);
+
+        // Add a marker in Sydney and move the camera -34 ,151
+        LatLng piura = new LatLng(-5.1944900,-80.6328200);
+        mMap.addMarker(new MarkerOptions().position(piura).title("Piura").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+        float zoomlevel=16;
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(piura,zoomlevel));
+    }
     public void elijebaseentidad(final String nombre) {
         //mi coneccion base de datos firebase
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -638,7 +653,7 @@ public class UbicanosActivity extends FragmentActivity implements View.OnClickLi
                 LocationManager locationManager = (LocationManager) getApplication().getSystemService(Context.LOCATION_SERVICE);
                 Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                 ActualizarUbicacion(location);
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, locListener);
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 20000, 0, locListener);
             }
         } catch (Exception e) {
             e.printStackTrace();

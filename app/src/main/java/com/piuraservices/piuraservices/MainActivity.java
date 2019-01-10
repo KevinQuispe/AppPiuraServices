@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -18,6 +19,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -204,7 +207,8 @@ public class MainActivity extends AppCompatActivity
             Intent intent= new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");
             String subject="Compartir";
-            String body="Descarga esta aplicación comunicate con: https://twitter.com/kquisperojas";
+            //String body="Descarga la aplicación PIURA SERVICES para consultar información de los servicios básicos en la ciudad de Piura, descargala desde la google play: https://play.google.com/store/apps/detaills?id=com.piuraservices.piuraservices";
+            String body="Descarga la aplicación PIURA SERVICES para consultar información de los servicios básicos en la ciudad de Piura, descargala desde la google play: https://play.google.com/store/apps/";
             intent.putExtra(Intent.EXTRA_SUBJECT,subject);
             intent.putExtra(Intent.EXTRA_TEXT,body);
             startActivity(Intent.createChooser(intent,"Compartir en"));
@@ -215,4 +219,18 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
         }
-    }
+        public  void playStore(){
+            try {
+                Intent viewIntent =
+                        new Intent("android.intent.action.VIEW",
+                        Uri.parse("https://play.google.com/store/apps/"));
+                startActivity(viewIntent);
+
+            }catch(Exception e) {
+                Toast.makeText(getApplicationContext(),"Unable to Connect Try Again...",
+                        Toast.LENGTH_LONG).show();
+                e.printStackTrace();
+            }
+        }
+
+}
