@@ -56,7 +56,6 @@ public class InfoReclamosEpsActivity extends AppCompatActivity implements View.O
         setContentView(R.layout.activity_info_reclamos_eps);
         getSupportActionBar().setTitle("Información de reclamos");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         listViewreclamos = (ListView) findViewById(R.id.list_reclamoseps);
         listViewreclamos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -67,9 +66,10 @@ public class InfoReclamosEpsActivity extends AppCompatActivity implements View.O
                editarDetalle(list_reclamos.get(pos));
             }
         });
+
         listareclamoEps();
     }
-
+    //metodo para listar los reclamos eps
     public void listareclamoEps(){
         dialog();
         String url="informacion/listainforeclamos/1";

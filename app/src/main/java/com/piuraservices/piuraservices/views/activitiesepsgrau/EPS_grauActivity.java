@@ -285,7 +285,7 @@ public class EPS_grauActivity extends AppCompatActivity {
                 public void onFailure(Call<List<InfoReferencialEpsgraumodel>> call, Throwable t) {
                     //Toast.makeText(EPS_grauActivity.this, "Error de conexion", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(Intent.ACTION_DIAL);
-                    String spsgrau = "(073) 307741";
+                    String spsgrau = "(073) 30774";
                     if (spsgrau.trim().isEmpty()) {
                         i.setData(Uri.parse("tel:"+spsgrau));
                     } else {
@@ -327,7 +327,6 @@ public class EPS_grauActivity extends AppCompatActivity {
             }
         }).start();
     }
-
     //
     public void process() {
         try {
@@ -343,8 +342,6 @@ public class EPS_grauActivity extends AppCompatActivity {
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
     }
 
     public void warningmessage() {

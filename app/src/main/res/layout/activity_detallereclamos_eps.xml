@@ -28,6 +28,8 @@
             <TextView
                 android:layout_marginTop="@dimen/nav_header_vertical_spacing"
                 android:id="@+id/tv_desc_reclamo_eps"
+                android:clickable="true"
+                android:onClick="openNavegadorWeb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
