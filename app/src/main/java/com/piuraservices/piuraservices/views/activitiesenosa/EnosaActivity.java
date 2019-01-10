@@ -47,6 +47,8 @@ public class EnosaActivity extends AppCompatActivity {
     public TextView correo;
     public TextView horario;
     public TextView page;
+    String calltelefono = "";
+    String sendemail = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +88,6 @@ public class EnosaActivity extends AppCompatActivity {
                             horario.setText(info.getHorario().toString());
                             page.setText(info.getWebentidad().toString());
                             progreso.hide();
-
                         }
                     }
                 } catch (Exception e) {
@@ -122,7 +123,6 @@ public class EnosaActivity extends AppCompatActivity {
     }
 
     public void onClickOpenGoogleMaps(View v) {
-
         String centralenosa = "ENOSA, Piura";
         Uri gmmIntentUri = Uri.parse("google.navigation:q=" + centralenosa);
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
@@ -131,46 +131,113 @@ public class EnosaActivity extends AppCompatActivity {
         startActivity(chooser);
     }
 
-    public MarkerOptions getMarkerOptions() {
-        return new MarkerOptions()
-                .title("hola")
-                .position(new LatLng(99393, 02202))
-                .snippet("Piura" + ", mile ")
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
-    }
-
+    //funcion para enviar email
     public void onClickOpenEmail(View v) {
+        final String url = Config.URL_SERVER;
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create()).build();
+        ListaReferencialEpsclient servicio = retrofit.create(ListaReferencialEpsclient.class);
+        Call<List<InfoReferencialEpsgraumodel>> call = servicio.getInfoReferencialeps();
+        call.enqueue(new Callback<List<InfoReferencialEpsgraumodel>>() {
+            @Override
+            public void onResponse(Call<List<InfoReferencialEpsgraumodel>> call, Response<List<InfoReferencialEpsgraumodel>> response) {
+                try {
+                    for (InfoReferencialEpsgraumodel info : response.body()) {
+                        if (info.getId() == 2) {
+                            Log.e("DIRECCION", info.getDireccion() + "\nTELEFONO:" + info.getTelefono());
+                            sendemail = info.getCorreo().toString();
+                            //metodo para  enviar email
+                            Intent intent = new Intent(Intent.ACTION_SEND);
+                            intent.setData(Uri.parse("email"));
+                            String[] email = {sendemail};
+                            intent.putExtra(Intent.EXTRA_EMAIL, email);
+                            intent.putExtra(Intent.EXTRA_SUBJECT, " ");
+                            intent.putExtra(Intent.EXTRA_TEXT, " ");
+                            intent.setType("message/rfc822");
+                            Intent chooser = Intent.createChooser(intent, "Enviar Email");
+                            startActivity(chooser);
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
 
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setData(Uri.parse("email"));
-        String[] s = {"enosa@distriluz.com.pe"};
-        intent.putExtra(Intent.EXTRA_EMAIL, s);
-        intent.putExtra(Intent.EXTRA_SUBJECT, " ");
-        intent.putExtra(Intent.EXTRA_TEXT, " ");
-        intent.setType("message/rfc822");
-        Intent chooser = Intent.createChooser(intent, "Enviar Email");
-        startActivity(chooser);
-
+            @Override
+            public void onFailure(Call<List<InfoReferencialEpsgraumodel>> call, Throwable t) {
+                //Toast.makeText(EnosaActivity.this, "Error de conexion", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setData(Uri.parse("email"));
+                String[] email = {"enosa@distriluz.com.pe"};
+                intent.putExtra(Intent.EXTRA_EMAIL, email);
+                intent.putExtra(Intent.EXTRA_SUBJECT, " ");
+                intent.putExtra(Intent.EXTRA_TEXT, " ");
+                intent.setType("message/rfc822");
+                Intent chooser = Intent.createChooser(intent, "Enviar Email");
+                startActivity(chooser);
+            }
+        });
     }
-
     public void onClickOpenWeb(View v) {
         Intent intent = new Intent(EnosaActivity.this, OpenWebEnosaActivity.class);
         startActivity(intent);
     }
 
+    //funcion para acer llamadas
     public void onClickOpenCall(View v) {
-        Intent i = new Intent(Intent.ACTION_DIAL);
-        String telenosa = "(073) 284050";
-        if (telenosa.trim().isEmpty()) {
-            i.setData(Uri.parse("tel:073 284050"));
-        } else {
-            i.setData(Uri.parse("tel:" + telenosa));
-        }
-        if (ActivityCompat.checkSelfPermission(getApplication(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(getApplication(), "Please conceda permisos para llamar", Toast.LENGTH_LONG).show();
-            requestPermission();
-        } else {
-            startActivity(i);
+        try {
+            final String url = Config.URL_SERVER;
+            Retrofit retrofit = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create()).build();
+            ListaReferencialEpsclient servicio = retrofit.create(ListaReferencialEpsclient.class);
+            Call<List<InfoReferencialEpsgraumodel>> call = servicio.getInfoReferencialeps();
+            call.enqueue(new Callback<List<InfoReferencialEpsgraumodel>>() {
+                @Override
+                public void onResponse(Call<List<InfoReferencialEpsgraumodel>> call, Response<List<InfoReferencialEpsgraumodel>> response) {
+                    try {
+                        for (InfoReferencialEpsgraumodel info : response.body()) {
+                            if (info.getId() == 2) {
+                                Log.e("DIRECCION", info.getDireccion() + "\nTELEFONO:" + info.getTelefono());
+                                calltelefono = info.getTelefono().toString();
+                                //funciona para llamar
+                                Intent i = new Intent(Intent.ACTION_DIAL);
+                                String enosa = calltelefono;
+                                if (enosa.trim().isEmpty()) {
+                                    i.setData(Uri.parse("tel:" + enosa));
+                                } else {
+                                    i.setData(Uri.parse("tel:" + enosa));
+                                }
+                                if (ActivityCompat.checkSelfPermission(getApplication(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                                    Toast.makeText(getApplication(), "Please conceda permisos para llamar", Toast.LENGTH_LONG).show();
+                                    requestPermission();
+                                } else {
+                                    startActivity(i);
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<InfoReferencialEpsgraumodel>> call, Throwable t) {
+                    //Toast.makeText(EnosaActivity.this, "Error de conexion", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(Intent.ACTION_DIAL);
+                    String enosa = "(073) 284050";
+                    if (enosa.trim().isEmpty()) {
+                        i.setData(Uri.parse("tel:" + enosa));
+                    } else {
+                        i.setData(Uri.parse("tel:" + enosa));
+                    }
+                    if (ActivityCompat.checkSelfPermission(getApplication(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                        Toast.makeText(getApplication(), "Please conceda permisos para llamar", Toast.LENGTH_LONG).show();
+                        requestPermission();
+                    } else {
+                        startActivity(i);
+                    }
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -180,16 +247,21 @@ public class EnosaActivity extends AppCompatActivity {
     }
 
     public void process() {
-        //progreso = new ProgressDialog(EpsInfoReclamosActivity.this, ProgressDialog.THEME_HOLO_LIGHT);
-        progreso = new ProgressDialog(EnosaActivity.this, ProgressDialog.BUTTON_POSITIVE);
-        // set indeterminate style
-        progreso.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        // set title and message
-        progreso.setTitle("Procesando");
-        progreso.setMessage("Loading...");
-        // and show it
-        progreso.show();
-        //progreso.setCancelable(false);
+        try {
+            //progreso = new ProgressDialog(EpsInfoReclamosActivity.this, ProgressDialog.THEME_HOLO_LIGHT);
+            progreso = new ProgressDialog(EnosaActivity.this, ProgressDialog.BUTTON_POSITIVE);
+            // set indeterminate style
+            progreso.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            // set title and message
+            progreso.setTitle("Procesando");
+            progreso.setMessage("Loading...");
+            // and show it
+            progreso.show();
+            //progreso.setCancelable(false);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     public void warningmessage() {

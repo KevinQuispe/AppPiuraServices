@@ -19,10 +19,12 @@ import android.widget.Toast;
 
 import com.piuraservices.piuraservices.R;
 import com.piuraservices.piuraservices.models.enosa.InfoReferencialEnosamodel;
+import com.piuraservices.piuraservices.models.epsgrau.InfoReferencialEpsgraumodel;
 import com.piuraservices.piuraservices.models.telefonia.claro.InfoReferencialClaromodel;
 import com.piuraservices.piuraservices.models.telefonia.entel.InfoReferencialEntelmodel;
 import com.piuraservices.piuraservices.services.claro.ListaReferencialClaroclient;
 import com.piuraservices.piuraservices.services.entel.ListaReferencialEntelclient;
+import com.piuraservices.piuraservices.services.epsgrau.ListaReferencialEpsclient;
 import com.piuraservices.piuraservices.utils.Config;
 import com.piuraservices.piuraservices.views.activitiestelefonia.claro.InfoClaroActivity;
 
@@ -44,6 +46,8 @@ public class InfoEntelActivity extends AppCompatActivity {
     public TextView correo;
     public TextView horario;
     public TextView page;
+    String calltelefono="";
+    String sendemail="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -123,56 +127,116 @@ public class InfoEntelActivity extends AppCompatActivity {
         mapIntent.setPackage("com.google.android.apps.maps");
         Intent chooser = Intent.createChooser(mapIntent, "Abrir Google Maps");
         startActivity(chooser);
-
-        //Uri uri = Uri.parse("geo:41.3825581,2.1704375?z=16&q=-5.19449, -80.6328201(Entel Piura)");
-        //startActivity( new Intent(Intent.ACTION_VIEW, uri));
-        //Uri uri = Uri.parse("https://www.google.com.pe/maps/place/Entel+Per%C3%BA/@-5.1955993,-80.6261248,19z/data=!4m12!1m6!3m5!1s0x904a107c378a0833:0x22691540f5193030!2sEntel+Per%C3%BA!8m2!3d-5.1955993!4d-80.6255776!3m4!1s0x904a107c378a0833:0x22691540f5193030!8m2!3d-5.1955993!4d-80.6255776");
-        //Intent intent=new Intent(Intent.ACTION_VIEW,uri);
-        //Intent chooser=Intent.createChooser(intent,"Abrir Google Maps");
-        //startActivity(chooser);
-
-        //Uri uri = Uri.parse("geo:41.3825581,2.1704375?z=16&q=-5.19449, -80.6328201(EPS Grau Piura)");
-        //startActivity(new Intent(Intent.ACTION_VIEW,uri));
-        //Uri gmmIntentUri = Uri.parse("google.navigation:q=Taronga+Zoo,+Sydney+Australia");
-
-        //String centralentel="Jr. Libertad 607, Piura, Tienda Piura";
-        //Uri gmmIntentUri = Uri.parse("geo:0,0?q="+centralentel+"Entel Piura");
-        //Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-        //mapIntent.setPackage("com.google.android.apps.maps");
-        //Intent chooser = Intent.createChooser(mapIntent, "Abrir Google Maps");
-        //startActivity(chooser);
     }
+    //funcion para enviar email
     public void onClickOpenEmail(View v) {
+        final String url = Config.URL_SERVER;
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create()).build();
+        ListaReferencialEpsclient servicio = retrofit.create(ListaReferencialEpsclient.class);
+        Call<List<InfoReferencialEpsgraumodel>> call = servicio.getInfoReferencialeps();
+        call.enqueue(new Callback<List<InfoReferencialEpsgraumodel>>() {
+            @Override
+            public void onResponse(Call<List<InfoReferencialEpsgraumodel>> call, Response<List<InfoReferencialEpsgraumodel>> response) {
+                try {
+                    for (InfoReferencialEpsgraumodel info : response.body()) {
+                        if (info.getId() == 5) {
+                            Log.e("DIRECCION", info.getDireccion() + "\nTELEFONO:" + info.getTelefono());
+                            sendemail = info.getCorreo().toString();
+                            //metodo para enviar correos
+                            Intent intent = new Intent(Intent.ACTION_SEND);
+                            intent.setData(Uri.parse("email"));
+                            String[] email = {sendemail};
+                            intent.putExtra(Intent.EXTRA_EMAIL, email);
+                            intent.putExtra(Intent.EXTRA_SUBJECT, " ");
+                            intent.putExtra(Intent.EXTRA_TEXT, " ");
+                            intent.setType("message/rfc822");
+                            Intent chooser = Intent.createChooser(intent, "Enviar Email");
+                            startActivity(chooser);
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
 
-        Intent intent= new Intent(Intent.ACTION_SEND);
-        intent.setData(Uri.parse("email"));
-        String[]s={"fonocliente@enel.com"};
-        intent.putExtra(Intent.EXTRA_EMAIL,s);
-        intent.putExtra(Intent.EXTRA_SUBJECT,"");
-        intent.putExtra(Intent.EXTRA_TEXT,"");
-        intent.setType("message/rfc822");
-        Intent chooser=Intent.createChooser(intent,"Enviar Email");
-        startActivity(chooser);
-
+            @Override
+            public void onFailure(Call<List<InfoReferencialEpsgraumodel>> call, Throwable t) {
+                //Toast.makeText(InfoEntelActivity.this, "Error de conexion", Toast.LENGTH_SHORT).show();
+                //metodo para enviar correos
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setData(Uri.parse("email"));
+                String[] email = {"fonocliente@entel.com"};
+                intent.putExtra(Intent.EXTRA_EMAIL, email);
+                intent.putExtra(Intent.EXTRA_SUBJECT, " ");
+                intent.putExtra(Intent.EXTRA_TEXT, " ");
+                intent.setType("message/rfc822");
+                Intent chooser = Intent.createChooser(intent, "Enviar Email");
+                startActivity(chooser);
+            }
+        });
     }
     public void onClickOpenWeb(View v) {
         //Intent intent = new Intent("views.activities.OpenWebActivity");
         Intent intent = new Intent(InfoEntelActivity.this,OpenWebEntelActivity.class);
         startActivity(intent);
     }
+    //funcion para hacer llamadas
     public void onClickOpenCall(View v) {
-        Intent i = new Intent(Intent.ACTION_DIAL);
-        String telentel= "+511 517 1717";
-        if (telentel.trim().isEmpty()) {
-            i.setData(Uri.parse("tel:+511 517 1717"));
-        } else {
-            i.setData(Uri.parse("tel:" + telentel));
-        }
-        if (ActivityCompat.checkSelfPermission(getApplication(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(getApplication(), "Please conceda permisos para llamar", Toast.LENGTH_LONG).show();
-            requestPermission();
-        } else {
-            startActivity(i);
+        try {
+            final String url = Config.URL_SERVER;
+            Retrofit retrofit = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create()).build();
+            ListaReferencialEpsclient servicio = retrofit.create(ListaReferencialEpsclient.class);
+            Call<List<InfoReferencialEpsgraumodel>> call = servicio.getInfoReferencialeps();
+            call.enqueue(new Callback<List<InfoReferencialEpsgraumodel>>() {
+                @Override
+                public void onResponse(Call<List<InfoReferencialEpsgraumodel>> call, Response<List<InfoReferencialEpsgraumodel>> response) {
+                    try {
+                        for (InfoReferencialEpsgraumodel info : response.body()) {
+                            if (info.getId() == 5) {
+                                Log.e("DIRECCION", info.getDireccion() + "\nTELEFONO:" + info.getTelefono());
+                                calltelefono = info.getTelefono().toString();
+                                //funciona para llamar
+                                Intent i = new Intent(Intent.ACTION_DIAL);
+                                String claro = calltelefono;
+                                if (claro.trim().isEmpty()) {
+                                    i.setData(Uri.parse("tel:" + claro));
+                                } else {
+                                    i.setData(Uri.parse("tel:" + claro));
+                                }
+                                if (ActivityCompat.checkSelfPermission(getApplication(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                                    Toast.makeText(getApplication(), "Please conceda permisos para llamar", Toast.LENGTH_LONG).show();
+                                    requestPermission();
+                                } else {
+                                    startActivity(i);
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<InfoReferencialEpsgraumodel>> call, Throwable t) {
+                    //Toast.makeText(InfoEntelActivity.this, "Error de conexion", Toast.LENGTH_SHORT).show();
+                    //funciona para llamar
+                    Intent i = new Intent(Intent.ACTION_DIAL);
+                    String claro = "0800 18844";
+                    if (claro.trim().isEmpty()) {
+                        i.setData(Uri.parse("tel:" + claro));
+                    } else {
+                        i.setData(Uri.parse("tel:" + claro));
+                    }
+                    if (ActivityCompat.checkSelfPermission(getApplication(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                        Toast.makeText(getApplication(), "Please conceda permisos para llamar", Toast.LENGTH_LONG).show();
+                        requestPermission();
+                    } else {
+                        startActivity(i);
+                    }
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
     //permisos para llamadas

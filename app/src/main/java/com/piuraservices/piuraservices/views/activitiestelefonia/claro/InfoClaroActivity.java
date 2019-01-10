@@ -23,6 +23,7 @@ import com.piuraservices.piuraservices.services.claro.ListaReferencialClaroclien
 import com.piuraservices.piuraservices.services.epsgrau.ListaReferencialEpsclient;
 import com.piuraservices.piuraservices.utils.Config;
 import com.piuraservices.piuraservices.views.activitiesenosa.EnosaActivity;
+import com.piuraservices.piuraservices.views.activitiestelefonia.movistar.InfoMovistarActivity;
 
 import java.util.List;
 
@@ -42,6 +43,8 @@ public class InfoClaroActivity extends AppCompatActivity {
     public TextView correo;
     public TextView horario;
     public TextView page;
+    String calltelefono="";
+    String sendemail="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,73 +125,116 @@ public class InfoClaroActivity extends AppCompatActivity {
         Intent chooser = Intent.createChooser(mapIntent, "Abrir Google Maps");
         startActivity(chooser);
 
-        //Uri uri = Uri.parse("geo:41.3825581,2.1704375?z=16&q=-5.19449, -80.6328201(Claro Piura)");
-        //Uri uri = Uri.parse("https://www.google.com.pe/maps/place/Claro/@-5.1820349,-80.6225762,19z/data=!4m5!3m4!1s0x904a1072044aeeb5:0xcdd06e07e86c1d88!8m2!3d-5.1821711!4d-80.6220371(Claro Piura)");
-        //Uri uri = Uri.parse("https://www.google.com.pe/maps/place/Claro/@-5.1822152,-80.6222758,20z/data=!4m6!3m5!1s0x904a1072044aeeb5:0xcdd06e07e86c1d88!4b1!8m2!3d-5.1821711!4d-80.6220371");
-        //startActivity( new Intent(Intent.ACTION_VIEW, uri));
-        //Intent intent=new Intent(Intent.ACTION_VIEW,uri);
-        //Intent chooser=Intent.createChooser(intent,"Abrir Google Maps");
-        //startActivity(chooser);
-        //Uri uri = Uri.parse("geo:41.3825581,2.1704375?z=16&q=-5.19449, -80.6328201(EPS Grau Piura)");
-        //startActivity(new Intent(Intent.ACTION_VIEW,uri));
-
-        // Create a Uri from an intent string. Use the result to create an Intent. PARA STRET VIEW
-       // Uri gmmIntentUri = Uri.parse("google.streetview:cbll=-5.1820349,-80.6225762");
-        // Create an Intent from gmmIntentUri. Set the action to ACTION_VIEW
-        //Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-        // Make the Intent explicit by setting the Google Maps package
-        //mapIntent.setPackage("com.google.android.apps.maps");
-        // Attempt to start an activity that can handle the Intent
-        //startActivity(mapIntent);
-
-        //navegacion directa con drive
-        //Uri gmmIntentUri = Uri.parse("google.navigation:q=Taronga+Zoo,+Sydney+Australia");
-        //Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-        //mapIntent.setPackage("com.google.android.apps.maps");
-        //startActivity(mapIntent);
-
-        // Display the location of Google, San Francisco using a global plus code.
-        //Uri gmmIntentUri = Uri.parse("http://plus.codes/849VQJQ5+XX");
-        // Equivalently, define the same location using a local plus code
-        //String piura="Piura";
-        //Uri  gmmIntentUri = Uri.parse("https://plus.codes/"+piura);
-        //Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-        //mapIntent.setPackage("com.google.android.apps.maps");
-        //startActivity(mapIntent);
-
-
     }
+    //funcion para enviar email
     public void onClickOpenEmail(View v) {
+        final String url = Config.URL_SERVER;
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create()).build();
+        ListaReferencialEpsclient servicio = retrofit.create(ListaReferencialEpsclient.class);
+        Call<List<InfoReferencialEpsgraumodel>> call = servicio.getInfoReferencialeps();
+        call.enqueue(new Callback<List<InfoReferencialEpsgraumodel>>() {
+            @Override
+            public void onResponse(Call<List<InfoReferencialEpsgraumodel>> call, Response<List<InfoReferencialEpsgraumodel>> response) {
+                try {
+                    for (InfoReferencialEpsgraumodel info : response.body()) {
+                        if (info.getId() == 4) {
+                            Log.e("DIRECCION", info.getDireccion() + "\nTELEFONO:" + info.getTelefono());
+                            sendemail = info.getCorreo().toString();
+                            //metodo para enviar email
+                            Intent intent = new Intent(Intent.ACTION_SEND);
+                            intent.setData(Uri.parse("email"));
+                            String[] email = {sendemail};
+                            intent.putExtra(Intent.EXTRA_EMAIL, email);
+                            intent.putExtra(Intent.EXTRA_SUBJECT, " ");
+                            intent.putExtra(Intent.EXTRA_TEXT, " ");
+                            intent.setType("message/rfc822");
+                            Intent chooser = Intent.createChooser(intent, "Enviar Email");
+                            startActivity(chooser);
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
 
-        Intent intent= new Intent(Intent.ACTION_SEND);
-        intent.setData(Uri.parse("email"));
-        String[]s={"contacto@claro.com.pe"};
-        intent.putExtra(Intent.EXTRA_EMAIL,s);
-        intent.putExtra(Intent.EXTRA_SUBJECT,"");
-        intent.putExtra(Intent.EXTRA_TEXT,"");
-        intent.setType("message/rfc822");
-        Intent chooser=Intent.createChooser(intent,"Enviar Email");
-        startActivity(chooser);
-
+            @Override
+            public void onFailure(Call<List<InfoReferencialEpsgraumodel>> call, Throwable t) {
+                //Toast.makeText(InfoClaroActivity.this, "Error de conexion", Toast.LENGTH_SHORT).show();
+                //metodo para enviar email
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setData(Uri.parse("email"));
+                String[] email = {"contacto@claro.com.pe"};
+                intent.putExtra(Intent.EXTRA_EMAIL, email);
+                intent.putExtra(Intent.EXTRA_SUBJECT, " ");
+                intent.putExtra(Intent.EXTRA_TEXT, " ");
+                intent.setType("message/rfc822");
+                Intent chooser = Intent.createChooser(intent, "Enviar Email");
+                startActivity(chooser);
+            }
+        });
     }
     public void onClickOpenWeb(View v) {
 
         Intent intent = new Intent(InfoClaroActivity.this,OpenWebClaroActivity.class);
         startActivity(intent);
     }
+    //funcion para hacer llamadas
     public void onClickOpenCall(View v) {
-        Intent i = new Intent(Intent.ACTION_DIAL);
-        String claro= "946 573 918";
-        if (claro.trim().isEmpty()) {
-            i.setData(Uri.parse("tel:946 573 918"));
-        } else {
-            i.setData(Uri.parse("tel:" + claro));
-        }
-        if (ActivityCompat.checkSelfPermission(getApplication(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(getApplication(), "Please conceda permisos para llamar", Toast.LENGTH_LONG).show();
-            requestPermission();
-        } else {
-            startActivity(i);
+        try {
+            final String url = Config.URL_SERVER;
+            Retrofit retrofit = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create()).build();
+            ListaReferencialEpsclient servicio = retrofit.create(ListaReferencialEpsclient.class);
+            Call<List<InfoReferencialEpsgraumodel>> call = servicio.getInfoReferencialeps();
+            call.enqueue(new Callback<List<InfoReferencialEpsgraumodel>>() {
+                @Override
+                public void onResponse(Call<List<InfoReferencialEpsgraumodel>> call, Response<List<InfoReferencialEpsgraumodel>> response) {
+                    try {
+                        for (InfoReferencialEpsgraumodel info : response.body()) {
+                            if (info.getId() == 4) {
+                                Log.e("DIRECCION", info.getDireccion() + "\nTELEFONO:" + info.getTelefono());
+                                calltelefono = info.getTelefono().toString();
+                                //funciona para llamar
+                                Intent i = new Intent(Intent.ACTION_DIAL);
+                                String claro = calltelefono;
+                                if (claro.trim().isEmpty()) {
+                                    i.setData(Uri.parse("tel:" + claro));
+                                } else {
+                                    i.setData(Uri.parse("tel:" + claro));
+                                }
+                                if (ActivityCompat.checkSelfPermission(getApplication(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                                    Toast.makeText(getApplication(), "Please conceda permisos para llamar", Toast.LENGTH_LONG).show();
+                                    requestPermission();
+                                } else {
+                                    startActivity(i);
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<InfoReferencialEpsgraumodel>> call, Throwable t) {
+                    //Toast.makeText(InfoClaroActivity.this, "Error de conexion", Toast.LENGTH_SHORT).show();
+                    //funciona para llamar
+                    Intent i = new Intent(Intent.ACTION_DIAL);
+                    String claro = "946 573 918";
+                    if (claro.trim().isEmpty()) {
+                        i.setData(Uri.parse("tel:" + claro));
+                    } else {
+                        i.setData(Uri.parse("tel:" + claro));
+                    }
+                    if (ActivityCompat.checkSelfPermission(getApplication(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                        Toast.makeText(getApplication(), "Please conceda permisos para llamar", Toast.LENGTH_LONG).show();
+                        requestPermission();
+                    } else {
+                        startActivity(i);
+                    }
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
     //permisos para llamadas

@@ -15,11 +15,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.piuraservices.piuraservices.R;
+import com.piuraservices.piuraservices.models.epsgrau.InfoReferencialEpsgraumodel;
 import com.piuraservices.piuraservices.models.telefonia.claro.InfoReferencialClaromodel;
 import com.piuraservices.piuraservices.models.telefonia.movistar.InfoReferencialMovistarmodel;
 import com.piuraservices.piuraservices.services.claro.ListaReferencialClaroclient;
+import com.piuraservices.piuraservices.services.epsgrau.ListaReferencialEpsclient;
 import com.piuraservices.piuraservices.services.telefonia.ListaReferencialMovistarclient;
 import com.piuraservices.piuraservices.utils.Config;
+import com.piuraservices.piuraservices.views.activitiesenosa.EnosaActivity;
 import com.piuraservices.piuraservices.views.activitiestelefonia.claro.InfoClaroActivity;
 
 import java.util.List;
@@ -42,6 +45,9 @@ public class InfoMovistarActivity extends AppCompatActivity {
     public TextView correo;
     public TextView horario;
     public TextView page;
+    String calltelefono="";
+    String sendemail="";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,40 +134,118 @@ public class InfoMovistarActivity extends AppCompatActivity {
         startActivity(chooser);
     }
 
+    //funcion para enviar email
     public void onClickOpenEmail(View v) {
+        final String url = Config.URL_SERVER;
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create()).build();
+        ListaReferencialEpsclient servicio = retrofit.create(ListaReferencialEpsclient.class);
+        Call<List<InfoReferencialEpsgraumodel>> call = servicio.getInfoReferencialeps();
+        call.enqueue(new Callback<List<InfoReferencialEpsgraumodel>>() {
+            @Override
+            public void onResponse(Call<List<InfoReferencialEpsgraumodel>> call, Response<List<InfoReferencialEpsgraumodel>> response) {
+                try {
+                    for (InfoReferencialEpsgraumodel info : response.body()) {
+                        if (info.getId() == 3) {
+                            Log.e("DIRECCION", info.getDireccion() + "\nTELEFONO:" + info.getTelefono());
+                            sendemail = info.getCorreo().toString();
+                            //metodo para  enviar correo
+                            Intent intent = new Intent(Intent.ACTION_SEND);
+                            intent.setData(Uri.parse("email"));
+                            String[] email = {sendemail};
+                            intent.putExtra(Intent.EXTRA_EMAIL, email);
+                            intent.putExtra(Intent.EXTRA_SUBJECT, " ");
+                            intent.putExtra(Intent.EXTRA_TEXT, " ");
+                            intent.setType("message/rfc822");
+                            Intent chooser = Intent.createChooser(intent, "Enviar Email");
+                            startActivity(chooser);
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
 
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setData(Uri.parse("email"));
-        String[] s = {"registrocontactos@movistar.com.pe"};
-        intent.putExtra(Intent.EXTRA_EMAIL, s);
-        intent.putExtra(Intent.EXTRA_SUBJECT, " ");
-        intent.putExtra(Intent.EXTRA_TEXT, " ");
-        intent.setType("message/rfc822");
-        Intent chooser = Intent.createChooser(intent, "Enviar Email");
-        startActivity(chooser);
+            @Override
+            public void onFailure(Call<List<InfoReferencialEpsgraumodel>> call, Throwable t) {
+                //Toast.makeText(InfoMovistarActivity.this, "Error de conexion", Toast.LENGTH_SHORT).show();
+                //metodo para  enviar correo
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setData(Uri.parse("email"));
+                String[] email = {"registrocontactos@movistar.com.pe"};
+                intent.putExtra(Intent.EXTRA_EMAIL, email);
+                intent.putExtra(Intent.EXTRA_SUBJECT, " ");
+                intent.putExtra(Intent.EXTRA_TEXT, " ");
+                intent.setType("message/rfc822");
+                Intent chooser = Intent.createChooser(intent, "Enviar Email");
+                startActivity(chooser);
 
+            }
+        });
     }
 
-    public void onClickOpenWeb(View v) {
+        public void onClickOpenWeb(View v) {
         //Intent intent = new Intent("views.activities.OpenWebActivity");
         Intent intent = new Intent(InfoMovistarActivity.this, OpenWebMovistarActivity.class);
         startActivity(intent);
     }
-
+    //funcion para hacer llamadas
     public void onClickOpenCall(View v) {
-        Intent i = new Intent(Intent.ACTION_DIAL);
-        String telmovistar = "(073)28-4030";
+        try {
+            final String url = Config.URL_SERVER;
+            Retrofit retrofit = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create()).build();
+            ListaReferencialEpsclient servicio = retrofit.create(ListaReferencialEpsclient.class);
+            Call<List<InfoReferencialEpsgraumodel>> call = servicio.getInfoReferencialeps();
+            call.enqueue(new Callback<List<InfoReferencialEpsgraumodel>>() {
+                @Override
+                public void onResponse(Call<List<InfoReferencialEpsgraumodel>> call, Response<List<InfoReferencialEpsgraumodel>> response) {
+                    try {
+                        for (InfoReferencialEpsgraumodel info : response.body()) {
+                            if (info.getId() == 3) {
+                                Log.e("DIRECCION", info.getDireccion() + "\nTELEFONO:" + info.getTelefono());
+                                calltelefono = info.getTelefono().toString();
+                                //funciona para llamar
+                                Intent i = new Intent(Intent.ACTION_DIAL);
+                                String movistar = calltelefono;
+                                if (movistar.trim().isEmpty()) {
+                                    i.setData(Uri.parse("tel:" + movistar));
+                                } else {
+                                    i.setData(Uri.parse("tel:" + movistar));
+                                }
+                                if (ActivityCompat.checkSelfPermission(getApplication(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                                    Toast.makeText(getApplication(), "Please conceda permisos para llamar", Toast.LENGTH_LONG).show();
+                                    requestPermission();
+                                } else {
+                                    startActivity(i);
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
 
-        if (telmovistar.trim().isEmpty()) {
-            i.setData(Uri.parse("tel:(073)28-4030"));
-        } else {
-            i.setData(Uri.parse("tel:" + telmovistar));
-        }
-        if (ActivityCompat.checkSelfPermission(getApplication(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(getApplication(), "Please conceda permisos para llamar", Toast.LENGTH_LONG).show();
-            requestPermission();
-        } else {
-            startActivity(i);
+                @Override
+                public void onFailure(Call<List<InfoReferencialEpsgraumodel>> call, Throwable t) {
+                    //Toast.makeText(InfoMovistarActivity.this, "Error de conexion", Toast.LENGTH_SHORT).show();
+                    //funciona para llamar
+                    Intent i = new Intent(Intent.ACTION_DIAL);
+                    String movistar = "(073)28-4032";
+                    if (movistar.trim().isEmpty()) {
+                        i.setData(Uri.parse("tel:" + movistar));
+                    } else {
+                        i.setData(Uri.parse("tel:" + movistar));
+                    }
+                    if (ActivityCompat.checkSelfPermission(getApplication(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                        Toast.makeText(getApplication(), "Please conceda permisos para llamar", Toast.LENGTH_LONG).show();
+                        requestPermission();
+                    } else {
+                        startActivity(i);
+                    }
+
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

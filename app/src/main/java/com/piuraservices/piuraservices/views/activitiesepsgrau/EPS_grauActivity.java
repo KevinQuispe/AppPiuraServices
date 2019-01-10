@@ -47,6 +47,8 @@ public class EPS_grauActivity extends AppCompatActivity {
     public TextView correo;
     public TextView horario;
     public TextView page;
+    String calltelefono="";
+    String sendemail="";
 
 
     @Override
@@ -70,6 +72,7 @@ public class EPS_grauActivity extends AppCompatActivity {
         //lista funcion call lista ok
         listainfoEntidad();
         //call funtion
+        //listainfoEntidadCall();
         //listainfoEntidadCall();
 
     }
@@ -143,40 +146,6 @@ public class EPS_grauActivity extends AppCompatActivity {
             }
         });
     }
-    //metodo para listar datos referenciales de la entidad
-    public void listainfoEntidadCall() {
-        process();
-        final String url = Config.URL_SERVER;
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create()).build();
-        ListaReferencialEpsclient servicio = retrofit.create(ListaReferencialEpsclient.class);
-        Call<InfoReferencialEpsgraumodel> call = servicio.getInfoReferencial(1);
-        call.enqueue(new Callback<InfoReferencialEpsgraumodel>() {
-            @Override
-            public void onResponse(Call<InfoReferencialEpsgraumodel> call, Response<InfoReferencialEpsgraumodel> response) {
-                try {
-
-                    direccion.setText(response.body().getDireccion().toString());
-                    telefono.setText(response.body().getTelefono().toString());
-                    System.out.println(response);
-                    progreso.hide();
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<InfoReferencialEpsgraumodel> call, Throwable t) {
-                try {
-                    Toast.makeText(EPS_grauActivity.this, "Error de conexion", Toast.LENGTH_SHORT).show();
-                    progreso.hide();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
     //tramites lista
     public void onClickedtramites(View v) {
         imgtramites.setOnClickListener(new View.OnClickListener() {
@@ -200,6 +169,7 @@ public class EPS_grauActivity extends AppCompatActivity {
         });
     }
 
+    //metodo openGoogle
     public void onClickOpenGoogleMaps(View v) {
 
         //Uri uri = Uri.parse("https://www.google.com.pe/maps/place/EPS+GRAU+S.A./@-5.1909756,-80.6422337,17z/data=!4m12!1m6!3m5!1s0x904a1a85053ff85b:0xd40ce7e54eb08b5e!2sEPS+GRAU+S.A.!8m2!3d-5.1908153!4d-80.6415363!3m4!1s0x904a1a85053ff85b:0xd40ce7e54eb08b5e!8m2!3d-5.1908153!4d-80.6415363");
@@ -217,17 +187,50 @@ public class EPS_grauActivity extends AppCompatActivity {
     }
 
     public void onClickOpenEmail(View v) {
+        final String url = Config.URL_SERVER;
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create()).build();
+        ListaReferencialEpsclient servicio = retrofit.create(ListaReferencialEpsclient.class);
+        Call<List<InfoReferencialEpsgraumodel>> call = servicio.getInfoReferencialeps();
+        call.enqueue(new Callback<List<InfoReferencialEpsgraumodel>>() {
+            @Override
+            public void onResponse(Call<List<InfoReferencialEpsgraumodel>> call, Response<List<InfoReferencialEpsgraumodel>> response) {
+                try {
+                    for (InfoReferencialEpsgraumodel info : response.body()) {
+                        if (info.getId() == 1) {
+                            Log.e("DIRECCION", info.getDireccion() + "\nTELEFONO:" + info.getTelefono());
+                            sendemail=info.getCorreo().toString();
+                            //metodo para hacer llamadas
+                            Intent intent = new Intent(Intent.ACTION_SEND);
+                            intent.setData(Uri.parse("email"));
+                            String[] email = {sendemail};
+                            intent.putExtra(Intent.EXTRA_EMAIL, email);
+                            intent.putExtra(Intent.EXTRA_SUBJECT, " ");
+                            intent.putExtra(Intent.EXTRA_TEXT, " ");
+                            intent.setType("message/rfc822");
+                            Intent chooser = Intent.createChooser(intent, "Enviar Email");
+                            startActivity(chooser);
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            @Override
+            public void onFailure(Call<List<InfoReferencialEpsgraumodel>> call, Throwable t) {
+               // Toast.makeText(EPS_grauActivity.this, "Error de conexion", Toast.LENGTH_SHORT).show();
+                //metodo para hacer llamadas
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setData(Uri.parse("email"));
+                String[] email = {"epsgrau.imageninstitucional@gmail.com"};
+                intent.putExtra(Intent.EXTRA_EMAIL, email);
+                intent.putExtra(Intent.EXTRA_SUBJECT, " ");
+                intent.putExtra(Intent.EXTRA_TEXT, " ");
+                intent.setType("message/rfc822");
+                Intent chooser = Intent.createChooser(intent, "Enviar Email");
+                startActivity(chooser);
 
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setData(Uri.parse("email"));
-        String[] s = {"epsgrau.imageninstitucional@gmail.com"};
-        intent.putExtra(Intent.EXTRA_EMAIL, s);
-        intent.putExtra(Intent.EXTRA_SUBJECT, " ");
-        intent.putExtra(Intent.EXTRA_TEXT, " ");
-        intent.setType("message/rfc822");
-        Intent chooser = Intent.createChooser(intent, "Enviar Email");
-        startActivity(chooser);
-
+            }
+        });
     }
 
     public void onClickOpenWeb(View v) {
@@ -245,19 +248,61 @@ public class EPS_grauActivity extends AppCompatActivity {
     }
 
     public void onClickOpenCall(View v) {
-        Intent i = new Intent(Intent.ACTION_DIAL);
-        String spsgrau = "(073) 307741";
-        if (spsgrau.trim().isEmpty()) {
-            i.setData(Uri.parse("tel:(073) 307741"));
-        } else {
-            i.setData(Uri.parse("tel:" + spsgrau));
+        try{
+            final String url = Config.URL_SERVER;
+            Retrofit retrofit = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create()).build();
+            ListaReferencialEpsclient servicio = retrofit.create(ListaReferencialEpsclient.class);
+            Call<List<InfoReferencialEpsgraumodel>> call = servicio.getInfoReferencialeps();
+            call.enqueue(new Callback<List<InfoReferencialEpsgraumodel>>() {
+                @Override
+                public void onResponse(Call<List<InfoReferencialEpsgraumodel>> call, Response<List<InfoReferencialEpsgraumodel>> response) {
+                    try {
+                        for (InfoReferencialEpsgraumodel info : response.body()) {
+                            if (info.getId() == 1) {
+                                Log.e("DIRECCION", info.getDireccion() + "\nTELEFONO:" + info.getTelefono());
+                                calltelefono=info.getTelefono().toString();
+                                //funciona para llamar
+                                Intent i = new Intent(Intent.ACTION_DIAL);
+                                String spsgrau = calltelefono;
+                                if (spsgrau.trim().isEmpty()) {
+                                    i.setData(Uri.parse("tel:"+spsgrau));
+                                } else {
+                                    i.setData(Uri.parse("tel:" + spsgrau));
+                                }
+                                if (ActivityCompat.checkSelfPermission(getApplication(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                                    Toast.makeText(getApplication(), "Please conceda permisos para llamar", Toast.LENGTH_LONG).show();
+                                    requestPermission();
+                                } else {
+                                    startActivity(i);
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                @Override
+                public void onFailure(Call<List<InfoReferencialEpsgraumodel>> call, Throwable t) {
+                    //Toast.makeText(EPS_grauActivity.this, "Error de conexion", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(Intent.ACTION_DIAL);
+                    String spsgrau = "(073) 307742";
+                    if (spsgrau.trim().isEmpty()) {
+                        i.setData(Uri.parse("tel:"+spsgrau));
+                    } else {
+                        i.setData(Uri.parse("tel:" + spsgrau));
+                    }
+                    if (ActivityCompat.checkSelfPermission(getApplication(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                        Toast.makeText(getApplication(), "Please conceda permisos para llamar", Toast.LENGTH_LONG).show();
+                        requestPermission();
+                    } else {
+                        startActivity(i);
+                    }
+                }
+            });
+        }catch (Exception e){
+            e.printStackTrace();
         }
-        if (ActivityCompat.checkSelfPermission(getApplication(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(getApplication(), "Please conceda permisos para llamar", Toast.LENGTH_LONG).show();
-            requestPermission();
-        } else {
-            startActivity(i);
-        }
+
     }
 
     //permisos para llamadas
@@ -285,15 +330,20 @@ public class EPS_grauActivity extends AppCompatActivity {
 
     //
     public void process() {
-        //progreso = new ProgressDialog(EpsInfoReclamosActivity.this, ProgressDialog.THEME_HOLO_LIGHT);
-        progreso = new ProgressDialog(EPS_grauActivity.this, ProgressDialog.BUTTON_POSITIVE);
-        // set indeterminate style
-        progreso.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        // set title and message
-        progreso.setTitle("Procesando");
-        progreso.setMessage("Loading...");
-        // and show it
-        progreso.show();
+        try {
+            //progreso = new ProgressDialog(EpsInfoReclamosActivity.this, ProgressDialog.THEME_HOLO_LIGHT);
+            progreso = new ProgressDialog(EPS_grauActivity.this, ProgressDialog.BUTTON_POSITIVE);
+            // set indeterminate style
+            progreso.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            // set title and message
+            progreso.setTitle("Procesando");
+            progreso.setMessage("Loading...");
+            // and show it
+            progreso.show();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
 
     }
 

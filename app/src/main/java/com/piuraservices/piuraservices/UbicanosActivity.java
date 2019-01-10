@@ -69,7 +69,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-public class UbicanosActivity extends FragmentActivity implements View.OnClickListener, OnMapReadyCallback,NavigationView.OnNavigationItemSelectedListener {
+public class UbicanosActivity extends FragmentActivity implements View.OnClickListener, OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener {
     private GoogleMap mMap;
     private Marker marcador;
     double lat = 0.0;
@@ -137,13 +137,14 @@ public class UbicanosActivity extends FragmentActivity implements View.OnClickLi
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         imgubicame = (ImageView) findViewById(R.id.img_ubicame);
         imgubicame.setOnClickListener(this);
-        buttonubicame=(Button) findViewById(R.id.btn_ubicame);
+        buttonubicame = (Button) findViewById(R.id.btn_ubicame);
         //mi ubicacion
         miUbicacion();
         //llamar a metodo elije entiddad
         recivedatosEntidad();
 
     }
+
     //revive datos de entidad y pasarle el nombre al metodo elije entidad
     public void recivedatosEntidad() {
         Intent thisForm = getIntent();
@@ -153,24 +154,24 @@ public class UbicanosActivity extends FragmentActivity implements View.OnClickLi
 
         if (entidad.equals("epsgrau")) {
             elijebaseentidad(entidad);
-            buttonubicame.setText("UBICANOS"+"-"+entidad);
+            buttonubicame.setText("UBICANOS" + "-" + entidad);
 
         }
         if (entidad.equals("enosa")) {
             elijebaseentidad(entidad);
-            buttonubicame.setText("UBICANOS"+"-"+entidad);
+            buttonubicame.setText("UBICANOS" + "-" + entidad);
         }
         if (entidad.equals("movistar")) {
             elijebaseentidad(entidad);
-            buttonubicame.setText("UBICANOS"+"-"+entidad);
+            buttonubicame.setText("UBICANOS" + "-" + entidad);
         }
         if (entidad.equals("claro")) {
             elijebaseentidad(entidad);
-            buttonubicame.setText("UBICANOS"+"-"+entidad);
+            buttonubicame.setText("UBICANOS" + "-" + entidad);
         }
         if (entidad.equals("entel")) {
             elijebaseentidad(entidad);
-            buttonubicame.setText("UBICANOS"+"-"+entidad);
+            buttonubicame.setText("UBICANOS" + "-" + entidad);
         }
     }
 
@@ -306,6 +307,7 @@ public class UbicanosActivity extends FragmentActivity implements View.OnClickLi
             }
         });
     }
+
     //marcador de puntos para la empresa movistar
     public void subirpuntosEpsGrau() {
         //get location en google maps
@@ -335,6 +337,7 @@ public class UbicanosActivity extends FragmentActivity implements View.OnClickLi
                 });
 
     }
+
     //marcador de puntos para la empresa movistar
     public void subirpuntosEnosa() {
         //get location en google maps
@@ -364,7 +367,8 @@ public class UbicanosActivity extends FragmentActivity implements View.OnClickLi
                 });
 
     }
-        //marcador de puntos para la empresa movistar
+
+    //marcador de puntos para la empresa movistar
     public void subirpuntosMovistar() {
         //get location en google maps
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
@@ -457,11 +461,9 @@ public class UbicanosActivity extends FragmentActivity implements View.OnClickLi
     public class CustomInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
         private static final String TAG = "CustomInfoWindowAdapter";
         private LayoutInflater inflater;
-
         public CustomInfoWindowAdapter(LayoutInflater inflater) {
             this.inflater = inflater;
         }
-
         @Override
         public View getInfoContents(final Marker m) {
             //Carga layout personalizado.
@@ -479,6 +481,7 @@ public class UbicanosActivity extends FragmentActivity implements View.OnClickLi
             return null;
         }
     }
+
     //marcador de puntos para la empresa movistar
     public void marcadorPuntosEpsgrau() {
         mdatabase.child("epsgrau").addValueEventListener(new ValueEventListener() {
@@ -509,38 +512,38 @@ public class UbicanosActivity extends FragmentActivity implements View.OnClickLi
         });
     }
 
-        //marcador de puntos para la empresa movistar
-        public void marcadorPuntosEnosa() {
-            mdatabase.child("enosa").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    for (Marker marker : realtimemarkers) {
-                        marker.remove();
-                    }
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        Enosa mp = snapshot.getValue(Enosa.class);
-                        Double latitud = mp.getLatitud();
-                        Double longitud = mp.getLongitud();
-                        MarkerOptions meMarkerOptions = new MarkerOptions();
-                        //mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(LayoutInflater.from(getApplicationContext())));
-                        meMarkerOptions.position(new LatLng(latitud, longitud)).title(mp.getNombre().toString() + " " + mp.getDireccion());
-                        tmprealtimemarkers.add(mMap.addMarker(meMarkerOptions)); //agrego los marcadores de la base firebase
-                        AgregarMarcador(latitud, longitud);
-                    }
-                    realtimemarkers.clear();
-                    realtimemarkers.addAll(tmprealtimemarkers);
+    //marcador de puntos para la empresa movistar
+    public void marcadorPuntosEnosa() {
+        mdatabase.child("enosa").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (Marker marker : realtimemarkers) {
+                    marker.remove();
                 }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Log.e("Error", databaseError.getMessage());
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Enosa mp = snapshot.getValue(Enosa.class);
+                    Double latitud = mp.getLatitud();
+                    Double longitud = mp.getLongitud();
+                    MarkerOptions meMarkerOptions = new MarkerOptions();
+                    //mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(LayoutInflater.from(getApplicationContext())));
+                    meMarkerOptions.position(new LatLng(latitud, longitud)).title(mp.getNombre().toString() + " " + mp.getDireccion());
+                    tmprealtimemarkers.add(mMap.addMarker(meMarkerOptions)); //agrego los marcadores de la base firebase
+                    AgregarMarcador(latitud, longitud);
                 }
-            });
+                realtimemarkers.clear();
+                realtimemarkers.addAll(tmprealtimemarkers);
+            }
 
-        }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("Error", databaseError.getMessage());
+            }
+        });
 
-        //marcador de puntos para la empresa movistar
-        public void marcadorPuntosMovistar() {
+    }
+
+    //marcador de puntos para la empresa movistar
+    public void marcadorPuntosMovistar() {
         mdatabase.child("movistar").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -552,9 +555,9 @@ public class UbicanosActivity extends FragmentActivity implements View.OnClickLi
                     Double latitud = mp.getLatitud();
                     Double longitud = mp.getLongitud();
                     MarkerOptions meMarkerOptions = new MarkerOptions();
-                    meMarkerOptions.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_entel));
+                    meMarkerOptions.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_movistar));
                     //mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(LayoutInflater.from(getApplicationContext())));
-                    meMarkerOptions.position(new LatLng(latitud, longitud)).title(mp.getNombre().toString()+" "+mp.getDireccion());
+                    meMarkerOptions.position(new LatLng(latitud, longitud)).title(mp.getNombre().toString() + " " + mp.getDireccion());
                     tmprealtimemarkers.add(mMap.addMarker(meMarkerOptions)); //agrego los marcadores de la base firebase
                     AgregarMarcador(latitud, longitud);
                 }
@@ -611,7 +614,7 @@ public class UbicanosActivity extends FragmentActivity implements View.OnClickLi
                     Double latitud = mp.getLatitud();
                     Double longitud = mp.getLongitud();
                     MarkerOptions meMarkerOptions = new MarkerOptions();
-                    meMarkerOptions.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_movistar));
+                    meMarkerOptions.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_entel));
                     meMarkerOptions.position(new LatLng(latitud, longitud)).title(mp.getNombre().toString());
                     tmprealtimemarkers.add(mMap.addMarker(meMarkerOptions)); //agrego los marcadores de la base firebase
                     AgregarMarcador(latitud, longitud);
@@ -658,105 +661,105 @@ public class UbicanosActivity extends FragmentActivity implements View.OnClickLi
         }
     }
 
-        //agregar el marcador en el mapa
-        private void AgregarMarcador(double lat, double lng) {
-            LatLng coordenadas = new LatLng(lat, lng);
-            //tipo de mapa
-            mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-            UiSettings uiSettings = mMap.getUiSettings();
-            uiSettings.setZoomControlsEnabled(true);
-            float zoomlevel = 15f;
-            CameraUpdate MiUbicacion = CameraUpdateFactory.newLatLngZoom(coordenadas, zoomlevel);
+    //agregar el marcador en el mapa
+    private void AgregarMarcador(double lat, double lng) {
+        LatLng coordenadas = new LatLng(lat, lng);
+        //tipo de mapa
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        UiSettings uiSettings = mMap.getUiSettings();
+        uiSettings.setZoomControlsEnabled(true);
+        float zoomlevel = 15f;
+        CameraUpdate MiUbicacion = CameraUpdateFactory.newLatLngZoom(coordenadas, zoomlevel);
 
-            if (marcador != null) marcador.remove();
-            marcador = mMap.addMarker(new MarkerOptions()
-                    .position(coordenadas)
-                    .title("Mi Ubicación:" + direccion)
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
-            //.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher_movistar_round)));
-            //mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(LayoutInflater.from(getApplicationContext())));
-            mMap.animateCamera(MiUbicacion);
-        }
+        if (marcador != null) marcador.remove();
+        marcador = mMap.addMarker(new MarkerOptions()
+                .position(coordenadas)
+                .title("Mi Ubicación:" + direccion)
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+        //.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher_movistar_round)));
+        //mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(LayoutInflater.from(getApplicationContext())));
+        mMap.animateCamera(MiUbicacion);
+    }
 
-        //setear mi position
-        public void setLocation(Location loc) {
-            //Obtener la direccion de la calle a partir de la latitud y la longitud
-            if (loc.getLatitude() != 0.0 && loc.getLongitude() != 0.0) {
-                try {
-                    Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
-                    List<Address> list = geocoder.getFromLocation(loc.getLatitude(), loc.getLongitude(), 1);
+    //setear mi position
+    public void setLocation(Location loc) {
+        //Obtener la direccion de la calle a partir de la latitud y la longitud
+        if (loc.getLatitude() != 0.0 && loc.getLongitude() != 0.0) {
+            try {
+                Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
+                List<Address> list = geocoder.getFromLocation(loc.getLatitude(), loc.getLongitude(), 1);
 
-                    if (!list.isEmpty()) {
-                        //obtner la direccion
-                        Address DirCalle = list.get(0);
-                        direccion = (DirCalle.getAddressLine(0));
-                        //obten el pais
-                        Locale country = new Locale("", "PE");
-                        pais = country.getDisplayCountry();
+                if (!list.isEmpty()) {
+                    //obtner la direccion
+                    Address DirCalle = list.get(0);
+                    direccion = (DirCalle.getAddressLine(0));
+                    //obten el pais
+                    Locale country = new Locale("", "PE");
+                    pais = country.getDisplayCountry();
 
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
                 }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-
         }
 
-        //control del gps
-        LocationListener locListener = new LocationListener() {
+    }
 
-            @Override
-            public void onLocationChanged(Location location) {
-                try {
-
-                    ActualizarUbicacion(location);
-                    setLocation(location);
-
-                } catch (Exception e) {
-                    Log.i("error", e.getMessage());
-                }
-
-                //mLastLocation.set(location);
-            }
-
-            @Override
-            public void onStatusChanged(String s, int i, Bundle bundle) {
-
-            }
-
-            @Override
-            public void onProviderEnabled(String s) {
-                mensaje1 = ("GPS Activado");
-                Mensaje();
-
-            }
-
-            @Override
-            public void onProviderDisabled(String s) {
-                mensaje1 = ("GPS Desactivado");
-                //locationStart();
-                Mensaje();
-
-            }
-        };
-
-        public void Mensaje() {
-            Toast toast = Toast.makeText(getApplicationContext(), mensaje1, Toast.LENGTH_LONG);
-            //toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-            toast.show();
-        }
-
+    //control del gps
+    LocationListener locListener = new LocationListener() {
 
         @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            return false;
+        public void onLocationChanged(Location location) {
+            try {
+
+                ActualizarUbicacion(location);
+                setLocation(location);
+
+            } catch (Exception e) {
+                Log.i("error", e.getMessage());
+            }
+
+            //mLastLocation.set(location);
         }
 
         @Override
-        public void onClick(View view) {
-            if (view.getId() == R.id.img_ubicame) {
-                miUbicacion();
-            }
+        public void onStatusChanged(String s, int i, Bundle bundle) {
+
+        }
+
+        @Override
+        public void onProviderEnabled(String s) {
+            mensaje1 = ("GPS Activado");
+            Mensaje();
+
+        }
+
+        @Override
+        public void onProviderDisabled(String s) {
+            mensaje1 = ("GPS Desactivado");
+            //locationStart();
+            Mensaje();
+
+        }
+    };
+
+    public void Mensaje() {
+        Toast toast = Toast.makeText(getApplicationContext(), mensaje1, Toast.LENGTH_LONG);
+        //toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+        toast.show();
+    }
+
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return false;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.img_ubicame) {
+            miUbicacion();
         }
     }
+}
 

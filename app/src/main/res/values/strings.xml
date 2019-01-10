@@ -15,13 +15,13 @@
     <!-- datos para informacion referencial epsgtrau -->
     <string name="text_direccion_eps">Jr. La Arena y Jr. Zelaya S/N - Urb. Santa Ana, Piura</string>
     <string name="text_correo_eps">epsgrau.imageninstitucional@gmail.com</string>
-    <string name="text_telefono_eps">080026026</string>
+    <string name="text_telefono_eps">(073) 307742</string>
     <string name="text_horario_eps">L-V 8:00am-16:00pm Sábado:8:00-12:00 Domingo Cerrado</string>
     <string name="text_web_eps">https://epsgrau.pe</string>
     <!-- datos para informacion referencial enosa -->
     <string name="text_direccion_enosa">Jirón Callao, 875, Piura - Piura</string>
     <string name="text_correo_enosa">enosa@distriluz.com.pe</string>
-    <string name="text_telefono_enosa">(073)28-4030</string>
+    <string name="text_telefono_enosa">(073) 284050</string>
     <string name="text_horario_enosa">L-V 08:00 am a 06:30pm,S-D de 8:30am a 6:30 a.m</string>
     <string name="text_web_enosa">www.distriluz.com.pe/enosa</string>
     <!-- datos para informacion referencial movistar-->

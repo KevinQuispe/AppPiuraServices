@@ -18,11 +18,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.FirebaseDatabase;
 import com.piuraservices.piuraservices.views.activities.AcercadeActivity;
 import com.piuraservices.piuraservices.views.activitiesubicanos.ListaDireccionesMapaActivity;
 import com.piuraservices.piuraservices.views.fragments.EntidadContactoFragment;
@@ -30,7 +28,6 @@ import com.piuraservices.piuraservices.views.fragments.EntidadReclamoFragment;
 import com.piuraservices.piuraservices.views.fragments.EntidadTramiteFragment;
 import com.piuraservices.piuraservices.views.fragments.EntidadesFragment;
 import com.piuraservices.piuraservices.views.fragments.HomeFragment;
-import com.piuraservices.piuraservices.views.fragments.UbicanosFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
