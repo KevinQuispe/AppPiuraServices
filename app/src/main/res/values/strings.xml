@@ -15,7 +15,7 @@
     <!-- datos para informacion referencial epsgtrau -->
     <string name="text_direccion_eps">Jr. La Arena y Jr. Zelaya S/N - Urb. Santa Ana, Piura</string>
     <string name="text_correo_eps">epsgrau.imageninstitucional@gmail.com</string>
-    <string name="text_telefono_eps">(073) 307742</string>
+    <string name="text_telefono_eps">(073) 307741</string>
     <string name="text_horario_eps">L-V 8:00am-16:00pm Sábado:8:00-12:00 Domingo Cerrado</string>
     <string name="text_web_eps">https://epsgrau.pe</string>
     <!-- datos para informacion referencial enosa -->
@@ -32,7 +32,7 @@
     <string name="text_web_movistar">http://www.movistar.com.pe</string>
     <!-- datos para informacion referencial claro -->
     <string name="text_direccion_claro">Tienda 39, Open Plaza Piura</string>
-    <string name="text_correo_claro">clarocontactos@claro.com</string>
+    <string name="text_correo_claro">clarocontactos@claro.com.pe</string>
     <string name="text_telefono_claro">946 573 918</string>
     <string name="text_horario_claro">Lunes-Domingo 11:00am a 9:00pm</string>
     <string name="text_web_claro">http://www.claro.com.pe</string>
@@ -43,7 +43,6 @@
     <string name="text_horario_entel">L-V 9:00am a 7:00pm sábado 9:00am a 12:30pm</string>
     <string name="text_web_entel">http://www.entel.pe</string>
     <string name="text_boton_openmaps">Abrir Google Maps</string>
-
     <!-- Splash screen -->
     <string name="titulo_splash_servicios">Servicios Básicos</string>
     <string name="text_splash_encuantra">Consulta información de los Servicios Básicos</string>

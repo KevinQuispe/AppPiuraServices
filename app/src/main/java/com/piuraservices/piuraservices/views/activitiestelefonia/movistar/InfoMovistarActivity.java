@@ -229,7 +229,7 @@ public class InfoMovistarActivity extends AppCompatActivity {
                     //Toast.makeText(InfoMovistarActivity.this, "Error de conexion", Toast.LENGTH_SHORT).show();
                     //funciona para llamar
                     Intent i = new Intent(Intent.ACTION_DIAL);
-                    String movistar = "(073)28-4032";
+                    String movistar = "(073)28-4030";
                     if (movistar.trim().isEmpty()) {
                         i.setData(Uri.parse("tel:" + movistar));
                     } else {
