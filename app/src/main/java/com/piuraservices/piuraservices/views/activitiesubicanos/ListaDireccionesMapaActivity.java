@@ -26,6 +26,8 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.StreetViewPanorama;
+import com.google.android.gms.maps.model.StreetViewPanoramaCamera;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.loopj.android.http.TextHttpResponseHandler;

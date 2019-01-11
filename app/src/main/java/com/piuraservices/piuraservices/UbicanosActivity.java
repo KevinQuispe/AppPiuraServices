@@ -624,7 +624,7 @@ public class UbicanosActivity extends FragmentActivity implements View.OnClickLi
                     Double longitud = mp.getLongitud();
                     MarkerOptions meMarkerOptions = new MarkerOptions();
                     meMarkerOptions.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_entel));
-                    meMarkerOptions.position(new LatLng(latitud, longitud)).title(mp.getNombre().toString());
+                    meMarkerOptions.position(new LatLng(latitud, longitud)).title(mp.getNombre().toString()+", "+mp.getDireccion());
                     tmprealtimemarkers.add(mMap.addMarker(meMarkerOptions)); //agrego los marcadores de la base firebase
                     AgregarMarcador(latitud, longitud);
 
