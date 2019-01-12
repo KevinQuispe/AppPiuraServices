@@ -31,6 +31,7 @@ import com.piuraservices.piuraservices.views.fragments.EntidadReclamoFragment;
 import com.piuraservices.piuraservices.views.fragments.EntidadTramiteFragment;
 import com.piuraservices.piuraservices.views.fragments.EntidadesFragment;
 import com.piuraservices.piuraservices.views.fragments.HomeFragment;
+import com.piuraservices.piuraservices.views.fragments.UbicanosFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -207,8 +208,8 @@ public class MainActivity extends AppCompatActivity
             Intent intent= new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");
             String subject="Compartir";
-            //String body="Descarga la aplicación PIURA SERVICES para consultar información de los servicios básicos en la ciudad de Piura, descargala desde la google play: https://play.google.com/store/apps/detaills?id=com.piuraservices.piuraservices";
-            String body="Descarga la aplicación PIURA SERVICES para consultar información de los servicios básicos en la ciudad de Piura, descargala desde la google play: https://play.google.com/store/apps/";
+            String body="Descarga la aplicación PIURA SERVICES para consultar información de los servicios básicos en la ciudad de Piura, descargala desde la google play: https://play.google.com/store/apps/detaills?id=com.piuraservices.piuraservices";
+            //String body="Descarga la aplicación PIURA SERVICES para consultar información de los servicios básicos en la ciudad de Piura, descargala desde la google play: https://play.google.com/store/apps/";
             intent.putExtra(Intent.EXTRA_SUBJECT,subject);
             intent.putExtra(Intent.EXTRA_TEXT,body);
             startActivity(Intent.createChooser(intent,"Compartir en"));

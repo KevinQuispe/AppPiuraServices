@@ -9,7 +9,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.support.annotation.IdRes;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,11 +22,8 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SearchView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.StreetViewPanorama;
-import com.google.android.gms.maps.model.StreetViewPanoramaCamera;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.loopj.android.http.TextHttpResponseHandler;
@@ -39,16 +35,10 @@ import com.piuraservices.piuraservices.models.epsgrau.InfoReferencialEpsgraumode
 import com.piuraservices.piuraservices.services.epsgrau.ListaReferencialEpsclient;
 import com.piuraservices.piuraservices.services.http;
 import com.piuraservices.piuraservices.utils.Config;
-import com.piuraservices.piuraservices.views.activitiesenosa.EnosaActivity;
 import com.piuraservices.piuraservices.views.activitiesepsgrau.DetalleContactoEpsActivity;
-import com.piuraservices.piuraservices.views.activitiesepsgrau.EPS_grauActivity;
-import com.piuraservices.piuraservices.views.fragments.UbicanosFragment;
 
 import org.apache.http.Header;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 

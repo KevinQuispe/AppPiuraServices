@@ -12,7 +12,7 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -47,13 +47,6 @@
             </intent-filter>
         </activity>
 
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
-
-        <activity
-            android:name=".UbicanosActivity"
-            android:label="@string/title_activity_ubicanos" />
         <!-- activiteoes for to epsgrau -->
         <activity
             android:name=".views.activitiesepsgrau.EPS_grauActivity"
@@ -249,8 +242,24 @@
         <activity
             android:name=".views.activitiesubicanos.ListaDireccionesMapaActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".views.activitiesubicanos.ListaEmpresasTelefoniaActivity"
+        <activity
+            android:name=".views.activitiesubicanos.ListaEmpresasTelefoniaActivity"
             android:parentActivityName=".views.activitiesubicanos.ListaEmpresasTelefoniaActivity" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".UbicanosActivity"
+            android:label="@string/title_activity_ubicanos"></activity>
     </application>
 
 </manifest>
